@@ -3,1573 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodGuard Pro | Food Safety Standards & Consulting</title>
-
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Goldy Kala | Project Portfolio</title>
+    <meta name="description" content="Modern project showcase by Goldy Kala. Web design, branding, and digital experiences.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
-            --primary: #0B6E4F;
-            --primary-light: #14a76c;
-            --primary-dark: #084a36;
-            --secondary: #1B4332;
-            --accent: #D4AF37;
-            --accent-light: #f0d060;
-            --dark: #0a0a0a;
-            --dark-light: #1a1a2e;
-            --gray: #6c757d;
-            --gray-light: #f0f2f5;
-            --white: #ffffff;
-            --gradient-primary: linear-gradient(135deg, #0B6E4F 0%, #1B4332 100%);
-            --gradient-accent: linear-gradient(135deg, #D4AF37 0%, #f0d060 100%);
-            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            --shadow: 0 10px 40px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
-            --shadow-green: 0 10px 40px rgba(11,110,79,0.3);
+            --gold: #d4af37;
+            --gold-light: #f59e0b;
+            --gold-dark: #b8860b;
+            --dark: #0b1120;
+            --dark-soft: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+            --text-light: #64748b;
             --radius: 16px;
-            --radius-sm: 8px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-gold: 0 8px 24px rgba(212,175,55,0.15);
+            --transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
         }
 
-        /* ===== GLOBAL RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
+        * { box-sizing: border-box; scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--dark);
+            background: var(--light);
+            color: var(--text);
             overflow-x: hidden;
-            background: var(--white);
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--dark); }
+        p { line-height: 1.7; margin-bottom: 0.8rem; }
 
-        p {
-            line-height: 1.8;
-            color: var(--gray);
-        }
-
-        a {
-            text-decoration: none;
+        /* Navbar */
+        .navbar-gk {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
             transition: var(--transition);
         }
+        .navbar-gk.scrolled { padding: 0.6rem 0; background: rgba(255,255,255,0.98); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem; color: var(--dark); text-decoration: none; }
+        .brand span { color: var(--gold); }
+        .nav-link { font-weight: 500; color: var(--dark); padding: 0.5rem 1rem; transition: var(--transition); }
+        .nav-link:hover, .nav-link.active { color: var(--gold-dark); }
+        .nav-btn { background: var(--dark); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 10px; font-weight: 600; }
+        .nav-btn:hover { background: var(--gold-dark); color: white; }
 
-        img {
-            max-width: 100%;
-        }
-
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        /* ===== CUSTOM SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--gray-light);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
-
-        /* ===== PRELOADER ===== */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
-
-        #preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 4px solid var(--gray-light);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn-primary-custom {
-            background: var(--gradient-primary);
-            color: var(--white);
-            border: none;
-            padding: 14px 36px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-primary-custom::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-accent);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn-primary-custom:hover::before {
-            left: 0;
-        }
-
-        .btn-primary-custom:hover {
-            color: var(--dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-green);
-        }
-
-        .btn-outline-custom {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-            padding: 12px 34px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .btn-outline-custom:hover {
-            background: var(--white);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(11, 110, 79, 0.08);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--dark);
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            max-width: 600px;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            padding: 16px 0;
-            transition: var(--transition);
-            background: transparent;
-            z-index: 1000;
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
-            padding: 10px 0;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.6rem;
-            color: var(--white) !important;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .navbar.scrolled .navbar-brand {
-            color: var(--dark) !important;
-        }
-
-        .navbar-brand .brand-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--gradient-accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-size: 1.2rem;
-        }
-
-        .nav-link {
-            color: rgba(255,255,255,0.85) !important;
-            font-weight: 500;
-            font-size: 0.92rem;
-            padding: 8px 18px !important;
-            border-radius: 50px;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled .nav-link {
-            color: var(--dark) !important;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--white) !important;
-            background: rgba(255,255,255,0.15);
-        }
-
-        .navbar.scrolled .nav-link:hover,
-        .navbar.scrolled .nav-link.active {
-            color: var(--primary) !important;
-            background: rgba(11,110,79,0.08);
-        }
-
-        .navbar-toggler {
-            border: none;
-            padding: 0;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        .navbar.scrolled .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        .nav-cta {
-            background: var(--gradient-accent) !important;
-            color: var(--dark) !important;
-            font-weight: 600 !important;
-            padding: 10px 24px !important;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(212,175,55,0.4);
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            background: var(--gradient-dark);
+            background: linear-gradient(135deg, #0b1120 0%, #1e293b 50%, #0f172a 100%);
+            padding: 10rem 0 6rem;
             position: relative;
-            display: flex;
-            align-items: center;
             overflow: hidden;
-            padding: 120px 0 100px;
         }
-
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(11,110,79,0.3) 0%, transparent 70%);
+            content: ''; position: absolute; top: -100px; right: -100px;
+            width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
             border-radius: 50%;
-            animation: pulse 4s ease-in-out infinite;
         }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 5s ease-in-out infinite reverse;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        .hero-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(212,175,55,0.3);
-            border-radius: 50%;
-            animation: float-particle linear infinite;
-        }
-
-        @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(212,175,55,0.15);
-            border: 1px solid rgba(212,175,55,0.3);
-            color: var(--accent-light);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
+            background: rgba(212,175,55,0.1); color: var(--gold);
+            font-weight: 600; font-size: 0.85rem; padding: 0.4rem 0.8rem;
+            border-radius: 50px; border: 1px solid rgba(212,175,55,0.2);
+            display: inline-flex; align-items: center; gap: 6px;
         }
-
-        .hero-badge i {
-            animation: blink 2s ease-in-out infinite;
+        .hero h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); color: white; line-height: 1.1; margin-bottom: 1rem; }
+        .hero p { color: #94a3b8; font-size: 1.1rem; max-width: 600px; }
+        .btn-gold {
+            background: var(--gold); color: var(--dark); border: none; padding: 0.85rem 1.8rem;
+            border-radius: 12px; font-weight: 700; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 8px;
         }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        .btn-gold:hover { background: var(--gold-dark); color: white; transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+        .btn-outline {
+            background: transparent; border: 2px solid rgba(255,255,255,0.2); color: white;
+            padding: 0.8rem 1.8rem; border-radius: 12px; font-weight: 600; transition: var(--transition);
         }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--white);
-            line-height: 1.1;
-            margin-bottom: 24px;
+        /* Sections */
+        section { padding: clamp(4rem, 10vw, 6rem) 0; }
+        .section-head { text-align: center; margin-bottom: 3rem; }
+        .section-head h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 0.5rem; }
+        .section-head .gold-line { width: 50px; height: 3px; background: var(--gold); margin: 0.5rem auto 0; border-radius: 3px; }
+
+        /* Filter Buttons */
+        .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-bottom: 2.5rem; }
+        .filter-btn {
+            background: white; border: 1px solid #e2e8f0; padding: 0.5rem 1.2rem;
+            border-radius: 50px; font-weight: 600; font-size: 0.9rem; color: var(--text);
+            cursor: pointer; transition: var(--transition);
         }
+        .filter-btn:hover, .filter-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
 
-        .hero h1 .highlight {
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Project Grid */
+        .project-card {
+            background: white; border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow); transition: var(--transition); height: 100%;
+            position: relative; cursor: pointer;
         }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.7);
-            max-width: 520px;
-            margin-bottom: 40px;
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+        .project-img {
+            height: 240px; overflow: hidden; position: relative;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+        .project-img img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
         }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+        .project-card:hover .project-img img { transform: scale(1.05); }
+        .project-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11,17,32,0.8); display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: var(--transition);
         }
-
-        .hero-stat h3 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .hero-stat p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            margin: 0;
-        }
-
-        .hero-image {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero-image-wrapper img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .hero-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(11,110,79,0.3), rgba(27,67,50,0.5));
-        }
-
-        .hero-floating-card {
-            position: absolute;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-floating-card.card-1 {
-            bottom: -20px;
-            left: -30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .hero-floating-card.card-1 .icon-circle {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-        }
-
-        .hero-floating-card.card-2 {
-            top: 20px;
-            right: -20px;
-            text-align: center;
-            animation-delay: 1.5s;
-        }
-
-        .hero-floating-card .rating {
-            color: var(--accent);
-            font-size: 0.9rem;
-        }
-
-        .hero-floating-card .rating-number {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--dark);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* ===== TRUSTED BY / MARQUEE ===== */
-        .trusted-section {
-            padding: 40px 0;
-            background: var(--gray-light);
-            overflow: hidden;
-        }
-
-        .trusted-section p {
-            text-align: center;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray);
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .marquee-wrapper {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .marquee-content {
-            display: inline-flex;
-            gap: 60px;
-            animation: marquee 20s linear infinite;
-        }
-
-        .marquee-content span {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gray);
-            opacity: 0.4;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-section {
-            background: var(--white);
-        }
-
-        .about-image-wrapper {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .about-image-wrapper img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: var(--radius);
-        }
-
-        .about-experience-badge {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gradient-primary);
-            color: var(--white);
-            padding: 20px 28px;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow-green);
-        }
-
-        .about-experience-badge h3 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin: 0;
-            color: var(--accent);
-        }
-
-        .about-experience-badge p {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-            margin: 0;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 32px;
-        }
-
-        .about-feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .about-feature-item .icon {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            background: rgba(11,110,79,0.08);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1rem;
-        }
-
-        .about-feature-item h6 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-            color: var(--dark);
-        }
-
-        .about-feature-item p {
-            font-size: 0.8rem;
-            margin: 0;
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        .services-section {
-            background: var(--gray-light);
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            height: 100%;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid transparent;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
+        .project-card:hover .project-overlay { opacity: 1; }
+        .view-btn {
+            background: var(--gold); color: var(--dark); padding: 0.7rem 1.5rem;
+            border-radius: 10px; font-weight: 700; transform: translateY(20px);
             transition: var(--transition);
         }
+        .project-card:hover .view-btn { transform: translateY(0); }
+        .project-info { padding: 1.2rem 1.5rem; }
+        .project-cat { color: var(--gold-dark); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .project-title { font-weight: 700; font-size: 1.1rem; margin: 0.3rem 0 0.2rem; }
+        .project-desc { color: var(--text-light); font-size: 0.9rem; margin: 0; }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(11,110,79,0.1);
+        /* About */
+        .about-section { background: var(--dark); color: #cbd5e1; }
+        .about-section h2, .about-section h3, .about-section h4 { color: white; }
+        .about-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+        .skill-tag {
+            background: rgba(255,255,255,0.08); padding: 0.4rem 0.9rem; border-radius: 8px;
+            font-size: 0.85rem; color: #e2e8f0; display: inline-block; margin: 0.3rem;
         }
+        .skill-tag:hover { background: var(--gold); color: var(--dark); }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(11,110,79,0.08);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 24px;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            background: var(--gradient-primary);
-            color: var(--white);
-            transform: rotateY(180deg);
-        }
-
-        .service-card h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--dark);
-        }
-
-        .service-card p {
-            font-size: 0.92rem;
-            margin-bottom: 20px;
-        }
-
-        .service-link {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .service-link:hover {
-            color: var(--primary-dark);
-            gap: 12px;
-        }
-
-        /* ===== STANDARDS SECTION ===== */
-        .standards-section {
-            background: var(--white);
-        }
-
-        .standard-card {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: var(--radius);
-            transition: var(--transition);
-            border: 2px solid var(--gray-light);
+        /* Contact */
+        .contact-card {
+            background: white; border-radius: 20px; padding: 2rem; box-shadow: var(--shadow);
             height: 100%;
         }
-
-        .standard-card:hover {
-            border-color: var(--primary);
-            background: rgba(11,110,79,0.03);
-            transform: translateY(-5px);
-        }
-
-        .standard-card .standard-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            color: var(--white);
-            font-size: 1.8rem;
-            font-weight: 800;
-        }
-
-        .standard-card h5 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .standard-card p {
-            font-size: 0.85rem;
-            margin: 0;
-        }
-
-        /* ===== PROCESS SECTION ===== */
-        .process-section {
-            background: var(--gradient-dark);
-            color: var(--white);
-        }
-
-        .process-section .section-badge {
-            background: rgba(212,175,55,0.15);
-            color: var(--accent);
-        }
-
-        .process-section .section-title {
-            color: var(--white);
-        }
-
-        .process-section .section-subtitle {
-            color: rgba(255,255,255,0.6);
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-            padding: 0 15px;
-        }
-
-        .process-step-number {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .process-step:hover .process-step-number {
-            background: var(--gradient-accent);
-            color: var(--dark);
-            border-color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        .process-step h5 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .process-step p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .process-connector {
-            position: absolute;
-            top: 40px;
-            right: -15%;
-            width: 30%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            opacity: 0.3;
-        }
-
-        /* ===== STATS SECTION ===== */
-        .stats-section {
-            background: var(--gradient-primary);
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .stat-item {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-item h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .stat-item p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        /* ===== WHY CHOOSE US ===== */
-        .why-section {
-            background: var(--white);
-        }
-
-        .why-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 30px;
-            border-radius: var(--radius);
-            transition: var(--transition);
-            border: 1px solid var(--gray-light);
-            height: 100%;
-        }
-
-        .why-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-            transform: translateY(-5px);
-        }
-
-        .why-card .why-icon {
-            width: 60px;
-            height: 60px;
-            min-width: 60px;
-            background: var(--gradient-primary);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.4rem;
-        }
-
-        .why-card h5 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--dark);
-        }
-
-        .why-card p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials-section {
-            background: var(--gray-light);
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 40px;
-            height: 100%;
-            position: relative;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: rgba(11,110,79,0.1);
-        }
-
-        .testimonial-card .quote-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            opacity: 0.15;
-            position: absolute;
-            top: 20px;
-            right: 30px;
-        }
-
-        .testimonial-card .stars {
-            color: var(--accent);
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-        }
-
-        .testimonial-card .testimonial-text {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--gray);
-            margin-bottom: 24px;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .testimonial-author .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-author h6 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-            color: var(--dark);
-        }
-
-        .testimonial-author span {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta-section {
-            background: var(--gradient-dark);
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(11,110,79,0.3), transparent 70%);
-            border-radius: 50%;
-        }
-
-        .cta-section h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--white);
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section p {
-            color: rgba(255,255,255,0.6);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-buttons {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact-section {
-            background: var(--white);
-        }
-
-        .contact-info-card {
-            background: var(--gradient-primary);
-            border-radius: var(--radius);
-            padding: 50px 40px;
-            color: var(--white);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-info-card::before {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
-
-        .contact-info-card h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .contact-info-card > p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 36px;
-            font-size: 0.95rem;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 28px;
-        }
-
-        .contact-info-item .icon {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .contact-info-item h6 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contact-info-item p {
-            color: var(--white);
-            margin: 0;
-            font-size: 0.95rem;
-        }
-
-        .contact-socials {
-            display: flex;
-            gap: 12px;
-            margin-top: 40px;
-        }
-
-        .contact-socials a {
-            width: 44px;
-            height: 44px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .contact-socials a:hover {
-            background: var(--accent);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
-
-        .contact-form-wrapper {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 50px 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .contact-form-wrapper h3 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--dark);
-        }
-
-        .contact-form-wrapper > p {
-            margin-bottom: 32px;
-            font-size: 0.95rem;
-        }
-
-        .form-floating {
-            margin-bottom: 20px;
-        }
-
-        .form-floating .form-control,
-        .form-floating .form-select {
-            border: 2px solid var(--gray-light);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            background: var(--gray-light);
-        }
-
-        .form-floating .form-control:focus,
-        .form-floating .form-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(11,110,79,0.1);
-            background: var(--white);
-        }
-
-        .form-floating textarea.form-control {
-            height: 120px;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--gradient-dark);
-            color: var(--white);
-            padding: 80px 0 0;
-        }
-
-        .footer-brand {
-            font-size: 1.5rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            color: var(--white);
-        }
-
-        .footer-brand .brand-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-size: 1.1rem;
-        }
-
-        .footer p {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-        }
-
-        .footer h5 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 6px;
-        }
-
-        .footer-newsletter .input-group {
-            background: rgba(255,255,255,0.05);
-            border-radius: 50px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-newsletter input {
-            background: transparent;
-            border: none;
-            color: var(--white);
-            padding: 14px 20px;
-            font-size: 0.9rem;
-        }
-
-        .footer-newsletter input::placeholder {
-            color: rgba(255,255,255,0.3);
-        }
-
-        .footer-newsletter input:focus {
-            box-shadow: none;
-            background: transparent;
-            color: var(--white);
-        }
-
-        .footer-newsletter .btn {
-            background: var(--gradient-accent);
-            color: var(--dark);
-            border: none;
-            padding: 14px 24px;
-            font-weight: 600;
-            border-radius: 50px;
-            margin: 4px;
-        }
-
-        .footer-bottom {
-            margin-top: 60px;
-            padding: 24px 0;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .footer-bottom p {
-            margin: 0;
-            font-size: 0.85rem;
-        }
-
-        /* ===== BACK TO TOP ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            color: var(--white);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: var(--transition);
-            box-shadow: var(--shadow-green);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            background: var(--gradient-accent);
-            color: var(--dark);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 991px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-stats {
-                gap: 24px;
-            }
-
-            .hero-stat h3 {
-                font-size: 1.8rem;
-            }
-
-            .hero-image {
-                margin-top: 60px;
-            }
-
-            .process-connector {
-                display: none;
-            }
-
-            .navbar-collapse {
-                background: var(--white);
-                border-radius: var(--radius);
-                padding: 20px;
-                margin-top: 16px;
-                box-shadow: var(--shadow);
-            }
-
-            .navbar-collapse .nav-link {
-                color: var(--dark) !important;
-            }
-
-            .navbar-collapse .nav-link:hover,
-            .navbar-collapse .nav-link.active {
-                color: var(--primary) !important;
-                background: rgba(11,110,79,0.08);
-            }
-
-            .navbar-collapse .nav-cta {
-                color: var(--dark) !important;
-            }
-        }
-
-        @media (max-width: 767px) {
-            section {
-                padding: 70px 0;
-            }
-
-            .hero {
-                padding: 100px 0 70px;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .hero-stat {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .hero-stat p {
-                margin: 0;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .stat-item h2 {
-                font-size: 2.2rem;
-            }
-
-            .cta-section h2 {
-                font-size: 2rem;
-            }
-
-            .contact-info-card {
-                padding: 36px 28px;
-            }
-
-            .contact-form-wrapper {
-                padding: 36px 28px;
-                margin-top: 30px;
-            }
-
-            .hero-floating-card {
-                display: none;
-            }
-        }
-
-        @media (max-width: 575px) {
-            .hero h1 {
-                font-size: 1.9rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
+        .form-input {
+            border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.9rem 1rem;
+            width: 100%; transition: var(--transition);
+        }
+        .form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.1); outline: none; }
+        .contact-info { background: var(--dark); color: white; border-radius: 20px; padding: 2rem; height: 100%; }
+        .contact-info a { color: #cbd5e1; text-decoration: none; transition: var(--transition); display: block; margin-bottom: 0.8rem; }
+        .contact-info a:hover { color: var(--gold); }
+        .social-btn {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px;
+            display: inline-flex; align-items: center; justify-content: center; color: #cbd5e1;
+            transition: var(--transition); margin-right: 8px;
+        }
+        .social-btn:hover { background: var(--gold); color: var(--dark); transform: translateY(-3px); }
+
+        /* Footer */
+        footer { background: #0f172a; color: #64748b; padding: 3rem 0 2rem; }
+        footer a { color: #94a3b8; text-decoration: none; transition: var(--transition); }
+        footer a:hover { color: var(--gold); }
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 8rem 0 4rem; }
+            .project-img { height: 200px; }
+            .filters { gap: 0.5rem; }
+            .filter-btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== PRELOADER ===== -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+    <!-- Navbar -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-gk">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="brand-icon"><i class="bi bi-shield-check"></i></span>
-                FoodGuard<span style="color: var(--accent);">Pro</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="brand" href="#hero"><span>Goldy</span> Kala</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center gap-1">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#standards">Standards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item ms-lg-2">
-                        <a class="nav-link nav-cta" href="#contact">Get Free Audit <i class="bi bi-arrow-right"></i></a>
-                    </li>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-center gap-2 mt-3 mt-lg-0">
+                    <li><a class="nav-link" href="#hero">Home</a></li>
+                    <li><a class="nav-link" href="#projects">Projects</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                    <li><a class="nav-btn" href="#contact">Let's Work</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero" id="home">
-        <div class="hero-particles" id="particles"></div>
+    <!-- Hero -->
+    <section id="hero" class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="hero-content">
-                        <div class="hero-badge">
-                            <i class="bi bi-circle-fill"></i>
-                            ISO 22000 Certified Consultants
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-7 fade-up">
+                    <span class="hero-badge mb-3"><i class="fa-solid fa-star"></i> Digital Creator & Designer</span>
+                    <h1>Crafting Digital<br/>Experiences That <span style="color: var(--gold);">Matter</span></h1>
+                    <p class="mb-4">Modern web design, branding, and interactive solutions tailored for forward-thinking brands. Clean aesthetics. Pixel-perfect execution.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#projects" class="btn-gold"><i class="fa-solid fa-grid-2"></i> View Projects</a>
+                        <a href="#contact" class="btn-outline"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 fade-up">
+                    <div class="bg-white p-2 rounded-4 shadow" style="transform: rotate(2deg);">
+                        <img src="https://placehold.co/600x450/f8fafc/334155?text=Featured+Project+Preview" class="img-fluid rounded-3" alt="Featured Work">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="bg-light">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Selected Projects</h2>
+                <div class="gold-line"></div>
+                <p class="text-muted mt-2">A curated collection of web, branding, and digital work.</p>
+            </div>
+
+            <div class="filters fade-up">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="brand">Branding</button>
+                <button class="filter-btn" data-filter="ui">UI/UX</button>
+            </div>
+
+            <div class="row g-4" id="project-grid">
+                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="web">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=E-Commerce+Platform" alt="Project">
+                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
                         </div>
-                        <h1>
-                            Ensuring <span class="highlight">Food Safety</span> Standards You Can Trust
-                        </h1>
-                        <p>
-                            We help food businesses achieve and maintain the highest safety standards through expert consulting, audits, training, and certification support.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#services" class="btn btn-primary-custom">
-                                Explore Services <i class="bi bi-arrow-right ms-2"></i>
-                            </a>
-                            <a href="#contact" class="btn btn-outline-custom">
-                                <i class="bi bi-play-circle me-2"></i> Watch Demo
-                            </a>
-                        </div>
-                        <div class="hero-stats">
-                            <div class="hero-stat">
-                                <h3 class="counter" data-target="500">0</h3>
-                                <p>Clients Served</p>
-                            </div>
-                            <div class="hero-stat">
-                                <h3 class="counter" data-target="98">0</h3>
-                                <p>% Success Rate</p>
-                            </div>
-                            <div class="hero-stat">
-                                <h3 class="counter" data-target="15">0</h3>
-                                <p>Years Experience</p>
-                            </div>
+                        <div class="project-info">
+                            <div class="project-cat">Food safety</div>
+                            <h4 class="project-title">Nova Commerce</h4>
+                            <p class="project-desc">High-converting storefront with custom checkout flow.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="hero-image">
-                        <div class="hero-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=800&q=80" alt="Food Safety Inspection">
-                            <div class="hero-image-overlay"></div>
+                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="brand">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Brand+Identity+System" alt="Project">
+                            <div class="project-overlay"><a href="foodsafety.html" target="_blank" rel="noopener noreferrer"><span class="view-btn">View site</span></a></div>
                         </div>
-                        <div class="hero-floating-card card-1">
-                            <div class="icon-circle">
-                                <i class="bi bi-check-lg"></i>
-                            </div>
-                            <div>
-                                <h6 style="margin:0; font-size:0.9rem; font-weight:700;">HACCP Certified</h6>
-                                <p style="margin:0; font-size:0.75rem; color:var(--gray);">Globally Recognized</p>
-                            </div>
+                        <div class="project-info">
+                            <div class="project-cat">Food safety</div>
+                            <h4 class="project-title">Aether Studio</h4>
+                            <p class="project-desc">Complete visual identity & brand guidelines.</p>
                         </div>
-                        <div class="hero-floating-card card-2">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="rating-number">4.9/5</div>
-                            <p style="margin:0; font-size:0.75rem; color:var(--gray);">Client Rating</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="ui">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=SaaS+Dashboard+UI" alt="Project">
+                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-cat">UI/UX</div>
+                            <h4 class="project-title">Metrics Pro</h4>
+                            <p class="project-desc">Data-rich analytics dashboard with dark mode.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="web">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Portfolio+Website" alt="Project">
+                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-cat">Web Design</div>
+                            <h4 class="project-title">Creative Folio</h4>
+                            <p class="project-desc">Minimal portfolio with smooth scroll animations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="brand">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Packaging+Design" alt="Project">
+                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-cat">Branding</div>
+                            <h4 class="project-title">Pure Brew Co.</h4>
+                            <p class="project-desc">Premium packaging & retail shelf presence.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="ui">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Mobile+App+Prototype" alt="Project">
+                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-cat">UI/UX</div>
+                            <h4 class="project-title">FitTrack App</h4>
+                            <p class="project-desc">User-centered fitness tracking interface.</p>
                         </div>
                     </div>
                 </div>
@@ -1577,81 +321,34 @@
         </div>
     </section>
 
-    <!-- ===== TRUSTED BY ===== -->
-    <div class="trusted-section">
-        <p>Trusted by Leading Food Companies Worldwide</p>
-        <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <span><i class="bi bi-building"></i> Nestlé Group</span>
-                <span><i class="bi bi-building"></i> Unilever Foods</span>
-                <span><i class="bi bi-building"></i> Danone SA</span>
-                <span><i class="bi bi-building"></i> Tyson Foods</span>
-                <span><i class="bi bi-building"></i> General Mills</span>
-                <span><i class="bi bi-building"></i> Kellogg's Co</span>
-                <span><i class="bi bi-building"></i> Kraft Heinz</span>
-                <span><i class="bi bi-building"></i> Mars Inc</span>
-                <span><i class="bi bi-building"></i> Nestlé Group</span>
-                <span><i class="bi bi-building"></i> Unilever Foods</span>
-                <span><i class="bi bi-building"></i> Danone SA</span>
-                <span><i class="bi bi-building"></i> Tyson Foods</span>
-                <span><i class="bi bi-building"></i> General Mills</span>
-                <span><i class="bi bi-building"></i> Kellogg's Co</span>
-                <span><i class="bi bi-building"></i> Kraft Heinz</span>
-                <span><i class="bi bi-building"></i> Mars Inc</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== ABOUT SECTION ===== -->
-    <section class="about-section" id="about">
+    <!-- About -->
+    <section id="about" class="about-section">
         <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
-                    <div class="about-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&q=80" alt="Food Safety Laboratory">
-                        <div class="about-experience-badge">
-                            <h3>15+</h3>
-                            <p>Years of Excellence</p>
-                        </div>
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5 fade-up">
+                    <div class="about-img">
+                        <img src="https://placehold.co/500x600/1e293b/94a3b8?text=Goldy+Kala" class="img-fluid w-100" alt="Goldy Kala">
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                    <div class="section-badge"><i class="bi bi-info-circle"></i> About Us</div>
-                    <h2 class="section-title">Your Trusted Partner in Food Safety Excellence</h2>
-                    <p>
-                        FoodGuard Pro is a leading food safety consulting firm dedicated to helping food businesses of all sizes implement, maintain, and exceed global food safety standards. Our team of certified experts brings decades of combined experience in food science, quality management, and regulatory compliance.
-                    </p>
-                    <p>
-                        From small artisan producers to large-scale manufacturers, we provide tailored solutions that ensure your products meet the highest safety benchmarks while optimizing your operational efficiency.
-                    </p>
-                    <div class="about-features">
-                        <div class="about-feature-item">
-                            <div class="icon"><i class="bi bi-patch-check"></i></div>
-                            <div>
-                                <h6>Certified Experts</h6>
-                                <p>ISO & HACCP certified professionals</p>
-                            </div>
+                <div class="col-lg-7 fade-up">
+                    <h2 class="mb-3">Behind the <span style="color: var(--gold);">Work</span></h2>
+                    <p class="text-light mb-4">I'm Goldy Kala, a multidisciplinary digital creator focused on building clean, performant, and visually striking projects. With a background in UI/UX, front-end development, and brand strategy, I bridge the gap between aesthetics and functionality.</p>
+                    <p class="text-light mb-4">Every project starts with understanding your goals, audience, and constraints. I don't just design interfaces—I design outcomes.</p>
+                    <h5 class="mb-3">Core Expertise</h5>
+                    <div class="mb-4">
+                        <span class="skill-tag">Web Design</span><span class="skill-tag">UI/UX</span><span class="skill-tag">Branding</span>
+                        <span class="skill-tag">HTML/CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Responsive Dev</span><span class="skill-tag">Motion UI</span>
+                    </div>
+                    <div class="row g-4 mt-2">
+                        <div class="col-6 col-md-4 text-center p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
+                            <h4 style="color: var(--gold); margin:0;">5+</h4><small class="text-muted">Years Exp.</small>
                         </div>
-                        <div class="about-feature-item">
-                            <div class="icon"><i class="bi bi-globe"></i></div>
-                            <div>
-                                <h6>Global Standards</h6>
-                                <p>Compliance with international norms</p>
-                            </div>
+                        <div class="col-6 col-md-4 text-center p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
+                            <h4 style="color: var(--gold); margin:0;">40+</h4><small class="text-muted">Projects</small>
                         </div>
-                        <div class="about-feature-item">
-                            <div class="icon"><i class="bi bi-graph-up-arrow"></i></div>
-                            <div>
-                                <h6>Proven Results</h6>
-                                <p>98% certification success rate</p>
-                            </div>
-                        </div>
-                        <div class="about-feature-item">
-                            <div class="icon"><i class="bi bi-headset"></i></div>
-                            <div>
-                                <h6>24/7 Support</h6>
-                                <p>Round-the-clock expert assistance</p>
-                            </div>
+                        <div class="col-12 col-md-4 text-center p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
+                            <h4 style="color: var(--gold); margin:0;">100%</h4><small class="text-muted">Client Focus</small>
                         </div>
                     </div>
                 </div>
@@ -1659,270 +356,39 @@
         </div>
     </section>
 
-    <!-- ===== SERVICES SECTION ===== -->
-    <section class="services-section" id="services">
+    <!-- Contact -->
+    <section id="contact">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"><i class="bi bi-gear"></i> Our Services</div>
-                <h2 class="section-title">Comprehensive Food Safety Solutions</h2>
-                <p class="section-subtitle mx-auto">End-to-end services designed to elevate your food safety standards and ensure regulatory compliance.</p>
+            <div class="section-head fade-up">
+                <h2>Start a Project</h2>
+                <div class="gold-line"></div>
+                <p class="text-muted mt-2">Have an idea? Let's build it together.</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-clipboard2-check"></i>
+                <div class="col-12 col-lg-6 fade-up">
+                    <form class="contact-card" onsubmit="handleForm(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6"><input type="text" class="form-input" placeholder="Your Name" required></div>
+                            <div class="col-md-6"><input type="email" class="form-input" placeholder="Email Address" required></div>
+                            <div class="col-12"><input type="text" class="form-input" placeholder="Project Type (e.g., Website, App, Brand)"></div>
+                            <div class="col-12"><textarea class="form-input" rows="5" placeholder="Tell me about your project, timeline & budget..."></textarea></div>
+                            <div class="col-12"><button type="submit" class="btn-gold w-100 justify-content-center"><i class="fa-solid fa-paper-plane"></i> Send Message</button></div>
                         </div>
-                        <h4>HACCP Implementation</h4>
-                        <p>Complete Hazard Analysis Critical Control Points system design, implementation, and documentation for your food business.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <h4>Safety Audits & Inspections</h4>
-                        <p>Thorough on-site audits and inspections to identify risks, ensure compliance, and provide actionable improvement plans.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-mortarboard"></i>
-                        </div>
-                        <h4>Staff Training Programs</h4>
-                        <p>Comprehensive food safety training for all staff levels, from handlers to management, with certified courses and workshops.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-award"></i>
-                        </div>
-                        <h4>Certification Support</h4>
-                        <p>End-to-end guidance for ISO 22000, FSSC 22000, BRCGS, SQF, and other international food safety certifications.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                        <h4>Regulatory Compliance</h4>
-                        <p>Stay ahead of changing regulations with our expert compliance consulting for FDA, EFSA, FSSAI, and other food authorities.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-bug"></i>
-                        </div>
-                        <h4>Lab Testing & Analysis</h4>
-                        <p>Comprehensive microbiological, chemical, and physical testing to verify product safety and quality at every stage.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== STANDARDS SECTION ===== -->
-    <section class="standards-section" id="standards">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"><i class="bi bi-shield-check"></i> Standards</div>
-                <h2 class="section-title">Global Food Safety Standards We Cover</h2>
-                <p class="section-subtitle mx-auto">We help you achieve compliance with all major international food safety standards and certifications.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="standard-card">
-                        <div class="standard-logo">ISO</div>
-                        <h5>ISO 22000</h5>
-                        <p>Food Safety Management</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="standard-card">
-                        <div class="standard-logo">HAC</div>
-                        <h5>HACCP</h5>
-                        <p>Hazard Analysis</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="standard-card">
-                        <div class="standard-logo">BRC</div>
-                        <h5>BRCGS</h5>
-                        <p>Global Standards</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="standard-card">
-                        <div class="standard-logo">SQF</div>
-                        <h5>SQF</h5>
-                        <p>Safe Quality Food</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="standard-card">
-                        <div class="standard-logo">FSS</div>
-                        <h5>FSSC 22000</h5>
-                        <p>Certification Scheme</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="standard-card">
-                        <div class="standard-logo">GMP</div>
-                        <h5>GMP/GHP</h5>
-                        <p>Good Practices</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PROCESS SECTION ===== -->
-    <section class="process-section" id="process">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"><i class="bi bi-diagram-3"></i> Our Process</div>
-                <h2 class="section-title">How We Work With You</h2>
-                <p class="section-subtitle mx-auto">A streamlined, proven approach to achieving and maintaining food safety excellence.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="process-step">
-                        <div class="process-step-number">01</div>
-                        <h5>Initial Assessment</h5>
-                        <p>Comprehensive evaluation of your current food safety practices and gap analysis.</p>
-                        <div class="process-connector d-none d-lg-block"></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="process-step">
-                        <div class="process-step-number">02</div>
-                        <h5>Custom Strategy</h5>
-                        <p>Tailored action plan with clear milestones, timelines, and responsibilities.</p>
-                        <div class="process-connector d-none d-lg-block"></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="process-step">
-                        <div class="process-step-number">03</div>
-                        <h5>Implementation</h5>
-                        <p>Hands-on support for implementing systems, training staff, and documentation.</p>
-                        <div class="process-connector d-none d-lg-block"></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="process-step">
-                        <div class="process-step-number">04</div>
-                        <h5>Certification & Beyond</h5>
-                        <p>Audit preparation, certification support, and ongoing compliance monitoring.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== STATS SECTION ===== -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-item">
-                        <h2><span class="counter" data-target="500">0</span>+</h2>
-                        <p>Clients Worldwide</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-item">
-                        <h2><span class="counter" data-target="1200">0</span>+</h2>
-                        <p>Audits Completed</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-item">
-                        <h2><span class="counter" data-target="98">0</span>%</h2>
-                        <p>Success Rate</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-item">
-                        <h2><span class="counter" data-target="35">0</span>+</h2>
-                        <p>Countries Served</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== WHY CHOOSE US ===== -->
-    <section class="why-section">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"><i class="bi bi-star"></i> Why Choose Us</div>
-                <h2 class="section-title">What Sets FoodGuard Pro Apart</h2>
-                <p class="section-subtitle mx-auto">We combine deep expertise with a personalized approach to deliver exceptional results.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="why-card">
-                        <div class="why-icon"><i class="bi bi-people"></i></div>
-                        <div>
-                            <h5>Expert Team</h5>
-                            <p>Our consultants hold advanced degrees in food science and years of industry experience across multiple sectors.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="why-card">
-                        <div class="why-icon"><i class="bi bi-lightning-charge"></i></div>
-                        <div>
-                            <h5>Rapid Implementation</h5>
-                            <p>Our proven methodologies ensure faster implementation timelines without compromising on quality or thoroughness.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="why-card">
-                        <div class="why-icon"><i class="bi bi-currency-dollar"></i></div>
-                        <div>
-                            <h5>Cost Effective</h5>
-                            <p>Flexible pricing models and scalable solutions designed to fit businesses of all sizes and budgets.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="why-card">
-                        <div class="why-icon"><i class="bi bi-clock-history"></i></div>
-                        <div>
-                            <h5>Ongoing Support</h5>
-                            <p>Continuous monitoring, regular updates, and dedicated account managers to ensure lasting compliance.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="why-card">
-                        <div class="why-icon"><i class="bi bi-laptop"></i></div>
-                        <div>
-                            <h5>Digital Solutions</h5>
-                            <p>Modern digital tools and platforms for real-time monitoring, documentation, and compliance tracking.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="why-card">
-                        <div class="why-icon"><i class="bi bi-hand-thumbs-up"></i></div>
-                        <div>
-                            <h5>Guaranteed Results</h5>
-                            <p>We stand behind our work with a certification guarantee — if you don't pass, we continue working at no extra cost.</p>
+                <div class="col-12 col-lg-6 fade-up">
+                    <div class="contact-info">
+                        <h4 class="mb-3">Contact Details</h4>
+                        <p class="text-light mb-4">Available for freelance, contract, and full-time collaborations worldwide.</p>
+                        <a href="mailto:hello@goldykala.com"><i class="fa-solid fa-envelope me-2" style="color:var(--gold)"></i> hello@goldykala.com</a>
+                        <a href="tel:+1234567890"><i class="fa-solid fa-phone me-2" style="color:var(--gold)"></i> +1 (234) 567-890</a>
+                        <a href="#"><i class="fa-solid fa-location-dot me-2" style="color:var(--gold)"></i> Remote / Global</a>
+                        <div class="mt-4 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                            <p class="mb-2">Follow the work:</p>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-dribbble"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-behance"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1930,474 +396,79 @@
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"><i class="bi bi-chat-quote"></i> Testimonials</div>
-                <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-subtitle mx-auto">Hear from food businesses that have transformed their safety standards with our help.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <i class="bi bi-quote quote-icon"></i>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="testimonial-text">"FoodGuard Pro transformed our entire food safety system. Their HACCP implementation was thorough, professional, and got us certified in record time. Highly recommended!"</p>
-                        <div class="testimonial-author">
-                            <div class="avatar">JM</div>
-                            <div>
-                                <h6>James Mitchell</h6>
-                                <span>CEO, FreshBite Foods</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <i class="bi bi-quote quote-icon"></i>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="testimonial-text">"The training programs were exceptional. Our staff is now fully equipped with food safety knowledge, and our audit scores have improved by 40% since working with them."</p>
-                        <div class="testimonial-author">
-                            <div class="avatar">SP</div>
-                            <div>
-                                <h6>Sarah Patel</h6>
-                                <span>Quality Director, NutriPack Inc</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-card">
-                        <i class="bi bi-quote quote-icon"></i>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                        </div>
-                        <p class="testimonial-text">"From ISO 22000 to BRCGS, FoodGuard Pro guided us through every certification seamlessly. Their expertise and dedication are unmatched in the industry."</p>
-                        <div class="testimonial-author">
-                            <div class="avatar">RK</div>
-                            <div>
-                                <h6>Robert Kim</h6>
-                                <span>Operations Head, AsiaFoods Corp</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CTA SECTION ===== -->
-    <section class="cta-section">
-        <div class="container" data-aos="zoom-in" data-aos-duration="800">
-            <h2>Ready to Elevate Your<br>Food Safety Standards?</h2>
-            <p>Get a free initial consultation and discover how we can help your business achieve and maintain world-class food safety compliance.</p>
-            <div class="cta-buttons d-flex gap-3 justify-content-center flex-wrap">
-                <a href="#contact" class="btn btn-primary-custom">
-                    Schedule Free Consultation <i class="bi bi-arrow-right ms-2"></i>
-                </a>
-                <a href="tel:+1234567890" class="btn btn-outline-custom">
-                    <i class="bi bi-telephone me-2"></i> Call Us Now
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CONTACT SECTION ===== -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"><i class="bi bi-envelope"></i> Contact Us</div>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle mx-auto">Have questions or need a consultation? Reach out and our team will respond within 24 hours.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-5" data-aos="fade-right" data-aos-duration="800">
-                    <div class="contact-info-card">
-                        <h3>Let's Talk</h3>
-                        <p>We're here to help you achieve food safety excellence.</p>
-                        <div class="contact-info-item">
-                            <div class="icon"><i class="bi bi-geo-alt"></i></div>
-                            <div>
-                                <h6>Our Office</h6>
-                                <p>123 Food Safety Blvd, Suite 400<br>New York, NY 10001</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="icon"><i class="bi bi-telephone"></i></div>
-                            <div>
-                                <h6>Phone</h6>
-                                <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="icon"><i class="bi bi-envelope"></i></div>
-                            <div>
-                                <h6>Email</h6>
-                                <p>info@foodguardpro.com<br>support@foodguardpro.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="icon"><i class="bi bi-clock"></i></div>
-                            <div>
-                                <h6>Working Hours</h6>
-                                <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p>
-                            </div>
-                        </div>
-                        <div class="contact-socials">
-                            <a href="#"><i class="bi bi-facebook"></i></a>
-                            <a href="#"><i class="bi bi-twitter-x"></i></a>
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                    <div class="contact-form-wrapper">
-                        <h3>Send Us a Message</h3>
-                        <p>Fill out the form below and we'll get back to you shortly.</p>
-                        <form id="contactForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
-                                        <label for="fullName">Full Name *</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Email" required>
-                                        <label for="email">Email Address *</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="tel" class="form-control" id="phone" placeholder="Phone">
-                                        <label for="phone">Phone Number</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="service" required>
-                                            <option value="" disabled selected>Select a service</option>
-                                            <option value="haccp">HACCP Implementation</option>
-                                            <option value="audit">Safety Audits</option>
-                                            <option value="training">Staff Training</option>
-                                            <option value="certification">Certification Support</option>
-                                            <option value="compliance">Regulatory Compliance</option>
-                                            <option value="testing">Lab Testing</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                        <label for="service">Service Needed *</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="company" placeholder="Company Name">
-                                        <label for="company">Company Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="message" placeholder="Message" style="height: 120px" required></textarea>
-                                        <label for="message">Your Message *</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary-custom w-100">
-                                        <i class="bi bi-send me-2"></i> Send Message
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        <div id="formSuccess" class="alert alert-success mt-3 d-none" role="alert">
-                            <i class="bi bi-check-circle me-2"></i> Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-brand">
-                        <span class="brand-icon"><i class="bi bi-shield-check"></i></span>
-                        FoodGuard<span style="color: var(--accent);">Pro</span>
-                    </div>
-                    <p>Leading food safety consulting firm helping businesses worldwide achieve and maintain the highest food safety standards and certifications.</p>
-                    <div class="contact-socials mt-3">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5>Quick Links</h5>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#standards">Standards</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5>Services</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">HACCP</a></li>
-                        <li><a href="#">ISO 22000</a></li>
-                        <li><a href="#">BRCGS</a></li>
-                        <li><a href="#">SQF</a></li>
-                        <li><a href="#">GMP/GHP</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h5>Newsletter</h5>
-                    <p>Subscribe for the latest food safety insights, regulatory updates, and industry news.</p>
-                    <div class="footer-newsletter mt-3">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Enter your email">
-                            <button class="btn" type="button"><i class="bi bi-send"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <h5>Certifications</h5>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <span class="badge bg-secondary px-3 py-2">ISO 9001</span>
-                            <span class="badge bg-secondary px-3 py-2">ISO 22000</span>
-                            <span class="badge bg-secondary px-3 py-2">HACCP</span>
-                            <span class="badge bg-secondary px-3 py-2">BRCGS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <p>&copy; 2026 FoodGuard Pro. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <p>
-                            <a href="#" class="text-white-50 me-3" style="font-size: 0.85rem;">Privacy Policy</a>
-                            <a href="#" class="text-white-50 me-3" style="font-size: 0.85rem;">Terms of Service</a>
-                            <a href="#" class="text-white-50" style="font-size: 0.85rem;">Sitemap</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <h4 class="mb-2" style="font-family:'Playfair Display',serif;"><span style="color:var(--gold)">Goldy</span> Kala</h4>
+            <p class="small mb-3">Designing digital experiences that convert & inspire.</p>
+            <p class="small">&copy; 2026 Goldy Kala. All rights reserved. | Built with precision.</p>
         </div>
     </footer>
 
-    <!-- ===== BACK TO TOP ===== -->
-    <button class="back-to-top" id="backToTop">
-        <i class="bi bi-chevron-up"></i>
-    </button>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ===== PRELOADER =====
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 800);
-        });
+        // Navbar scroll
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 
-        // ===== INITIALIZE AOS =====
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 80
+        // Smooth scroll & active nav
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const collapse = document.getElementById('navMenu');
+                if(collapse.classList.contains('show')) bootstrap.Collapse.getInstance(collapse)?.hide();
+            });
         });
-
-        // ===== NAVBAR SCROLL EFFECT =====
-        const navbar = document.getElementById('mainNavbar');
-        const backToTop = document.getElementById('backToTop');
 
         window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-
-            // Navbar
-            if (scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            // Back to top
-            if (scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-
-            // Active nav link
-            updateActiveNav();
-        });
-
-        // ===== BACK TO TOP =====
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // ===== ACTIVE NAV LINK =====
-        function updateActiveNav() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
-
             let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
+            document.querySelectorAll('section[id]').forEach(s => {
+                if(window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
             });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // ===== CLOSE MOBILE NAV ON CLICK =====
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
             });
         });
 
-        // ===== COUNTER ANIMATION =====
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                if (counter.dataset.animated) return;
-
-                const rect = counter.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    counter.dataset.animated = true;
-                    const target = +counter.getAttribute('data-target');
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
-
-                    const updateCounter = () => {
-                        current += step;
-                        if (current < target) {
-                            counter.textContent = Math.floor(current);
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target;
-                        }
-                    };
-                    updateCounter();
-                }
+        // Project Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.project-item');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.getAttribute('data-filter');
+                items.forEach(item => {
+                    if(cat === 'all' || item.getAttribute('data-cat') === cat) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.classList.add('visible'), 50);
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('visible');
+                    }
+                });
             });
-        }
+        });
 
-        window.addEventListener('scroll', animateCounters);
-        window.addEventListener('load', animateCounters);
+        // Fade-in observer
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-        // ===== PARTICLES =====
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
-                particle.style.animationDuration = Math.random() * 10 + 8 + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(particle);
-            }
-        }
-        createParticles();
-
-        // ===== CONTACT FORM =====
-        const contactForm = document.getElementById('contactForm');
-        const formSuccess = document.getElementById('formSuccess');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...';
-            submitBtn.disabled = true;
-
+        // Form
+        function handleForm(e) {
+            e.preventDefault(); const btn = e.target.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...'; btn.disabled = true;
             setTimeout(() => {
-                contactForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                formSuccess.classList.remove('d-none');
-
-                setTimeout(() => {
-                    formSuccess.classList.add('d-none');
-                }, 5000);
+                btn.innerHTML = '<i class="fa-solid fa-check me-2"></i> Message Received!'; 
+                btn.style.background = '#10b981';
+                e.target.reset(); 
+                setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; btn.style.background = ''; }, 2500);
             }, 1500);
-        });
-
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ===== TILT EFFECT ON SERVICE CARDS (Desktop only) =====
-        if (window.innerWidth > 991) {
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 20;
-                    const rotateY = (centerX - x) / 20;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-                });
-            });
         }
     </script>
 </body>

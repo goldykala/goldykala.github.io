@@ -1,477 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>VerdaSafe | Food Safety & Compliance Experts</title>
-  <!-- Bootstrap 5 + Icons + Google Fonts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      scroll-behavior: smooth;
-    }
-    :root {
-      --primary: #2b6e3c;
-      --primary-dark: #1e4a2a;
-      --primary-light: #e8f3e8;
-      --secondary: #d4a373;
-      --accent: #f4a261;
-      --gray-light: #f9fbf9;
-      --gray-border: #e2e8e2;
-      --text-dark: #1a2c1e;
-      --text-muted: #4a5b4a;
-    }
-    .bg-primary-custom { background-color: var(--primary) !important; }
-    .text-primary-custom { color: var(--primary) !important; }
-    .btn-primary-custom {
-      background-color: var(--primary);
-      border-color: var(--primary);
-      color: white;
-      border-radius: 50px;
-      padding: 12px 32px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      letter-spacing: 0.3px;
-    }
-    .btn-primary-custom:hover {
-      background-color: var(--primary-dark);
-      border-color: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(43, 110, 60, 0.2);
-    }
-    .btn-outline-custom {
-      border-radius: 50px;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: transparent;
-      padding: 10px 28px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-outline-custom:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-    }
-    .card-hover {
-      transition: all 0.3s ease;
-      border: none;
-      border-radius: 28px;
-      background: white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-    .card-hover:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 40px -12px rgba(43, 110, 60, 0.15);
-    }
-    .section-padding { padding: 90px 0; }
-    .section-title {
-      font-weight: 700;
-      font-size: 2.3rem;
-      letter-spacing: -0.02em;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-    }
-    .badge-pillar {
-      background: var(--primary-light);
-      color: var(--primary);
-      border-radius: 50px;
-      padding: 6px 18px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
-    }
-    /* Full Page Hero Section - Elegant */
-    .hero-full {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #ffffff 0%, #f4faf4 100%);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-full::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" opacity="0.03"><path fill="%232b6e3c" d="M0,0 L1200,0 L1200,1200 L0,1200 Z M200,200 L300,200 L300,300 L200,300 Z M500,400 L650,400 L650,550 L500,550 Z M800,700 L1000,700 L1000,900 L800,900 Z M100,800 L250,800 L250,950 L100,950 Z M700,100 L850,100 L850,250 L700,250 Z"/><circle cx="900" cy="300" r="40"/><circle cx="150" cy="600" r="30"/><circle cx="1050" cy="850" r="50"/></svg>');
-      background-repeat: repeat;
-      background-size: 80px;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero-title {
-      font-size: 4.2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1.2;
-    }
-    .hero-subtitle {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .floating-leaf {
-      position: absolute;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2.8rem; }
-      .section-padding { padding: 60px 0; }
-      .section-title { font-size: 1.9rem; }
-    }
-    .navbar {
-      backdrop-filter: blur(12px);
-      background-color: rgba(255,255,255,0.95);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-      transition: all 0.3s;
-    }
-    .testimonial-card {
-      background: white;
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.03);
-      border: 1px solid var(--gray-border);
-    }
-    .contact-map {
-      border-radius: 24px;
-      overflow: hidden;
-      height: 280px;
-    }
-    .nav-tabs .nav-link {
-      border: none;
-      color: var(--text-muted);
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 50px;
-      transition: all 0.2s;
-    }
-    .nav-tabs .nav-link.active {
-      background-color: var(--primary);
-      color: white;
-      box-shadow: 0 5px 15px rgba(43,110,60,0.2);
-    }
-    .industry-badge {
-      background: var(--primary-light);
-      border-radius: 60px;
-      padding: 10px 18px;
-      transition: all 0.2s;
-    }
-    .industry-badge:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-    }
-    footer {
-      background-color: #102312;
-      color: #cbd5c3;
-    }
-    .green-gradient-bg {
-      background: linear-gradient(120deg, var(--primary-light) 0%, #ffffff 100%);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VerdaSafe | Food Safety Consulting & Compliance</title>
+
+    <!-- Bootstrap 5 + Icons + Fonts + AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0B6E4F;
+            --primary-light: #1E8F68;
+            --primary-dark: #084a36;
+            --secondary: #D4AF37;
+            --secondary-light: #f0d060;
+            --dark: #121a16;
+            --dark-light: #1f2c25;
+            --gray: #6c757d;
+            --gray-light: #f8faf8;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #0B6E4F 0%, #1B4332 100%);
+            --gradient-accent: linear-gradient(135deg, #D4AF37 0%, #f0d060 100%);
+            --shadow: 0 20px 40px rgba(0,0,0,0.06);
+            --shadow-lg: 0 25px 50px -12px rgba(11,110,79,0.2);
+            --radius: 24px;
+            --transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: 80px; }
+        section { padding: 100px 0; position: relative; }
+        .section-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(11,110,79,0.08); color: var(--primary);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: 2.6rem; font-weight: 800; margin-bottom: 20px; color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+        .section-subtitle { font-size: 1.05rem; color: var(--gray); max-width: 600px; margin-bottom: 40px; }
+        .btn-primary-custom {
+            background: var(--gradient-primary); color: white; border: none;
+            padding: 14px 36px; border-radius: 50px; font-weight: 600;
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary-custom:hover { transform: translateY(-3px); box-shadow: 0 15px 25px -8px rgba(11,110,79,0.4); background: var(--primary-dark); color: white; }
+        .btn-outline-custom {
+            background: transparent; border: 2px solid var(--primary); color: var(--primary);
+            padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition);
+        }
+        .btn-outline-custom:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+
+        /* navbar */
+        .navbar { padding: 16px 0; transition: var(--transition); background: transparent; z-index: 1030; }
+        .navbar.scrolled { background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 8px 0; }
+        .navbar-brand { font-weight: 800; font-size: 1.6rem; color: white !important; display: flex; align-items: center; gap: 8px; }
+        .navbar.scrolled .navbar-brand { color: var(--dark) !important; }
+        .navbar-brand .brand-icon { width: 38px; height: 38px; background: var(--gradient-accent); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--dark); }
+        .nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 500; margin: 0 4px; border-radius: 40px; transition: var(--transition); padding: 8px 18px !important; }
+        .navbar.scrolled .nav-link { color: var(--dark) !important; }
+        .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.15); color: white !important; }
+        .navbar.scrolled .nav-link:hover { background: rgba(11,110,79,0.08); color: var(--primary) !important; }
+        .nav-cta { background: var(--gradient-accent) !important; color: var(--dark) !important; font-weight: 700; }
+        .navbar-toggler { border: none; }
+        .navbar-toggler-icon { filter: brightness(0) invert(1); }
+        .navbar.scrolled .navbar-toggler-icon { filter: none; }
+
+        /* hero full page */
+        .hero {
+            min-height: 100vh; background: linear-gradient(125deg, #0f2b24 0%, #1c3d32 100%);
+            position: relative; display: flex; align-items: center; overflow: hidden; padding: 120px 0 80px;
+        }
+        .hero::before { content: ''; position: absolute; top: -30%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%); border-radius: 50%; animation: pulseSlow 8s infinite; }
+        @keyframes pulseSlow { 0% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.2); opacity: 0.6; } 100% { transform: scale(1); opacity: 0.3; } }
+        .hero-content h1 { font-size: 3.8rem; font-weight: 800; color: white; line-height: 1.2; }
+        .hero-content .highlight { background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-content p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 500px; margin: 24px 0; }
+        .hero-stats { display: flex; gap: 32px; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); }
+        .hero-stat h3 { color: var(--secondary); font-size: 2rem; font-weight: 800; }
+        .hero-stat p { color: rgba(255,255,255,0.5); margin: 0; font-size: 0.8rem; }
+        .hero-image { position: relative; }
+        .hero-img-wrapper { border-radius: 32px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .hero-img-wrapper img { width: 100%; height: 500px; object-fit: cover; }
+
+        /* cards */
+        .pillar-card, .service-card, .industry-card, .case-card, .resource-card {
+            background: white; border-radius: 24px; padding: 32px 24px; height: 100%;
+            transition: var(--transition); border: 1px solid #eef2ee; box-shadow: var(--shadow);
+        }
+        .pillar-card:hover, .service-card:hover, .industry-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+        .pillar-icon, .service-icon { width: 70px; height: 70px; background: rgba(11,110,79,0.08); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); margin-bottom: 24px; }
+        .pillar-card h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+
+        /* tabs */
+        .nav-tabs .nav-link { border: none; font-weight: 600; padding: 12px 28px; border-radius: 50px; background: transparent; color: var(--gray); transition: all 0.2s; }
+        .nav-tabs .nav-link.active { background: var(--gradient-primary); color: white; box-shadow: 0 6px 14px rgba(11,110,79,0.3); }
+
+        /* testimonials */
+        .testimonial-card { background: white; border-radius: 24px; padding: 32px; border: 1px solid #eef2f0; transition: var(--transition); height: 100%; }
+
+        /* why choose */
+        .why-item { display: flex; gap: 20px; padding: 20px; border-radius: 20px; background: var(--gray-light); margin-bottom: 16px; transition: var(--transition); }
+        .why-item:hover { background: white; box-shadow: var(--shadow); transform: translateX(5px); }
+
+        /* contact map */
+        .contact-map { border-radius: 24px; overflow: hidden; height: 280px; }
+
+        footer { background: #0c1f1a; color: #cbd5c1; padding: 70px 0 20px; }
+        .footer-brand { color: white; font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; gap: 8px; }
+        .footer-links a { color: #a3b5a8; text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+
+        @media (max-width: 991px) {
+            section { padding: 70px 0; }
+            .section-title { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .navbar-collapse { background: white; border-radius: 20px; padding: 16px; margin-top: 12px; }
+            .navbar-collapse .nav-link { color: var(--dark) !important; }
+        }
+        @media (max-width: 576px) {
+            .hero-stats { flex-direction: column; gap: 12px; }
+            .hero-stat { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }
+        }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; z-index: 99; opacity: 0; visibility: hidden; transition: var(--transition); cursor: pointer; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+    </style>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top py-3">
-  <div class="container">
-    <a class="navbar-brand fw-bold fs-3" href="#" style="color: var(--primary);">Verda<span style="color: var(--primary-dark);">Safe</span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#industries">Industries</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#case-studies">Case Studies</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#resources">Resources</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- FULL PAGE ELEGANT HERO SECTION -->
-<section id="home" class="hero-full">
-  <div class="container hero-content text-center">
-    <span class="badge-pillar d-inline-block mb-4">Food Safety • Compliance • Training</span>
-    <h1 class="hero-title mb-4">Elevating food safety <br> standards across India</h1>
-    <p class="hero-subtitle mb-5 mx-auto">Trusted by 500+ food businesses from Ludhiana to global markets — BRCGS, FSSC 22000, HACCP & digital transformation.</p>
-    <div class="d-flex gap-3 justify-content-center flex-wrap">
-      <a href="#contact" class="btn btn-primary-custom"><i class="fas fa-leaf me-2"></i>Free consultation</a>
-      <a href="#about" class="btn btn-outline-custom"><i class="fas fa-chart-line me-2"></i>Our impact</a>
-    </div>
-    <div class="mt-5 pt-3">
-      <div class="d-flex justify-content-center gap-4 flex-wrap">
-        <div><i class="fas fa-check-circle text-primary-custom me-2"></i> 98% client satisfaction</div>
-        <div><i class="fas fa-map-marker-alt text-primary-custom me-2"></i> Punjab's #1 food safety partner</div>
-      </div>
-    </div>
-  </div>
-  <div class="floating-leaf" style="top: 15%; left: 5%;"><i class="fas fa-seedling fa-4x"></i></div>
-  <div class="floating-leaf" style="bottom: 12%; right: 6%;"><i class="fas fa-leaf fa-5x"></i></div>
-</section>
-
-<!-- 3 Service Cards (Three Pillars) -->
-<div class="container position-relative" style="margin-top: -60px; z-index: 10;">
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="card card-hover p-4 h-100">
-        <div class="mb-3"><i class="fas fa-clipboard-check fa-3x" style="color: var(--primary);"></i></div>
-        <h4 class="fw-bold">Consultancy</h4>
-        <p class="text-muted">End-to-end compliance, BRCGS, FSSC 22000, HACCP, regulatory licensing.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card card-hover p-4 h-100">
-        <div class="mb-3"><i class="fas fa-chalkboard-user fa-3x" style="color: var(--primary);"></i></div>
-        <h4 class="fw-bold">Training</h4>
-        <p class="text-muted">Certified courses, internal auditor programs, on-site & virtual workshops.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card card-hover p-4 h-100">
-        <div class="mb-3"><i class="fas fa-microchip fa-3x" style="color: var(--primary);"></i></div>
-        <h4 class="fw-bold">Digital Platforms</h4>
-        <p class="text-muted">Traceability software, real-time temperature monitoring, CAPA dashboards.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Industries Served + Why Choose Us -->
-<section class="section-padding" style="padding-top: 40px;">
-  <div class="container">
-    <div class="row g-5">
-      <div class="col-lg-6">
-        <h2 class="section-title">Industries we serve</h2>
-        <p class="text-muted mb-4">Customized food safety & quality solutions for Punjab's core food sectors.</p>
-        <div class="row row-cols-2 g-3">
-          <div class="col"><div class="industry-badge text-center"><i class="fas fa-industry me-2 text-primary-custom"></i> Manufacturers</div></div>
-          <div class="col"><div class="industry-badge text-center"><i class="fas fa-truck-ramp-box me-2 text-primary-custom"></i> Exporters</div></div>
-          <div class="col"><div class="industry-badge text-center"><i class="fas fa-utensils me-2 text-primary-custom"></i> Restaurants</div></div>
-          <div class="col"><div class="industry-badge text-center"><i class="fas fa-cloud-arrow-up me-2 text-primary-custom"></i> Cloud Kitchens</div></div>
-          <div class="col"><div class="industry-badge text-center"><i class="fas fa-warehouse me-2 text-primary-custom"></i> Warehouses</div></div>
-          <div class="col"><div class="industry-badge text-center"><i class="fas fa-box-open me-2 text-primary-custom"></i> Packaging</div></div>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><span class="brand-icon"><i class="bi bi-shield-check"></i></span>Verda<span style="color: var(--secondary);">Safe</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#industries">Industries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#casestudies">Case Studies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="#contact">Free Audit <i class="bi bi-arrow-right"></i></a></li>
+                </ul>
+            </div>
         </div>
-        <div class="mt-5 p-4 rounded-4" style="background: var(--primary-light);">
-          <i class="fas fa-map-marker-alt text-primary-custom fa-2x me-3 float-start"></i>
-          <strong class="fs-5">Local Punjab focus</strong>
-          <p class="mt-2">On-ground experts in Ludhiana, Jalandhar, Amritsar — understanding regional mandi norms, MSME challenges, and export documentation.</p>
+    </nav>
+
+    <!-- HERO full page -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <div class="hero-badge d-inline-flex bg-white bg-opacity-10 rounded-pill px-3 py-1 mb-3 text-white"><i class="bi bi-shield-fill-check me-1"></i> Punjab's #1 Food Safety Partner</div>
+                        <h1>Elevate <span class="highlight">Food Safety</span> Beyond Compliance</h1>
+                        <p>Expert consultancy, training & digital platforms tailored for manufacturers, exporters, restaurants & more. Based in Ludhiana, serving global standards.</p>
+                        <div class="hero-buttons d-flex gap-3 flex-wrap">
+                            <a href="#contact" class="btn btn-primary-custom">Get Free Consultation <i class="bi bi-arrow-right"></i></a>
+                            <a href="#about" class="btn btn-outline-custom bg-white bg-opacity-10 border-white text-white">Discover More</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="hero-stat"><h3 class="counter" data-target="480">0</h3><p>Projects Delivered</p></div>
+                            <div class="hero-stat"><h3 class="counter" data-target="98">0</h3><p>Certification Success</p></div>
+                            <div class="hero-stat"><h3 class="counter" data-target="15">0</h3><p>Years Experience</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left">
+                    <div class="hero-image">
+                        <div class="hero-img-wrapper"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="food safety lab"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-6">
-        <h2 class="section-title">Why choose us</h2>
-        <div class="d-flex flex-column gap-4">
-          <div class="d-flex gap-3 align-items-start"><i class="fas fa-microscope fa-2x text-primary-custom"></i><div><h5 class="fw-bold">Deep food safety expertise</h5><p class="text-muted">Lead auditors with 15+ years in BRCGS, IFS, ISO 22000, and FSSAI regulations.</p></div></div>
-          <div class="d-flex gap-3 align-items-start"><i class="fas fa-hand-peace fa-2x text-primary-custom"></i><div><h5 class="fw-bold">End-to-end support</h5><p class="text-muted">Gap analysis → implementation → training → certification → digital maintenance.</p></div></div>
-          <div class="d-flex gap-3 align-items-start"><i class="fas fa-chart-simple fa-2x text-primary-custom"></i><div><h5 class="fw-bold">Proven ROI</h5><p class="text-muted">Our clients reduce audit non-conformities by 70% and accelerate global market access.</p></div></div>
+    </section>
+
+    <!-- 3 Service Pillars (Consultancy, Training, Digital Platforms) -->
+    <div class="container position-relative" style="margin-top: -50px; z-index: 5;">
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up"><div class="pillar-card text-center"><div class="pillar-icon mx-auto"><i class="bi bi-clipboard2-check"></i></div><h4>Consultancy</h4><p>Gap analysis, BRCGS, FSSC 22000, HACCP, regulatory approval & export readiness.</p></div></div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="pillar-card text-center"><div class="pillar-icon mx-auto"><i class="bi bi-chalkboard"></i></div><h4>Training</h4><p>Certified courses: HACCP, internal auditor, food safety supervisor. On-site & virtual.</p></div></div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="pillar-card text-center"><div class="pillar-icon mx-auto"><i class="bi bi-motherboard"></i></div><h4>Digital Platforms</h4><p>Traceability software, real-time monitoring, smart dashboards & CAPA tools.</p></div></div>
         </div>
-      </div>
     </div>
-  </div>
-</section>
 
-<!-- Testimonials + CTA Contact Form -->
-<section class="section-padding green-gradient-bg">
-  <div class="container">
-    <div class="row g-5">
-      <div class="col-md-6">
-        <h2 class="section-title">What clients say</h2>
-        <div class="testimonial-card mb-4">
-          <i class="fas fa-quote-left fa-2x text-secondary opacity-50"></i>
-          <p class="mt-2 fst-italic fs-5">“VerdaSafe guided us to achieve BRCGS in just 6 months. Their on-site training & documentation support was exceptional.”</p>
-          <div class="fw-bold mt-2">— Harpreet K., Director, Amrit Dairy</div>
+    <!-- Industries Served (6 tailored) + Why Choose Us (expertise, local punjab, end-to-end) -->
+    <section id="industries" style="padding-top: 80px;">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="section-badge"><i class="bi bi-building"></i> Industries served</div>
+                    <h2 class="section-title">Tailored solutions for <br>Punjab's core food sectors</h2>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6"><div class="industry-card"><i class="bi bi-house-fill fs-1 text-primary"></i><h5 class="mt-2">Manufacturers</h5><p>GMP upgrades, HACCP plans, reduced non-conformities by 70%</p></div></div>
+                        <div class="col-md-6"><div class="industry-card"><i class="bi bi-globe2 fs-1 text-primary"></i><h5>Exporters</h5><p>BRCGS, EU/MRL documentation, FSSAI export compliance</p></div></div>
+                        <div class="col-md-6"><div class="industry-card"><i class="bi bi-egg-fried fs-1 text-primary"></i><h5>Restaurants & Cloud Kitchens</h5><p>Hygiene audits, staff training, delivery partner safety</p></div></div>
+                        <div class="col-md-6"><div class="industry-card"><i class="bi bi-archive fs-1 text-primary"></i><h5>Warehouses</h5><p>Temperature mapping, pest control, FIFO systems, cold chain mgmt</p></div></div>
+                        <div class="col-md-6"><div class="industry-card"><i class="bi bi-box-seam fs-1 text-primary"></i><h5>Packaging</h5><p>Food-grade compliance, migration testing, GMP for packaging units</p></div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="section-badge"><i class="bi bi-star"></i> Why VerdaSafe</div>
+                    <h2 class="section-title">Expertise · Local roots · End-to-end</h2>
+                    <div class="why-item"><div class="why-icon"><i class="bi bi-trophy fs-4 text-primary"></i></div><div><h5>Deep Food Safety Expertise</h5><p>Lead auditors BRC/IFS/ISO 22000 – 15+ years experience across 300+ audits.</p></div></div>
+                    <div class="why-item"><div class="why-icon"><i class="bi bi-geo-alt fs-4 text-primary"></i></div><div><h5>Local Punjab Focus</h5><p>On-ground team in Ludhiana, Jalandhar & Amritsar – understanding mandi regulations, MSME incentives, local languages.</p></div></div>
+                    <div class="why-item"><div class="why-icon"><i class="bi bi-infinity fs-4 text-primary"></i></div><div><h5>End-to-End Support</h5><p>From gap analysis → training → certification → digital maintenance & annual surveillance.</p></div></div>
+                </div>
+            </div>
         </div>
-        <div class="testimonial-card">
-          <i class="fas fa-quote-left fa-2x text-secondary opacity-50"></i>
-          <p class="mt-2 fst-italic fs-5">“The digital traceability platform reduced our recall risks remarkably. Real-time alerts + audit readiness.”</p>
-          <div class="fw-bold mt-2">— Simran Johal, Quality Head, Punjab Grains</div>
+    </section>
+
+    <!-- Testimonials + CTA contact form -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="section-badge"><i class="bi bi-chat-left-quote"></i> Testimonials</div>
+                    <h2 class="section-title">What our clients say</h2>
+                    <div class="testimonial-card mb-4"><i class="bi bi-quote fs-1 text-primary opacity-25"></i><p class="mt-2">"VerdaSafe guided us to BRCGS AA grade in 6 months. Exceptional documentation & training!"</p><div><strong>— Amrit Dairy, Ludhiana</strong></div></div>
+                    <div class="testimonial-card"><i class="bi bi-quote fs-1 text-primary opacity-25"></i><p class="mt-2">"Digital traceability platform reduced waste by 32%; the team's support is incredible."</p><div><strong>— Punjab Agro Logistics</strong></div></div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="bg-white p-4 rounded-4 shadow-lg">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-envelope-paper"></i> Get a quote</h3>
+                        <form id="quickContact"><div class="mb-3"><input type="text" class="form-control" placeholder="Full name" required></div><div class="mb-3"><input type="email" class="form-control" placeholder="Email" required></div><div class="mb-3"><input type="tel" class="form-control" placeholder="Phone"></div><div class="mb-3"><textarea rows="2" class="form-control" placeholder="Your food safety challenge"></textarea></div><button type="submit" class="btn btn-primary-custom w-100">Send Request <i class="bi bi-send"></i></button></form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="bg-white p-4 rounded-4 shadow-lg">
-          <h3 class="fw-bold mb-3"><i class="fas fa-envelope-open-text me-2 text-primary-custom"></i> Request a callback</h3>
-          <form id="contactFormHome">
-            <div class="mb-3"><input type="text" class="form-control" placeholder="Full name" required></div>
-            <div class="mb-3"><input type="email" class="form-control" placeholder="Email address" required></div>
-            <div class="mb-3"><input type="tel" class="form-control" placeholder="Phone number" required></div>
-            <div class="mb-3"><textarea class="form-control" rows="2" placeholder="Your food safety challenge..."></textarea></div>
-            <button type="submit" class="btn btn-primary-custom w-100">Send Message <i class="fas fa-arrow-right ms-2"></i></button>
-          </form>
+    </section>
+
+    <!-- About Us (story, mission, team, certifications) -->
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right"><img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?w=600&q=80" class="rounded-4 shadow" alt="team"></div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <div class="section-badge"><i class="bi bi-people"></i> About Us</div>
+                    <h2 class="section-title">Company story & mission</h2>
+                    <p>Founded in Ludhiana (2012), VerdaSafe started with a vision to bridge the gap between global food safety benchmarks and local manufacturers. We have since supported 500+ businesses in Punjab and beyond.</p>
+                    <p><strong>Mission:</strong> Deliver practical, certified food safety systems that unlock market access, reduce recalls, and build consumer trust.</p>
+                    <h5 class="mt-4 fw-bold">🏅 Certifications held</h5>
+                    <div class="d-flex flex-wrap gap-2 mt-2"><span class="badge bg-light text-dark border p-2 rounded-pill">BRCGS Professional</span><span class="badge bg-light text-dark border p-2 rounded-pill">FSSC 22000 v6 Auditor</span><span class="badge bg-light text-dark border p-2 rounded-pill">ISO 22000 Lead Auditor</span><span class="badge bg-light text-dark border p-2 rounded-pill">HACCP Trainer</span></div>
+                    <div class="mt-4"><i class="bi bi-person-badge"></i> <strong>Team intro:</strong> 12+ experienced food technologists, auditors & software engineers.</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- About Us -->
-<section id="about" class="section-padding">
-  <div class="container">
-    <div class="text-center mb-5"><span class="badge-pillar">About VerdaSafe</span></div>
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-6">
-        <h2 class="section-title">Our story & mission</h2>
-        <p class="text-muted">Founded in Ludhiana (2014), VerdaSafe arose from a singular vision: make world-class food safety accessible for every Indian food business. We blend global standards with local pragmatism.</p>
-        <p class="text-muted"><strong>Mission:</strong> Empower food entrepreneurs with practical systems, training, and digital tools that protect consumers and unlock export opportunities.</p>
-        <h5 class="mt-4 fw-semibold">🏅 Certifications held</h5>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <span class="badge bg-light text-dark p-2 border rounded-pill">BRCGS Professional</span>
-          <span class="badge bg-light text-dark p-2 border rounded-pill">FSSC 22000 v6 Lead Auditor</span>
-          <span class="badge bg-light text-dark p-2 border rounded-pill">Certified HACCP Trainer</span>
-          <span class="badge bg-light text-dark p-2 border rounded-pill">ISO 22000:2018</span>
+    <!-- SERVICES (3 detailed sub-sections via tabs) Consultancy, Training, Digital Platforms -->
+    <section id="services" class="bg-light">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up"><div class="section-badge mx-auto"><i class="bi bi-grid"></i> Our solutions</div><h2 class="section-title">Detailed service offerings</h2></div>
+            <ul class="nav nav-tabs justify-content-center mb-4" id="serviceTabs" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#consultancyTab">Consultancy</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#trainingTab">Training</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#digitalTab">Digital Platforms</button></li>
+            </ul>
+            <div class="tab-content bg-white p-4 rounded-4 shadow-sm">
+                <div class="tab-pane fade show active" id="consultancyTab"><div class="row"><div class="col-md-6"><i class="bi bi-shield-shaded fs-2 text-primary"></i><h5 class="mt-2">Global Certifications</h5><ul><li>BRCGS Food Standard (Grade AA/A)</li><li>FSSC 22000 / ISO 22000</li><li>IFS / SQF implementation support</li></ul></div><div class="col-md-6"><i class="bi bi-file-check fs-2 text-primary"></i><h5>Regulatory & Compliance</h5><ul><li>FSSAI licensing & annual compliance</li><li>HACCP plan development & validation</li><li>Supplier approval & risk assessment</li></ul></div></div></div>
+                <div class="tab-pane fade" id="trainingTab"><div class="row"><div class="col-md-6"><i class="bi bi-award fs-2 text-primary"></i><h5>Courses & Durations</h5><ul><li>HACCP Level 3 (2 days + exam)</li><li>Internal Auditor ISO 22000 (3 days)</li><li>BRCGS Issue 9 awareness (1 day)</li><li>Food Safety Supervisor (FSSAI)</li></ul></div><div class="col-md-6"><i class="bi bi-laptop fs-2 text-primary"></i><h5>Benefits</h5><ul><li>Live case studies from Punjab industry</li><li>Post-training mentorship & audit assistance</li><li>On-site / hybrid / virtual delivery</li></ul></div></div></div>
+                <div class="tab-pane fade" id="digitalTab"><div class="row"><div class="col-md-6"><i class="bi bi-cpu fs-2 text-primary"></i><h5>Traceability Suite</h5><ul><li>Batch-level traceability (raw to dispatch)</li><li>Cold chain & temperature monitoring (IoT)</li><li>Digital CAPA & audit trail</li></ul></div><div class="col-md-6"><i class="bi bi-graph-up fs-2 text-primary"></i><h5>Analytics & Dashboards</h5><ul><li>Real-time KPI for OEE, non-conformities</li><li>Predictive alert for deviations</li><li>Seamless ERP integration</li></ul></div></div></div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="bg-light p-4 rounded-4 border">
-          <i class="fas fa-users fa-3x mb-3 text-primary-custom"></i>
-          <h4>Core team</h4>
-          <p><strong>Rajiv Mehta</strong> – Principal Consultant (ex-BRCGS auditor)<br>
-          <strong>Priya Sharma</strong> – Head of Digital Food Safety<br>
-          <strong>Gurdeep Singh</strong> – Training Lead, North India<br>
-          +15 domain specialists across food technology, microbiology & software.</p>
+    </section>
+
+    <!-- CASE STUDIES (3 fictional realistic examples) -->
+    <section id="casestudies">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up"><div class="section-badge mx-auto"><i class="bi bi-journal-bookmark-fill"></i> Success stories</div><h2 class="section-title">Real results. Real impact.</h2></div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up"><div class="case-card"><i class="bi bi-basket fs-1 text-primary"></i><h5 class="mt-2">🥖 Bakery achieves BRCGS in 6 months</h5><p>Ludhiana-based Artisan Bakehouse: full gap analysis, training, documentation → AA grade, now exporting to Dubai.</p></div></div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="case-card"><i class="bi bi-truck fs-1 text-primary"></i><h5>📦 Cold chain warehouse digitization</h5><p>IoT temperature monitoring + traceability platform reduced spoilage by 40% and passed Walmart audit.</p></div></div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="case-card"><i class="bi bi-flower1 fs-1 text-primary"></i><h5>🌾 Rice exporter gains FSSC 22000</h5><p>Golden Rice Mills reduced customer complaints by 90%, unlocked EU tenders worth $2M within 8 months.</p></div></div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Services Tabs (Consultancy, Training, Digital Platforms) -->
-<section id="services" class="section-padding bg-light">
-  <div class="container">
-    <div class="text-center mb-5"><span class="badge-pillar">Our solutions</span><h2 class="section-title mt-2">Services tailored for food safety excellence</h2></div>
-    <ul class="nav nav-tabs justify-content-center mb-4" id="serviceTab">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#consultancy">Consultancy</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#training">Training</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#digital">Digital Platforms</button></li>
-    </ul>
-    <div class="tab-content p-4 bg-white rounded-4 shadow-sm">
-      <div class="tab-pane fade show active" id="consultancy">
-        <div class="row">
-          <div class="col-md-6"><i class="fas fa-shield-alt fa-2x text-primary-custom mb-2"></i><h5>Global Certifications</h5><ul><li>BRCGS Food Standard</li><li>FSSC 22000 / ISO 22000</li><li>IFS & SQF implementation</li></ul></div>
-          <div class="col-md-6"><i class="fas fa-file-signature fa-2x text-primary-custom mb-2"></i><h5>Compliance & Licensing</h5><ul><li>FSSAI licensing & annual compliance</li><li>HACCP plan development</li><li>Supplier approval programs</li></ul></div>
+    <!-- RESOURCES: blog ideas + free downloads (SOP checklist, gap analysis template) -->
+    <section id="resources" class="bg-light">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6" data-aos="fade-right"><div class="section-badge"><i class="bi bi-newspaper"></i> Resource hub</div><h2 class="section-title">Insights & free tools</h2><h5><i class="bi bi-lightbulb"></i> Blog ideas</h5><ul class="list-unstyled"><li class="mb-2"><i class="bi bi-leaf text-primary me-2"></i> “FSSC 22000 v6: key updates for Indian food processors”</li><li class="mb-2"><i class="bi bi-leaf text-primary me-2"></i> “5 HACCP pitfalls in Punjab's dairy industry”</li><li class="mb-2"><i class="bi bi-leaf text-primary me-2"></i> “Digital traceability for exporters: a roadmap”</li></ul></div>
+                <div class="col-md-6" data-aos="fade-left"><h5><i class="bi bi-download"></i> Free downloads</h5><div class="row g-3"><div class="col-sm-6"><div class="resource-card text-center"><i class="bi bi-file-pdf-fill fs-1 text-danger"></i><p class="fw-bold mt-2">SOP Checklist (Food Industry)</p><a href="#" class="btn btn-sm btn-outline-custom" onclick="alert('📄 Demo: SOP Checklist.pdf would download')">Download PDF</a></div></div><div class="col-sm-6"><div class="resource-card text-center"><i class="bi bi-file-excel-fill fs-1 text-success"></i><p class="fw-bold mt-2">Gap Analysis Template (HACCP)</p><a href="#" class="btn btn-sm btn-outline-custom" onclick="alert('📊 Gap Analysis Template.xlsx would download')">Get Template</a></div></div></div></div>
+            </div>
         </div>
-      </div>
-      <div class="tab-pane fade" id="training">
-        <div class="row">
-          <div class="col-md-6"><i class="fas fa-certificate fa-2x text-primary-custom mb-2"></i><h5>Certified Courses (Duration)</h5><ul><li>HACCP Level 3 – 2 days (+ exam)</li><li>Internal Auditor (ISO 22000) – 3 days</li><li>BRCGS Issue 9 – 2 days workshop</li></ul></div>
-          <div class="col-md-6"><i class="fas fa-laptop-house fa-2x text-primary-custom mb-2"></i><h5>Benefits & Delivery</h5><ul><li>Hands-on case studies from Punjab industry</li><li>Post-training mentorship & audit assistance</li><li>On-site at your facility or live virtual</li></ul></div>
+    </section>
+
+    <!-- CONTACT: form, WhatsApp, map for Ludhiana -->
+    <section id="contact">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="section-badge"><i class="bi bi-chat-dots"></i> Get in touch</div>
+                    <h2 class="section-title">Let's secure your food business</h2>
+                    <p><i class="bi bi-geo-alt-fill text-primary me-2"></i> VerdaSafe Office, Fountain Chowk, Civil Lines, Ludhiana - 141001</p>
+                    <p><i class="bi bi-telephone-fill text-primary me-2"></i> +91 98765 43210</p>
+                    <p><i class="bi bi-whatsapp text-success me-2"></i> <a href="https://wa.me/919876543210" class="text-decoration-none">Chat on WhatsApp</a></p>
+                    <a href="https://wa.me/919876543210" class="btn btn-success rounded-pill px-4 mb-4"><i class="bi bi-whatsapp"></i> WhatsApp now</a>
+                    <div class="contact-map mt-3"><iframe src="https://maps.google.com/maps?q=Ludhiana%2C%20Punjab%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="280" style="border:0;" allowfullscreen></iframe></div>
+                </div>
+                <div class="col-md-7" data-aos="fade-left">
+                    <div class="bg-white p-4 rounded-4 shadow">
+                        <h3 class="fw-bold"><i class="bi bi-envelope-paper-fill text-primary"></i> Send enquiry</h3>
+                        <form id="contactForm"><div class="row g-3"><div class="col-md-6"><input type="text" class="form-control" placeholder="Full name" required></div><div class="col-md-6"><input type="email" class="form-control" placeholder="Email" required></div><div class="col-12"><input type="text" class="form-control" placeholder="Company name"></div><div class="col-12"><textarea rows="3" class="form-control" placeholder="Your message about food safety needs..." required></textarea></div><div class="col-12"><button type="submit" class="btn btn-primary-custom w-100">Submit <i class="bi bi-send"></i></button></div></div></form>
+                        <div id="formSuccessMsg" class="alert alert-success mt-3 d-none">✓ Thank you! We'll respond within 24h.</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="tab-pane fade" id="digital">
-        <div class="row">
-          <div class="col-md-6"><i class="fas fa-database fa-2x text-primary-custom mb-2"></i><h5>Food Traceability Suite</h5><ul><li>Batch-level traceability from farm to fork</li><li>Real-time cold chain monitoring</li><li>Digital CAPA & audit trail module</li></ul></div>
-          <div class="col-md-6"><i class="fas fa-chart-pie fa-2x text-primary-custom mb-2"></i><h5>Analytics Dashboards</h5><ul><li>Custom KPIs for food safety metrics</li><li>Predictive alerting for deviations</li><li>Seamless integration with ERP</li></ul></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Industries with Tailored Benefits -->
-<section id="industries" class="section-padding">
-  <div class="container">
-    <h2 class="section-title text-center">Tailored benefits <span style="color: var(--primary);">by industry vertical</span></h2>
-    <div class="row g-4 mt-2">
-      <div class="col-md-4"><div class="p-3 border rounded-4 h-100 bg-white shadow-sm"><i class="fas fa-industry fa-2x text-primary-custom"></i><h5 class="mt-2">Manufacturers</h5><p>Reduce contamination risk, optimize sanitation schedules, achieve GFSI-benchmarked certification.</p></div></div>
-      <div class="col-md-4"><div class="p-3 border rounded-4 h-100 bg-white shadow-sm"><i class="fas fa-globe fa-2x text-primary-custom"></i><h5>Exporters</h5><p>Navigate international MRLs, documentation for EU/US markets, BRCGS for retailer approval.</p></div></div>
-      <div class="col-md-4"><div class="p-3 border rounded-4 h-100 bg-white shadow-sm"><i class="fas fa-utensils fa-2x text-primary-custom"></i><h5>Restaurants & Cloud Kitchens</h5><p>HACCP-based hygiene audits, staff food safety training, delivery partner compliance.</p></div></div>
-      <div class="col-md-4"><div class="p-3 border rounded-4 h-100 bg-white shadow-sm"><i class="fas fa-warehouse fa-2x text-primary-custom"></i><h5>Warehouses</h5><p>Temperature mapping, pest control programs, first-expiry-first-out systems.</p></div></div>
-      <div class="col-md-4"><div class="p-3 border rounded-4 h-100 bg-white shadow-sm"><i class="fas fa-boxes fa-2x text-primary-custom"></i><h5>Packaging</h5><p>Food-grade packaging compliance, migration testing, GMP for manufacturing units.</p></div></div>
-    </div>
-  </div>
-</section>
+    <!-- footer -->
+    <footer>
+        <div class="container"><div class="row"><div class="col-md-4"><div class="footer-brand"><i class="bi bi-shield-check"></i> VerdaSafe</div><p>Leading food safety consulting firm based in Ludhiana, Punjab. Trusted by 500+ businesses.</p></div><div class="col-md-4"><h5>Quick Links</h5><ul class="footer-links list-unstyled"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#casestudies">Case studies</a></li></ul></div><div class="col-md-4"><h5>Certifications</h5><p>BRCGS · FSSC 22000 · HACCP · ISO 22000</p><div class="mt-2"><i class="bi bi-envelope"></i> hello@verdasafe.com</div></div></div><hr class="mt-4 opacity-25"><div class="text-center small">© 2026 VerdaSafe — Food safety excellence with local Punjab expertise.</div></div>
+    </footer>
+    <div class="back-to-top" id="backToTop"><i class="bi bi-chevron-up"></i></div>
 
-<!-- Case Studies: 3 fictional realistic food safety examples -->
-<section id="case-studies" class="section-padding bg-light">
-  <div class="container">
-    <h2 class="section-title text-center">Success stories</h2>
-    <div class="row g-4">
-      <div class="col-md-4"><div class="card h-100 p-3 border-0 shadow-sm rounded-4"><i class="fas fa-bread-slice fa-3x text-primary-custom"></i><h5 class="mt-3">🍞 Bakery achieves BRCGS in 6 months</h5><p>Ludhiana-based Artisan Bakery — full gap analysis, training & documentation. Scored AA grade, now exporting to Dubai.</p></div></div>
-      <div class="col-md-4"><div class="card h-100 p-3 border-0 shadow-sm rounded-4"><i class="fas fa-tractor fa-3x text-primary-custom"></i><h5>🌾 Rice miller gains FSSC 22000</h5><p>Golden Punjab Rice: reduced customer complaints by 90% and unlocked EU tenders within 8 months.</p></div></div>
-      <div class="col-md-4"><div class="card h-100 p-3 border-0 shadow-sm rounded-4"><i class="fas fa-temperature-low fa-3x text-primary-custom"></i><h5>❄️ Cold chain warehouse digitization</h5><p>Implemented IoT temperature monitoring & cloud platform, cut spoilage by 40% and passed major retailer audit.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Resources: Blog ideas + free downloads -->
-<section id="resources" class="section-padding">
-  <div class="container">
-    <div class="row g-5">
-      <div class="col-md-6"><h2 class="section-title">📘 Free resources</h2><h5>Blog ideas</h5><ul class="list-unstyled"><li class="mb-2"><i class="fas fa-leaf text-primary-custom me-2"></i>“FSSC 22000 v6: Critical updates for Indian food processors”</li><li class="mb-2"><i class="fas fa-leaf text-primary-custom me-2"></i>“5 common HACCP pitfalls in Punjab’s dairies”</li><li class="mb-2"><i class="fas fa-leaf text-primary-custom me-2"></i>“Digital traceability: a guide for exporters”</li></ul></div>
-      <div class="col-md-6"><h5>📥 Free downloads</h5><div class="bg-white border p-4 rounded-4 text-center"><i class="fas fa-file-pdf fa-3x text-danger mb-2"></i><p class="fw-bold">Food Safety SOP Checklist (12 critical areas)</p><a href="#" class="btn btn-sm btn-outline-custom" onclick="alert('Download demo: SOP Checklist for Food Industry.pdf')">Download PDF</a><hr><i class="fas fa-file-excel fa-3x text-success mb-2"></i><p class="fw-bold">HACCP Gap Analysis Template</p><a href="#" class="btn btn-sm btn-outline-custom" onclick="alert('Download demo: Gap Analysis Template.xlsx')">Get template</a></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact + WhatsApp + Map Ludhiana -->
-<section id="contact" class="section-padding" style="background: var(--primary-light);">
-  <div class="container">
-    <div class="row g-5">
-      <div class="col-md-5"><h2 class="section-title">Let’s connect</h2><p class="lead">VerdaSafe - Ludhiana Hub</p><p><i class="fas fa-map-marker-alt text-primary-custom fa-fw me-2"></i>Plot 45, Fountain Chowk, Civil Lines, Ludhiana - 141001, Punjab</p><p><i class="fas fa-phone-alt me-2 text-primary-custom"></i>+91 98765 43210</p><p><i class="fab fa-whatsapp me-2 text-success"></i><a href="https://wa.me/919876543210" class="text-decoration-none fw-semibold">Chat on WhatsApp</a></p><a href="https://wa.me/919876543210" class="btn btn-success rounded-pill px-4"><i class="fab fa-whatsapp me-2"></i>WhatsApp now</a></div>
-      <div class="col-md-7"><div class="contact-map shadow-sm"><iframe src="https://maps.google.com/maps?q=Ludhiana%2C%20Punjab%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div></div>
-    </div>
-    <div class="mt-5 bg-white p-4 rounded-4 shadow"><h5><i class="fas fa-paper-plane me-2 text-primary-custom"></i>Direct inquiry</h5><form id="contactFooter"><div class="row"><div class="col-md-6 mb-3"><input type="text" class="form-control" placeholder="Full name"></div><div class="col-md-6 mb-3"><input type="email" class="form-control" placeholder="Email"></div><div class="col-12 mb-3"><textarea rows="2" class="form-control" placeholder="Tell us about your food safety needs"></textarea></div><div class="col-12"><button class="btn btn-primary-custom" type="button" onclick="alert('Thank you! Our food safety expert will respond within 24 hours.')">Submit inquiry</button></div></div></form></div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-5 text-center text-md-start">
-  <div class="container"><div class="row align-items-center"><div class="col-md-6"><span class="fw-bold fs-5 text-white">VerdaSafe</span><p class="small mt-2">© 2025 — Food safety compliance, training & digital trust. Ludhiana, Punjab.</p></div><div class="col-md-6 text-md-end"><i class="fab fa-linkedin me-3 fa-lg"></i><i class="fab fa-twitter me-3 fa-lg"></i><i class="fab fa-instagram fa-lg"></i></div></div></div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  document.getElementById('contactFormHome')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('✅ Thank you! Your consultation request has been received. We will contact you shortly.');
-    this.reset();
-  });
-  document.getElementById('contactFooter')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('✅ Inquiry sent successfully. Our team will reach out soon.');
-    this.reset();
-  });
-  // Smooth navbar scroll offset for fixed header
-  document.querySelectorAll('.nav-link').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          const offset = 70;
-          const elementPosition = target.offsetTop - offset;
-          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-        }
-      }
-    });
-  });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400); });
+        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', function(e) { const href = this.getAttribute('href'); if(href && href.startsWith('#')) { e.preventDefault(); const target = document.querySelector(href); if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }));
+        const counters = document.querySelectorAll('.counter');
+        const animateCounters = () => { counters.forEach(c => { if (!c.dataset.animated && c.getBoundingClientRect().top < window.innerHeight) { c.dataset.animated = true; let target = parseInt(c.dataset.target), current = 0, step = target / 50; let upd = setInterval(() => { current += step; if (current >= target) { c.innerText = target; clearInterval(upd); } else c.innerText = Math.floor(current); }, 25); } }); };
+        window.addEventListener('scroll', animateCounters); window.addEventListener('load', animateCounters);
+        document.getElementById('quickContact')?.addEventListener('submit', e => { e.preventDefault(); alert('✅ Request received! We’ll contact you soon.'); e.target.reset(); });
+        document.getElementById('contactForm')?.addEventListener('submit', e => { e.preventDefault(); document.getElementById('formSuccessMsg').classList.remove('d-none'); e.target.reset(); setTimeout(() => document.getElementById('formSuccessMsg').classList.add('d-none'), 4000); });
+    </script>
 </body>
 </html>
