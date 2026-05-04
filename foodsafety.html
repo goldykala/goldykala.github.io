@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaComply Punjab | Modern Green Edition</title>
+    <meta name="description" content="End-to-end compliance, training, and digital transformation for Punjab's businesses.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --primary-light: #d1fae5;
+            --accent: #34d399;
+            --dark: #022c22;
+            --dark-light: #064e3b;
+            --light: #f8faf9;
+            --white: #ffffff;
+            --text: #334155;
+            --text-light: #64748b;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --shadow: 0 8px 32px rgba(5, 150, 105, 0.08);
+            --shadow-lg: 0 16px 48px rgba(5, 150, 105, 0.12);
+            --transition: all 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+            --container-pad: 1.5rem;
+        }
+
+        @media (min-width: 1200px) { :root { --container-pad: 2rem; } }
+        
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 { color: var(--dark); margin-bottom: 0.75rem; }
+        p { margin-bottom: 0.75rem; }
+        
+        /* Navbar */
+        .navbar-modern {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            padding: 0.8rem 0;
+            transition: var(--transition);
+        }
+        .navbar-modern.scrolled { padding: 0.5rem 0; background: rgba(255,255,255,0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .navbar-brand { font-weight: 800; font-size: clamp(1.2rem, 3vw, 1.5rem); color: var(--dark) !important; }
+        .navbar-brand span { color: var(--primary); }
+        .nav-link { font-weight: 600; font-size: 0.9rem; padding: 0.4rem 0.8rem !important; color: var(--dark) !important; transition: var(--transition); border-radius: 8px; }
+        .nav-link:hover, .nav-link.active { background: var(--primary-light); color: var(--primary-dark) !important; }
+        .navbar-toggler { border: none; padding: 0.3rem; }
+        .navbar-toggler:focus { box-shadow: none; }
+
+        /* Buttons */
+        .btn-emerald {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 0.85rem 1.8rem;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(5,150,105,0.25);
+            transition: var(--transition);
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%;
+        }
+        .btn-emerald:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(5,150,105,0.35); color: white; }
+        
+        @media (min-width: 576px) {
+            .btn-emerald { width: auto; }
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.75rem 1.8rem;
+            border-radius: 14px;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 100%;
+            text-decoration: none;
+        }
+        .btn-ghost:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+        @media (min-width: 576px) { .btn-ghost { width: auto; } }
+
+        .btn-whatsapp { background: #25d366; color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 14px; font-weight: 700; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-whatsapp:hover { background: #128c7e; color: white; }
+
+        /* Section Spacing */
+        section { padding: clamp(2.5rem, 8vw, 5rem) 0; }
+        @media (min-width: 992px) { section { padding: 5rem 0; } }
+        
+        .section-head { text-align: center; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+        .section-head h2 { font-weight: 800; font-size: clamp(1.8rem, 5vw, 2.4rem); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .section-head p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+        .accent-line { width: 50px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 4px; margin: 0.5rem auto 1rem; }
+
+        /* Hero */
+        .hero-modern {
+            background: linear-gradient(160deg, #022c22 0%, #059669 60%, #047857 100%);
+            padding: 8rem 0 clamp(5rem, 12vw, 9rem);
+            position: relative; overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        @media (min-width: 992px) { .hero-modern { clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); } }
+        
+        .hero-badge {
+            background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+            color: #a7f3d0; font-weight: 600; font-size: 0.8rem;
+            padding: 0.4rem 0.8rem; border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1rem;
+        }
+        .hero-title { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; color: white; line-height: 1.1; }
+        .hero-text { color: #d1fae5; font-size: clamp(0.95rem, 2.5vw, 1.1rem); line-height: 1.6; margin-bottom: 1.5rem; }
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .hero-stat-item { background: rgba(255,255,255,0.08); padding: 0.6rem 1rem; border-radius: 10px; text-align: center; min-width: 80px; }
+        .hero-stat-item strong { display: block; color: white; font-size: 1.3rem; }
+        .hero-stat-item small { color: #a7f3d0; font-size: 0.75rem; }
+        
+        .hero-form {
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+            padding: 1.5rem; border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            margin-top: 1rem;
+        }
+        @media (min-width: 992px) {
+            .hero-form { padding: 2rem; margin-top: 0; }
+        }
+
+        /* Cards */
+        .card-glass {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+            height: 100%;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .card-glass::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent)); opacity: 0; transition: var(--transition);
+        }
+        .card-glass:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+        .card-glass:hover::before { opacity: 1; }
+
+        .icon-box-modern {
+            width: 56px; height: 56px; background: var(--primary-light); color: var(--primary);
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1rem; transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .card-glass:hover .icon-box-modern { background: var(--primary); color: white; transform: scale(1.05) rotate(-4deg); }
+
+        /* Industries */
+        .industry-chip {
+            background: var(--white); border: 1px solid #e2e8f0;
+            padding: 1.2rem 1rem; border-radius: var(--radius-sm);
+            text-align: center; transition: var(--transition);
+            height: 100%; display: flex; flex-direction: column; justify-content: center;
+        }
+        .industry-chip:hover { border-color: var(--primary); background: var(--primary-light); transform: translateY(-4px); box-shadow: var(--shadow); }
+        .industry-chip i { font-size: 1.6rem; color: var(--primary); margin-bottom: 0.5rem; transition: var(--transition); }
+        .industry-chip:hover i { transform: scale(1.15); color: var(--primary-dark); }
+
+        /* Services / Features */
+        .feature-list { list-style: none; padding: 0; margin: 0; }
+        .feature-list li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 10px; }
+        .feature-check { background: var(--primary-light); color: var(--primary); width: 22px; height: 22px; min-width: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; margin-top: 4px; }
+
+        /* Case Studies */
+        .case-card {
+            background: var(--white); border-radius: var(--radius); border: 1px solid #e2e8f0;
+            overflow: hidden; transition: var(--transition); height: 100%; display: flex; flex-direction: column;
+        }
+        .case-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+        .case-img { height: 160px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 2.5rem; }
+        .case-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; }
+        .progress-emerald { background: #e2e8f0; height: 6px; border-radius: 4px; overflow: hidden; }
+        .progress-emerald > div { background: linear-gradient(90deg, var(--primary), var(--accent)); }
+
+        /* Resources */
+        .resource-card {
+            background: var(--white); border-left: 4px solid var(--primary);
+            padding: 1.2rem; border-radius: 12px;
+            box-shadow: var(--shadow); transition: var(--transition);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;
+        }
+        .resource-card:hover { transform: translateX(5px); border-color: var(--accent); }
+        .dl-btn { background: var(--primary-light); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: 10px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
+        .dl-btn:hover { background: var(--primary); color: white; }
+
+        /* Contact */
+        .contact-box {
+            background: var(--white); padding: 1.5rem; border-radius: 20px;
+            box-shadow: var(--shadow-lg); border: 1px solid #f0fdf4; height: 100%;
+        }
+        @media (min-width: 768px) { .contact-box { padding: 2rem; } }
+        
+        .form-input { border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 1rem; transition: var(--transition); width: 100%; }
+        .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(5,150,105,0.1); outline: none; }
+        
+        .info-card { background: linear-gradient(160deg, var(--dark) 0%, var(--dark-light) 100%); color: white; padding: 1.5rem; border-radius: 20px; height: 100%; }
+        .info-card h5 { color: white; margin-bottom: 1rem; }
+        .map-wrap { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #e2e8f0; margin-top: 1rem; }
+        @media (min-width: 992px) { .map-wrap { margin-top: 0; } }
+
+        /* Footer */
+        .footer-modern { background: var(--dark); color: #94a3b8; padding: 3rem 0 1.5rem; }
+        .footer-modern h6 { color: white; font-weight: 700; margin-bottom: 1rem; }
+        .footer-modern a { color: #94a3b8; text-decoration: none; transition: var(--transition); font-size: 0.9rem; display: block; margin-bottom: 0.4rem; }
+        .footer-modern a:hover { color: var(--accent); transform: translateX(4px); }
+        .social-btn { width: 38px; height: 38px; background: rgba(255,255,255,0.08); border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: #94a3b8; transition: var(--transition); font-size: 1rem; margin-right: 6px; }
+        .social-btn:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px; width: 54px; height: 54px;
+            background: #25d366; color: white; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; box-shadow: 0 4px 15px rgba(37,211,102,0.35);
+            z-index: 999; transition: var(--transition);
+        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(-6deg); color: white; background: #128c7e; }
+        @media (min-width: 768px) { .whatsapp-float { width: 60px; height: 60px; bottom: 28px; right: 28px; } }
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Utility */
+        .bg-light { background: #f1f5f9 !important; }
+        .bg-white { background: #ffffff !important; }
+        .text-primary { color: var(--primary) !important; }
+        .text-muted { color: var(--text-light) !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-modern">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><span>Nexa</span>Comply</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-lg-1 mt-3 mt-lg-0">
+                    <li><a class="nav-link" href="#home">Home</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#services">Services</a></li>
+                    <li><a class="nav-link" href="#industries">Industries</a></li>
+                    <li><a class="nav-link" href="#cases">Cases</a></li>
+                    <li><a class="nav-link" href="#resources">Resources</a></li>
+                    <li class="mt-2 mt-lg-0"><a class="btn-emerald px-4 py-2 w-100 w-lg-auto" href="#contact">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero-modern">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-7 order-lg-1">
+                    <span class="hero-badge"><i class="fa-solid fa-shield-check"></i> Punjab's Trusted Compliance Partner</span>
+                    <h1 class="hero-title">Streamline Compliance.<br/>Accelerate Growth.</h1>
+                    <p class="hero-text">Expert guidance, certified training & smart digital platforms for FSSAI, BRCGS, ISO & beyond. Built locally in Ludhiana for Punjab's dynamic businesses.</p>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <a href="#services" class="btn-emerald"><i class="fa-solid fa-compass"></i> Explore Services</a>
+                        <a href="#contact" class="btn-ghost" style="border-color: rgba(255,255,255,0.4); color: white;">Book Consultation</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat-item"><strong>150+</strong><small>Certified</small></div>
+                        <div class="hero-stat-item"><strong>98%</strong><small>Pass Rate</small></div>
+                        <div class="hero-stat-item"><strong>48hr</strong><small>Delivery</small></div>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-2">
+                    <div class="hero-form">
+                        <h5 class="fw-bold mb-1 fs-5">Get Your Compliance Roadmap</h5>
+                        <p class="text-muted small mb-3">Tailored 48-hour assessment</p>
+                        <form onsubmit="handleForm(event)">
+                            <input type="email" class="form-input mb-3" placeholder="Business Email" required>
+                            <input type="tel" class="form-input mb-3" placeholder="WhatsApp / Phone" required>
+                            <select class="form-input mb-3" required>
+                                <option value="" disabled selected>Primary Need</option>
+                                <option>Consultancy & Certification</option>
+                                <option>Staff Training</option>
+                                <option>Digital Compliance Platform</option>
+                                <option>General Inquiry</option>
+                            </select>
+                            <button type="submit" class="btn-emerald justify-content-center"><i class="fa-solid fa-bolt"></i> Request Call Back</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 SERVICE CARDS -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Our Core Pillars</h2>
+                <div class="accent-line"></div>
+                <p>End-to-end solutions engineered for Punjab's manufacturing, food, and export sectors.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 fade-up">
+                    <div class="card-glass">
+                        <div class="icon-box-modern"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <h5 class="fw-bold">Expert Consultancy</h5>
+                        <p class="text-muted small mb-0 flex-grow-1">Gap analysis, certification prep, SOP development, and audit handholding. We ensure you're inspection-ready.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 fade-up">
+                    <div class="card-glass">
+                        <div class="icon-box-modern"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h5 class="fw-bold">Certified Training</h5>
+                        <p class="text-muted small mb-0 flex-grow-1">Hands-on workshops, e-learning modules, and certification programs for quality & compliance teams.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 fade-up">
+                    <div class="card-glass">
+                        <div class="icon-box-modern"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h5 class="fw-bold">Digital Platforms</h5>
+                        <p class="text-muted small mb-0 flex-grow-1">Cloud trackers, digital SOP libraries, and automated reporting dashboards to modernize compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="industries">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Industries We Serve</h2>
+                <div class="accent-line"></div>
+                <p>Sector-specific frameworks aligning compliance with operational growth.</p>
+            </div>
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-2 fade-up"><div class="industry-chip"><i class="fa-solid fa-industry"></i><h6 class="mb-0 fw-bold">Manufacturers</h6><small class="text-muted">ISO & Lean</small></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-up"><div class="industry-chip"><i class="fa-solid fa-globe"></i><h6 class="mb-0 fw-bold">Exporters</h6><small class="text-muted">Global Trade</small></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-up"><div class="industry-chip"><i class="fa-solid fa-utensils"></i><h6 class="mb-0 fw-bold">Restaurants</h6><small class="text-muted">FSSAI Hygiene</small></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-up"><div class="industry-chip"><i class="fa-solid fa-fire-burner"></i><h6 class="mb-0 fw-bold">Cloud Kitchens</h6><small class="text-muted">Scale SOPs</small></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-up"><div class="industry-chip"><i class="fa-solid fa-warehouse"></i><h6 class="mb-0 fw-bold">Warehouses</h6><small class="text-muted">Logistics Std.</small></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-up"><div class="industry-chip"><i class="fa-solid fa-box-open"></i><h6 class="mb-0 fw-bold">Packaging</h6><small class="text-muted">Traceability</small></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6 fade-up">
+                    <h2 class="fw-bold fs-3 mb-4">Why Punjab Businesses Trust Us</h2>
+                    <div class="d-flex gap-3 mb-4 align-items-start">
+                        <div class="icon-box-modern mt-1"><i class="fa-solid fa-location-dot"></i></div>
+                        <div><h5 class="fw-bold mb-1">Deep Regional Expertise</h5><p class="text-muted small mb-0">10+ years navigating Punjab's regulatory ecosystem & supply chains.</p></div>
+                    </div>
+                    <div class="d-flex gap-3 mb-4 align-items-start">
+                        <div class="icon-box-modern mt-1"><i class="fa-solid fa-route"></i></div>
+                        <div><h5 class="fw-bold mb-1">Local Focus</h5><p class="text-muted small mb-0">On-ground teams across Ludhiana, Jalandhar & Amritsar.</p></div>
+                    </div>
+                    <div class="d-flex gap-3 align-items-start">
+                        <div class="icon-box-modern mt-1"><i class="fa-solid fa-rocket"></i></div>
+                        <div><h5 class="fw-bold mb-1">End-to-End Support</h5><p class="text-muted small mb-0">From gap analysis & documentation to audits & maintenance.</p></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up">
+                    <div class="card-glass bg-white p-4">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6"><div class="p-3 bg-light rounded-3 text-center"><h3 class="text-primary mb-1">150+</h3><small class="text-muted">Certified</small></div></div>
+                            <div class="col-6"><div class="p-3 bg-light rounded-3 text-center"><h3 class="text-primary mb-1">98%</h3><small class="text-muted">Pass Rate</small></div></div>
+                        </div>
+                        <div class="p-3 rounded-3 text-white" style="background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);">
+                            <p class="fst-italic mb-2 small">"NexaComply transformed our compliance workflow from chaotic to streamlined. Their local insight saved us months."</p>
+                            <div class="fw-bold small">Rajinder Singh</div>
+                            <small style="color: #a7f3d0;">Plant Director, Ludhiana Auto Parts</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="bg-white">
+        <div class="container">
+            <div class="row g-4 align-items-center mb-5">
+                <div class="col-lg-6 fade-up">
+                    <h2 class="fw-bold fs-3 mb-3">Our Story & Mission</h2>
+                    <p class="text-muted">Founded in 2018 in Ludhiana, NexaComply Punjab was born from a clear insight: great businesses get stalled by compliance bottlenecks. Our team of certified auditors, food safety experts & digital architects makes regulatory excellence accessible & automated.</p>
+                    <div class="p-3" style="border-left: 4px solid var(--primary); background: var(--primary-light); border-radius: 0 12px 12px 0;">
+                        <strong class="text-dark small">Mission:</strong> <span class="text-muted small">Empower Punjab's SMEs & enterprises with transparent, tech-enabled frameworks that build trust, unlock exports & future-proof operations.</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-up">
+                    <div class="row g-2">
+                        <div class="col-4 text-center"><div class="p-2 bg-light rounded-3 mb-2"><img src="https://placehold.co/100x100/d1fae5/059669?text=ISO" class="img-fluid rounded-2 w-100" alt=""></div><p class="small fw-bold mb-0">ISO 9001</p></div>
+                        <div class="col-4 text-center"><div class="p-2 bg-light rounded-3 mb-2"><img src="https://placehold.co/100x100/d1fae5/059669?text=BRCGS" class="img-fluid rounded-2 w-100" alt=""></div><p class="small fw-bold mb-0">BRCGS</p></div>
+                        <div class="col-4 text-center"><div class="p-2 bg-light rounded-3 mb-2"><img src="https://placehold.co/100x100/d1fae5/059669?text=FSSAI" class="img-fluid rounded-2 w-100" alt=""></div><p class="small fw-bold mb-0">FSSAI</p></div>
+                        <div class="col-4 text-center"><div class="p-2 bg-light rounded-3 mb-2"><img src="https://placehold.co/100x100/d1fae5/059669?text=ISO22" class="img-fluid rounded-2 w-100" alt=""></div><p class="small fw-bold mb-0">ISO 22000</p></div>
+                        <div class="col-4 text-center"><div class="p-2 bg-light rounded-3 mb-2"><img src="https://placehold.co/100x100/d1fae5/059669?text=HACCP" class="img-fluid rounded-2 w-100" alt=""></div><p class="small fw-bold mb-0">HACCP</p></div>
+                        <div class="col-4 text-center"><div class="p-2 bg-light rounded-3 mb-2"><img src="https://placehold.co/100x100/d1fae5/059669?text=GDPR" class="img-fluid rounded-2 w-100" alt=""></div><p class="small fw-bold mb-0">GDPR</p></div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="text-center fw-bold mb-4 fade-up">Leadership Team</h4>
+            <div class="row g-4 justify-content-center fade-up">
+                <div class="col-12 col-md-4"><div class="card-glass text-center"><div class="bg-light rounded-circle mx-auto mb-3" style="width:80px;height:80px;"></div><h5 class="fw-bold mb-1">Dr. Amritpal Singh</h5><p class="text-primary small mb-2">Founder & Lead Auditor</p><small class="text-muted">20+ yrs in food safety & QMS.</small></div></div>
+                <div class="col-12 col-md-4"><div class="card-glass text-center"><div class="bg-light rounded-circle mx-auto mb-3" style="width:80px;height:80px;"></div><h5 class="fw-bold mb-1">Simran Kaur</h5><p class="text-primary small mb-2">Director of Training</p><small class="text-muted">BRCGS, FSSAI & Lean Six Sigma.</small></div></div>
+                <div class="col-12 col-md-4"><div class="card-glass text-center"><div class="bg-light rounded-circle mx-auto mb-3" style="width:80px;height:80px;"></div><h5 class="fw-bold mb-1">Vikram Mehta</h5><p class="text-primary small mb-2">Head of Digital</p><small class="text-muted">SaaS architect & automation.</small></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="bg-light">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Our Services</h2>
+                <div class="accent-line"></div>
+                <p>Tailored to your operational scale and compliance goals.</p>
+            </div>
+
+            <div class="row g-4 mb-4 fade-up align-items-center">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-3 mb-4"><div class="icon-box-modern mb-0"><i class="fa-solid fa-clipboard-check"></i></div><h3 class="fw-bold mb-0">Consultancy</h3></div>
+                    <ul class="feature-list">
+                        <li><span class="feature-check"><i class="fa-solid fa-check"></i></span><div><strong class="d-block mb-1">Gap Analysis & Readiness Audits</strong><span class="text-muted small">Identify vulnerabilities before official inspections.</span></div></li>
+                        <li><span class="feature-check"><i class="fa-solid fa-check"></i></span><div><strong class="d-block mb-1">SOP Development & Documentation</strong><span class="text-muted small">Custom manuals aligned to FSSAI, ISO 9001/22000, BRCGS.</span></div></li>
+                        <li><span class="feature-check"><i class="fa-solid fa-check"></i></span><div><strong class="d-block mb-1">Certification Guidance</strong><span class="text-muted small">End-to-end handholding from application to audit success.</span></div></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6"><img src="https://placehold.co/600x300/d1fae5/047857?text=Consultancy+Workflow" class="img-fluid rounded-4 w-100" style="box-shadow: var(--shadow);" alt=""></div>
+            </div>
+
+            <div class="row g-4 mb-4 fade-up align-items-center flex-lg-row-reverse">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-3 mb-4"><div class="icon-box-modern mb-0"><i class="fa-solid fa-chalkboard-user"></i></div><h3 class="fw-bold mb-0">Training Programs</h3></div>
+                    <div class="row g-3">
+                        <div class="col-6"><div class="card p-3 h-100 bg-white border-0 shadow-sm"><h6 class="fw-bold text-primary small mb-1">Food Safety</h6><small class="text-muted">2 Days • FSSAI</small></div></div>
+                        <div class="col-6"><div class="card p-3 h-100 bg-white border-0 shadow-sm"><h6 class="fw-bold text-primary small mb-1">Internal Auditor</h6><small class="text-muted">3 Days • ISO</small></div></div>
+                        <div class="col-6"><div class="card p-3 h-100 bg-white border-0 shadow-sm"><h6 class="fw-bold text-primary small mb-1">HACCP & Risk</h6><small class="text-muted">1 Day • Workshop</small></div></div>
+                        <div class="col-6"><div class="card p-3 h-100 bg-white border-0 shadow-sm"><h6 class="fw-bold text-primary small mb-1">Digital 101</h6><small class="text-muted">4 Hours • Online</small></div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6"><img src="https://placehold.co/600x300/d1fae5/047857?text=Training+Sessions" class="img-fluid rounded-4 w-100" style="box-shadow: var(--shadow);" alt=""></div>
+            </div>
+
+            <div class="row g-4 fade-up align-items-center">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-3 mb-4"><div class="icon-box-modern mb-0"><i class="fa-solid fa-laptop-code"></i></div><h3 class="fw-bold mb-0">Digital Platforms</h3></div>
+                    <ul class="feature-list">
+                        <li><span class="feature-check"><i class="fa-solid fa-cloud"></i></span><div><strong class="d-block mb-1">Cloud Compliance Tracker</strong><span class="text-muted small">Monitor audits, corrective actions & expiry alerts in real-time.</span></div></li>
+                        <li><span class="feature-check"><i class="fa-solid fa-book"></i></span><div><strong class="d-block mb-1">Digital SOP Library</strong><span class="text-muted small">Version-controlled, mobile-accessible, QR-code references.</span></div></li>
+                    </ul>
+                    <a href="#contact" class="btn-ghost mt-3 d-inline-flex">Request Demo</a>
+                </div>
+                <div class="col-lg-6"><img src="https://placehold.co/600x300/d1fae5/047857?text=Digital+Platform+UI" class="img-fluid rounded-4 w-100" style="box-shadow: var(--shadow);" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="cases">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Real Results</h2>
+                <div class="accent-line"></div>
+                <p>Impact-driven compliance transformations across Punjab.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4 fade-up">
+                    <div class="case-card">
+                        <div class="case-img"><i class="fa-solid fa-bread-slice"></i></div>
+                        <div class="case-body">
+                            <span class="badge bg-success-subtle text-success mb-2">Food Manufacturing</span>
+                            <h5 class="fw-bold mb-1">Golden Crust Bakery</h5>
+                            <p class="text-muted small mb-3">Missed export deadlines due to manual records.</p>
+                            <div class="progress-emerald mb-2"><div class="w-100"></div></div>
+                            <small class="text-success fw-bold mb-2 d-block">BRCGS Grade A in 6 Months</small>
+                            <ul class="list-unstyled small text-muted mt-auto"><li class="mb-1"><i class="fa-solid fa-check text-primary me-1"></i>Digital HACCP tracking</li><li><i class="fa-solid fa-check text-primary me-1"></i>Opened EU retail channels</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 fade-up">
+                    <div class="case-card">
+                        <div class="case-img"><i class="fa-solid fa-fire-burner"></i></div>
+                        <div class="case-body">
+                            <span class="badge bg-warning-subtle text-warning mb-2">Cloud Kitchens</span>
+                            <h5 class="fw-bold mb-1">SpiceRoute Kitchens</h5>
+                            <p class="text-muted small mb-3">Rapid expansion led to inconsistent hygiene.</p>
+                            <div class="progress-emerald mb-2"><div class="w-100"></div></div>
+                            <small class="text-success fw-bold mb-2 d-block">100% Multi-Site Compliance</small>
+                            <ul class="list-unstyled small text-muted mt-auto"><li class="mb-1"><i class="fa-solid fa-check text-primary me-1"></i>Standardized SOPs across 5 branches</li><li><i class="fa-solid fa-check text-primary me-1"></i>Waste reduced by 18%</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 fade-up">
+                    <div class="case-card">
+                        <div class="case-img"><i class="fa-solid fa-gears"></i></div>
+                        <div class="case-body">
+                            <span class="badge bg-info-subtle text-info mb-2">Auto Parts Export</span>
+                            <h5 class="fw-bold mb-1">Punjab Precision Eng.</h5>
+                            <p class="text-muted small mb-3">Struggling with ISO 9001 & US buyers.</p>
+                            <div class="progress-emerald mb-2"><div class="w-100"></div></div>
+                            <small class="text-success fw-bold mb-2 d-block">ISO Certified & $2.1M Order</small>
+                            <ul class="list-unstyled small text-muted mt-auto"><li class="mb-1"><i class="fa-solid fa-check text-primary me-1"></i>Closed 47 gaps in 90 days</li><li><i class="fa-solid fa-check text-primary me-1"></i>Supplier portal deployed</li></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="bg-white">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Resources & Insights</h2>
+                <div class="accent-line"></div>
+                <p>Free tools, guides & upcoming topics to keep you ahead.</p>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-12 col-lg-8 fade-up">
+                    <div class="p-3 p-md-4 bg-light rounded-4 h-100">
+                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-pen-nib text-primary me-2"></i>Upcoming Guides</h5>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6"><div class="p-3 bg-white rounded-3 shadow-sm h-100"><h6 class="fw-bold small mb-1">FSSAI 2026 Updates</h6><small class="text-muted">Checklist for Punjab restaurants</small></div></div>
+                            <div class="col-12 col-sm-6"><div class="p-3 bg-white rounded-3 shadow-sm h-100"><h6 class="fw-bold small mb-1">BRCGS Audit Prep</h6><small class="text-muted">Handling surprise inspections</small></div></div>
+                            <div class="col-12 col-sm-6"><div class="p-3 bg-white rounded-3 shadow-sm h-100"><h6 class="fw-bold small mb-1">Digital vs Paper SOPs</h6><small class="text-muted">ROI for manufacturers</small></div></div>
+                            <div class="col-12 col-sm-6"><div class="p-3 bg-white rounded-3 shadow-sm h-100"><h6 class="fw-bold small mb-1">Export Documentation</h6><small class="text-muted">Checklist for Indian makers</small></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 fade-up">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-download text-primary me-2"></i>Free Downloads</h5>
+                    <div class="resource-card mb-3">
+                        <div><h6 class="fw-bold mb-1 small">SOP Readiness Checklist</h6><small class="text-muted">PDF • 4 Pages</small></div>
+                        <a href="#" class="dl-btn" onclick="alert('Download started!')"><i class="fa-solid fa-download"></i> Get</a>
+                    </div>
+                    <div class="resource-card mb-3">
+                        <div><h6 class="fw-bold mb-1 small">Gap Analysis Template</h6><small class="text-muted">Excel • Auto-formatted</small></div>
+                        <a href="#" class="dl-btn" onclick="alert('Download started!')"><i class="fa-solid fa-download"></i> Get</a>
+                    </div>
+                    <div class="resource-card">
+                        <div><h6 class="fw-bold mb-1 small">Training Calendar</h6><small class="text-muted">PDF • Monthly Updates</small></div>
+                        <a href="#" class="dl-btn" onclick="alert('Download started!')"><i class="fa-solid fa-download"></i> Get</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <div class="section-head fade-up">
+                <h2>Start Your Journey</h2>
+                <div class="accent-line"></div>
+                <p>Book a free 30-minute discovery call with our experts.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-lg-6 fade-up">
+                    <form class="contact-box" onsubmit="handleForm(event)">
+                        <h5 class="fw-bold mb-3">Send a Message</h5>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6"><input type="text" class="form-input" placeholder="Full Name" required></div>
+                            <div class="col-12 col-md-6"><input type="text" class="form-input" placeholder="Company" required></div>
+                            <div class="col-12 col-md-6"><input type="email" class="form-input" placeholder="Business Email" required></div>
+                            <div class="col-12 col-md-6"><input type="tel" class="form-input" placeholder="WhatsApp / Phone" required></div>
+                            <div class="col-12"><textarea class="form-input" rows="4" placeholder="Briefly describe your compliance goal..."></textarea></div>
+                            <div class="col-12"><button type="submit" class="btn-emerald justify-content-center"><i class="fa-solid fa-paper-plane"></i> Send Message</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-6 fade-up">
+                    <div class="info-card mb-4">
+                        <h5 class="fw-bold mb-3">Get in Touch</h5>
+                        <p class="mb-2 small"><i class="fa-solid fa-location-dot me-2 text-success"></i> 42, Industrial Area Phase-II, Ludhiana, Punjab</p>
+                        <p class="mb-2 small"><i class="fa-solid fa-phone me-2 text-success"></i> +91 98765 43210</p>
+                        <p class="mb-3 small"><i class="fa-solid fa-envelope me-2 text-success"></i> hello@nexacomply.punjab</p>
+                        <a href="https://wa.me/91 9814483732" target="_blank" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+                        <br><br>
+                    <div class="map-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.483230864576!2d75.84999331524646!3d30.91150598147605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a8345198d0a15%3A0x9b2c8c9656f2d82!2sLudhiana%2C%20Punjab!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="220" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-lg-4">
+                    <h4 class="text-white fw-bold fs-5"><span class="text-primary">Nexa</span>Comply Punjab</h4>
+                    <p class="small mb-3">Empowering Punjab's businesses with compliance clarity, certified training, & smart digital tools.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6>Services</h6>
+                    <a href="#services">Consultancy</a><a href="#services">Training</a><a href="#services">Digital Platforms</a><a href="#resources">Resources</a>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6>Industries</h6>
+                    <a href="#industries">Manufacturing</a><a href="#industries">Food & Hospitality</a><a href="#industries">Exports</a><a href="#industries">Warehousing</a>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h6>Stay Updated</h6>
+                    <form class="d-flex gap-2 mt-2 flex-wrap flex-lg-nowrap" onsubmit="event.preventDefault(); this.innerHTML='<div class=\'text-success fw-bold small\'>✓ Subscribed!</div>';">
+                        <input type="email" class="form-control flex-grow-1" placeholder="Your email" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white;" required>
+                        <button class="btn-emerald px-3 py-2"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
+            <div class="row align-items-center small flex-column-reverse flex-md-row">
+                <div class="col-md-6 text-center text-md-start">&copy; 2026 NexaComply Punjab. All rights reserved.</div>
+                <div class="col-md-6 text-center text-md-end mb-2 mb-md-0">
+                    <a href="#" class="d-inline me-3">Privacy Policy</a><a href="#" class="d-inline">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/+91 9814483732" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth scroll & close mobile menu
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const collapse = document.getElementById('navbarNav');
+                if(collapse.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(collapse)?.hide();
+                }
+            });
+        });
+
+        // Active nav on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => {
+                if(window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
+            });
+        });
+
+        // Fade-in observer
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+        // Form handling
+        function handleForm(e) {
+            e.preventDefault(); const btn = e.target.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...'; btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-check me-2"></i> Message Sent!'; 
+                btn.style.background = '#059669';
+                e.target.reset(); 
+                setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; btn.style.background = ''; }, 2500);
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
