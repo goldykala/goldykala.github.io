@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaBrand Hoshiarpur | Premium Custom Label Water Bottles</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #0a192f;
+            --ocean: #0077b6;
+            --cyan: #00b4d8;
+            --gold: #ffb703;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --shadow-3d: 0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 30px 60px rgba(0, 119, 182, 0.2), 0 15px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+
+        /* ================= PRELOADER ================= */
+        #preloader {
+            position: fixed; inset: 0; background: var(--navy);
+            z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.hidden { opacity: 0; visibility: hidden; }
+        .loader-drop {
+            width: 40px; height: 40px; background: var(--cyan);
+            border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+            animation: dropPulse 1.2s infinite ease-in-out;
+        }
+        @keyframes dropPulse {
+            0%, 100% { transform: rotate(-45deg) scale(1); opacity: 1; }
+            50% { transform: rotate(-45deg) scale(1.2); opacity: 0.7; }
+        }
+        .loader-text { color: white; margin-top: 20px; font-weight: 600; letter-spacing: 2px; }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            padding: 18px 0; transition: all 0.4s ease; z-index: 1050;
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(16px);
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800; font-size: 1.6rem; color: white !important;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .brand-icon {
+            width: 42px; height: 42px; background: linear-gradient(135deg, var(--cyan), var(--ocean));
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,180,216,0.4);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important; font-weight: 500; padding: 8px 16px !important;
+            position: relative; transition: 0.3s;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 16px; right: 16px;
+            height: 2px; background: var(--gold); transform: scaleX(0); transition: 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+        .nav-link:hover { color: white !important; }
+        .btn-nav {
+            background: linear-gradient(135deg, var(--gold), #ff9e00);
+            color: var(--navy) !important; font-weight: 700; padding: 10px 26px !important;
+            border-radius: 50px; border: none; box-shadow: 0 4px 15px rgba(255,183,3,0.3);
+            transition: 0.3s;
+        }
+        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,183,3,0.5); }
+
+        /* ================= HERO ================= */
+        .hero {
+            min-height: 100vh; position: relative; display: flex; align-items: center;
+            background: radial-gradient(circle at 10% 20%, #001d3d 0%, #0a192f 60%, #000 100%);
+            overflow: hidden; padding-top: 80px;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=1920&q=80') center/cover;
+            opacity: 0.15; filter: blur(2px);
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0,180,216,0.15); border: 1px solid rgba(0,180,216,0.3);
+            color: var(--cyan); padding: 8px 20px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 20px; backdrop-filter: blur(10px);
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; color: white;
+            line-height: 1.1; margin-bottom: 20px;
+        }
+        .hero-title span {
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 550px;
+            line-height: 1.7; margin-bottom: 35px;
+        }
+        .btn-hero {
+            padding: 16px 38px; border-radius: 50px; font-weight: 700; font-size: 1rem;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; text-decoration: none;
+        }
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--ocean), var(--cyan));
+            color: white; box-shadow: 0 8px 25px rgba(0,119,182,0.4); border: none;
+        }
+        .btn-primary-custom:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(0,119,182,0.5); color: white; }
+        .btn-outline-custom {
+            background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+        .btn-outline-custom:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+        /* 3D Bottle */
+        .hero-visual { position: relative; z-index: 2; perspective: 1200px; }
+        .bottle-3d {
+            width: 100%; max-width: 420px; margin: 0 auto;
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
+        }
+        .hero-visual:hover .bottle-3d { transform: rotateY(0deg) rotateX(0deg) scale(1.03); }
+        .glow-ring {
+            position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+            width: 280px; height: 40px; background: radial-gradient(ellipse, rgba(0,180,216,0.4) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(10px);
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute; border-radius: 50%; background: rgba(0,180,216,0.3);
+            animation: floatUp 8s infinite ease-in-out; pointer-events: none;
+        }
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-120px) scale(1.2); opacity: 0.6; }
+        }
+
+        /* ================= STATS ================= */
+        .stats-section {
+            background: linear-gradient(135deg, var(--navy), #001d3d);
+            padding: 60px 0; position: relative; overflow: hidden;
+        }
+        .stats-section::before {
+            content: ''; position: absolute; top: -50%; right: -10%;
+            width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,180,216,0.15), transparent 70%);
+            border-radius: 50%;
+        }
+        .stat-item { text-align: center; position: relative; z-index: 1; }
+        .stat-number {
+            font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 800;
+            color: var(--gold); line-height: 1;
+        }
+        .stat-label { color: rgba(255,255,255,0.7); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+        /* ================= 3D CARDS ================= */
+        .section-padding { padding: 100px 0; }
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--ocean); font-weight: 700; font-size: 0.8rem;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .section-label::before { content: ''; width: 25px; height: 3px; background: var(--gold); border-radius: 3px; }
+        .section-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--navy); margin-bottom: 15px; }
+        .section-desc { color: #64748b; font-size: 1.05rem; max-width: 600px; line-height: 1.7; }
+
+        .card-3d {
+            background: white; border-radius: 20px; padding: 35px 30px;
+            box-shadow: var(--shadow-3d); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d; perspective: 1000px; border: 1px solid rgba(0,0,0,0.04);
+            height: 100%; position: relative; overflow: hidden;
+        }
+        .card-3d::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--ocean), var(--cyan));
+        }
+        .card-3d:hover { transform: translateY(-10px) rotateX(2deg) rotateY(-2deg); box-shadow: var(--shadow-hover); }
+        .card-icon {
+            width: 70px; height: 70px; background: linear-gradient(135deg, rgba(0,119,182,0.1), rgba(0,180,216,0.05));
+            border-radius: 18px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; color: var(--ocean); margin-bottom: 20px; transition: 0.3s;
+        }
+        .card-3d:hover .card-icon { background: linear-gradient(135deg, var(--ocean), var(--cyan)); color: white; transform: scale(1.05); }
+        .card-title { font-weight: 700; font-size: 1.3rem; color: var(--navy); margin-bottom: 10px; }
+        .card-text { color: #64748b; font-size: 0.95rem; line-height: 1.6; }
+
+        /* ================= PRODUCTS ================= */
+        .product-card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: 0.4s;
+            height: 100%; position: relative;
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,119,182,0.15); }
+        .product-img {
+            height: 260px; overflow: hidden; position: relative;
+            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+        }
+        .product-img img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+        }
+        .product-card:hover .product-img img { transform: scale(1.08); }
+        .product-badge {
+            position: absolute; top: 15px; left: 15px; background: var(--gold); color: var(--navy);
+            padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+        }
+        .product-body { padding: 25px; }
+        .product-title { font-weight: 700; font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
+        .product-desc { color: #64748b; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px; }
+        .product-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .tag { background: #f1f5f9; color: var(--ocean); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        .btn-product { color: var(--ocean); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; }
+        .btn-product:hover { gap: 10px; color: var(--navy); }
+
+        /* ================= PROCESS ================= */
+        .process-step { text-align: center; position: relative; padding: 0 15px; }
+        .step-num {
+            width: 60px; height: 60px; margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--ocean), var(--cyan));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800;
+            box-shadow: 0 8px 20px rgba(0,119,182,0.3); position: relative; z-index: 2;
+        }
+        .process-step::after {
+            content: ''; position: absolute; top: 30px; left: 60%; width: 80%; height: 3px;
+            background: linear-gradient(90deg, var(--ocean), #e2e8f0); z-index: 1;
+        }
+        .process-step:last-child::after { display: none; }
+        .step-title { font-weight: 700; font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
+        .step-desc { color: #64748b; font-size: 0.9rem; line-height: 1.6; }
+
+        /* ================= TESTIMONIALS ================= */
+        .testimonial-card {
+            background: white; border-radius: 20px; padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid rgba(0,0,0,0.03);
+        }
+        .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .quote-icon { font-size: 2rem; color: var(--ocean); opacity: 0.2; margin-bottom: 10px; }
+        .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 15px; }
+        .test-text { font-style: italic; color: #475569; line-height: 1.7; margin-bottom: 20px; font-size: 0.95rem; }
+        .test-author { display: flex; align-items: center; gap: 12px; }
+        .avatar {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--ocean), var(--cyan));
+            display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;
+        }
+        .author-name { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 2px; }
+        .author-role { font-size: 0.8rem; color: #64748b; margin: 0; }
+
+        /* ================= CONTACT ================= */
+        .contact-section { background: linear-gradient(135deg, var(--navy), #001d3d); padding: 100px 0; position: relative; overflow: hidden; }
+        .contact-section::before {
+            content: ''; position: absolute; bottom: -100px; right: -100px;
+            width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,180,216,0.15), transparent 70%);
+            border-radius: 50%;
+        }
+        .glass-card {
+            background: var(--glass); backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); height: 100%;
+        }
+        .glass-card h3 { color: white; font-weight: 800; margin-bottom: 10px; }
+        .glass-card p { color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 0.95rem; }
+        .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+        .contact-icon {
+            width: 40px; height: 40px; min-width: 40px; background: rgba(255,255,255,0.1);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--cyan);
+        }
+        .contact-detail h6 { color: rgba(255,255,255,0.5); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .contact-detail p { color: white; margin: 0; font-size: 0.9rem; }
+        .contact-detail a { color: white; text-decoration: none; transition: 0.3s; }
+        .contact-detail a:hover { color: var(--gold); }
+
+        .form-glass .form-control, .form-glass .form-select {
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px; padding: 14px; color: white; font-size: 0.95rem; transition: 0.3s;
+        }
+        .form-glass .form-control::placeholder { color: rgba(255,255,255,0.4); }
+        .form-glass .form-control:focus, .form-glass .form-select:focus {
+            background: rgba(255,255,255,0.12); border-color: var(--cyan);
+            box-shadow: 0 0 0 4px rgba(0,180,216,0.15); color: white;
+        }
+        .form-glass .form-select option { background: var(--navy); color: white; }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--gold), #ff9e00); color: var(--navy);
+            padding: 14px; border-radius: 12px; font-weight: 700; border: none; width: 100%;
+            transition: 0.3s; box-shadow: 0 8px 20px rgba(255,183,3,0.3);
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(255,183,3,0.4); }
+
+        .map-wrapper { border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3); height: 100%; min-height: 400px; }
+        .map-wrapper iframe { width: 100%; height: 100%; border: 0; }
+
+        /* ================= WHATSAPP FLOAT ================= */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; color: white; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 999;
+            text-decoration: none; transition: 0.3s; animation: pulseWA 2s infinite;
+        }
+        .whatsapp-float:hover { transform: scale(1.1) translateY(-3px); color: white; box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+        @keyframes pulseWA {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+        .wa-tooltip {
+            position: absolute; right: 70px; top: 50%; transform: translateY(-50%);
+            background: white; color: var(--navy); padding: 8px 14px; border-radius: 8px;
+            font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); opacity: 0; transition: 0.3s; pointer-events: none;
+        }
+        .whatsapp-float:hover .wa-tooltip { opacity: 1; right: 75px; }
+
+        /* ================= FOOTER ================= */
+        footer { background: #050d1a; padding: 60px 0 30px; color: rgba(255,255,255,0.6); }
+        .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: white; margin-bottom: 10px; }
+        .footer-brand span { color: var(--cyan); }
+        .footer-desc { font-size: 0.9rem; line-height: 1.6; max-width: 300px; margin-bottom: 20px; }
+        .footer h5 { color: white; font-weight: 700; font-size: 1rem; margin-bottom: 20px; position: relative; }
+        .footer h5::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 25px; height: 3px; background: var(--gold); border-radius: 3px; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: 0.3s; display: inline-flex; align-items: center; gap: 6px; }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
+        .social-icons { display: flex; gap: 10px; margin-top: 20px; }
+        .social-icon {
+            width: 38px; height: 38px; background: rgba(255,255,255,0.08); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: white;
+            text-decoration: none; transition: 0.3s;
+        }
+        .social-icon:hover { background: var(--gold); color: var(--navy); transform: translateY(-3px); }
+        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; font-size: 0.85rem; }
+
+        /* ================= ANIMATIONS ================= */
+        .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-left { opacity: 0; transform: translateX(-40px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-right { opacity: 0; transform: translateX(40px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-right.visible { opacity: 1; transform: translateX(0); }
+
+        @media (max-width: 991px) {
+            .hero { padding-top: 100px; text-align: center; }
+            .hero-desc { margin: 0 auto 30px; }
+            .hero-visual { margin-top: 40px; }
+            .process-step::after { display: none; }
+            .navbar-collapse { background: rgba(10,25,47,0.95); backdrop-filter: blur(16px); border-radius: 15px; padding: 20px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-drop"></div>
+        <div class="loader-text">AQUABRAND</div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="brand-icon"><i class="fas fa-tint"></i></div>
+                Aqua<span>Brand</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <i class="fas fa-bars text-white fs-5"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#why">Why Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-nav" href="https://wa.me/0000000000" target="_blank">
+                            <i class="fab fa-whatsapp me-1"></i> Order Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="particle" style="width:12px;height:12px;top:20%;left:10%;animation-delay:0s;"></div>
+        <div class="particle" style="width:8px;height:8px;top:60%;left:80%;animation-delay:2s;"></div>
+        <div class="particle" style="width:15px;height:15px;top:40%;left:30%;animation-delay:4s;"></div>
+        <div class="particle" style="width:10px;height:10px;top:70%;left:60%;animation-delay:1s;"></div>
+
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 hero-content fade-left">
+                    <div class="hero-badge"><i class="fas fa-circle fs-6"></i> Hoshiarpur's Premium Branding Partner</div>
+                    <h1 class="hero-title">Your Brand,<br>In Every <span>Sip</span>.</h1>
+                    <p class="hero-desc">Elevate your restaurant, hotel, or catering business with premium custom-labeled water bottles. Designed in Hoshiarpur, delivered with precision.</p>
+                    <div class="d-flex gap-3 flex-wrap justify-content-lg-start justify-content-center">
+                        <a href="#contact" class="btn-hero btn-primary-custom">Get Free Quote <i class="fas fa-arrow-right"></i></a>
+                        <a href="#products" class="btn-hero btn-outline-custom"><i class="fas fa-play-circle"></i> View Designs</a>
+                    </div>
+                    <div class="mt-4 d-flex align-items-center gap-3 justify-content-lg-start justify-content-center">
+                        <div class="d-flex text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="text-white-50 fw-medium">Trusted by 80+ Punjab Businesses</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-visual fade-right">
+                    <img src="https://images.unsplash.com/photo-1602143407151-011141951f7a?w=800&q=80" alt="Custom Water Bottle" class="bottle-3d img-fluid">
+                    <div class="glow-ring"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6 stat-item fade-up"><div class="stat-number" data-count="80">0</div><div class="stat-label">Clients Served</div></div>
+                <div class="col-md-3 col-6 stat-item fade-up" style="transition-delay:0.1s"><div class="stat-number" data-count="500">0</div><div class="stat-label">K+ Bottles Delivered</div></div>
+                <div class="col-md-3 col-6 stat-item fade-up" style="transition-delay:0.2s"><div class="stat-number" data-count="24">0</div><div class="stat-label">Hr Turnaround</div></div>
+                <div class="col-md-3 col-6 stat-item fade-up" style="transition-delay:0.3s"><div class="stat-number" data-count="100">0</div><div class="stat-label">% Satisfaction</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section-padding" id="why">
+        <div class="container">
+            <div class="text-center mb-5 fade-up">
+                <div class="section-label justify-content-center">Why Choose Us</div>
+                <h2 class="section-title">More Than Just <span style="color:var(--ocean)">Water</span></h2>
+                <p class="section-desc mx-auto">We combine premium packaging, fast production, and custom branding to make your business stand out in Punjab's competitive market.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 fade-up" style="transition-delay:0.1s">
+                    <div class="card-3d">
+                        <div class="card-icon"><i class="fas fa-palette"></i></div>
+                        <h4 class="card-title">Free Custom Design</h4>
+                        <p class="card-text">Our designers create premium labels that match your brand colors, logo, and vibe. No extra charges.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-up" style="transition-delay:0.2s">
+                    <div class="card-3d">
+                        <div class="card-icon"><i class="fas fa-gem"></i></div>
+                        <h4 class="card-title">Premium Materials</h4>
+                        <p class="card-text">Crystal-clear PET bottles, waterproof labels, and food-grade caps. Built for elegance and durability.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-up" style="transition-delay:0.3s">
+                    <div class="card-3d">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h4 class="card-title">Fast Hoshiarpur Delivery</h4>
+                        <p class="card-text">Local production means quick turnarounds. Perfect for events, weddings, and daily restaurant supply.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section-padding" style="background:#f8fafc" id="products">
+        <div class="container">
+            <div class="text-center mb-5 fade-up">
+                <div class="section-label justify-content-center">Our Collection</div>
+                <h2 class="section-title">Tailored For Your <span style="color:var(--ocean)">Industry</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:0.1s">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <span class="product-badge">Best Seller</span>
+                            <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=800&q=80" alt="Restaurant Bottle">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">Restaurant & Café Edition</h4>
+                            <p class="product-desc">Elegant matte labels with your logo. Perfect for table service and takeaway branding.</p>
+                            <div class="product-tags"><span class="tag">250ml</span><span class="tag">500ml</span><span class="tag">Matte Finish</span></div>
+                            <a href="https://wa.me/919876543210" class="btn-product">Order Now <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:0.2s">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <span class="product-badge" style="background:var(--cyan);color:white">Premium</span>
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Hotel Bottle">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">Hotel & Resort Luxury</h4>
+                            <p class="product-desc">High-end gold/silver foil labels. Elevate guest experience in rooms and banquet halls.</p>
+                            <div class="product-tags"><span class="tag">500ml</span><span class="tag">1 Litre</span><span class="tag">Foil Print</span></div>
+                            <a href="https://wa.me/919876543210" class="btn-product">Order Now <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-up" style="transition-delay:0.3s">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <span class="product-badge" style="background:#10b981;color:white">Events</span>
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Event Bottle">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">Wedding & Catering Pack</h4>
+                            <p class="product-desc">Custom themes, names, and dates. Make your events memorable with branded hydration.</p>
+                            <div class="product-tags"><span class="tag">Bulk Orders</span><span class="tag">Custom Theme</span><span class="tag">Fast Delivery</span></div>
+                            <a href="https://wa.me/919876543210" class="btn-product">Order Now <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section-padding" id="process">
+        <div class="container">
+            <div class="text-center mb-5 fade-up">
+                <div class="section-label justify-content-center">How It Works</div>
+                <h2 class="section-title">Simple 3-Step <span style="color:var(--ocean)">Process</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 fade-up" style="transition-delay:0.1s">
+                    <div class="process-step">
+                        <div class="step-num">1</div>
+                        <h5 class="step-title">Send Your Logo</h5>
+                        <p class="step-desc">WhatsApp us your logo or let our team design a premium label for free.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up" style="transition-delay:0.2s">
+                    <div class="process-step">
+                        <div class="step-num">2</div>
+                        <h5 class="step-title">Approve Mockup</h5>
+                        <p class="step-desc">We send a realistic 3D preview. Tweak colors, text, and layout until perfect.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-up" style="transition-delay:0.3s">
+                    <div class="process-step">
+                        <div class="step-num">3</div>
+                        <h5 class="step-title">Production & Delivery</h5>
+                        <p class="step-desc">Fast printing, quality sealing, and doorstep delivery across Hoshiarpur & Punjab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding" style="background:#f8fafc" id="reviews">
+        <div class="container">
+            <div class="text-center mb-5 fade-up">
+                <div class="section-label justify-content-center">Client Love</div>
+                <h2 class="section-title">What Punjab Businesses <span style="color:var(--ocean)">Say</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 fade-up" style="transition-delay:0.1s">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="test-text">AquaBrand transformed our table service. Guests constantly compliment the bottles. The label quality is premium and delivery is always on time.</p>
+                        <div class="test-author">
+                            <div class="avatar">RK</div>
+                            <div><div class="author-name">Rajesh Kumar</div><p class="author-role">Owner, Spice Route Restaurant</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-up" style="transition-delay:0.2s">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="test-text">We ordered 2000 bottles for a wedding in Hoshiarpur. The custom theme matched perfectly. Highly recommend for events and catering!</p>
+                        <div class="test-author">
+                            <div class="avatar">SP</div>
+                            <div><div class="author-name">Simran Preet</div><p class="author-role">Event Planner, Punjab Weddings</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-up" style="transition-delay:0.3s">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="test-text">Professional team, quick turnaround, and the gold foil labels look absolutely luxury. Our hotel guests love them. Will reorder monthly.</p>
+                        <div class="test-author">
+                            <div class="avatar">AM</div>
+                            <div><div class="author-name">Amit Mehta</div><p class="author-role">Manager, Grand Oak Hotel</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 fade-left">
+                    <div class="glass-card">
+                        <h3>Let's Create Your Bottle</h3>
+                        <p>Fill the form or chat on WhatsApp. We reply within 30 minutes.</p>
+                        
+                        <div class="contact-detail">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div><h6>Location</h6><p>Model Town Road, Near Bus Stand, Hoshiarpur, Punjab 146001</p></div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div><h6>Call / WhatsApp</h6><p><a href="tel:+919876543210">+91 98765 43210</a></p></div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div><h6>Email</h6><p><a href="mailto:hello@aquabrand.in">hello@aquabrand.in</a></p></div>
+                        </div>
+
+                        <form class="form-glass mt-4" id="contactForm">
+                            <div class="mb-3"><input type="text" class="form-control" placeholder="Your Name / Business" required></div>
+                            <div class="mb-3"><input type="tel" class="form-control" placeholder="Phone Number" required></div>
+                            <div class="mb-3">
+                                <select class="form-select" required>
+                                    <option value="" selected disabled>Select Quantity</option>
+                                    <option>Less than 500 bottles</option>
+                                    <option>500 - 2000 bottles</option>
+                                    <option>2000+ bottles</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane me-2"></i> Send Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-7 fade-right">
+                    <div class="map-wrapper">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54638.39877923493!2d75.87676586944702!3d31.54904842612995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a86c792035713%3A0x86023900720216d2!2sHoshiarpur%2C%20Punjab!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Aqua<span>Brand</span></div>
+                    <p class="footer-desc">Hoshiarpur's trusted partner for premium custom-labeled water bottles. Elevating brands, one sip at a time.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#why">Why Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Industries</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Hotels</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5>Newsletter</h5>
+                    <p style="font-size:0.9rem;margin-bottom:15px;">Get design tips & bulk offer updates.</p>
+                    <div class="d-flex gap-2">
+                        <input type="email" placeholder="Your email" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 15px;color:white;outline:none;">
+                        <button style="background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:0 15px;font-weight:700;cursor:pointer;"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AquaBrand Hoshiarpur. All Rights Reserved. Designed with 💧 in Punjab.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/00000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="wa-tooltip">Chat with us!</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 800);
+        });
+
+        // Navbar Scroll
+        const nav = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+        // Counter Animation
+        const counterObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.querySelectorAll('[data-count]').forEach(counter => {
+                        const target = +counter.dataset.count;
+                        const step = target / 100;
+                        let current = 0;
+                        const update = () => {
+                            current += step;
+                            if(current < target) { counter.textContent = Math.floor(current) + '+'; requestAnimationFrame(update); }
+                            else counter.textContent = target + '+';
+                        };
+                        update();
+                    });
+                    counterObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stats-section').forEach(el => counterObs.observe(el));
+
+        // Form Submit Simulation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn-submit');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check-circle me-2"></i> Sent Successfully!';
+                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; this.reset(); }, 2500);
+            }, 1500);
+        });
+
+        // Smooth Scroll for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    const navCollapse = document.querySelector('.navbar-collapse');
+                    if(navCollapse.classList.contains('show')) new bootstrap.Collapse(navCollapse).hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
