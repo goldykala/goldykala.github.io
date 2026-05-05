@@ -3,473 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goldy Kala | Project Portfolio</title>
-    <meta name="description" content="Modern project showcase by Goldy Kala. Web design, branding, and digital experiences.">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <title>Our Projects | FoodSafe Pro - Case Studies & Success Stories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4af37;
-            --gold-light: #f59e0b;
-            --gold-dark: #b8860b;
-            --dark: #0b1120;
-            --dark-soft: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-            --text-light: #64748b;
-            --radius: 16px;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --shadow-gold: 0 8px 24px rgba(212,175,55,0.15);
-            --transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+            --primary: #0a6e3d;
+            --primary-dark: #064d2b;
+            --primary-light: #0d8c4e;
+            --accent: #f0a500;
+            --dark: #0b1a12;
+            --light: #f0f7f3;
+            --white: #ffffff;
+            --gray: #6c757d;
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--light);
-            color: var(--text);
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: var(--light);
         }
 
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--dark); }
-        p { line-height: 1.7; margin-bottom: 0.8rem; }
+        /* ==================== UTILITIES ==================== */
+        .section-padding { padding: 80px 0; }
+        
+        h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+        
+        .text-primary-custom { color: var(--primary); }
+        .text-accent { color: var(--accent); }
 
-        /* Navbar */
-        .navbar-gk {
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e2e8f0;
-            padding: 1rem 0;
-            transition: var(--transition);
+        /* ==================== PAGE HEADER ==================== */
+        .page-header {
+            background: linear-gradient(rgba(11, 26, 18, 0.8), rgba(11, 26, 18, 0.9)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 100px;
+            text-align: center;
+            color: var(--white);
         }
-        .navbar-gk.scrolled { padding: 0.6rem 0; background: rgba(255,255,255,0.98); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem; color: var(--dark); text-decoration: none; }
-        .brand span { color: var(--gold); }
-        .nav-link { font-weight: 500; color: var(--dark); padding: 0.5rem 1rem; transition: var(--transition); }
-        .nav-link:hover, .nav-link.active { color: var(--gold-dark); }
-        .nav-btn { background: var(--dark); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 10px; font-weight: 600; }
-        .nav-btn:hover { background: var(--gold-dark); color: white; }
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #0b1120 0%, #1e293b 50%, #0f172a 100%);
-            padding: 10rem 0 6rem;
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb-custom {
+            display: inline-flex;
+            gap: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb-custom a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ==================== FILTER BUTTONS ==================== */
+        .filter-container {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 1px solid #ddd;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(10, 110, 61, 0.2);
+        }
+
+        /* ==================== PROJECT CARDS ==================== */
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.03);
             position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .project-img-wrapper {
+            position: relative;
+            height: 250px;
             overflow: hidden;
         }
-        .hero::before {
-            content: ''; position: absolute; top: -100px; right: -100px;
-            width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero-badge {
-            background: rgba(212,175,55,0.1); color: var(--gold);
-            font-weight: 600; font-size: 0.85rem; padding: 0.4rem 0.8rem;
-            border-radius: 50px; border: 1px solid rgba(212,175,55,0.2);
-            display: inline-flex; align-items: center; gap: 6px;
-        }
-        .hero h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); color: white; line-height: 1.1; margin-bottom: 1rem; }
-        .hero p { color: #94a3b8; font-size: 1.1rem; max-width: 600px; }
-        .btn-gold {
-            background: var(--gold); color: var(--dark); border: none; padding: 0.85rem 1.8rem;
-            border-radius: 12px; font-weight: 700; transition: var(--transition);
-            display: inline-flex; align-items: center; gap: 8px;
-        }
-        .btn-gold:hover { background: var(--gold-dark); color: white; transform: translateY(-3px); box-shadow: var(--shadow-gold); }
-        .btn-outline {
-            background: transparent; border: 2px solid rgba(255,255,255,0.2); color: white;
-            padding: 0.8rem 1.8rem; border-radius: 12px; font-weight: 600; transition: var(--transition);
-        }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* Sections */
-        section { padding: clamp(4rem, 10vw, 6rem) 0; }
-        .section-head { text-align: center; margin-bottom: 3rem; }
-        .section-head h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 0.5rem; }
-        .section-head .gold-line { width: 50px; height: 3px; background: var(--gold); margin: 0.5rem auto 0; border-radius: 3px; }
-
-        /* Filter Buttons */
-        .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-bottom: 2.5rem; }
-        .filter-btn {
-            background: white; border: 1px solid #e2e8f0; padding: 0.5rem 1.2rem;
-            border-radius: 50px; font-weight: 600; font-size: 0.9rem; color: var(--text);
-            cursor: pointer; transition: var(--transition);
-        }
-        .filter-btn:hover, .filter-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
-
-        /* Project Grid */
-        .project-card {
-            background: white; border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow); transition: var(--transition); height: 100%;
-            position: relative; cursor: pointer;
-        }
-        .project-card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-        .project-img {
-            height: 240px; overflow: hidden; position: relative;
-        }
-        .project-img img {
-            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
-        }
-        .project-card:hover .project-img img { transform: scale(1.05); }
-        .project-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(11,17,32,0.8); display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: var(--transition);
-        }
-        .project-card:hover .project-overlay { opacity: 1; }
-        .view-btn {
-            background: var(--gold); color: var(--dark); padding: 0.7rem 1.5rem;
-            border-radius: 10px; font-weight: 700; transform: translateY(20px);
-            transition: var(--transition);
-        }
-        .project-card:hover .view-btn { transform: translateY(0); }
-        .project-info { padding: 1.2rem 1.5rem; }
-        .project-cat { color: var(--gold-dark); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .project-title { font-weight: 700; font-size: 1.1rem; margin: 0.3rem 0 0.2rem; }
-        .project-desc { color: var(--text-light); font-size: 0.9rem; margin: 0; }
-
-        /* About */
-        .about-section { background: var(--dark); color: #cbd5e1; }
-        .about-section h2, .about-section h3, .about-section h4 { color: white; }
-        .about-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
-        .skill-tag {
-            background: rgba(255,255,255,0.08); padding: 0.4rem 0.9rem; border-radius: 8px;
-            font-size: 0.85rem; color: #e2e8f0; display: inline-block; margin: 0.3rem;
-        }
-        .skill-tag:hover { background: var(--gold); color: var(--dark); }
-
-        /* Contact */
-        .contact-card {
-            background: white; border-radius: 20px; padding: 2rem; box-shadow: var(--shadow);
+        .project-img-wrapper img {
+            width: 100%;
             height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .form-input {
-            border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.9rem 1rem;
-            width: 100%; transition: var(--transition);
+
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.1);
         }
-        .form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.1); outline: none; }
-        .contact-info { background: var(--dark); color: white; border-radius: 20px; padding: 2rem; height: 100%; }
-        .contact-info a { color: #cbd5e1; text-decoration: none; transition: var(--transition); display: block; margin-bottom: 0.8rem; }
-        .contact-info a:hover { color: var(--gold); }
-        .social-btn {
-            width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px;
-            display: inline-flex; align-items: center; justify-content: center; color: #cbd5e1;
-            transition: var(--transition); margin-right: 8px;
+
+        .project-category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
         }
-        .social-btn:hover { background: var(--gold); color: var(--dark); transform: translateY(-3px); }
 
-        /* Footer */
-        footer { background: #0f172a; color: #64748b; padding: 3rem 0 2rem; }
-        footer a { color: #94a3b8; text-decoration: none; transition: var(--transition); }
-        footer a:hover { color: var(--gold); }
+        .project-body {
+            padding: 30px;
+        }
 
-        /* Animations */
-        .fade-up { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .project-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero { padding: 8rem 0 4rem; }
-            .project-img { height: 200px; }
-            .filters { gap: 0.5rem; }
-            .filter-btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+        .project-meta span i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            background: var(--light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .btn-case-study {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .btn-case-study:hover {
+            gap: 12px;
+            color: var(--primary-dark);
+        }
+
+        /* ==================== STATS BAR ==================== */
+        .stats-bar {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==================== FOOTER (Mini) ==================== */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hidden-project {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-gk">
+    <!-- Navbar (Same as Home) -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(11, 26, 18, 0.95); backdrop-filter: blur(10px); padding: 10px 0;">
         <div class="container">
-            <a class="brand" href="#hero"><span>Goldy</span> Kala</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto align-items-center gap-2 mt-3 mt-lg-0">
-                    <li><a class="nav-link" href="#hero">Home</a></li>
-                    <li><a class="nav-link" href="#projects">Projects</a></li>
-                    <li><a class="nav-link" href="#about">About</a></li>
-                    <li><a class="nav-link" href="#contact">Contact</a></li>
-                    <li><a class="nav-btn" href="#contact">Let's Work</a></li>
-                </ul>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" style="font-family: 'Playfair Display'; font-weight: 900; font-size: 1.5rem; color: white; text-decoration: none;">
+                <div style="width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--dark);">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                Food<span style="color: var(--accent);">Safe</span>Pro
+            </a>
+            <div class="ms-auto">
+                <a href="index.html" class="btn btn-outline-light btn-sm rounded-pill px-4">Back to Home</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="hero" class="hero">
+    <!-- Page Header -->
+    <header class="page-header">
         <div class="container">
-            <div class="row align-items-center gy-5">
-                <div class="col-lg-7 fade-up">
-                    <span class="hero-badge mb-3"><i class="fa-solid fa-star"></i> Digital Creator & Designer</span>
-                    <h1>Crafting Digital<br/>Experiences That <span style="color: var(--gold);">Matter</span></h1>
-                    <p class="mb-4">Modern web design, branding, and interactive solutions tailored for forward-thinking brands. Clean aesthetics. Pixel-perfect execution.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#projects" class="btn-gold"><i class="fa-solid fa-grid-2"></i> View Projects</a>
-                        <a href="#contact" class="btn-outline"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
+            <h1 class="fade-up">Our Success Stories</h1>
+            <p class="lead mb-4 fade-up" style="max-width: 700px; margin: 0 auto; opacity: 0.9;">
+                Explore how we've helped food manufacturers, restaurants, and exporters achieve certification, streamline operations, and train their teams.
+            </p>
+            <div class="breadcrumb-custom fade-up">
+                <a href="#">Home</a> <span>/</span> <span>Projects & Case Studies</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="section-padding">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="filter-container fade-up">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="consultancy">Consultancy</button>
+                <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="digital">Digital Platforms</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="row g-4" id="projectsGrid">
+
+                <!-- Project 1: Consultancy -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="consultancy">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <span class="project-category-badge">Consultancy</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+
+                        </div>
+                        <div class="project-body">
+                            
+                            <a href="foodsafety1.html" class="btn-case-study">view sample <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-5 fade-up">
-                    <div class="bg-white p-2 rounded-4 shadow" style="transform: rotate(2deg);">
-                        <img src="https://placehold.co/600x450/f8fafc/334155?text=Featured+Project+Preview" class="img-fluid rounded-3" alt="Featured Work">
+                <div class="col-lg-4 col-md-6 project-item" data-category="consultancy">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <span class="project-category-badge">Consultancy</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+
+                        </div>
+                        <div class="project-body">
+                            
+                            <a href="foodsafety.html" class="btn-case-study">view sample <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Project 2: Digital -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="digital">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <span class="project-category-badge" style="background: #3b82f6; color: white;">Digital</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                        </div>
+                        <div class="project-body">
+                            
+                            <a href="foodsafety2.html" class="btn-case-study">View sample<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Training -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="training">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <span class="project-category-badge" style="background: #e11d48; color: white;">Training</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+
+                        </div>
+                        <div class="project-body">
+                           
+                            <a href="foodsafety3.html" class="btn-case-study">View sample<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Consultancy -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="consultancy">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <span class="project-category-badge">Consultancy</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+
+                        </div>
+                        <div class="project-body">
+                            
+                            <a href="foodsafety4.html" class="btn-case-study">View sample<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 stat-item">
+                    <h3>50+</h3>
+                    <p>Certifications Achieved</p>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <h3>1200+</h3>
+                    <p>Professionals Trained</p>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <h3>15</h3>
+                    <p>Digital Tools Deployed</p>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <h3>100%</h3>
+                    <p>Client Satisfaction</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="bg-light">
-        <div class="container">
-            <div class="section-head fade-up">
-                <h2>Selected Projects</h2>
-                <div class="gold-line"></div>
-                <p class="text-muted mt-2">A curated collection of web, branding, and digital work.</p>
-            </div>
-
-            <div class="filters fade-up">
-                <button class="filter-btn active" data-filter="all">All Work</button>
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="brand">Branding</button>
-                <button class="filter-btn" data-filter="ui">UI/UX</button>
-            </div>
-
-            <div class="row g-4" id="project-grid">
-                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="web">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=E-Commerce+Platform" alt="Project">
-                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-cat">Food safety</div>
-                            <h4 class="project-title">Nova Commerce</h4>
-                            <p class="project-desc">High-converting storefront with custom checkout flow.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="brand">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Brand+Identity+System" alt="Project">
-                            <div class="project-overlay"><a href="foodsafety.html" target="_blank" rel="noopener noreferrer"><span class="view-btn">View site</span></a></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-cat">Food safety</div>
-                            <h4 class="project-title">Aether Studio</h4>
-                            <p class="project-desc">Complete visual identity & brand guidelines.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="ui">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=SaaS+Dashboard+UI" alt="Project">
-                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-cat">UI/UX</div>
-                            <h4 class="project-title">Metrics Pro</h4>
-                            <p class="project-desc">Data-rich analytics dashboard with dark mode.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="web">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Portfolio+Website" alt="Project">
-                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-cat">Web Design</div>
-                            <h4 class="project-title">Creative Folio</h4>
-                            <p class="project-desc">Minimal portfolio with smooth scroll animations.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="brand">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Packaging+Design" alt="Project">
-                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-cat">Branding</div>
-                            <h4 class="project-title">Pure Brew Co.</h4>
-                            <p class="project-desc">Premium packaging & retail shelf presence.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 project-item fade-up" data-cat="ui">
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://placehold.co/600x400/f1f5f9/334155?text=Mobile+App+Prototype" alt="Project">
-                            <div class="project-overlay"><span class="view-btn">View Details</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-cat">UI/UX</div>
-                            <h4 class="project-title">FitTrack App</h4>
-                            <p class="project-desc">User-centered fitness tracking interface.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5 fade-up">
-                    <div class="about-img">
-                        <img src="https://placehold.co/500x600/1e293b/94a3b8?text=Goldy+Kala" class="img-fluid w-100" alt="Goldy Kala">
-                    </div>
-                </div>
-                <div class="col-lg-7 fade-up">
-                    <h2 class="mb-3">Behind the <span style="color: var(--gold);">Work</span></h2>
-                    <p class="text-light mb-4">I'm Goldy Kala, a multidisciplinary digital creator focused on building clean, performant, and visually striking projects. With a background in UI/UX, front-end development, and brand strategy, I bridge the gap between aesthetics and functionality.</p>
-                    <p class="text-light mb-4">Every project starts with understanding your goals, audience, and constraints. I don't just design interfaces—I design outcomes.</p>
-                    <h5 class="mb-3">Core Expertise</h5>
-                    <div class="mb-4">
-                        <span class="skill-tag">Web Design</span><span class="skill-tag">UI/UX</span><span class="skill-tag">Branding</span>
-                        <span class="skill-tag">HTML/CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Responsive Dev</span><span class="skill-tag">Motion UI</span>
-                    </div>
-                    <div class="row g-4 mt-2">
-                        <div class="col-6 col-md-4 text-center p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
-                            <h4 style="color: var(--gold); margin:0;">5+</h4><small class="text-muted">Years Exp.</small>
-                        </div>
-                        <div class="col-6 col-md-4 text-center p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
-                            <h4 style="color: var(--gold); margin:0;">40+</h4><small class="text-muted">Projects</small>
-                        </div>
-                        <div class="col-12 col-md-4 text-center p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
-                            <h4 style="color: var(--gold); margin:0;">100%</h4><small class="text-muted">Client Focus</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-head fade-up">
-                <h2>Start a Project</h2>
-                <div class="gold-line"></div>
-                <p class="text-muted mt-2">Have an idea? Let's build it together.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-12 col-lg-6 fade-up">
-                    <form class="contact-card" onsubmit="handleForm(event)">
-                        <div class="row g-3">
-                            <div class="col-md-6"><input type="text" class="form-input" placeholder="Your Name" required></div>
-                            <div class="col-md-6"><input type="email" class="form-input" placeholder="Email Address" required></div>
-                            <div class="col-12"><input type="text" class="form-input" placeholder="Project Type (e.g., Website, App, Brand)"></div>
-                            <div class="col-12"><textarea class="form-input" rows="5" placeholder="Tell me about your project, timeline & budget..."></textarea></div>
-                            <div class="col-12"><button type="submit" class="btn-gold w-100 justify-content-center"><i class="fa-solid fa-paper-plane"></i> Send Message</button></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-12 col-lg-6 fade-up">
-                    <div class="contact-info">
-                        <h4 class="mb-3">Contact Details</h4>
-                        <p class="text-light mb-4">Available for freelance, contract, and full-time collaborations worldwide.</p>
-                        <a href="mailto:hello@goldykala.com"><i class="fa-solid fa-envelope me-2" style="color:var(--gold)"></i> hello@goldykala.com</a>
-                        <a href="tel:+1234567890"><i class="fa-solid fa-phone me-2" style="color:var(--gold)"></i> +1 (234) 567-890</a>
-                        <a href="#"><i class="fa-solid fa-location-dot me-2" style="color:var(--gold)"></i> Remote / Global</a>
-                        <div class="mt-4 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                            <p class="mb-2">Follow the work:</p>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-dribbble"></i></a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-behance"></i></a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- CTA Section -->
+    <section class="section-padding" style="background: white;">
+        <div class="container text-center">
+            <h2 class="mb-3" style="font-size: 2.5rem; font-weight: 900;">Ready to be our next success story?</h2>
+            <p class="text-muted mb-4" style="max-width: 600px; margin: 0 auto;">Whether you need a full certification roadmap or a digital compliance tool, we have the experience to deliver.</p>
+            <a href="index.html#contact" class="btn btn-lg rounded-pill px-5 py-3 fw-bold text-white" style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); box-shadow: 0 10px 20px rgba(10,110,61,0.3);">
+                Start Your Project <i class="fas fa-arrow-right ms-2"></i>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container text-center">
-            <h4 class="mb-2" style="font-family:'Playfair Display',serif;"><span style="color:var(--gold)">Goldy</span> Kala</h4>
-            <p class="small mb-3">Designing digital experiences that convert & inspire.</p>
-            <p class="small">&copy; 2026 Goldy Kala. All rights reserved. | Built with precision.</p>
+        <div class="container">
+            <p>&copy; 2025 FoodSafe Pro. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
     <script>
-        // Navbar scroll
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-
-        // Smooth scroll & active nav
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const t = document.querySelector(a.getAttribute('href'));
-                if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                const collapse = document.getElementById('navMenu');
-                if(collapse.classList.contains('show')) bootstrap.Collapse.getInstance(collapse)?.hide();
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            document.querySelectorAll('section[id]').forEach(s => {
-                if(window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
-            });
-            document.querySelectorAll('.nav-link').forEach(l => {
-                l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
-            });
-        });
-
-        // Project Filter
+        // ==================== FILTER FUNCTIONALITY ====================
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.project-item');
+        const projectItems = document.querySelectorAll('.project-item');
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
                 btn.classList.add('active');
-                const cat = btn.getAttribute('data-filter');
-                items.forEach(item => {
-                    if(cat === 'all' || item.getAttribute('data-cat') === cat) {
-                        item.style.display = 'block';
-                        setTimeout(() => item.classList.add('visible'), 50);
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hidden-project');
+                        // Small animation reset
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.transition = 'all 0.5s ease';
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
                     } else {
-                        item.style.display = 'none';
-                        item.classList.remove('visible');
+                        item.classList.add('hidden-project');
                     }
                 });
             });
         });
 
-        // Fade-in observer
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+        // ==================== SCROLL ANIMATION ====================
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-        // Form
-        function handleForm(e) {
-            e.preventDefault(); const btn = e.target.querySelector('button[type="submit"]');
-            const orig = btn.innerHTML;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...'; btn.disabled = true;
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-check me-2"></i> Message Received!'; 
-                btn.style.background = '#10b981';
-                e.target.reset(); 
-                setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; btn.style.background = ''; }, 2500);
-            }, 1500);
-        }
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
