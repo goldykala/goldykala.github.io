@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodSafe Pro | Food Safety Consultancy, Training & Digital Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a6e3d;
+            --primary-dark: #064d2b;
+            --primary-light: #0d8c4e;
+            --accent: #f0a500;
+            --accent-light: #ffc947;
+            --dark: #0b1a12;
+            --dark-green: #0e2a1a;
+            --light: #f0f7f3;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --light-gray: #e8efe9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ==================== PRELOADER ==================== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-icon {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            color: var(--white);
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ==================== NAVBAR ==================== */
+        .navbar {
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1050;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 26, 18, 0.97) !important;
+            backdrop-filter: blur(20px);
+            padding: 8px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--white) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .navbar .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 18px !important;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--accent) !important;
+        }
+
+        .navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .navbar-toggler .toggler-icon {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            display: block;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark) !important;
+            font-weight: 700;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(240, 165, 0, 0.3);
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(240, 165, 0, 0.5);
+        }
+
+        .btn-nav-cta::after {
+            display: none !important;
+        }
+
+        /* ==================== HERO CAROUSEL ==================== */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+        }
+
+        .hero-carousel,
+        .hero-carousel .carousel-inner,
+        .hero-carousel .carousel-item {
+            height: 100%;
+        }
+
+        .hero-carousel .carousel-item {
+            position: relative;
+        }
+
+        .hero-carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 26, 18, 0.4) 0%,
+                rgba(10, 26, 18, 0.2) 40%,
+                rgba(10, 26, 18, 0.6) 80%,
+                rgba(10, 26, 18, 0.95) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(240, 165, 0, 0.15);
+            border: 1px solid rgba(240, 165, 0, 0.3);
+            color: var(--accent-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge i {
+            font-size: 0.75rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(10, 110, 61, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(10, 110, 61, 0.5);
+            color: var(--white);
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* Carousel Controls */
+        .hero-carousel .carousel-control-prev,
+        .hero-carousel .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            bottom: auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            margin: 0 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-section:hover .carousel-control-prev,
+        .hero-section:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .hero-carousel .carousel-control-prev:hover,
+        .hero-carousel .carousel-control-next:hover {
+            background: rgba(240, 165, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .hero-carousel .carousel-indicators {
+            bottom: 25px;
+            z-index: 3;
+        }
+
+        .hero-carousel .carousel-indicators [data-bs-target] {
+            width: 40px;
+            height: 4px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-carousel .carousel-indicators .active {
+            background: var(--accent);
+            width: 60px;
+        }
+
+        /* ==================== SECTION STYLES ==================== */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .section-title .highlight {
+            color: var(--primary);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-top: 15px;
+        }
+
+        .section-desc.centered {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== SERVICES SECTION ==================== */
+        .services-section {
+            background: var(--light);
+            position: relative;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card-header {
+            padding: 40px 35px 25px;
+            position: relative;
+        }
+
+        .service-card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-card-icon {
+            transform: scale(1.05);
+        }
+
+        .service-card-icon.consultancy {
+            background: linear-gradient(135deg, rgba(10, 110, 61, 0.1), rgba(10, 110, 61, 0.05));
+            color: var(--primary);
+        }
+
+        .service-card-icon.training {
+            background: linear-gradient(135deg, rgba(240, 165, 0, 0.15), rgba(240, 165, 0, 0.05));
+            color: var(--accent);
+        }
+
+        .service-card-icon.digital {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            color: #3b82f6;
+        }
+
+        .service-card-number {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.03);
+            line-height: 1;
+        }
+
+        .service-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .service-card-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .service-card-body {
+            padding: 0 35px 35px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #555;
+            transition: all 0.2s ease;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li:hover {
+            padding-left: 5px;
+            color: var(--primary);
+        }
+
+        .service-features li i {
+            color: var(--primary);
+            margin-top: 3px;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .service-card-footer {
+            padding: 0 35px 35px;
+        }
+
+        .btn-service {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 12px 0;
+        }
+
+        .btn-service:hover {
+            gap: 15px;
+            color: var(--primary-dark);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            background: var(--white);
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(10, 110, 61, 0.4);
+        }
+
+        .about-image-badge .badge-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .about-image-badge .badge-text {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .about-feature-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .about-feature h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .about-feature p {
+            font-size: 0.82rem;
+            color: var(--gray);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ==================== CERTIFICATIONS SECTION ==================== */
+        .certifications-section {
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certifications-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .certifications-section .section-label {
+            color: var(--accent);
+        }
+
+        .certifications-section .section-title {
+            color: var(--white);
+        }
+
+        .certifications-section .section-desc {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cert-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .cert-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 30px 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            min-width: 180px;
+        }
+
+        .cert-item:hover {
+            background: rgba(240, 165, 0, 0.1);
+            border-color: rgba(240, 165, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .cert-item i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .cert-item h5 {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .cert-item p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        /* ==================== WHY CHOOSE US ==================== */
+        .why-section {
+            background: var(--white);
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 25px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .why-card:hover {
+            background: var(--white);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+        }
+
+        .why-card-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover .why-card-icon {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(10, 110, 61, 0.3);
+        }
+
+        .why-card h4 {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ==================== PROCESS SECTION ==================== */
+        .process-section {
+            background: var(--light);
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .process-step-number {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 25px rgba(10, 110, 61, 0.3);
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 60%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--light-gray));
+            z-index: 1;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .process-step h5 {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* ==================== TESTIMONIALS ==================== */
+        .testimonials-section {
+            background: var(--white);
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(10, 110, 61, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author h6 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 2px;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author p {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark), var(--dark-green));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .cta-text {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark);
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(240, 165, 0, 0.3);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(240, 165, 0, 0.5);
+            color: var(--dark);
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-section {
+            background: var(--light);
+        }
+
+        .contact-info-card {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 50px 40px;
+            color: var(--white);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact-info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .contact-info-card > p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-detail-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .contact-detail h6 {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .contact-detail p {
+            color: var(--white);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-detail a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail a:hover {
+            color: var(--accent);
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-social-link {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-social-link:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .contact-form-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            height: 100%;
+        }
+
+        .contact-form-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+
+        .form-floating {
+            margin-bottom: 20px;
+        }
+
+        .form-floating .form-control,
+        .form-floating .form-select {
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: var(--light);
+        }
+
+        .form-floating .form-control:focus,
+        .form-floating .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(10, 110, 61, 0.1);
+            background-color: var(--white);
+        }
+
+        .form-floating label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(10, 110, 61, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(10, 110, 61, 0.4);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--dark);
+            padding: 80px 0 0;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 350px;
+        }
+
+        .footer h5 {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 18px;
+            color: var(--white);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 165, 0, 0.3);
+        }
+
+        .footer-bottom {
+            margin-top: 60px;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ==================== BACK TO TOP ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(10, 110, 61, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(10, 110, 61, 0.5);
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 991.98px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                gap: 30px;
+                bottom: 40px;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar-collapse {
+                background: rgba(10, 26, 18, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .cta-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 15px;
+                bottom: 30px;
+            }
+
+            .hero-stat {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-info-card,
+            .contact-form-card {
+                padding: 35px 25px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-carousel .carousel-control-prev,
+            .hero-carousel .carousel-control-next {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-icon"></div>
+        <div class="loader-text">FoodSafe Pro</div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="brand-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                Food<span>Safe</span>Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-nav-cta" href="#contact">Get Free Audit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80" alt="Food Safety Laboratory">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80" alt="Food Preparation">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=1920&q=80" alt="Food Safety Inspection">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80" alt="Food Manufacturing">
+                    <div class="hero-overlay"></div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <i class="fas fa-chevron-next"></i>
+            </button>
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-circle"></i>
+                Trusted Food Safety Partner
+            </div>
+            <h1 class="hero-title">
+                Ensuring <span class="highlight">Food Safety</span><br>
+                From Farm to Fork
+            </h1>
+            <p class="hero-subtitle">
+                Expert consultancy, accredited training, and innovative digital solutions to help your food business achieve compliance, certification, and consumer trust.
+            </p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-hero-primary">
+                    Explore Services <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn-hero-secondary">
+                    <i class="fas fa-play-circle"></i> Book a Consultation
+                </a>
+            </div>
+        </div>
+
+        <!-- Hero Stats -->
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-count="500">0</div>
+                <div class="hero-stat-label">Clients Served</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-count="1200">0</div>
+                <div class="hero-stat-label">Audits Completed</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-count="98">0</div>
+                <div class="hero-stat-label">% Success Rate</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-count="15">0</div>
+                <div class="hero-stat-label">Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section section-padding" id="services">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <div class="section-label justify-content-center">What We Do</div>
+                <h2 class="section-title">Our Core <span class="highlight">Business Pillars</span></h2>
+                <p class="section-desc centered">
+                    Three comprehensive service pillars designed to cover every aspect of food safety compliance, training, and digital transformation for your business.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Consultancy -->
+                <div class="col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <div class="service-card-number">01</div>
+                            <div class="service-card-icon consultancy">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3 class="service-card-title">Consultancy</h3>
+                            <p class="service-card-desc">
+                                End-to-end food safety consultancy to get your business certified and audit-ready with confidence.
+                            </p>
+                        </div>
+                        <div class="service-card-body">
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Gap Analysis & Readiness Assessment</li>
+                                <li><i class="fas fa-check-circle"></i> Documentation & FSMS Implementation</li>
+                                <li><i class="fas fa-check-circle"></i> Internal Audits & Management Reviews</li>
+                                <li><i class="fas fa-check-circle"></i> Certification Readiness Support</li>
+                                <li><i class="fas fa-check-circle"></i> BRCGS, FSSC 22000, ISO 22000</li>
+                                <li><i class="fas fa-check-circle"></i> HACCP & GMP Compliance</li>
+                                <li><i class="fas fa-check-circle"></i> Third-Party Auditor Coordination</li>
+                            </ul>
+                        </div>
+                        <div class="service-card-footer">
+                            <a href="#contact" class="btn-service">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training -->
+                <div class="col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <div class="service-card-number">02</div>
+                            <div class="service-card-icon training">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3 class="service-card-title">Training</h3>
+                            <p class="service-card-desc">
+                                Accredited food safety training programs designed for teams at every level of your organization.
+                            </p>
+                        </div>
+                        <div class="service-card-body">
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Level 2 & 3 Food Safety Courses</li>
+                                <li><i class="fas fa-check-circle"></i> HACCP Principles & Application</li>
+                                <li><i class="fas fa-check-circle"></i> Level 2 & 3 HACCP Certification</li>
+                                <li><i class="fas fa-check-circle"></i> FSSC 22000 Awareness Training</li>
+                                <li><i class="fas fa-check-circle"></i> ISO 22000 & BRCGS Awareness</li>
+                                <li><i class="fas fa-check-circle"></i> Interactive Supervisor Sessions</li>
+                                <li><i class="fas fa-check-circle"></i> Manager-Level Advanced Programs</li>
+                            </ul>
+                        </div>
+                        <div class="service-card-footer">
+                            <a href="#contact" class="btn-service">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Platforms -->
+                <div class="col-lg-4 fade-up" style="transition-delay: 0.3s;">
+                    <div class="service-card">
+                        <div class="service-card-header">
+                            <div class="service-card-number">03</div>
+                            <div class="service-card-icon digital">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="service-card-title">Digital Platforms</h3>
+                            <p class="service-card-desc">
+                                Custom-built digital tools to streamline your food safety operations and ensure real-time compliance.
+                            </p>
+                        </div>
+                        <div class="service-card-body">
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Traceability & Supply Chain Portals</li>
+                                <li><i class="fas fa-check-circle"></i> Daily Digital Checklists</li>
+                                <li><i class="fas fa-check-circle"></i> Opening & Closing Checks</li>
+                                <li><i class="fas fa-check-circle"></i> Digital Audit Logbooks</li>
+                                <li><i class="fas fa-check-circle"></i> Corrective Action Tracking</li>
+                                <li><i class="fas fa-check-circle"></i> Custom Websites for Food Businesses</li>
+                                <li><i class="fas fa-check-circle"></i> Cloud-Based Dashboard & Reports</li>
+                            </ul>
+                        </div>
+                        <div class="service-card-footer">
+                            <a href="#contact" class="btn-service">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section section-padding" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 fade-left">
+                    <div class="about-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80" alt="Food Safety Team">
+                        <div class="about-image-badge">
+                            <div class="badge-number">15+</div>
+                            <div class="badge-text">Years of Excellence</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-right">
+                    <div class="section-header">
+                        <div class="section-label">About Us</div>
+                        <h2 class="section-title">Your Trusted <span class="highlight">Food Safety</span> Partner</h2>
+                        <p class="section-desc">
+                            We help food businesses — from manufacturers and exporters to restaurants and cloud kitchens — achieve world-class food safety standards and certifications. Our team of experienced consultants, trainers, and digital experts work together to deliver comprehensive solutions.
+                        </p>
+                    </div>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h5>Certified Experts</h5>
+                                <p>Lead auditors & certified food safety professionals on our team</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <h5>Global Standards</h5>
+                                <p>BRCGS, FSSC 22000, ISO 22000, HACCP & GMP expertise</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <h5>End-to-End Support</h5>
+                                <p>From gap analysis to certification — we're with you全程</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h5>Digital Innovation</h5>
+                                <p>Custom platforms for traceability, audits & compliance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section section-padding" id="certifications">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <div class="section-label justify-content-center">Certifications We Support</div>
+                <h2 class="section-title">Get Certified with <span class="highlight" style="color: var(--accent);">Confidence</span></h2>
+                <p class="section-desc centered">
+                    We provide comprehensive support for all major food safety certification schemes, helping you meet global standards and win customer trust.
+                </p>
+            </div>
+
+            <div class="cert-grid fade-up">
+                <div class="cert-item">
+                    <i class="fas fa-certificate"></i>
+                    <h5>BRCGS</h5>
+                    <p>Global Standard</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-shield-halved"></i>
+                    <h5>FSSC 22000</h5>
+                    <p>Food Safety System</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-file-shield"></i>
+                    <h5>ISO 22000</h5>
+                    <p>FSMS Standard</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-utensils"></i>
+                    <h5>HACCP</h5>
+                    <p>Hazard Analysis</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-industry"></i>
+                    <h5>GMP</h5>
+                    <p>Good Manufacturing</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-leaf"></i>
+                    <h5>Organic</h5>
+                    <p>Organic Certification</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-section section-padding">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <div class="section-label justify-content-center">Why Choose Us</div>
+                <h2 class="section-title">What Makes Us <span class="highlight">Different</span></h2>
+                <p class="section-desc centered">
+                    We combine deep industry expertise with innovative digital tools to deliver food safety solutions that actually work.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.1s;">
+                    <div class="why-card">
+                        <div class="why-card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Expert Team</h4>
+                        <p>Certified lead auditors and food safety consultants with decades of combined experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.2s;">
+                    <div class="why-card">
+                        <div class="why-card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>98% Success Rate</h4>
+                        <p>Our clients achieve certification on their first attempt with our structured approach.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.3s;">
+                    <div class="why-card">
+                        <div class="why-card-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h4>Digital-First</h4>
+                        <p>Custom digital platforms that make compliance tracking effortless and paperless.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.4s;">
+                    <div class="why-card">
+                        <div class="why-card-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Ongoing Support</h4>
+                        <p>We don't disappear after certification — continuous support for surveillance audits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section section-padding" id="process">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <div class="section-label justify-content-center">Our Process</div>
+                <h2 class="section-title">How We <span class="highlight">Work</span></h2>
+                <p class="section-desc centered">
+                    A proven, step-by-step methodology that takes your business from assessment to certification seamlessly.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.1s;">
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
+                        <h5>Gap Analysis</h5>
+                        <p>We assess your current systems against the target standard and identify gaps.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.2s;">
+                    <div class="process-step">
+                        <div class="process-step-number">2</div>
+                        <h5>FSMS Development</h5>
+                        <p>We build your Food Safety Management System with complete documentation.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.3s;">
+                    <div class="process-step">
+                        <div class="process-step-number">3</div>
+                        <h5>Training & Audit</h5>
+                        <p>We train your team and conduct internal audits to ensure readiness.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.4s;">
+                    <div class="process-step">
+                        <div class="process-step-number">4</div>
+                        <h5>Certification</h5>
+                        <p>We support you through the certification audit and help you achieve compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <div class="section-label justify-content-center">Testimonials</div>
+                <h2 class="section-title">What Our <span class="highlight">Clients Say</span></h2>
+                <p class="section-desc centered">
+                    Hear from food businesses that achieved certification and transformed their food safety culture with our help.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            FoodSafe Pro guided us through our FSSC 22000 certification flawlessly. Their gap analysis was thorough, and the documentation support was invaluable. We passed our audit on the first attempt!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">RK</div>
+                            <div>
+                                <h6>Rajesh Kumar</h6>
+                                <p>Quality Manager, FreshFoods Export</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            The Level 3 HACCP training transformed our team's understanding of food safety. The interactive sessions kept everyone engaged, and our supervisors now lead with confidence.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SP</div>
+                            <div>
+                                <h6>Sarah Patel</h6>
+                                <p>Operations Director, CloudKitchen Hub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-up" style="transition-delay: 0.3s;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            Their digital traceability portal replaced our paper-based system entirely. Daily checklists, audit logs, and corrective actions — all in one place. A game-changer for our operations.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">AM</div>
+                            <div>
+                                <h6>Ahmed Mohammed</h6>
+                                <p>CEO, Gulf Food Manufacturers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 fade-left">
+                    <h2 class="cta-title">Ready to Elevate Your<br>Food Safety Standards?</h2>
+                    <p class="cta-text mt-3">
+                        Whether you need certification support, team training, or a digital compliance platform — we're here to help you every step of the way.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end fade-right mt-4 mt-lg-0">
+                    <a href="#contact" class="btn-cta">
+                        Get Started Today <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section section-padding" id="contact">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <div class="section-label justify-content-center">Get In Touch</div>
+                <h2 class="section-title">Let's Start Your <span class="highlight">Food Safety</span> Journey</h2>
+                <p class="section-desc centered">
+                    Reach out for a free consultation and discover how we can help your business achieve food safety excellence.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5 fade-left">
+                    <div class="contact-info-card">
+                        <h3>Contact Information</h3>
+                        <p>Fill out the form and our team will get back to you within 24 hours.</p>
+
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h6>Phone</h6>
+                                <p><a href="tel:+971501234567">+971 50 123 4567</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h6>Email</h6>
+                                <p><a href="mailto:info@foodsafepro.com">info@foodsafepro.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h6>Office</h6>
+                                <p>Business Bay, Dubai, UAE</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h6>Working Hours</h6>
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-socials">
+                            <a href="#" class="contact-social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="contact-social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="contact-social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="contact-social-link"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 fade-right">
+                    <div class="contact-form-card">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                                        <label for="firstName">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                                        <label for="lastName">Last Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                        <label for="email">Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Phone">
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="service" required>
+                                            <option value="" selected disabled>Select a service</option>
+                                            <option value="consultancy">Consultancy Services</option>
+                                            <option value="training">Training Programs</option>
+                                            <option value="digital">Digital Platforms</option>
+                                            <option value="certification">Certification Support</option>
+                                            <option value="audit">Internal Audit</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <label for="service">Service Interested In</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="businessType">
+                                            <option value="" selected disabled>Your business type</option>
+                                            <option value="manufacturer">Food Manufacturer</option>
+                                            <option value="exporter">Food Exporter</option>
+                                            <option value="restaurant">Restaurant / Café</option>
+                                            <option value="cloud-kitchen">Cloud Kitchen</option>
+                                            <option value="catering">Catering Service</option>
+                                            <option value="retail">Food Retail</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <label for="businessType">Business Type</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" placeholder="Message" style="height: 120px" required></textarea>
+                                        <label for="message">Your Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-submit">
+                                        <i class="fas fa-paper-plane me-2"></i> Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Food<span>Safe</span>Pro</div>
+                    <p class="footer-desc">
+                        Your trusted partner for food safety consultancy, training, and digital compliance solutions. Helping businesses achieve global food safety standards.
+                    </p>
+                    <div class="contact-socials" style="border: none; padding: 0; margin: 0;">
+                        <a href="#" class="contact-social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#services">Consultancy</a></li>
+                        <li><a href="#services">Training</a></li>
+                        <li><a href="#services">Digital Platforms</a></li>
+                        <li><a href="#certifications">Certification Support</a></li>
+                        <li><a href="#services">Internal Audits</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Certifications</h5>
+                    <ul class="footer-links">
+                        <li><a href="#certifications">BRCGS</a></li>
+                        <li><a href="#certifications">FSSC 22000</a></li>
+                        <li><a href="#certifications">ISO 22000</a></li>
+                        <li><a href="#certifications">HACCP</a></li>
+                        <li><a href="#certifications">GMP</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5>Newsletter</h5>
+                    <div class="footer-newsletter">
+                        <p>Subscribe to get the latest food safety updates, tips, and industry insights.</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="button"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FoodSafe Pro. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // ==================== PRELOADER ====================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 800);
+        });
+
+        // ==================== NAVBAR SCROLL ====================
+        const navbar = document.querySelector('.navbar');
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            // Navbar background
+            if (scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            if (scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ==================== ACTIVE NAV LINK ====================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link:not(.btn-nav-cta)');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+
+                // Close mobile nav
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            });
+        });
+
+        // ==================== SCROLL ANIMATIONS ====================
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ==================== COUNTER ANIMATION ====================
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current) + '+';
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target + '+';
+                            }
+                        };
+                        updateCounter();
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            counterObserver.observe(heroStats);
+        }
+
+        // ==================== FORM HANDLING ====================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check-circle me-2"></i> Message Sent!';
+                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    this.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // ==================== CAROUSEL PAUSE ON HOVER ====================
+        const heroCarousel = document.getElementById('heroCarousel');
+        if (heroCarousel) {
+            heroCarousel.addEventListener('mouseenter', () => {
+                bootstrap.Carousel.getOrCreateInstance(heroCarousel).pause();
+            });
+            heroCarousel.addEventListener('mouseleave', () => {
+                bootstrap.Carousel.getOrCreateInstance(heroCarousel).cycle();
+            });
+        }
+    </script>
+</body>
+</html>
