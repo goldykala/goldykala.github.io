@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CQBS | Compliance & Quality Based Solutions</title>
+    <title>FoodSafe Pro | Food Safety Consultancy, Training & Digital Solutions</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link
@@ -12,20 +12,17 @@
         rel="stylesheet">
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-dark: #1e3a8a;
-            --primary-light: #3b82f6;
-            --secondary: #059669;
-            --secondary-dark: #047857;
-            --secondary-light: #10b981;
-            --accent: #059669;
-            --accent-light: #10b981;
-            --dark: #0f172a;
-            --dark-blue: #1e293b;
-            --light: #f0f9ff;
+            --primary: #0a6e3d;
+            --primary-dark: #064d2b;
+            --primary-light: #0d8c4e;
+            --accent: #f0a500;
+            --accent-light: #ffc947;
+            --dark: #0b1a12;
+            --dark-green: #0e2a1a;
+            --light: #f0f7f3;
             --white: #ffffff;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
+            --gray: #6c757d;
+            --light-gray: #e8efe9;
         }
 
         * {
@@ -69,7 +66,7 @@
             width: 60px;
             height: 60px;
             border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top-color: var(--secondary);
+            border-top-color: var(--accent);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -98,7 +95,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(15, 23, 42, 0.97) !important;
+            background: rgba(10, 26, 18, 0.97) !important;
             backdrop-filter: blur(20px);
             padding: 8px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -114,8 +111,9 @@
             gap: 10px;
         }
 
+
         .navbar-brand span {
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .navbar .nav-link {
@@ -130,7 +128,7 @@
 
         .navbar .nav-link:hover,
         .navbar .nav-link.active {
-            color: var(--secondary) !important;
+            color: var(--accent) !important;
         }
 
         .navbar .nav-link::after {
@@ -140,7 +138,7 @@
             left: 18px;
             right: 18px;
             height: 2px;
-            background: var(--secondary);
+            background: var(--accent);
             transform: scaleX(0);
             transition: transform 0.3s ease;
             border-radius: 2px;
@@ -169,8 +167,8 @@
         }
 
         .btn-nav-cta {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: var(--white) !important;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark) !important;
             font-weight: 700;
             padding: 10px 28px !important;
             border-radius: 50px;
@@ -178,12 +176,12 @@
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 4px 15px rgba(240, 165, 0, 0.3);
         }
 
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(5, 150, 105, 0.5);
+            box-shadow: 0 6px 25px rgba(240, 165, 0, 0.5);
         }
 
         .btn-nav-cta::after {
@@ -221,10 +219,10 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(180deg,
-                    rgba(15, 23, 42, 0.4) 0%,
-                    rgba(15, 23, 42, 0.2) 40%,
-                    rgba(15, 23, 42, 0.6) 80%,
-                    rgba(15, 23, 42, 0.95) 100%);
+                    rgba(10, 26, 18, 0.4) 0%,
+                    rgba(10, 26, 18, 0.2) 40%,
+                    rgba(10, 26, 18, 0.6) 80%,
+                    rgba(10, 26, 18, 0.95) 100%);
             z-index: 1;
         }
 
@@ -243,9 +241,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(5, 150, 105, 0.15);
-            border: 1px solid rgba(5, 150, 105, 0.3);
-            color: var(--secondary-light);
+            background: rgba(240, 165, 0, 0.15);
+            border: 1px solid rgba(240, 165, 0, 0.3);
+            color: var(--accent-light);
             padding: 8px 24px;
             border-radius: 50px;
             font-size: 0.85rem;
@@ -270,7 +268,7 @@
         }
 
         .hero-title .highlight {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -305,12 +303,12 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.4);
+            box-shadow: 0 8px 30px rgba(10, 110, 61, 0.4);
         }
 
         .btn-hero-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(30, 64, 175, 0.5);
+            box-shadow: 0 12px 40px rgba(10, 110, 61, 0.5);
             color: var(--white);
         }
 
@@ -332,8 +330,8 @@
 
         .btn-hero-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: var(--secondary);
-            color: var(--secondary);
+            border-color: var(--accent);
+            color: var(--accent);
             transform: translateY(-3px);
         }
 
@@ -356,7 +354,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             font-weight: 900;
-            color: var(--secondary);
+            color: var(--accent);
             line-height: 1;
         }
 
@@ -393,8 +391,8 @@
 
         .hero-carousel .carousel-control-prev:hover,
         .hero-carousel .carousel-control-next:hover {
-            background: rgba(5, 150, 105, 0.3);
-            border-color: var(--secondary);
+            background: rgba(240, 165, 0, 0.3);
+            border-color: var(--accent);
         }
 
         .hero-carousel .carousel-indicators {
@@ -412,7 +410,7 @@
         }
 
         .hero-carousel .carousel-indicators .active {
-            background: var(--secondary);
+            background: var(--accent);
             width: 60px;
         }
 
@@ -441,7 +439,7 @@
             content: '';
             width: 30px;
             height: 3px;
-            background: var(--secondary);
+            background: var(--accent);
             border-radius: 3px;
         }
 
@@ -454,7 +452,7 @@
         }
 
         .section-title .highlight {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .section-desc {
@@ -483,7 +481,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
         }
 
         .service-card {
@@ -526,18 +524,18 @@
         }
 
         .service-card-icon.consultancy {
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(30, 64, 175, 0.05));
+            background: linear-gradient(135deg, rgba(10, 110, 61, 0.1), rgba(10, 110, 61, 0.05));
             color: var(--primary);
         }
 
         .service-card-icon.training {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(5, 150, 105, 0.05));
-            color: var(--secondary);
+            background: linear-gradient(135deg, rgba(240, 165, 0, 0.15), rgba(240, 165, 0, 0.05));
+            color: var(--accent);
         }
 
         .service-card-icon.digital {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(5, 150, 105, 0.05));
-            color: var(--secondary);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            color: #3b82f6;
         }
 
         .service-card-number {
@@ -596,7 +594,7 @@
         }
 
         .service-features li i {
-            color: var(--secondary);
+            color: var(--primary);
             margin-top: 3px;
             font-size: 0.75rem;
             flex-shrink: 0;
@@ -645,12 +643,12 @@
             position: absolute;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: var(--white);
             padding: 20px 30px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4);
+            box-shadow: 0 10px 30px rgba(10, 110, 61, 0.4);
         }
 
         .about-image-badge .badge-number {
@@ -731,12 +729,12 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.15), transparent 70%);
+            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
             border-radius: 50%;
         }
 
         .certifications-section .section-label {
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .certifications-section .section-title {
@@ -766,14 +764,14 @@
         }
 
         .cert-item:hover {
-            background: rgba(5, 150, 105, 0.1);
-            border-color: rgba(5, 150, 105, 0.3);
+            background: rgba(240, 165, 0, 0.1);
+            border-color: rgba(240, 165, 0, 0.3);
             transform: translateY(-5px);
         }
 
         .cert-item i {
             font-size: 2.5rem;
-            color: var(--secondary);
+            color: var(--accent);
             margin-bottom: 15px;
         }
 
@@ -824,9 +822,9 @@
         }
 
         .why-card:hover .why-card-icon {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: var(--white);
-            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 10px 30px rgba(10, 110, 61, 0.3);
         }
 
         .why-card h4 {
@@ -868,7 +866,7 @@
             color: var(--white);
             position: relative;
             z-index: 2;
-            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 8px 25px rgba(10, 110, 61, 0.3);
         }
 
         .process-step::after {
@@ -914,7 +912,7 @@
         }
 
         .testimonial-card:hover {
-            border-color: rgba(30, 64, 175, 0.1);
+            border-color: rgba(10, 110, 61, 0.1);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
         }
 
@@ -968,14 +966,14 @@
         }
 
         .testimonial-stars {
-            color: var(--secondary);
+            color: var(--accent);
             font-size: 0.85rem;
             margin-bottom: 15px;
         }
 
         /* ==================== CTA SECTION ==================== */
         .cta-section {
-            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
+            background: linear-gradient(135deg, var(--dark), var(--dark-green));
             position: relative;
             overflow: hidden;
         }
@@ -987,7 +985,7 @@
             left: -100px;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.1), transparent 70%);
+            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
             border-radius: 50%;
         }
 
@@ -998,7 +996,7 @@
             right: -100px;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(30, 64, 175, 0.15), transparent 70%);
+            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
             border-radius: 50%;
         }
 
@@ -1017,8 +1015,8 @@
         }
 
         .btn-cta {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark);
             padding: 18px 45px;
             border-radius: 50px;
             font-weight: 700;
@@ -1029,13 +1027,13 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 8px 30px rgba(240, 165, 0, 0.3);
         }
 
         .btn-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.5);
-            color: var(--white);
+            box-shadow: 0 12px 40px rgba(240, 165, 0, 0.5);
+            color: var(--dark);
         }
 
         /* ==================== CONTACT SECTION ==================== */
@@ -1060,7 +1058,7 @@
             right: -50px;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.1), transparent 70%);
+            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
             border-radius: 50%;
         }
 
@@ -1093,7 +1091,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .contact-detail h6 {
@@ -1118,7 +1116,7 @@
         }
 
         .contact-detail a:hover {
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .contact-socials {
@@ -1143,8 +1141,8 @@
         }
 
         .contact-social-link:hover {
-            background: var(--secondary);
-            color: var(--white);
+            background: var(--accent);
+            color: var(--dark);
             transform: translateY(-3px);
         }
 
@@ -1181,7 +1179,7 @@
         .form-floating .form-control:focus,
         .form-floating .form-select:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+            box-shadow: 0 0 0 4px rgba(10, 110, 61, 0.1);
             background-color: var(--white);
         }
 
@@ -1200,12 +1198,12 @@
             border: none;
             width: 100%;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 8px 25px rgba(10, 110, 61, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(30, 64, 175, 0.4);
+            box-shadow: 0 12px 35px rgba(10, 110, 61, 0.4);
         }
 
         /* ==================== FOOTER ==================== */
@@ -1223,7 +1221,7 @@
         }
 
         .footer-brand span {
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .footer-desc {
@@ -1249,7 +1247,7 @@
             left: 0;
             width: 30px;
             height: 3px;
-            background: var(--secondary);
+            background: var(--accent);
             border-radius: 3px;
         }
 
@@ -1273,7 +1271,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--secondary);
+            color: var(--accent);
             padding-left: 5px;
         }
 
@@ -1305,13 +1303,13 @@
         }
 
         .newsletter-form input:focus {
-            border-color: var(--secondary);
+            border-color: var(--accent);
             background: rgba(255, 255, 255, 0.12);
         }
 
         .newsletter-form button {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark);
             border: none;
             border-radius: 12px;
             padding: 12px 20px;
@@ -1322,7 +1320,7 @@
 
         .newsletter-form button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 5px 15px rgba(240, 165, 0, 0.3);
         }
 
         .footer-bottom {
@@ -1355,7 +1353,7 @@
         }
 
         .footer-bottom-links a:hover {
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         /* ==================== BACK TO TOP ==================== */
@@ -1365,7 +1363,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: var(--white);
             border: none;
             border-radius: 50%;
@@ -1379,7 +1377,7 @@
             transform: translateY(20px);
             transition: all 0.3s ease;
             z-index: 999;
-            box-shadow: 0 5px 20px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 5px 20px rgba(10, 110, 61, 0.3);
         }
 
         .back-to-top.visible {
@@ -1390,7 +1388,7 @@
 
         .back-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.5);
+            box-shadow: 0 8px 30px rgba(10, 110, 61, 0.5);
         }
 
         /* ==================== ANIMATIONS ==================== */
@@ -1451,7 +1449,7 @@
             }
 
             .navbar-collapse {
-                background: rgba(15, 23, 42, 0.98);
+                background: rgba(10, 26, 18, 0.98);
                 backdrop-filter: blur(20px);
                 border-radius: 15px;
                 padding: 20px;
@@ -1537,6 +1535,7 @@
             width: auto;
             height: auto;
             object-fit: contain;
+            /* Prevents distortion */
         }
 
         /* 📍 Footer Logo (matches navbar, slightly scaled) */
@@ -1553,7 +1552,6 @@
             box-sizing: border-box;
             font-size: 1.2rem;
             color: var(--dark);
-            margin-bottom: 15px;
         }
 
         .footer .brand-icon img,
@@ -1568,8 +1566,8 @@
 
             .navbar-brand .brand-icon,
             .footer .brand-icon {
-                width: 100px;
-                height: 70px;
+                width: 70px;
+                height: 38px;
                 font-size: 1rem;
             }
         }
@@ -1581,14 +1579,14 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-icon"></div>
-        <div class="loader-text">CQBS</div>
+        <div class="loader-text">FoodSafe Pro</div>
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <div class="brand-icon"><img src="images/logo.png" alt="CQBS Logo"></div>
+                <div class="brand-icon"><img src="images/logo.png" alt="Logo"></div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="toggler-icon"></span>
@@ -1603,9 +1601,9 @@
                     <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
                     <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link btn-nav-cta" href="#contact">Get Free Consultation</a>
+                        <a class="nav-link btn-nav-cta" href="#contact">Get Free Audit</a>
                     </li>
                 </ul>
             </div>
@@ -1617,23 +1615,23 @@
         <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
-                        alt="Business Compliance">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80"
+                        alt="Food Safety Laboratory">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
-                        alt="Quality Management">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80"
+                        alt="Food Preparation">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80"
-                        alt="Quality Assurance">
+                    <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=1920&q=80"
+                        alt="Food Safety Inspection">
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80"
-                        alt="Business Consulting">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
+                        alt="Food Manufacturing">
                     <div class="hero-overlay"></div>
                 </div>
             </div>
@@ -1642,7 +1640,7 @@
                 <i class="fas fa-chevron-left"></i>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-next"></i>
             </button>
 
             <div class="carousel-indicators">
@@ -1657,15 +1655,15 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <i class="fas fa-circle"></i>
-                Compliance & Quality Based Solutions
+                Trusted Food Safety Partner
             </div>
             <h1 class="hero-title">
-                Ensuring <span class="highlight">Excellence</span><br>
-                In Compliance & Quality
+                Ensuring <span class="highlight">End to End</span><br>
+                Food Safety & Traceability
             </h1>
             <p class="hero-subtitle">
-                Expert consultancy, Certified Training, and innovative digital solutions to help your business
-                achieve compliance, certification, and operational excellence.
+                Expert consultancy, accredited training, and innovative digital solutions to help your food business
+                achieve compliance, certification, and consumer trust.
             </p>
             <div class="hero-buttons">
                 <a href="#services" class="btn-hero-primary">
@@ -1679,6 +1677,10 @@
 
         <!-- Hero Stats -->
         <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-count="270">0</div>
+                <div class="hero-stat-label">Clients Served</div>
+            </div>
             <div class="hero-stat">
                 <div class="hero-stat-number" data-count="400">0</div>
                 <div class="hero-stat-label">Audits Completed</div>
@@ -1701,10 +1703,8 @@
                 <div class="section-label justify-content-center">What We Do</div>
                 <h2 class="section-title">Our Core <span class="highlight">Business Pillars</span></h2>
                 <p class="section-desc centered">
-                    Three comprehensive service pillars designed to cover every aspect of Food Safety , quality
-                    management system
-                    compliance
-                    and digital transformation for your business.
+                    Three comprehensive service pillars designed to cover every aspect of food safety compliance,
+                    training, and digital transformation for your business.
                 </p>
             </div>
 
@@ -1719,19 +1719,18 @@
                             </div>
                             <h3 class="service-card-title">Consultancy</h3>
                             <p class="service-card-desc">
-                                End-to-end compliance and quality consultancy to get your business certified and
-                                audit-ready with
+                                End-to-end food safety consultancy to get your business certified and audit-ready with
                                 confidence.
                             </p>
                         </div>
                         <div class="service-card-body">
                             <ul class="service-features">
                                 <li><i class="fas fa-check-circle"></i> Gap Analysis & Readiness Assessment</li>
-                                <li><i class="fas fa-check-circle"></i> QMS Implementation & Documentation</li>
+                                <li><i class="fas fa-check-circle"></i> Documentation & FSMS Implementation</li>
                                 <li><i class="fas fa-check-circle"></i> Internal Audits & Management Reviews</li>
                                 <li><i class="fas fa-check-circle"></i> Certification Readiness Support</li>
-                                <li><i class="fas fa-check-circle"></i> ISO 9001, ISO 14001, ISO 45001</li>
-                                <li><i class="fas fa-check-circle"></i> Regulatory Compliance Support</li>
+                                <li><i class="fas fa-check-circle"></i> BRCGS, FSSC 22000, ISO 22000</li>
+                                <li><i class="fas fa-check-circle"></i> HACCP & GMP Compliance</li>
                                 <li><i class="fas fa-check-circle"></i> Third-Party Auditor Coordination</li>
                             </ul>
                         </div>
@@ -1753,18 +1752,17 @@
                             </div>
                             <h3 class="service-card-title">Training</h3>
                             <p class="service-card-desc">
-                                Accredited quality and compliance training programs designed for teams at every level of
-                                your
+                                Accredited food safety training programs designed for teams at every level of your
                                 organization.
                             </p>
                         </div>
                         <div class="service-card-body">
                             <ul class="service-features">
-                                <li><i class="fas fa-check-circle"></i> ISO Standards Awareness Training</li>
-                                <li><i class="fas fa-check-circle"></i> Internal Auditor Certification</li>
-                                <li><i class="fas fa-check-circle"></i> Quality Management Systems</li>
-                                <li><i class="fas fa-check-circle"></i> Compliance & Regulatory Training</li>
-                                <li><i class="fas fa-check-circle"></i> Risk Assessment & Management</li>
+                                <li><i class="fas fa-check-circle"></i> Level 2 & 3 Food Safety Courses</li>
+                                <li><i class="fas fa-check-circle"></i> HACCP Principles & Application</li>
+                                <li><i class="fas fa-check-circle"></i> Level 2 & 3 HACCP Certification</li>
+                                <li><i class="fas fa-check-circle"></i> FSSC 22000 Awareness Training</li>
+                                <li><i class="fas fa-check-circle"></i> ISO 22000 & BRCGS Awareness</li>
                                 <li><i class="fas fa-check-circle"></i> Interactive Supervisor Sessions</li>
                                 <li><i class="fas fa-check-circle"></i> Manager-Level Advanced Programs</li>
                             </ul>
@@ -1787,18 +1785,18 @@
                             </div>
                             <h3 class="service-card-title">Digital Platforms</h3>
                             <p class="service-card-desc">
-                                Custom-built digital tools to streamline your quality management operations and ensure
+                                Custom-built digital tools to streamline your food safety operations and ensure
                                 real-time compliance.
                             </p>
                         </div>
                         <div class="service-card-body">
                             <ul class="service-features">
-                                <li><i class="fas fa-check-circle"></i> Quality Management Portals</li>
-                                <li><i class="fas fa-check-circle"></i> Digital Audit Checklists</li>
-                                <li><i class="fas fa-check-circle"></i> Compliance Tracking Systems</li>
-                                <li><i class="fas fa-check-circle"></i> Digital Document Control</li>
+                                <li><i class="fas fa-check-circle"></i> Traceability & Supply Chain Portals</li>
+                                <li><i class="fas fa-check-circle"></i> Daily Digital Checklists</li>
+                                <li><i class="fas fa-check-circle"></i> Opening & Closing Checks</li>
+                                <li><i class="fas fa-check-circle"></i> Digital Audit Logbooks</li>
                                 <li><i class="fas fa-check-circle"></i> Corrective Action Tracking</li>
-                                <li><i class="fas fa-check-circle"></i> Custom Business Solutions</li>
+                                <li><i class="fas fa-check-circle"></i> Custom Websites for Food Businesses</li>
                                 <li><i class="fas fa-check-circle"></i> Cloud-Based Dashboard & Reports</li>
                             </ul>
                         </div>
@@ -1819,8 +1817,8 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 fade-left">
                     <div class="about-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                            alt="CQBS Team">
+                        <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80"
+                            alt="Food Safety Team">
                         <div class="about-image-badge">
                             <div class="badge-number">15+</div>
                             <div class="badge-text">Years of Excellence</div>
@@ -1830,13 +1828,11 @@
                 <div class="col-lg-6 fade-right">
                     <div class="section-header">
                         <div class="section-label">About Us</div>
-                        <h2 class="section-title">Your Trusted <span class="highlight">Compliance & Quality</span>
-                            Partner</h2>
+                        <h2 class="section-title">Your Trusted <span class="highlight">Food Safety</span> Partner</h2>
                         <p class="section-desc">
-                            We help businesses across industries achieve world-class quality standards and
-                            certifications. Our team of experienced
-                            consultants, trainers, and digital experts work together to deliver comprehensive compliance
-                            and quality solutions.
+                            We help food businesses — from manufacturers and exporters to restaurants and cloud kitchens
+                            — achieve world-class food safety standards and certifications. Our team of experienced
+                            consultants, trainers, and digital experts work together to deliver comprehensive solutions.
                         </p>
                     </div>
                     <div class="about-features">
@@ -1846,7 +1842,7 @@
                             </div>
                             <div>
                                 <h5>Certified Experts</h5>
-                                <p>Lead auditors & certified quality professionals on our team</p>
+                                <p>Lead auditors & certified food safety professionals on our team</p>
                             </div>
                         </div>
                         <div class="about-feature">
@@ -1855,7 +1851,7 @@
                             </div>
                             <div>
                                 <h5>Global Standards</h5>
-                                <p>ISO 9001, ISO 14001, ISO 45001 & industry-specific expertise</p>
+                                <p>BRCGS, FSSC 22000, ISO 22000, HACCP & GMP expertise</p>
                             </div>
                         </div>
                         <div class="about-feature">
@@ -1873,7 +1869,7 @@
                             </div>
                             <div>
                                 <h5>Digital Innovation</h5>
-                                <p>Custom platforms for quality management & compliance</p>
+                                <p>Custom platforms for traceability, audits & compliance</p>
                             </div>
                         </div>
                     </div>
@@ -1888,10 +1884,9 @@
             <div class="section-header text-center fade-up">
                 <div class="section-label justify-content-center">Certifications We Support</div>
                 <h2 class="section-title">Get Certified with <span class="highlight"
-                        style="color: var(--secondary);">Confidence</span></h2>
+                        style="color: var(--accent);">Confidence</span></h2>
                 <p class="section-desc centered">
-                    We provide comprehensive support for all major quality and compliance certification schemes, helping
-                    you meet
+                    We provide comprehensive support for all major food safety certification schemes, helping you meet
                     global standards and win customer trust.
                 </p>
             </div>
@@ -1899,33 +1894,33 @@
             <div class="cert-grid fade-up">
                 <div class="cert-item">
                     <i class="fas fa-certificate"></i>
-                    <h5>ISO 9001</h5>
-                    <p>Quality Management</p>
-                </div>
-                <div class="cert-item">
-                    <i class="fas fa-leaf"></i>
-                    <h5>ISO 14001</h5>
-                    <p>Environmental Mgmt</p>
+                    <h5>BRCGS</h5>
+                    <p>Global Standard</p>
                 </div>
                 <div class="cert-item">
                     <i class="fas fa-shield-halved"></i>
-                    <h5>ISO 45001</h5>
-                    <p>Occupational Health</p>
+                    <h5>FSSC 22000</h5>
+                    <p>Food Safety System</p>
                 </div>
                 <div class="cert-item">
                     <i class="fas fa-file-shield"></i>
                     <h5>ISO 22000</h5>
-                    <p>Food Safety</p>
+                    <p>FSMS Standard</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-utensils"></i>
+                    <h5>HACCP</h5>
+                    <p>Hazard Analysis</p>
                 </div>
                 <div class="cert-item">
                     <i class="fas fa-industry"></i>
-                    <h5>IATF 16949</h5>
-                    <p>Automotive Quality</p>
+                    <h5>GMP</h5>
+                    <p>Good Manufacturing</p>
                 </div>
                 <div class="cert-item">
-                    <i class="fas fa-laptop-code"></i>
-                    <h5>ISO 27001</h5>
-                    <p>Information Security</p>
+                    <i class="fas fa-leaf"></i>
+                    <h5>Organic</h5>
+                    <p>Organic Certification</p>
                 </div>
             </div>
         </div>
@@ -1938,8 +1933,7 @@
                 <div class="section-label justify-content-center">Why Choose Us</div>
                 <h2 class="section-title">What Makes Us <span class="highlight">Different</span></h2>
                 <p class="section-desc centered">
-                    We combine deep industry expertise with innovative digital tools to deliver compliance and quality
-                    solutions
+                    We combine deep industry expertise with innovative digital tools to deliver food safety solutions
                     that actually work.
                 </p>
             </div>
@@ -1951,7 +1945,7 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <h4>Expert Team</h4>
-                        <p>Certified lead auditors and quality consultants with decades of combined experience.</p>
+                        <p>Certified lead auditors and food safety consultants with decades of combined experience.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.2s;">
@@ -2008,8 +2002,8 @@
                 <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.2s;">
                     <div class="process-step">
                         <div class="process-step-number">2</div>
-                        <h5>QMS Development</h5>
-                        <p>We build your Quality Management System with complete documentation.</p>
+                        <h5>FSMS Development</h5>
+                        <p>We build your Food Safety Management System with complete documentation.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 fade-up" style="transition-delay: 0.3s;">
@@ -2037,7 +2031,7 @@
                 <div class="section-label justify-content-center">Testimonials</div>
                 <h2 class="section-title">What Our <span class="highlight">Clients Say</span></h2>
                 <p class="section-desc centered">
-                    Hear from businesses that achieved certification and transformed their quality culture with
+                    Hear from food businesses that achieved certification and transformed their food safety culture with
                     our help.
                 </p>
             </div>
@@ -2054,7 +2048,7 @@
                             <i class="fas fa-star"></i>
                         </div>
                         <p class="testimonial-text">
-                            CQBS guided us through our ISO 9001 certification flawlessly. Their gap analysis
+                            FoodSafe Pro guided us through our FSSC 22000 certification flawlessly. Their gap analysis
                             was thorough, and the documentation support was invaluable. We passed our audit on the first
                             attempt!
                         </p>
@@ -2062,7 +2056,7 @@
                             <div class="testimonial-avatar">RK</div>
                             <div>
                                 <h6>Rajesh Kumar</h6>
-                                <p>Quality Manager, Manufacturing Corp</p>
+                                <p>Quality Manager, FreshFoods Export</p>
                             </div>
                         </div>
                     </div>
@@ -2078,14 +2072,14 @@
                             <i class="fas fa-star"></i>
                         </div>
                         <p class="testimonial-text">
-                            The Internal Auditor training transformed our team's understanding of quality systems. The
+                            The Level 3 HACCP training transformed our team's understanding of food safety. The
                             interactive sessions kept everyone engaged, and our supervisors now lead with confidence.
                         </p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">SP</div>
                             <div>
                                 <h6>Sarah Patel</h6>
-                                <p>Operations Director, Tech Solutions</p>
+                                <p>Operations Director, CloudKitchen Hub</p>
                             </div>
                         </div>
                     </div>
@@ -2101,14 +2095,15 @@
                             <i class="fas fa-star"></i>
                         </div>
                         <p class="testimonial-text">
-                            Their digital quality management portal replaced our paper-based system entirely. Audit
-                            checklists, document control, and corrective actions — all in one place. A game-changer.
+                            Their digital traceability portal replaced our paper-based system entirely. Daily
+                            checklists, audit logs, and corrective actions — all in one place. A game-changer for our
+                            operations.
                         </p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">AM</div>
                             <div>
                                 <h6>Ahmed Mohammed</h6>
-                                <p>CEO, Gulf Industries</p>
+                                <p>CEO, Gulf Food Manufacturers</p>
                             </div>
                         </div>
                     </div>
@@ -2122,7 +2117,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 fade-left">
-                    <h2 class="cta-title">Ready to Elevate Your<br>Quality Standards?</h2>
+                    <h2 class="cta-title">Ready to Elevate Your<br>Food Safety Standards?</h2>
                     <p class="cta-text mt-3">
                         Whether you need certification support, team training, or a digital compliance platform — we're
                         here to help you every step of the way.
@@ -2142,9 +2137,9 @@
         <div class="container">
             <div class="section-header text-center fade-up">
                 <div class="section-label justify-content-center">Get In Touch</div>
-                <h2 class="section-title">Let's Start Your <span class="highlight">Quality</span> Journey</h2>
+                <h2 class="section-title">Let's Start Your <span class="highlight">Food Safety</span> Journey</h2>
                 <p class="section-desc centered">
-                    Reach out for a free consultation and discover how we can help your business achieve quality
+                    Reach out for a free consultation and discover how we can help your business achieve food safety
                     excellence.
                 </p>
             </div>
@@ -2171,7 +2166,7 @@
                             </div>
                             <div>
                                 <h6>Email</h6>
-                                <p><a href="mailto:info@cqbs.com">info@cqbs.com</a></p>
+                                <p><a href="mailto:info@foodsafepro.com">info@foodsafepro.com</a></p>
                             </div>
                         </div>
 
@@ -2255,12 +2250,12 @@
                                     <div class="form-floating">
                                         <select class="form-select" id="businessType">
                                             <option value="" selected disabled>Your business type</option>
-                                            <option value="manufacturer">Manufacturing</option>
-                                            <option value="service">Service Industry</option>
-                                            <option value="technology">Technology</option>
-                                            <option value="healthcare">Healthcare</option>
-                                            <option value="construction">Construction</option>
-                                            <option value="retail">Retail</option>
+                                            <option value="manufacturer">Food Manufacturer</option>
+                                            <option value="exporter">Food Exporter</option>
+                                            <option value="restaurant">Restaurant / Café</option>
+                                            <option value="cloud-kitchen">Cloud Kitchen</option>
+                                            <option value="catering">Catering Service</option>
+                                            <option value="retail">Food Retail</option>
                                             <option value="other">Other</option>
                                         </select>
                                         <label for="businessType">Business Type</label>
@@ -2291,10 +2286,10 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="brand-icon"><img src="images/logo.png" alt="CQBS Logo"></div>
+                    <div class="footer-brand">Food<span>Safe</span>Pro</div>
                     <p class="footer-desc">
-                        Your trusted partner for compliance and quality consultancy, training, and digital solutions.
-                        Helping businesses achieve global quality standards.
+                        Your trusted partner for food safety consultancy, training, and digital compliance solutions.
+                        Helping businesses achieve global food safety standards.
                     </p>
                     <div class="contact-socials" style="border: none; padding: 0; margin: 0;">
                         <a href="#" class="contact-social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -2316,17 +2311,17 @@
                 <div class="col-lg-2 col-md-4">
                     <h5>Certifications</h5>
                     <ul class="footer-links">
-                        <li><a href="#certifications">ISO 9001</a></li>
-                        <li><a href="#certifications">ISO 14001</a></li>
-                        <li><a href="#certifications">ISO 45001</a></li>
+                        <li><a href="#certifications">BRCGS</a></li>
+                        <li><a href="#certifications">FSSC 22000</a></li>
                         <li><a href="#certifications">ISO 22000</a></li>
-                        <li><a href="#certifications">IATF 16949</a></li>
+                        <li><a href="#certifications">HACCP</a></li>
+                        <li><a href="#certifications">GMP</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <h5>Newsletter</h5>
                     <div class="footer-newsletter">
-                        <p>Subscribe to get the latest quality management updates, tips, and industry insights.</p>
+                        <p>Subscribe to get the latest food safety updates, tips, and industry insights.</p>
                         <div class="newsletter-form">
                             <input type="email" placeholder="Your email address">
                             <button type="button"><i class="fas fa-arrow-right"></i></button>
@@ -2336,7 +2331,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 CQBS - Compliance & Quality Based Solutions. All rights reserved.</p>
+                <p>&copy; 2025 FoodSafe Pro. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
