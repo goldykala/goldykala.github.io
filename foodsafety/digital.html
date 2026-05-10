@@ -1,843 +1,1081 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Food Safety Platforms | FoodSafe Pro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Digital Platforms | CQBS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #0a6e3d;
-            --primary-dark: #064d2b;
-            --primary-light: #0d8c4e;
-            --accent: #f0a500;
-            --accent-light: #ffc947;
-            --dark: #0b1a12;
-            --dark-green: #0e2a1a;
-            --light: #f0f7f3;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #059669;
+            --secondary-dark: #047857;
+            --secondary-light: #10b981;
+            --accent: #059669;
+            --accent-light: #10b981;
+            --dark: #0f172a;
+            --dark-blue: #1e293b;
+            --light: #f0f9ff;
             --white: #ffffff;
-            --gray: #6c757d;
-            --light-gray: #e8efe9;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
             overflow-x: hidden;
-            background: var(--white);
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.6;
         }
-
-        /* ==================== PRELOADER ==================== */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark); z-index: 99999;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-        .loader-icon {
-            width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent); border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .loader-text {
-            color: var(--white); margin-top: 20px; font-weight: 600;
-            font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ==================== NAVBAR ==================== */
         .navbar {
-            padding: 15px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1050; background: transparent;
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1050;
+            background: transparent;
         }
         .navbar.scrolled {
-            background: rgba(10, 26, 18, 0.97) !important;
-            backdrop-filter: blur(20px); padding: 8px 0;
+            background: rgba(15, 23, 42, 0.97) !important;
+            backdrop-filter: blur(20px);
+            padding: 8px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
         .navbar-brand {
-            font-family: 'Playfair Display', serif; font-weight: 900;
-            font-size: 1.8rem; color: var(--white) !important;
-            display: flex; align-items: center; gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--white) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .navbar-brand .brand-icon {
-            width: 45px; height: 45px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.2rem; color: var(--dark);
-        }
-        .navbar-brand span { color: var(--accent); }
+        .navbar-brand span { color: var(--secondary); }
         .navbar .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important; font-weight: 500;
-            font-size: 0.95rem; padding: 8px 18px !important;
-            position: relative; transition: all 0.3s ease; letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 18px !important;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
-        .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--accent) !important; }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active { color: var(--secondary) !important; }
         .navbar .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
-            height: 2px; background: var(--accent); transform: scaleX(0);
-            transition: transform 0.3s ease; border-radius: 2px;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
         }
-        .navbar .nav-link:hover::after, .navbar .nav-link.active::after { transform: scaleX(1); }
-        .navbar-toggler { border: none; padding: 8px; outline: none !important; box-shadow: none !important; }
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after { transform: scaleX(1); }
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            outline: none !important;
+            box-shadow: none !important;
+        }
         .navbar-toggler .toggler-icon {
-            width: 28px; height: 3px; background: var(--white);
-            display: block; margin: 5px 0; border-radius: 3px; transition: all 0.3s ease;
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            display: block;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
         .btn-nav-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--dark) !important; font-weight: 700; padding: 10px 28px !important;
-            border-radius: 50px; border: none; font-size: 0.9rem;
-            letter-spacing: 0.5px; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(240, 165, 0, 0.3);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white) !important;
+            font-weight: 700;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            margin-top: 10px;
         }
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(240, 165, 0, 0.5);
+            box-shadow: 0 6px 25px rgba(5, 150, 105, 0.5);
+        }
+        .btn-nav-cta::after { display: none !important; }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .navbar-nav { align-items: flex-start !important; }
+            .navbar .nav-link {
+                padding: 12px 0 !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .navbar .nav-link:last-child { border-bottom: none; }
+            .nav-item.ms-lg-2 { margin-left: 0 !important; padding-top: 10px; }
         }
 
-        /* ==================== HERO SECTION ==================== */
-        .digital-hero {
-            position: relative; padding: 180px 0 100px;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-green) 100%);
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            position: relative;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
             overflow: hidden;
         }
-        .digital-hero::before {
-            content: ''; position: absolute; top: -100px; right: -100px;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.15), transparent 70%);
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.15), transparent 70%);
             border-radius: 50%;
         }
-        .digital-hero::after {
-            content: ''; position: absolute; bottom: -150px; left: -100px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(10, 110, 61, 0.2), transparent 70%);
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.1), transparent 70%);
             border-radius: 50%;
         }
-        .digital-hero-content { position: relative; z-index: 2; text-align: center; max-width: 850px; margin: 0 auto; }
-        .digital-hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(240, 165, 0, 0.15); border: 1px solid rgba(240, 165, 0, 0.3);
-            color: var(--accent-light); padding: 8px 24px; border-radius: 50px;
-            font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 25px; backdrop-filter: blur(10px);
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .digital-hero-title {
-            font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900;
-            color: var(--white); line-height: 1.2; margin-bottom: 20px;
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 150, 105, 0.15);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            color: var(--secondary-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
         }
-        .digital-hero-title .highlight {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .page-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .page-hero-title .highlight {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .digital-hero-subtitle {
-            font-size: 1.15rem; color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8; margin-bottom: 35px;
+        .page-hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
-        .digital-hero-stats {
-            display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 40px;
+        .breadcrumb-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
         }
-        .digital-hero-stat { text-align: center; }
-        .digital-hero-stat-number {
-            font-family: 'Playfair Display', serif; font-size: 2.2rem;
-            font-weight: 900; color: var(--accent); line-height: 1;
+        .breadcrumb-nav a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .digital-hero-stat-label {
-            font-size: 0.8rem; color: rgba(255, 255, 255, 0.65);
-            text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; margin-top: 5px;
-        }
+        .breadcrumb-nav a:hover { color: var(--white); }
 
         /* ==================== SECTION STYLES ==================== */
-        .section-padding { padding: 100px 0; }
-        .section-header { margin-bottom: 60px; }
+        .section-padding { padding: 80px 0; }
+        .section-header { margin-bottom: 50px; }
         .section-label {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 700; font-size: 0.85rem;
-            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
         .section-label::before {
-            content: ''; width: 30px; height: 3px; background: var(--accent);
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
             border-radius: 3px;
         }
         .section-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--dark); line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
-        .section-title .highlight { color: var(--primary); }
+        .section-title .highlight { color: var(--secondary); }
         .section-desc {
-            font-size: 1.1rem; color: var(--gray); max-width: 750px;
-            line-height: 1.8; margin-top: 15px;
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            line-height: 1.8;
         }
-        .section-desc.centered { margin-left: auto; margin-right: auto; }
+        .section-desc.centered { margin: 0 auto; }
 
-        /* ==================== WHY DIGITAL SECTION ==================== */
-        .why-digital-section { background: var(--light); }
-        .why-digital-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .why-digital-card {
-            background: var(--white); border-radius: 20px; padding: 35px 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+        /* ==================== INTRO & HIGHLIGHT ==================== */
+        .intro-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            margin-bottom: 40px;
         }
-        .why-digital-card:hover {
-            transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        .intro-box p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
-        .why-digital-icon {
-            width: 60px; height: 60px; border-radius: 16px;
-            background: linear-gradient(135deg, rgba(10, 110, 61, 0.1), rgba(10, 110, 61, 0.05));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.5rem; margin-bottom: 20px;
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(5, 150, 105, 0.08));
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--secondary);
         }
-        .why-digital-card h4 {
-            font-weight: 700; font-size: 1.15rem; color: var(--dark); margin-bottom: 12px;
-        }
-        .why-digital-card p { color: var(--gray); font-size: 0.95rem; line-height: 1.7; margin: 0; }
 
-        /* ==================== SOLUTIONS SECTION ==================== */
-        .solutions-section { background: var(--white); }
+        /* ==================== WHY DIGITAL ==================== */
+        .why-section {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        .why-section h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        .why-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .why-list li {
+            padding: 10px 15px 10px 40px;
+            position: relative;
+            color: #555;
+            font-size: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .why-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 15px;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* ==================== SOLUTION CARDS ==================== */
         .solution-card {
-            background: var(--white); border-radius: 20px; padding: 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); transition: all 0.4s ease;
-            border: 1px solid rgba(0, 0, 0, 0.04); overflow: hidden; height: 100%;
-            display: flex; flex-direction: column;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            height: 100%;
         }
         .solution-card:hover {
-            transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
-        .solution-card-header {
-            padding: 35px 30px 20px; background: linear-gradient(135deg, var(--light), var(--white));
-            border-bottom: 1px solid var(--light-gray); position: relative;
+        .solution-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
         }
-        .solution-card-number {
-            position: absolute; top: 20px; right: 25px;
-            font-family: 'Playfair Display', serif; font-size: 3rem;
-            font-weight: 900; color: rgba(0, 0, 0, 0.04); line-height: 1;
+        .solution-icon {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
         }
-        .solution-card-icon {
-            width: 70px; height: 70px; border-radius: 18px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
-            display: flex; align-items: center; justify-content: center;
-            color: #3b82f6; font-size: 1.8rem; margin-bottom: 20px;
+        .solution-icon.trace { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+        .solution-icon.check { background: linear-gradient(135deg, var(--secondary), var(--secondary-light)); }
+        .solution-icon.open { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+        .solution-icon.audit { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .solution-icon.correct { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .solution-icon.web { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .solution-icon.cloud { background: linear-gradient(135deg, var(--secondary-dark), var(--secondary)); }
+        
+        .solution-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 5px;
         }
-        .solution-card-title {
-            font-family: 'Playfair Display', serif; font-size: 1.4rem;
-            font-weight: 800; color: var(--dark); margin-bottom: 10px;
-        }
-        .solution-card-subtitle {
-            color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0;
-        }
-        .solution-card-body { padding: 25px 30px; flex: 1; display: flex; flex-direction: column; }
-        .solution-description {
-            color: #555; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;
+        .solution-desc {
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
         .solution-benefits {
-            background: var(--light); border-radius: 12px; padding: 20px;
-            margin-top: auto;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
         }
-        .solution-benefits-title {
-            font-weight: 700; color: var(--dark); font-size: 0.95rem; margin-bottom: 10px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .solution-benefits-title i { color: var(--accent); }
-        .solution-benefits ul {
-            list-style: none; padding: 0; margin: 0;
+        .solution-benefits h6 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .solution-benefits li {
-            font-size: 0.85rem; color: var(--gray); padding: 4px 0;
-            display: flex; align-items: flex-start; gap: 8px;
+            padding: 6px 0 6px 22px;
+            position: relative;
+            color: #555;
+            font-size: 0.95rem;
         }
         .solution-benefits li::before {
-            content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0;
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-        .btn-solution {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 600; font-size: 0.9rem;
-            text-decoration: none; transition: all 0.3s ease; padding: 12px 0;
-            margin-top: 15px;
-        }
-        .btn-solution:hover { gap: 15px; color: var(--primary-dark); }
 
-        /* ==================== APPROACH SECTION ==================== */
-        .approach-section { background: var(--light); }
-        .approach-steps { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 40px; }
-        .approach-step {
-            flex: 1; min-width: 250px; max-width: 300px;
-            background: var(--white); border-radius: 20px; padding: 30px;
-            text-align: center; transition: all 0.3s ease;
+        /* ==================== HOW WE HELP ==================== */
+        .how-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
         }
-        .approach-step:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
+        .how-section h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
         }
-        .approach-step-number {
-            width: 50px; height: 50px; margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-family: 'Playfair Display', serif;
-            font-size: 1.3rem; font-weight: 900; color: var(--white);
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        .approach-step h5 {
-            font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 10px;
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            transition: background 0.3s ease;
         }
-        .approach-step p {
-            color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0;
+        .help-item:hover { background: var(--light); }
+        .help-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+        .help-item p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* ==================== CTA SECTION ==================== */
-        .digital-cta {
-            background: linear-gradient(135deg, var(--dark), var(--dark-green));
-            position: relative; overflow: hidden; padding: 80px 0;
+        .page-cta {
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
+            padding: 60px 0;
+            text-align: center;
         }
-        .digital-cta::before {
-            content: ''; position: absolute; top: -80px; left: -80px;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
-            border-radius: 50%;
+        .page-cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
         }
-        .digital-cta::after {
-            content: ''; position: absolute; bottom: -80px; right: -80px;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
-            border-radius: 50%;
+        .page-cta-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
         }
-        .digital-cta-content { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; }
-        .digital-cta-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--white); line-height: 1.3; margin-bottom: 20px;
+        .btn-page-cta {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
         }
-        .digital-cta-text {
-            color: rgba(255, 255, 255, 0.75); font-size: 1.05rem;
-            line-height: 1.7; margin-bottom: 35px;
-        }
-        .btn-digital-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--dark); padding: 16px 40px; border-radius: 50px;
-            font-weight: 700; font-size: 1rem; border: none; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 10px;
-            transition: all 0.3s ease; box-shadow: 0 8px 30px rgba(240, 165, 0, 0.3);
-        }
-        .btn-digital-cta:hover {
-            transform: translateY(-3px); box-shadow: 0 12px 40px rgba(240, 165, 0, 0.5);
-            color: var(--dark);
+        .btn-page-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.5);
+            color: var(--white);
         }
 
         /* ==================== FOOTER ==================== */
         .footer {
-            background: var(--dark); padding: 60px 0 0;
+            background: var(--dark);
+            padding: 60px 0 0;
         }
         .footer-brand {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            font-weight: 900; color: var(--white); margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
         }
-        .footer-brand span { color: var(--accent); }
+        .footer-brand span { color: var(--secondary); }
         .footer-desc {
-            color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;
-            line-height: 1.7; margin-bottom: 25px; max-width: 350px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 350px;
         }
         .footer h5 {
-            color: var(--white); font-weight: 700; font-size: 1.1rem;
-            margin-bottom: 25px; position: relative;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
         }
         .footer h5::after {
-            content: ''; position: absolute; bottom: -8px; left: 0;
-            width: 30px; height: 3px; background: var(--accent); border-radius: 3px;
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
         }
         .footer-links { list-style: none; padding: 0; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5); text-decoration: none;
-            font-size: 0.9rem; transition: all 0.3s ease;
-            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
         .footer-bottom {
-            margin-top: 50px; padding: 25px 0;
+            margin-top: 50px;
+            padding: 25px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .footer-bottom p {
-            color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; margin: 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
         }
-        .footer-bottom-links { display: flex; gap: 25px; }
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
         .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.4); text-decoration: none;
-            font-size: 0.85rem; transition: color 0.3s ease;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
         }
-        .footer-bottom-links a:hover { color: var(--accent); }
+        .footer-bottom-links a:hover { color: var(--secondary); }
 
-        /* ==================== ANIMATIONS ==================== */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ==================== BACK TO TOP ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(5, 150, 105, 0.3);
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ==================== LOGO CONTAINER ==================== */
+        .navbar-brand .brand-icon {
+            width: 130px;
+            height: 90px;
+            max-width: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        .navbar-brand .brand-icon img,
+        .navbar-brand .brand-icon svg {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .footer .brand-icon {
+            width: 130px;
+            height: 100px;
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        .footer .brand-icon img,
+        .footer .brand-icon svg {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 991.98px) {
-            .digital-hero-title { font-size: 2.5rem; }
-            .digital-hero-subtitle { font-size: 1rem; }
+            .page-hero-title { font-size: 2.8rem; }
             .section-title { font-size: 2rem; }
-            .navbar-collapse {
-                background: rgba(10, 26, 18, 0.98);
-                backdrop-filter: blur(20px); border-radius: 15px;
-                padding: 20px; margin-top: 15px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
+            .solution-header { flex-direction: column; text-align: center; }
+            .solution-icon { margin: 0 auto; }
         }
         @media (max-width: 767.98px) {
-            .digital-hero { padding: 140px 0 70px; }
-            .digital-hero-title { font-size: 2rem; }
-            .digital-hero-stats { gap: 25px; }
-            .digital-hero-stat-number { font-size: 1.8rem; }
-            .section-padding { padding: 70px 0; }
-            .section-title { font-size: 1.7rem; }
-            .digital-cta-title { font-size: 1.9rem; }
+            .page-hero { padding: 120px 0 60px; }
+            .page-hero-title { font-size: 2.2rem; }
+            .page-hero-subtitle { font-size: 1rem; }
+            .section-padding { padding: 60px 0; }
+            .section-title { font-size: 1.8rem; }
+            .intro-box, .why-section, .solution-card, .how-section {
+                padding: 25px 20px;
+            }
+            .solution-title { font-size: 1.3rem; }
+            .page-cta-title { font-size: 1.8rem; }
             .footer-bottom { flex-direction: column; text-align: center; }
+            .why-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 575.98px) {
+            .page-hero-title { font-size: 1.9rem; }
+            .section-title { font-size: 1.6rem; }
+            .solution-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+            .btn-page-cta { width: 100%; max-width: 300px; justify-content: center; }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-icon"></div>
-        <div class="loader-text">FoodSafe Pro</div>
-    </div>
+<body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <div class="brand-icon"><i class="fas fa-shield-halved"></i></div>
-                Food<span>Safe</span>Pro
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-icon"><img src="images/logo1.png" alt="CQBS Logo"></div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="toggler-icon"></span><span class="toggler-icon"></span><span class="toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center gap-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="digital.html">Digital Platform</a></li>
                     <li class="nav-item"><a class="nav-link" href="consult.html">Consultancy</a></li>
                     <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="digital.html">Digital Platform</a></li>
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link btn-nav-cta" href="contact.html">Request Demo</a>
+                        <a class="nav-link btn-nav-cta" href="index.html#contact">Get Free Consultation</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="digital-hero">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <div class="digital-hero-content fade-up">
-                <div class="digital-hero-badge">
-                    <i class="fas fa-laptop-code"></i> Digital Solutions
+            <div class="page-hero-content fade-up">
+                <div class="page-hero-badge">
+                    <i class="fas fa-laptop-code"></i>
+                    Digital Platforms
                 </div>
-                <h1 class="digital-hero-title">
-                    From Manual Records to <span class="highlight">Real-Time Control</span>
+                <h1 class="page-hero-title">
+                    Smart <span class="highlight">Digital Solutions</span> for Food Safety
                 </h1>
-                <p class="digital-hero-subtitle">
-                    Move from paper checklists, scattered spreadsheets, and delayed reporting to simple, practical digital platforms designed for real food business operations. Track, prove, and improve food safety compliance effortlessly.
+                <p class="page-hero-subtitle">
+                    Move from manual paperwork to practical digital platforms that make food safety management easier, faster, and more reliable.
                 </p>
-                <a href="#solutions" class="btn-digital-cta">
-                    Explore Solutions <i class="fas fa-arrow-right"></i>
-                </a>
-                <div class="digital-hero-stats">
-                    <div class="digital-hero-stat">
-                        <div class="digital-hero-stat-number" data-count="150">0</div>
-                        <div class="digital-hero-stat-label">Digital Platforms Built</div>
-                    </div>
-                    <div class="digital-hero-stat">
-                        <div class="digital-hero-stat-number" data-count="95">0</div>
-                        <div class="digital-hero-stat-label">% Paperwork Reduced</div>
-                    </div>
-                    <div class="digital-hero-stat">
-                        <div class="digital-hero-stat-number" data-count="1200">0</div>
-                        <div class="digital-hero-stat-label">Records Digitized Monthly</div>
-                    </div>
-                </div>
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Digital Platforms</span>
+                </nav>
             </div>
         </div>
     </section>
 
-    <!-- Why Digital Matters -->
-    <section class="why-digital-section section-padding">
+    <!-- Introduction -->
+    <section class="section-padding">
         <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Why It Matters</div>
-                <h2 class="section-title">Why Digital Food Safety <span class="highlight">Platforms Matter</span></h2>
-                <p class="section-desc centered">
-                    Missing or incomplete records create serious risks. A missed cleaning checklist, an unrecorded temperature log, or a delayed corrective action can lead to audit findings, customer complaints, and compliance failures.
-                </p>
+            <div class="intro-box fade-up">
+                <p>Food safety records should be easy to manage, easy to verify, and ready whenever they are needed. Many food businesses still depend on paper checklists, manual registers, Excel sheets, and WhatsApp follow-ups. This often leads to missed records, delayed reporting, poor traceability, and difficulty during audits.</p>
+                <p>At CQBS, we help food manufacturers, food handlers, kitchens, catering units, warehouses, restaurants, and food service businesses move from manual recordkeeping to simple and practical digital platforms. Our tools help teams monitor daily operations, maintain compliance records, track corrective actions, and generate reports with better accuracy and control.</p>
+                <div class="highlight-box">
+                    <strong>Our digital solutions are designed around real food business operations. The focus is not just on software, but on making food safety management easier, faster, and more reliable.</strong>
+                </div>
             </div>
-            <div class="why-digital-grid">
-                <div class="why-digital-card fade-up">
-                    <div class="why-digital-icon"><i class="fas fa-clock"></i></div>
-                    <h4>Real-Time Record Keeping</h4>
-                    <p>Capture data instantly as operations happen. Eliminate backdating, guesswork, and last-minute documentation rushes.</p>
-                </div>
-                <div class="why-digital-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="why-digital-icon"><i class="fas fa-file-pdf"></i></div>
-                    <h4>Reduce Paper Dependency</h4>
-                    <p>Replace bulky registers and loose worksheets with secure, searchable, and easily accessible digital formats.</p>
-                </div>
-                <div class="why-digital-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="why-digital-icon"><i class="fas fa-route"></i></div>
-                    <h4>Improve Traceability</h4>
-                    <p>Track raw materials, batch movements, production links, and dispatch records with complete end-to-end visibility.</p>
-                </div>
-                <div class="why-digital-card fade-up" style="transition-delay: 0.3s;">
-                    <div class="why-digital-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h4>Streamline Audit Readiness</h4>
-                    <p>Present organized, timestamped, and tamper-evident records confidently during customer or certification audits.</p>
-                </div>
-                <div class="why-digital-card fade-up" style="transition-delay: 0.4s;">
-                    <div class="why-digital-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h4>Management Visibility</h4>
-                    <p>Give leadership one-click access to dashboards showing compliance status, pending actions, and operational performance.</p>
-                </div>
-                <div class="why-digital-card fade-up" style="transition-delay: 0.5s;">
-                    <div class="why-digital-icon"><i class="fas fa-comments"></i></div>
-                    <h4>Bridge Communication Gaps</h4>
-                    <p>Align workers, supervisors, and management with clear task assignments, instant alerts, and structured follow-ups.</p>
-                </div>
+
+            <!-- Why Digital Matters -->
+            <div class="why-section fade-up">
+                <h4>Why Digital Food Safety Platforms Matter</h4>
+                <p style="color:#555; margin-bottom:25px;">In food safety, missing or incomplete records can create serious problems. A missed cleaning checklist, an incomplete temperature log, an unrecorded supplier detail, or a delayed corrective action can lead to audit findings, customer complaints, and compliance risks.</p>
+                <p style="color:#444; margin-bottom:20px; font-weight:500;">Digital platforms help food businesses:</p>
+                <ul class="why-list">
+                    <li>Maintain real-time food safety records</li>
+                    <li>Reduce dependency on paper-based registers</li>
+                    <li>Improve traceability across production and supply chain activities</li>
+                    <li>Track hygiene, cleaning, opening, and closing checks</li>
+                    <li>Record corrective actions with responsibility and timelines</li>
+                    <li>Prepare better for customer, regulatory, and certification audits</li>
+                    <li>Provide senior management with instant, one-click access to reports on the current status of the business, eliminating the need to search multiple sources</li>
+                    <li>Improve management visibility through dashboards and reports</li>
+                    <li>Reduce communication gaps between workers, supervisors, and management</li>
+                </ul>
+                <p style="color:#555; margin-top:25px; font-style:italic; text-align:center;">CQBS helps food businesses create digital systems that are simple for teams to use and useful for management review.</p>
             </div>
         </div>
     </section>
 
-    <!-- Digital Solutions -->
-    <section class="solutions-section section-padding" id="solutions">
+    <!-- Solutions Section -->
+    <section class="section-padding" style="background:var(--light);">
         <div class="container">
             <div class="section-header text-center fade-up">
                 <div class="section-label justify-content-center">Our Solutions</div>
-                <h2 class="section-title">Digital Platform <span class="highlight">Portfolio</span></h2>
+                <h2 class="section-title">Digital Platform <span class="highlight">Solutions</span></h2>
                 <p class="section-desc centered">
-                    Custom-built tools designed around actual food operations. Not just software, but practical systems that make food safety management easier, faster, and more reliable.
+                    Purpose-built tools designed to digitize, streamline, and secure your food safety documentation and daily operations.
                 </p>
             </div>
 
             <div class="row g-4">
-                <!-- Traceability -->
+                <!-- 1. Traceability -->
                 <div class="col-lg-6 fade-up">
                     <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">01</div>
-                            <div class="solution-card-icon"><i class="fas fa-link"></i></div>
-                            <h3 class="solution-card-title">Traceability & Supply Chain Portals</h3>
-                            <p class="solution-card-subtitle">End-to-end visibility from raw material to finished product dispatch</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Record supplier details, batch information, material movement, production links, dispatch records, and supporting documents in one centralized system.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Quickly track raw materials, finished products, and suppliers</li>
-                                    <li>Support faster investigation during complaints, recalls, or audit checks</li>
-                                    <li>Maintain complete documentation for regulatory and customer queries</li>
-                                </ul>
+                        <div class="solution-header">
+                            <div class="solution-icon trace"><i class="fas fa-route"></i></div>
+                            <div>
+                                <h3 class="solution-title">Traceability & Supply Chain Portals</h3>
                             </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        <p class="solution-desc">Traceability is one of the most important parts of food safety management. A food business must know where raw materials came from, how they were handled, where they were used, and where the final product was supplied. CQBS develops traceability and supply chain portals that help food businesses record supplier details, batch information, material movement, production links, dispatch records, and supporting documents.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Quickly track raw materials, finished products, suppliers, and batches</li>
+                            <li>Support faster investigation during complaints, recalls, audit checks, and customer queries</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Daily Checklists -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">02</div>
-                            <div class="solution-card-icon"><i class="fas fa-tasks"></i></div>
-                            <h3 class="solution-card-title">Daily Digital Checklists</h3>
-                            <p class="solution-card-subtitle">Structured, customizable forms for daily operational controls</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Replace manual registers with digital checklists for hygiene, cleaning, temperature control, pest control, equipment condition, and food handling practices.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Ensure checks are completed consistently and on schedule</li>
-                                    <li>Management can review completion status and identify gaps instantly</li>
-                                    <li>Take timely action before small issues escalate into compliance risks</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Opening & Closing -->
+                <!-- 2. Daily Checklists -->
                 <div class="col-lg-6 fade-up">
                     <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">03</div>
-                            <div class="solution-card-icon"><i class="fas fa-door-open"></i></div>
-                            <h3 class="solution-card-title">Opening & Closing Checks</h3>
-                            <p class="solution-card-subtitle">Confirm readiness and ensure proper daily closure</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Simple digital formats to verify workplace cleanliness, equipment readiness, temperature control, and safety requirements before and after operations.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Supervisors confirm operational readiness before work begins</li>
-                                    <li>Ensure proper closure, storage, and sanitation at day-end</li>
-                                    <li>Reduce hygiene risks, missed tasks, and operational confusion</li>
-                                </ul>
+                        <div class="solution-header">
+                            <div class="solution-icon check"><i class="fas fa-clipboard-check"></i></div>
+                            <div>
+                                <h3 class="solution-title">Daily Digital Checklists</h3>
                             </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        <p class="solution-desc">Daily checks are important for hygiene, cleaning, temperature control, pest control, equipment condition, personal hygiene, and food handling practices. When these checks are handled manually, records may be missed, delayed, or difficult to verify. CQBS creates digital checklists for food handlers, supervisors, quality teams, and operations staff. These checklists can be customized according to the department, process, and daily control requirements.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Complete daily checks in a structured way</li>
+                            <li>Management can review completion status, identify gaps, and take timely action before small issues become bigger problems</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Audit Logbooks -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">04</div>
-                            <div class="solution-card-icon"><i class="fas fa-book-open"></i></div>
-                            <h3 class="solution-card-title">Digital Audit Logbooks</h3>
-                            <p class="solution-card-subtitle">Centralized tracking for inspections, observations, and follow-ups</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Record audit observations, assign responsibility, attach evidence, monitor closure status, and maintain a clear audit history for internal and external reviews.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Maintain organized, searchable audit records instead of scattered files</li>
-                                    <li>Present evidence confidently during inspections and customer visits</li>
-                                    <li>Improve accountability, transparency, and audit readiness</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Corrective Actions -->
+                <!-- 3. Opening & Closing Checks -->
                 <div class="col-lg-6 fade-up">
                     <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">05</div>
-                            <div class="solution-card-icon"><i class="fas fa-tools"></i></div>
-                            <h3 class="solution-card-title">Corrective Action Tracking</h3>
-                            <p class="solution-card-subtitle">Ensure issues are assigned, followed, verified, and closed</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Record non-conformities, assign to responsible persons, set deadlines, update with evidence, and track closure status through structured workflows.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Close corrective actions on time and reduce repeated issues</li>
-                                    <li>Support stronger compliance, better follow-up, and continuous improvement</li>
-                                    <li>Provide management with clear visibility on pending and resolved actions</li>
-                                </ul>
+                        <div class="solution-header">
+                            <div class="solution-icon open"><i class="fas fa-door-open"></i></div>
+                            <div>
+                                <h3 class="solution-title">Opening & Closing Checks</h3>
                             </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        <p class="solution-desc">Opening and closing checks are essential for restaurants, kitchens, catering units, bakeries, retail food outlets, and food manufacturing units. These checks confirm that the workplace is clean, equipment is ready, temperatures are controlled, and safety requirements are followed before and after operations. CQBS helps create simple digital opening and closing check formats that are easy to fill, monitor, and review.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Supervisors can confirm readiness before operations begin and ensure proper closure at the end of the day</li>
+                            <li>Reduces hygiene risks, missed tasks, and operational confusion</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Custom Websites -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
+                <!-- 4. Audit Logbooks -->
+                <div class="col-lg-6 fade-up">
                     <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">06</div>
-                            <div class="solution-card-icon"><i class="fas fa-globe"></i></div>
-                            <h3 class="solution-card-title">Custom Websites for Food Businesses</h3>
-                            <p class="solution-card-subtitle">Professional online presence that builds trust and drives enquiries</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Tailored website development featuring service pages, product information, certification details, training modules, enquiry forms, and compliance showcases.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Present certifications, facilities, and services professionally</li>
-                                    <li>Improve customer communication and generate qualified enquiries</li>
-                                    <li>Strengthen brand credibility in competitive food markets</li>
-                                </ul>
+                        <div class="solution-header">
+                            <div class="solution-icon audit"><i class="fas fa-book"></i></div>
+                            <div>
+                                <h3 class="solution-title">Digital Audit Logbooks</h3>
                             </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        <p class="solution-desc">Audit logbooks help businesses maintain records of inspections, internal audits, customer visits, hygiene rounds, non-conformities, observations, and follow-up actions. Paper-based logbooks are often difficult to track, search, and review. CQBS develops digital audit logbooks that allow teams to record audit observations, assign responsibility, attach evidence, and monitor closure status.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Maintain a clear audit history and present evidence more confidently during inspections</li>
+                            <li>Improves accountability, transparency, and audit readiness</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <!-- Cloud Dashboard (Full Width) -->
-            <div class="row g-4 mt-2">
+                <!-- 5. Corrective Action Tracking -->
+                <div class="col-lg-6 fade-up">
+                    <div class="solution-card">
+                        <div class="solution-header">
+                            <div class="solution-icon correct"><i class="fas fa-wrench"></i></div>
+                            <div>
+                                <h3 class="solution-title">Corrective Action Tracking</h3>
+                            </div>
+                        </div>
+                        <p class="solution-desc">Corrective actions are effective only when they are properly assigned, followed, verified, and closed. In many food businesses, issues are recorded but not tracked until completion. CQBS builds corrective action tracking systems where issues can be recorded, assigned to responsible persons, given deadlines, updated with evidence, and reviewed by management.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Close non-conformities on time and reduce repeated issues</li>
+                            <li>Supports stronger compliance, better follow-up, and continuous improvement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Custom Websites -->
+                <div class="col-lg-6 fade-up">
+                    <div class="solution-card">
+                        <div class="solution-header">
+                            <div class="solution-icon web"><i class="fas fa-globe"></i></div>
+                            <div>
+                                <h3 class="solution-title">Custom Websites for Food Businesses</h3>
+                            </div>
+                        </div>
+                        <p class="solution-desc">A professional website helps food businesses present their services, certifications, products, facilities, enquiry options, and business credibility. It is especially useful for food manufacturers, food service companies, consultants, laboratories, training providers, and food brands. CQBS supports food businesses with custom website development based on their services, target customers, and compliance needs.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Professional online presence that builds trust</li>
+                            <li>Improves customer communication and supports enquiry generation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 7. Cloud Dashboard (Full Width) -->
                 <div class="col-12 fade-up">
                     <div class="solution-card">
-                        <div class="solution-card-header">
-                            <div class="solution-card-number">07</div>
-                            <div class="solution-card-icon"><i class="fas fa-server"></i></div>
-                            <h3 class="solution-card-title">Cloud-Based Dashboard & Reports</h3>
-                            <p class="solution-card-subtitle">Instant management visibility and data-driven decision making</p>
-                        </div>
-                        <div class="solution-card-body">
-                            <p class="solution-description">
-                                Centralized dashboards showing checklist status, audit findings, corrective actions, supplier performance, and overall compliance metrics. Accessible anytime, anywhere.
-                            </p>
-                            <div class="solution-benefits">
-                                <div class="solution-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Review critical information from one place instead of scattered registers</li>
-                                    <li>Save management time and improve operational visibility</li>
-                                    <li>Support faster, more accurate decision-making based on real-time data</li>
-                                </ul>
+                        <div class="solution-header">
+                            <div class="solution-icon cloud"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <div>
+                                <h3 class="solution-title">Cloud-Based Dashboard & Reports</h3>
                             </div>
-                            <a href="#contact" class="btn-solution">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        <p class="solution-desc">Management needs clear and updated information to make better decisions. When records are stored in different registers, files, or spreadsheets, it becomes difficult to understand pending actions, recurring issues, checklist completion, and overall compliance status. CQBS helps create cloud-based dashboards and reports that show key food safety activities, checklist status, audit findings, corrective actions, supplier status, and operational performance.</p>
+                        <ul class="solution-benefits">
+                            <h6><i class="fas fa-star"></i> Benefits for Your Food Business</h6>
+                            <li>Management team can review important information from one place</li>
+                            <li>Saves time, improves visibility, and supports faster decision-making</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Approach -->
-    <section class="approach-section section-padding">
+    <!-- How CQBS Helps -->
+    <section class="section-padding">
         <div class="container">
             <div class="section-header text-center fade-up">
                 <div class="section-label justify-content-center">Our Approach</div>
-                <h2 class="section-title">How We Build <span class="highlight">Practical Digital Systems</span></h2>
-                <p class="section-desc centered">
-                    We don't provide generic tools. We first understand your operation, then design platforms that fit your workflow, people, and management needs.
-                </p>
+                <h2 class="section-title">How CQBS <span class="highlight">Helps Food Businesses</span></h2>
             </div>
-            <div class="approach-steps">
-                <div class="approach-step fade-up">
-                    <div class="approach-step-number">1</div>
-                    <h5>Understand Your Workflow</h5>
-                    <p>Study existing manual records, operational flow, and pain points across departments.</p>
+
+            <div class="how-section fade-up">
+                <p style="font-size:1.05rem; color:#444; margin-bottom:25px;">CQBS does not provide generic digital tools. We first understand how your food operation works, what records are required, who will use the system, and what management needs to monitor.</p>
+                <p style="color:#555; margin-bottom:20px; font-weight:500;">CQBS supports food businesses by:</p>
+                
+                <div class="help-grid">
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-search"></i></div>
+                        <p>Studying existing manual records and operational flow</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-bullseye"></i></div>
+                        <p>Identifying areas where digital tracking can reduce errors and delays</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-pencil-ruler"></i></div>
+                        <p>Designing simple forms, checklists, dashboards, and reports</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-sliders-h"></i></div>
+                        <p>Customizing platforms for manufacturing, catering, retail, or food handling operations</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-sync-alt"></i></div>
+                        <p>Helping teams shift from paper-based records to digital systems</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-shield-alt"></i></div>
+                        <p>Supporting traceability, audit readiness, and corrective action management</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-icon"><i class="fas fa-users"></i></div>
+                        <p>Creating user-friendly platforms for workers, supervisors, and managers</p>
+                    </div>
                 </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.1s;">
-                    <div class="approach-step-number">2</div>
-                    <h5>Identify Digital Needs</h5>
-                    <p>Pinpoint where digital tracking can reduce errors, delays, and communication gaps.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.2s;">
-                    <div class="approach-step-number">3</div>
-                    <h5>Design Simple Tools</h5>
-                    <p>Create user-friendly forms, checklists, dashboards, and reports tailored to your sector.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.3s;">
-                    <div class="approach-step-number">4</div>
-                    <h5>Implement & Train</h5>
-                    <p>Guide your team through migration from paper to digital with hands-on training and support.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.4s;">
-                    <div class="approach-step-number">5</div>
-                    <h5>Support & Scale</h5>
-                    <p>Continuously optimize platforms for traceability, audit readiness, and corrective action management.</p>
-                </div>
+
+                <p style="color:#555; margin-top:30px; text-align:center; font-size:1.05rem;">
+                    Whether your business wants to improve traceability, reduce paperwork, strengthen audit records, or monitor daily food safety tasks, CQBS can help you build a practical digital system that fits your operations.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="digital-cta">
+    <section class="page-cta">
         <div class="container">
-            <div class="digital-cta-content fade-up">
-                <h2 class="digital-cta-title">Ready to Digitize Your Food Safety Records?</h2>
-                <p class="digital-cta-text">
-                    Whether you want to improve traceability, reduce paperwork, strengthen audit records, or monitor daily food safety tasks, our team can help you build a practical digital system that fits your operations perfectly.
-                </p>
-                <a href="#contact" class="btn-digital-cta">
-                    Schedule a Platform Demo <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+            <h3 class="page-cta-title">Ready to Digitize Your Food Safety Management?</h3>
+            <p class="page-cta-text">
+                With CQBS digital platforms, food safety management becomes easier to track, easier to prove, and easier to improve. Your team gets better control over daily operations, while management gets clear visibility of compliance, records, and performance.
+            </p>
+            <a href="index.html#contact" class="btn-page-cta">
+                Request a Demo <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="footer-brand">Food<span>Safe</span>Pro</div>
+                    <div class="brand-icon"><img src="images/logo.png" alt="CQBS Logo"></div>
                     <p class="footer-desc">
-                        Your trusted partner for food safety consultancy, training, and digital compliance solutions. Helping businesses achieve global food safety standards.
+                        Your trusted partner for compliance and quality consultancy, training, and digital solutions. Helping businesses achieve global quality standards.
                     </p>
+                    <div class="contact-socials" style="border: none; padding: 0; margin: 0; display:flex; gap:12px;">
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5>Digital Solutions</h5>
+                    <h5>Services</h5>
                     <ul class="footer-links">
-                        <li><a href="#solutions">Traceability Portals</a></li>
-                        <li><a href="#solutions">Digital Checklists</a></li>
-                        <li><a href="#solutions">Audit Logbooks</a></li>
-                        <li><a href="#solutions">Corrective Actions</a></li>
-                        <li><a href="#solutions">Cloud Dashboards</a></li>
+                        <li><a href="index.html#services">Consultancy</a></li>
+                        <li><a href="index.html#services">Training</a></li>
+                        <li><a href="#digital">Digital Platforms</a></li>
+                        <li><a href="index.html#certifications">Certification Support</a></li>
+                        <li><a href="index.html#services">Internal Audits</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5>Quick Links</h5>
+                    <h5>Certifications</h5>
                     <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/consultancy">Consultancy</a></li>
-                        <li><a href="/training">Training</a></li>
-                        <li><a href="/#certifications">Certifications</a></li>
-                        <li><a href="/#contact">Contact Us</a></li>
+                        <li><a href="index.html#certifications">ISO 9001</a></li>
+                        <li><a href="index.html#certifications">ISO 14001</a></li>
+                        <li><a href="index.html#certifications">ISO 45001</a></li>
+                        <li><a href="index.html#certifications">ISO 22000</a></li>
+                        <li><a href="index.html#certifications">BRCGS</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <h5>Contact Digital Team</h5>
+                    <h5>Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="tel:+971501234567"><i class="fas fa-phone"></i> +971 50 123 4567</a></li>
-                        <li><a href="mailto:digital@foodsafepro.com"><i class="fas fa-envelope"></i> digital@foodsafepro.com</a></li>
-                        <li><a href="#contact"><i class="fas fa-calendar-check"></i> Request a Demo</a></li>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 FoodSafe Pro. All rights reserved.</p>
+                <p>&copy; 2026 CQBS - Compliance & Quality Based Solutions. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
-                    <a href="/#contact">Contact Us</a>
+                    <a href="#">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 800);
-        });
-
         // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
+        const backToTopBtn = document.getElementById('backToTop');
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
+            const scrollY = window.scrollY;
+            if (scrollY > 80) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            if (scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
         });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -852,66 +1090,7 @@
                 // Close mobile nav if open
                 const navbarCollapse = document.querySelector('.navbar-collapse');
                 if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        // Counter animation for hero stats
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('[data-count]');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-count'));
-                        const duration = 2000;
-                        const step = target / (duration / 16);
-                        let current = 0;
-                        const updateCounter = () => {
-                            current += step;
-                            if (current < target) {
-                                counter.textContent = Math.floor(current) + '+';
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.textContent = target + '+';
-                            }
-                        };
-                        updateCounter();
-                    });
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const heroStats = document.querySelector('.digital-hero-stats');
-        if (heroStats) counterObserver.observe(heroStats);
-
-        // Active nav link based on scroll position
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link:not(.btn-nav-cta)');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+                    bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
                 }
             });
         });

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quality & Compliance Training Programs | CQBS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Training Programs | CQBS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #1e40af;
@@ -26,425 +29,796 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
             overflow-x: hidden;
-            background: var(--white);
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.6;
         }
-
-        /* ==================== PRELOADER ==================== */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark); z-index: 99999;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-        .loader-icon {
-            width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1);
-            border-top-color: var(--secondary); border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .loader-text {
-            color: var(--white); margin-top: 20px; font-weight: 600;
-            font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ==================== NAVBAR ==================== */
         .navbar {
-            padding: 15px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1050; background: transparent;
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1050;
+            background: transparent;
         }
         .navbar.scrolled {
             background: rgba(15, 23, 42, 0.97) !important;
-            backdrop-filter: blur(20px); padding: 8px 0;
+            backdrop-filter: blur(20px);
+            padding: 8px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
         .navbar-brand {
-            font-family: 'Playfair Display', serif; font-weight: 900;
-            font-size: 1.8rem; color: var(--white) !important;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .navbar-brand .brand-icon {
-            width: 130px; height: 90px; max-width: 100%;
-            background: white; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            padding: 6px; box-sizing: border-box;
-        }
-        .navbar-brand .brand-icon img {
-            max-width: 100%; max-height: 100%;
-            width: auto; height: auto; object-fit: contain;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--white) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .navbar-brand span { color: var(--secondary); }
         .navbar .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important; font-weight: 500;
-            font-size: 0.95rem; padding: 8px 18px !important;
-            position: relative; transition: all 0.3s ease; letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 18px !important;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
-        .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--secondary) !important; }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active { color: var(--secondary) !important; }
         .navbar .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
-            height: 2px; background: var(--secondary); transform: scaleX(0);
-            transition: transform 0.3s ease; border-radius: 2px;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
         }
-        .navbar .nav-link:hover::after, .navbar .nav-link.active::after { transform: scaleX(1); }
-        .navbar-toggler { border: none; padding: 8px; outline: none !important; box-shadow: none !important; }
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after { transform: scaleX(1); }
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            outline: none !important;
+            box-shadow: none !important;
+        }
         .navbar-toggler .toggler-icon {
-            width: 28px; height: 3px; background: var(--white);
-            display: block; margin: 5px 0; border-radius: 3px; transition: all 0.3s ease;
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            display: block;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: var(--white) !important; font-weight: 700; padding: 10px 28px !important;
-            border-radius: 50px; border: none; font-size: 0.9rem;
-            letter-spacing: 0.5px; transition: all 0.3s ease;
+            color: var(--white) !important;
+            font-weight: 700;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            margin-top: 10px;
         }
         .btn-nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(5, 150, 105, 0.5);
         }
+        .btn-nav-cta::after { display: none !important; }
 
-        /* ==================== HERO SECTION ==================== */
-        .training-hero {
-            position: relative; padding: 180px 0 100px;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-blue) 100%);
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 15px;
+                
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .navbar-nav { align-items: flex-start !important; }
+            .navbar .nav-link {
+                padding: 12px 0 !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .navbar .nav-link:last-child { border-bottom: none; }
+            .nav-item.ms-lg-2 { margin-left: 0 !important; padding-top: 10px; }
+        }
+
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            position: relative;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
             overflow: hidden;
         }
-        .training-hero::before {
-            content: ''; position: absolute; top: -100px; right: -100px;
-            width: 500px; height: 500px;
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
             background: radial-gradient(circle, rgba(5, 150, 105, 0.15), transparent 70%);
             border-radius: 50%;
         }
-        .training-hero::after {
-            content: ''; position: absolute; bottom: -150px; left: -100px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(30, 64, 175, 0.2), transparent 70%);
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.1), transparent 70%);
             border-radius: 50%;
         }
-        .training-hero-content { position: relative; z-index: 2; text-align: center; max-width: 800px; margin: 0 auto; }
-        .training-hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(5, 150, 105, 0.15); border: 1px solid rgba(5, 150, 105, 0.3);
-            color: var(--secondary-light); padding: 8px 24px; border-radius: 50px;
-            font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 25px; backdrop-filter: blur(10px);
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .training-hero-title {
-            font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900;
-            color: var(--white); line-height: 1.2; margin-bottom: 20px;
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 150, 105, 0.15);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            color: var(--secondary-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
         }
-        .training-hero-title .highlight {
+        .page-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .page-hero-title .highlight {
             background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .training-hero-subtitle {
-            font-size: 1.15rem; color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8; margin-bottom: 35px;
+        .page-hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
-        .training-hero-stats {
-            display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 40px;
+        .breadcrumb-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
         }
-        .training-hero-stat { text-align: center; }
-        .training-hero-stat-number {
-            font-family: 'Playfair Display', serif; font-size: 2.2rem;
-            font-weight: 900; color: var(--secondary); line-height: 1;
+        .breadcrumb-nav a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .training-hero-stat-label {
-            font-size: 0.8rem; color: rgba(255, 255, 255, 0.65);
-            text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; margin-top: 5px;
-        }
+        .breadcrumb-nav a:hover { color: var(--white); }
 
         /* ==================== SECTION STYLES ==================== */
-        .section-padding { padding: 100px 0; }
-        .section-header { margin-bottom: 60px; }
+        .section-padding { padding: 80px 0; }
+        .section-header { margin-bottom: 50px; }
         .section-label {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 700; font-size: 0.85rem;
-            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
         .section-label::before {
-            content: ''; width: 30px; height: 3px; background: var(--secondary);
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
             border-radius: 3px;
         }
         .section-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--dark); line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
         .section-title .highlight { color: var(--secondary); }
         .section-desc {
-            font-size: 1.1rem; color: var(--gray); max-width: 700px;
-            line-height: 1.8; margin-top: 15px;
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            line-height: 1.8;
         }
-        .section-desc.centered { margin-left: auto; margin-right: auto; }
+        .section-desc.centered { margin: 0 auto; }
 
-        /* ==================== WHY TRAINING SECTION ==================== */
-        .why-training-section { background: var(--light); }
-        .why-training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .why-training-card {
-            background: var(--white); border-radius: 20px; padding: 35px 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+        /* ==================== INTRO SECTION ==================== */
+        .training-intro {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            margin-bottom: 40px;
         }
-        .why-training-card:hover {
-            transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        .training-intro p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
-        .why-training-icon {
-            width: 60px; height: 60px; border-radius: 16px;
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(30, 64, 175, 0.05));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.5rem; margin-bottom: 20px;
+        .training-intro .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(5, 150, 105, 0.08));
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--secondary);
         }
-        .why-training-card h4 {
-            font-weight: 700; font-size: 1.15rem; color: var(--dark); margin-bottom: 12px;
-        }
-        .why-training-card p { color: var(--gray); font-size: 0.95rem; line-height: 1.7; margin: 0; }
 
-        /* ==================== PROGRAMS SECTION ==================== */
-        .programs-section { background: var(--white); }
+        /* ==================== WHY TRAINING ==================== */
+        .why-training {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        .why-training h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        .why-training-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .why-training-list li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: #555;
+            font-size: 1rem;
+        }
+        .why-training-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* ==================== PROGRAM CARDS ==================== */
         .program-card {
-            background: var(--white); border-radius: 20px; padding: 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); transition: all 0.4s ease;
-            border: 1px solid rgba(0, 0, 0, 0.04); overflow: hidden; height: 100%;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
         }
         .program-card:hover {
-            transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
-        .program-card-header {
-            padding: 35px 30px 20px; background: linear-gradient(135deg, var(--light), var(--white));
+        .program-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
             border-bottom: 1px solid var(--light-gray);
         }
-        .program-card-icon {
-            width: 70px; height: 70px; border-radius: 18px;
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(5, 150, 105, 0.05));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--secondary); font-size: 1.8rem; margin-bottom: 20px;
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
         }
-        .program-card-title {
-            font-family: 'Playfair Display', serif; font-size: 1.4rem;
-            font-weight: 800; color: var(--dark); margin-bottom: 10px;
+        .program-icon.haccp { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .program-icon.audit { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+        .program-icon.supervisor { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+        .program-icon.manager { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .program-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 5px;
         }
-        .program-card-subtitle {
-            color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0;
+        .program-level {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+            display: inline-block;
+            background: var(--light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
         }
-        .program-card-body { padding: 25px 30px; }
-        .program-features { list-style: none; padding: 0; margin: 0 0 20px 0; }
-        .program-features li {
-            padding: 8px 0; border-bottom: 1px solid var(--light-gray);
-            display: flex; align-items: flex-start; gap: 10px;
-            font-size: 0.9rem; color: #555;
-        }
-        .program-features li:last-child { border-bottom: none; }
-        .program-features li i {
-            color: var(--secondary); margin-top: 4px; font-size: 0.7rem; flex-shrink: 0;
+        .program-desc {
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
         .program-benefits {
-            background: var(--light); border-radius: 12px; padding: 20px;
-            margin-top: 15px;
-        }
-        .program-benefits-title {
-            font-weight: 700; color: var(--dark); font-size: 0.95rem; margin-bottom: 10px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .program-benefits-title i { color: var(--secondary); }
-        .program-benefits ul {
-            list-style: none; padding: 0; margin: 0;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
         }
         .program-benefits li {
-            font-size: 0.85rem; color: var(--gray); padding: 4px 0;
-            display: flex; align-items: flex-start; gap: 8px;
+            padding: 8px 0 8px 28px;
+            position: relative;
+            color: #555;
+            font-size: 0.95rem;
         }
         .program-benefits li::before {
-            content: '✓'; color: var(--secondary); font-weight: 700; flex-shrink: 0;
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.9rem;
         }
-        .btn-program {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 600; font-size: 0.9rem;
-            text-decoration: none; transition: all 0.3s ease; padding: 10px 0;
+        .program-target {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 15px 20px;
+            border-left: 4px solid var(--primary);
         }
-        .btn-program:hover { gap: 15px; color: var(--primary-dark); }
+        .program-target h6 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .program-target p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
 
-        /* ==================== AUDIENCE SECTION ==================== */
-        .audience-section { background: var(--light); }
-        .audience-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; margin-top: 30px;
+        /* ==================== HACCP LEVELS GRID ==================== */
+        .haccp-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
-        .audience-item {
-            background: var(--white); border-radius: 16px; padding: 25px 20px;
-            text-align: center; transition: all 0.3s ease;
+        .haccp-level-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
         }
-        .audience-item:hover {
-            transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-            border-color: rgba(30, 64, 175, 0.2);
+        .haccp-level-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--secondary);
         }
-        .audience-icon {
-            width: 55px; height: 55px; margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 14px; display: flex; align-items: center;
-            justify-content: center; color: var(--white); font-size: 1.3rem;
+        .haccp-level-card h5 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .audience-item h5 {
-            font-weight: 700; font-size: 0.95rem; color: var(--dark); margin: 0;
+        .haccp-level-card h5 i { color: var(--secondary); }
+        .haccp-level-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .haccp-level-card li {
+            padding: 6px 0;
+            color: #555;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        .haccp-level-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
         }
 
-        /* ==================== APPROACH SECTION ==================== */
-        .approach-section { background: var(--white); }
-        .approach-steps { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 40px; }
-        .approach-step {
-            flex: 1; min-width: 250px; max-width: 300px;
-            background: var(--light); border-radius: 20px; padding: 30px;
-            text-align: center; transition: all 0.3s ease;
+        /* ==================== STANDARDS AWARENESS ==================== */
+        .standards-section {
+            background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+            padding: 60px 0;
+            border-radius: 20px;
+            margin: 40px 0;
         }
-        .approach-step:hover {
-            background: var(--white); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
-        .approach-step-number {
-            width: 50px; height: 50px; margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-family: 'Playfair Display', serif;
-            font-size: 1.3rem; font-weight: 900; color: var(--white);
+        .standard-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
         }
-        .approach-step h5 {
-            font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 10px;
+        .standard-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--secondary);
         }
-        .approach-step p {
-            color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0;
+        .standard-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        .standard-card h5 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .standard-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ==================== HOW CQBS HELPS ==================== */
+        .how-we-help {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        .how-we-help h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+        .help-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .help-item-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+        .help-item p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ==================== TARGET AUDIENCE ==================== */
+        .target-audience {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        .target-audience h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .audience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .audience-tag {
+            background: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        .audience-tag:hover {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
         }
 
         /* ==================== CTA SECTION ==================== */
-        .training-cta {
+        .page-cta {
             background: linear-gradient(135deg, var(--dark), var(--dark-blue));
-            position: relative; overflow: hidden; padding: 80px 0;
+            padding: 60px 0;
+            text-align: center;
         }
-        .training-cta::before {
-            content: ''; position: absolute; top: -80px; left: -80px;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.1), transparent 70%);
-            border-radius: 50%;
+        .page-cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
         }
-        .training-cta::after {
-            content: ''; position: absolute; bottom: -80px; right: -80px;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(30, 64, 175, 0.15), transparent 70%);
-            border-radius: 50%;
+        .page-cta-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
-        .training-cta-content { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; }
-        .training-cta-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--white); line-height: 1.3; margin-bottom: 20px;
-        }
-        .training-cta-text {
-            color: rgba(255, 255, 255, 0.7); font-size: 1.05rem;
-            line-height: 1.7; margin-bottom: 35px;
-        }
-        .btn-training-cta {
+        .btn-page-cta {
             background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: var(--white); padding: 16px 40px; border-radius: 50px;
-            font-weight: 700; font-size: 1rem; border: none; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 10px;
-            transition: all 0.3s ease; box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
         }
-        .btn-training-cta:hover {
-            transform: translateY(-3px); box-shadow: 0 12px 40px rgba(5, 150, 105, 0.5);
+        .btn-page-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.5);
             color: var(--white);
         }
 
         /* ==================== FOOTER ==================== */
         .footer {
-            background: var(--dark); padding: 60px 0 0;
+            background: var(--dark);
+            padding: 60px 0 0;
         }
         .footer-brand {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            font-weight: 900; color: var(--white); margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
         }
         .footer-brand span { color: var(--secondary); }
         .footer-desc {
-            color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;
-            line-height: 1.7; margin-bottom: 25px; max-width: 350px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 350px;
         }
         .footer h5 {
-            color: var(--white); font-weight: 700; font-size: 1.1rem;
-            margin-bottom: 25px; position: relative;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
         }
         .footer h5::after {
-            content: ''; position: absolute; bottom: -8px; left: 0;
-            width: 30px; height: 3px; background: var(--secondary); border-radius: 3px;
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
         }
         .footer-links { list-style: none; padding: 0; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5); text-decoration: none;
-            font-size: 0.9rem; transition: all 0.3s ease;
-            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
         .footer-bottom {
-            margin-top: 50px; padding: 25px 0;
+            margin-top: 50px;
+            padding: 25px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .footer-bottom p {
-            color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; margin: 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
         }
-        .footer-bottom-links { display: flex; gap: 25px; }
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
         .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.4); text-decoration: none;
-            font-size: 0.85rem; transition: color 0.3s ease;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
         }
         .footer-bottom-links a:hover { color: var(--secondary); }
 
-        /* ==================== ANIMATIONS ==================== */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ==================== BACK TO TOP ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(5, 150, 105, 0.3);
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ==================== LOGO CONTAINER ==================== */
+        .navbar-brand .brand-icon {
+            width: 130px;
+            height: 90px;
+            max-width: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        .navbar-brand .brand-icon img,
+        .navbar-brand .brand-icon svg {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .footer .brand-icon {
+            width: 130px;
+            height: 100px;
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        .footer .brand-icon img,
+        .footer .brand-icon svg {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 991.98px) {
-            .training-hero-title { font-size: 2.5rem; }
-            .training-hero-subtitle { font-size: 1rem; }
+            .page-hero-title { font-size: 2.8rem; }
             .section-title { font-size: 2rem; }
-            .navbar-collapse {
-                background: rgba(15, 23, 42, 0.98);
-                backdrop-filter: blur(20px); border-radius: 15px;
-                padding: 20px; margin-top: 15px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
+            .program-header { flex-direction: column; text-align: center; }
+            .program-icon { margin: 0 auto; }
         }
         @media (max-width: 767.98px) {
-            .training-hero { padding: 140px 0 70px; }
-            .training-hero-title { font-size: 2rem; }
-            .training-hero-stats { gap: 25px; }
-            .training-hero-stat-number { font-size: 1.8rem; }
-            .section-padding { padding: 70px 0; }
-            .section-title { font-size: 1.7rem; }
-            .training-cta-title { font-size: 1.9rem; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            
-            .navbar-brand .brand-icon {
-                width: 100px; height: 70px;
+            .page-hero { padding: 120px 0 60px; }
+            .page-hero-title { font-size: 2.2rem; }
+            .page-hero-subtitle { font-size: 1rem; }
+            .section-padding { padding: 60px 0; }
+            .section-title { font-size: 1.8rem; }
+            .program-card, .training-intro, .why-training, .how-we-help, .target-audience {
+                padding: 25px 20px;
             }
+            .program-title { font-size: 1.3rem; }
+            .page-cta-title { font-size: 1.8rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 575.98px) {
+            .page-hero-title { font-size: 1.9rem; }
+            .section-title { font-size: 1.6rem; }
+            .program-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+            .audience-tags { justify-content: center; }
+            .btn-page-cta { width: 100%; max-width: 300px; justify-content: center; }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-icon"></div>
-        <div class="loader-text">CQBS</div>
-    </div>
+<body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -452,473 +826,428 @@
             <a class="navbar-brand" href="index.html">
                 <div class="brand-icon"><img src="images/logo1.png" alt="CQBS Logo"></div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="toggler-icon"></span><span class="toggler-icon"></span><span class="toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center gap-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                 <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="training.html">Training</a></li>
                     <li class="nav-item"><a class="nav-link" href="digital.html">Digital Platform</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consult.html">Consultancy</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="training.html">Training</a></li>
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link btn-nav-cta" href="#contact">Book Training</a>
+                        <a class="nav-link btn-nav-cta" href="index.html#contact">Get Free Consultation</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="training-hero">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <div class="training-hero-content fade-up">
-                <div class="training-hero-badge">
-                    <i class="fas fa-certificate"></i> Accredited Programs
+            <div class="page-hero-content fade-up">
+                <div class="page-hero-badge">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    Training Programs
                 </div>
-                <h1 class="training-hero-title">
-                    Professional <span class="highlight">Quality & Compliance Training</span><br>
-                    For Every Role in Your Organization
+                <h1 class="page-hero-title">
+                    Practical <span class="highlight">Food Safety Training</span> for Your Team
                 </h1>
-                <p class="training-hero-subtitle">
-                    Practical, workplace-relevant training programs designed for quality teams, auditors, supervisors, and management. Build competence, ensure compliance, and achieve certification success.
+                <p class="page-hero-subtitle">
+                    Industry-focused training programs designed to build competence, ensure compliance, and strengthen your food safety culture from the ground up.
                 </p>
-                <a href="#programs" class="btn-training-cta">
-                    Explore Programs <i class="fas fa-arrow-right"></i>
-                </a>
-                <div class="training-hero-stats">
-                    <div class="training-hero-stat">
-                        <div class="training-hero-stat-number" data-count="50">0</div>
-                        <div class="training-hero-stat-label">Training Programs</div>
-                    </div>
-                    <div class="training-hero-stat">
-                        <div class="training-hero-stat-number" data-count="2500">0</div>
-                        <div class="training-hero-stat-label">Professionals Trained</div>
-                    </div>
-                    <div class="training-hero-stat">
-                        <div class="training-hero-stat-number" data-count="98">0</div>
-                        <div class="training-hero-stat-label">% Satisfaction</div>
-                    </div>
-                </div>
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Training</span>
+                </nav>
             </div>
         </div>
     </section>
 
-    <!-- Why Training Matters -->
-    <section class="why-training-section section-padding">
+    <!-- Introduction -->
+    <section class="section-padding">
         <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Why It Matters</div>
-                <h2 class="section-title">Why Quality & Compliance <span class="highlight">Training Matters</span></h2>
-                <p class="section-desc centered">
-                    Businesses face constant regulatory and quality challenges. Proper training is your strongest defense against non-compliance, audit failures, and operational risks.
-                </p>
+            <div class="training-intro fade-up">
+                <p>Food safety is not only a regulatory requirement. It is a daily responsibility for every food business. From raw material handling to processing, storage, packaging, serving, and dispatch, the success and sustained viability of any food business critically depend on the competence of its food handlers.</p>
+                <p>These individuals are the operational backbone, executing food safety protocols, maintaining hygiene standards, and ensuring product quality. Therefore, continuous, rigorous training and comprehensive awareness are non-negotiable for risk mitigation and compliance.</p>
+                <div class="highlight-box">
+                    <strong>This education must cover foodborne illnesses, cross-contamination, Critical Control Points (CCPs), personal hygiene, and legal responsibilities. Targeted training safeguards public health, protects the business's reputation, ensures regulatory compliance, minimizes waste, and secures long-term commercial success.</strong>
+                </div>
+                <p>At CQBS, we provide practical and industry-focused food safety training programs for food manufacturers, food handlers, supervisors, quality teams, production staff, catering units, restaurants, cloud kitchens, warehouses, storage and distribution, meat counters, retailers, transportation, and other food-related businesses. Our training helps teams understand what can go wrong, how to prevent it, and how to maintain safe and compliant food operations every day.</p>
             </div>
-            <div class="why-training-grid">
-                <div class="why-training-card fade-up">
-                    <div class="why-training-icon"><i class="fas fa-shield-check"></i></div>
-                    <h4>Reduce Compliance Risks</h4>
-                    <p>Equip your team with knowledge to prevent non-conformities, regulatory violations, and quality issues before they impact your business.</p>
-                </div>
-                <div class="why-training-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="why-training-icon"><i class="fas fa-file-contract"></i></div>
-                    <h4>Ensure Regulatory Compliance</h4>
-                    <p>Stay aligned with local and international standards, reducing the risk of fines, shutdowns, or legal action.</p>
-                </div>
-                <div class="why-training-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="why-training-icon"><i class="fas fa-chart-line"></i></div>
-                    <h4>Protect Brand Reputation</h4>
-                    <p>Consistent quality practices build customer trust, strengthen business relationships, and safeguard your brand value.</p>
-                </div>
-                <div class="why-training-card fade-up" style="transition-delay: 0.3s;">
-                    <div class="why-training-icon"><i class="fas fa-users"></i></div>
-                    <h4>Build a Quality Culture</h4>
-                    <p>Transform compliance from a checklist into a shared value that every team member actively practices and champions daily.</p>
-                </div>
-                <div class="why-training-card fade-up" style="transition-delay: 0.4s;">
-                    <div class="why-training-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h4>Audit Readiness</h4>
-                    <p>Prepare confidently for certification audits, customer inspections, and regulatory assessments with well-trained, knowledgeable staff.</p>
-                </div>
-                <div class="why-training-card fade-up" style="transition-delay: 0.5s;">
-                    <div class="why-training-icon"><i class="fas fa-recycle"></i></div>
-                    <h4>Reduce Waste & Costs</h4>
-                    <p>Prevent product rejection, rework, and recalls through proactive risk control and consistent process adherence.</p>
-                </div>
+
+            <!-- Why Training Matters -->
+            <div class="why-training fade-up">
+                <h4>Why Food Safety Training Matters</h4>
+                <p style="color:#555; margin-bottom:20px;">Food businesses face constant risks such as contamination, poor hygiene practices, allergen mistakes, temperature abuse, pest-related issues, cross-contamination, and documentation gaps. Even one small mistake can affect product quality, customer trust, legal compliance, and brand reputation.</p>
+                <p style="color:#555; margin-bottom:15px;"><strong>Proper training helps food businesses:</strong></p>
+                <ul class="why-training-list">
+                    <li>Reduce the risk of food contamination and foodborne illness</li>
+                    <li>Improve personal hygiene and workplace cleanliness</li>
+                    <li>Understand HACCP principles and food safety controls</li>
+                    <li>Maintain better compliance with food safety standards</li>
+                    <li>Prepare confidently for customer, regulatory, and certification audits</li>
+                    <li>Build a stronger food safety culture within the organization</li>
+                    <li>Improve product quality, consistency, and consumer confidence</li>
+                </ul>
+                <p style="color:#555; margin-top:20px; font-style:italic;">CQBS focuses on simple, practical, and workplace-relevant training so that participants can apply what they learn directly in their daily roles.</p>
             </div>
         </div>
     </section>
 
     <!-- Training Programs -->
-    <section class="programs-section section-padding" id="programs">
+    <section class="section-padding" style="background:var(--light);">
         <div class="container">
             <div class="section-header text-center fade-up">
                 <div class="section-label justify-content-center">Our Programs</div>
-                <h2 class="section-title">Comprehensive <span class="highlight">Training Portfolio</span></h2>
+                <h2 class="section-title">Food Safety <span class="highlight">Training Programs</span></h2>
                 <p class="section-desc centered">
-                    From foundational awareness to advanced implementation, our programs are designed for every role and responsibility in your organization.
+                    Comprehensive, role-based training designed to build practical competence at every level of your organization.
                 </p>
             </div>
 
-            <div class="row g-4">
-                <!-- ISO 9001 Awareness -->
-                <div class="col-lg-6 fade-up">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-certificate"></i></div>
-                            <h3 class="program-card-title">ISO 9001:2015 Awareness Training</h3>
-                            <p class="program-card-subtitle">Essential training for understanding Quality Management Systems</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> QMS fundamentals & process approach</li>
-                                <li><i class="fas fa-check"></i> Risk-based thinking & context of organization</li>
-                                <li><i class="fas fa-check"></i> Documentation requirements & record keeping</li>
-                                <li><i class="fas fa-check"></i> Internal audit preparation & management review</li>
-                                <li><i class="fas fa-check"></i> Suitable for all industries and organization sizes</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Staff understand how their roles support quality objectives</li>
-                                    <li>Improved process consistency and customer satisfaction</li>
-                                    <li>Strong foundation for ISO 9001 certification preparation</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-program">Enquire Now <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Program 1: Level 2 & 3 Food Safety -->
+            <div class="program-card fade-up">
+                <div class="program-header">
+                    <div class="program-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h3 class="program-title">Level 2 & 3 Food Safety Courses</h3>
+                        <span class="program-level">For Food Handlers & Supervisors</span>
                     </div>
                 </div>
+                <p class="program-desc">
+                    CQBS offers Level 2 and Level 3 food safety training programs designed for food handlers, supervisors, and team leaders working in food manufacturing, catering, retail, hospitality, and service environments.
+                </p>
+                <p class="program-desc">
+                    These courses help participants understand safe food handling, hygiene practices, contamination control, temperature management, cleaning, allergen awareness, and legal responsibilities.
+                </p>
+                <div class="program-target">
+                    <h6><i class="fas fa-users"></i> Who Should Attend</h6>
+                    <p>Food handlers, line workers, kitchen staff, retail food employees, catering teams, and new joiners in food operations.</p>
+                </div>
+                <ul class="program-benefits" style="margin-top:20px;">
+                    <li>Build confidence in safe food handling practices</li>
+                    <li>Understand personal hygiene and contamination control</li>
+                    <li>Learn temperature management and allergen awareness</li>
+                    <li>Recognize legal responsibilities and compliance requirements</li>
+                    <li>Support better hygiene and fewer operational mistakes</li>
+                </ul>
+            </div>
 
-                <!-- Internal Auditor Training -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-user-check"></i></div>
-                            <h3 class="program-card-title">Internal Auditor Training (ISO 9001/14001/45001)</h3>
-                            <p class="program-card-subtitle">Develop competent auditors for your management systems</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> Auditing principles: planning, execution, reporting</li>
-                                <li><i class="fas fa-check"></i> Checklist preparation & audit techniques</li>
-                                <li><i class="fas fa-check"></i> Conducting interviews & gathering objective evidence</li>
-                                <li><i class="fas fa-check"></i> Identifying non-conformities & writing clear reports</li>
-                                <li><i class="fas fa-check"></i> Corrective action processes & follow-up</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Internal team can accurately assess system effectiveness</li>
-                                    <li>Identify risks and improvement areas before external audits</li>
-                                    <li>Ensure ongoing compliance and continuous improvement</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-program">Enquire Now <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Program 2: HACCP Principles -->
+            <div class="program-card fade-up">
+                <div class="program-header">
+                    <div class="program-icon haccp">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="program-title">HACCP Principles & Application</h3>
+                        <span class="program-level">Practical Implementation Training</span>
                     </div>
                 </div>
+                <p class="program-desc">
+                    HACCP is one of the most important tools for controlling food safety hazards. CQBS helps teams understand HACCP in a practical way, starting from hazard identification to control measures, monitoring, corrective actions, verification, and record keeping.
+                </p>
+                <div class="program-target">
+                    <h6><i class="fas fa-users"></i> Who Should Attend</h6>
+                    <p>Food manufacturers, processors, quality teams, production managers, and supervisors who need to implement or maintain HACCP-based systems.</p>
+                </div>
+                <ul class="program-benefits" style="margin-top:20px;">
+                    <li>Identify food safety risks before they become serious problems</li>
+                    <li>Reduce product rejection, customer complaints, and recall risks</li>
+                    <li>Minimize audit non-conformities through proactive controls</li>
+                    <li>Apply HACCP principles to real-world food operations</li>
+                    <li>Strengthen hazard control across your production process</li>
+                </ul>
+            </div>
 
-                <!-- ISO 14001 Environmental -->
-                <div class="col-lg-6 fade-up">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-leaf"></i></div>
-                            <h3 class="program-card-title">ISO 14001:2015 Environmental Management</h3>
-                            <p class="program-card-subtitle">Build sustainable operations with environmental compliance</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> Environmental aspects & impacts identification</li>
-                                <li><i class="fas fa-check"></i> Legal compliance & environmental objectives</li>
-                                <li><i class="fas fa-check"></i> Operational controls & emergency preparedness</li>
-                                <li><i class="fas fa-check"></i> Monitoring, measurement & continual improvement</li>
-                                <li><i class="fas fa-check"></i> Integration with existing management systems</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Reduce environmental risks and regulatory penalties</li>
-                                    <li>Improve resource efficiency and operational costs</li>
-                                    <li>Demonstrate environmental responsibility to stakeholders</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-program">Enquire Now <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- HACCP Certification Levels -->
+            <div class="section-header text-center fade-up" style="margin-top:50px;">
+                <h3 class="section-title" style="font-size:2rem;">HACCP Training & Certification Levels</h3>
+                <p class="section-desc centered">
+                    Choose the right HACCP program based on your role and responsibilities.
+                </p>
+            </div>
+
+            <div class="haccp-levels">
+                <div class="haccp-level-card fade-up">
+                    <h5><i class="fas fa-seedling"></i> Foundation in HACCP</h5>
+                    <p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Ideal for beginners, students, or new joiners in the quality department who need to learn core HACCP concepts.</p>
+                    <ul>
+                        <li>Basic HACCP principles</li>
+                        <li>Understanding hazards & controls</li>
+                        <li>Introduction to CCPs</li>
+                    </ul>
+                </div>
+                <div class="haccp-level-card fade-up">
+                    <h5><i class="fas fa-user-check"></i> Level 2 Award: Food Handlers</h5>
+                    <p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Designed for food handlers working on the production line or in food service.</p>
+                    <ul>
+                        <li>What HACCP is and why it matters</li>
+                        <li>Consequences of deviations</li>
+                        <li>How to monitor Critical Control Points</li>
+                        <li>Reporting procedures for deviations</li>
+                    </ul>
+                </div>
+                <div class="haccp-level-card fade-up">
+                    <h5><i class="fas fa-user-tie"></i> Level 3 Award: Supervisors</h5>
+                    <p style="color:#555; font-size:0.95rem; margin-bottom:15px;">Advanced program for supervisors, managers, and quality teams responsible for HACCP implementation.</p>
+                    <ul>
+                        <li>Hazard identification & risk assessment</li>
+                        <li>Developing control measures & monitoring</li>
+                        <li>Corrective actions & verification</li>
+                        <li>Record keeping & documentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Program 3: FSSC 22000 Awareness -->
+            <div class="program-card fade-up" style="margin-top:30px;">
+                <div class="program-header">
+                    <div class="program-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h3 class="program-title">FSSC 22000 Awareness Training</h3>
+                        <span class="program-level">Certification Scheme Awareness</span>
                     </div>
                 </div>
+                <p class="program-desc">
+                    FSSC 22000 is widely recognized in the food industry and is important for organizations working with food manufacturing, packaging, storage, distribution, and supply chains.
+                </p>
+                <p class="program-desc">
+                    CQBS provides awareness training to help employees understand the basic structure, intent, and key requirements of FSSC 22000. The training explains food safety management systems, prerequisite programs, hazard control, documentation, and continual improvement in a simple and practical manner.
+                </p>
+                <ul class="program-benefits">
+                    <li>Understand FSSC 22000 structure and requirements</li>
+                    <li>Learn the role of prerequisite programs (PRPs)</li>
+                    <li>Connect daily work to certification success</li>
+                    <li>Prepare for scheme audits and assessments</li>
+                </ul>
+            </div>
 
-                <!-- ISO 45001 Occupational Health -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-hard-hat"></i></div>
-                            <h3 class="program-card-title">ISO 45001:2018 Occupational Health & Safety</h3>
-                            <p class="program-card-subtitle">Create safer workplaces and protect your workforce</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> Hazard identification & risk assessment</li>
-                                <li><i class="fas fa-check"></i> Legal requirements & worker participation</li>
-                                <li><i class="fas fa-check"></i> Incident investigation & corrective actions</li>
-                                <li><i class="fas fa-check"></i> Emergency preparedness & response planning</li>
-                                <li><i class="fas fa-check"></i> Leadership commitment & safety culture</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Reduce workplace accidents and insurance costs</li>
-                                    <li>Improve employee morale and productivity</li>
-                                    <li>Meet legal obligations and customer requirements</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-program">Enquire Now <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Standards Awareness Section -->
+            <div class="standards-section fade-up">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <h3 class="section-title" style="font-size:2rem;">Standards Awareness Training</h3>
+                        <p class="section-desc centered">
+                            Build team awareness of major food safety standards and certification requirements.
+                        </p>
                     </div>
-                </div>
-
-                <!-- Lead Auditor Training -->
-                <div class="col-lg-6 fade-up">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-user-graduate"></i></div>
-                            <h3 class="program-card-title">Lead Auditor Training (IRCA Certified)</h3>
-                            <p class="program-card-subtitle">Advanced certification for professional auditors</p>
+                    <div class="standards-grid">
+                        <div class="standard-card">
+                            <i class="fas fa-file-certificate"></i>
+                            <h5>ISO 22000</h5>
+                            <p>Food Safety Management Systems – risk-based approach, operational controls, and continual improvement.</p>
                         </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> IRCA-approved curriculum for ISO standards</li>
-                                <li><i class="fas fa-check"></i> Audit planning, execution & reporting mastery</li>
-                                <li><i class="fas fa-check"></i> Managing audit teams & client relationships</li>
-                                <li><i class="fas fa-check"></i> Interpretation of standard requirements</li>
-                                <li><i class="fas fa-check"></i> Recognized certification upon successful completion</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Develop in-house expertise for certification audits</li>
-                                    <li>Reduce dependency on external audit resources</li>
-                                    <li>Enhance credibility with certification bodies</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-program">Enquire Now <i class="fas fa-arrow-right"></i></a>
+                        <div class="standard-card">
+                            <i class="fas fa-shield-check"></i>
+                            <h5>BRCGS</h5>
+                            <p>Product safety, legality, quality, site standards, food defence, fraud prevention, and customer requirements.</p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Integrated Management Systems -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-layer-group"></i></div>
-                            <h3 class="program-card-title">Integrated Management Systems (IMS)</h3>
-                            <p class="program-card-subtitle">Combine ISO 9001, 14001 & 45001 for efficiency</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> Understanding common structures (Annex SL)</li>
-                                <li><i class="fas fa-check"></i> Integrating policies, objectives & processes</li>
-                                <li><i class="fas fa-check"></i> Unified documentation & record systems</li>
-                                <li><i class="fas fa-check"></i> Coordinated internal audits & management reviews</li>
-                                <li><i class="fas fa-check"></i> Streamlined certification and surveillance</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits for Your Business</div>
-                                <ul>
-                                    <li>Reduce duplication and administrative burden</li>
-                                    <li>Improve cross-functional collaboration and efficiency</li>
-                                    <li>Achieve multiple certifications with integrated approach</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-program">Enquire Now <i class="fas fa-arrow-right"></i></a>
+                        <div class="standard-card">
+                            <i class="fas fa-cogs"></i>
+                            <h5>Combined Awareness</h5>
+                            <p>Understand how ISO 22000, FSSC 22000, and BRCGS work together to strengthen your food safety system.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Additional Programs Grid -->
-            <div class="row g-4 mt-4">
-                <!-- Risk Management -->
-                <div class="col-md-6 fade-up">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-shield-halved"></i></div>
-                            <h3 class="program-card-title">Risk Management & ISO 31000</h3>
-                            <p class="program-card-subtitle">Strategic risk identification and mitigation training</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> Risk framework development & implementation</li>
-                                <li><i class="fas fa-check"></i> Risk assessment methodologies & tools</li>
-                                <li><i class="fas fa-check"></i> Treatment plans & monitoring processes</li>
-                                <li><i class="fas fa-check"></i> Integration with management systems</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits</div>
-                                <ul>
-                                    <li>Proactive identification of business risks</li>
-                                    <li>Better decision-making and resource allocation</li>
-                                </ul>
-                            </div>
-                        </div>
+            <!-- Program 4: Internal Auditor Training -->
+            <div class="program-card fade-up">
+                <div class="program-header">
+                    <div class="program-icon audit">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="program-title">Internal Auditor Training</h3>
+                        <span class="program-level">For Quality Teams & Supervisors</span>
                     </div>
                 </div>
+                <p class="program-desc">
+                    Internal audits are crucial for checking the effectiveness of any Food Safety Management System (FSMS). CQBS offers practical Internal Auditor training designed for quality team members, managers, and supervisors who are responsible for conducting internal audits against standards like HACCP, ISO 22000, FSSC 22000, and BRCGS.
+                </p>
+                <p class="program-desc"><strong>Participants learn:</strong></p>
+                <ul class="program-benefits">
+                    <li>The principles of auditing (planning, execution, reporting, follow-up)</li>
+                    <li>How to prepare an audit checklist and plan</li>
+                    <li>How to conduct effective interviews and gather objective evidence</li>
+                    <li>Identifying non-conformities and writing clear audit reports</li>
+                    <li>The steps for corrective and preventive actions</li>
+                </ul>
+                <ul class="program-benefits" style="margin-top:15px;">
+                    <li>Accurately assess your FSMS effectiveness</li>
+                    <li>Identify risks and improvement areas proactively</li>
+                    <li>Ensure ongoing compliance before external audits</li>
+                    <li>Build confidence in audit execution and reporting</li>
+                </ul>
+            </div>
 
-                <!-- Supplier Quality -->
-                <div class="col-md-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <div class="program-card-icon"><i class="fas fa-truck"></i></div>
-                            <h3 class="program-card-title">Supplier Quality Management</h3>
-                            <p class="program-card-subtitle">Ensure quality across your supply chain</p>
-                        </div>
-                        <div class="program-card-body">
-                            <ul class="program-features">
-                                <li><i class="fas fa-check"></i> Supplier evaluation & selection criteria</li>
-                                <li><i class="fas fa-check"></i> Quality agreements & performance monitoring</li>
-                                <li><i class="fas fa-check"></i> Supplier audits & corrective action management</li>
-                                <li><i class="fas fa-check"></i> Building collaborative supplier relationships</li>
-                            </ul>
-                            <div class="program-benefits">
-                                <div class="program-benefits-title"><i class="fas fa-star"></i> Benefits</div>
-                                <ul>
-                                    <li>Reduce supply chain quality risks</li>
-                                    <li>Improve incoming material quality and consistency</li>
-                                </ul>
-                            </div>
-                        </div>
+            <!-- Program 5: Interactive Supervisor Sessions -->
+            <div class="program-card fade-up">
+                <div class="program-header">
+                    <div class="program-icon supervisor">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <div>
+                        <h3 class="program-title">Interactive Supervisor Sessions</h3>
+                        <span class="program-level">Practical Leadership Training</span>
                     </div>
                 </div>
+                <p class="program-desc">
+                    Supervisors play a critical role in converting food safety rules into daily practice. CQBS conducts interactive supervisor sessions that focus on real workplace situations, team monitoring, hygiene checks, corrective actions, communication, and handling non-compliance on the shop floor.
+                </p>
+                <p class="program-desc">
+                    These sessions are practical, discussion-based, and suitable for production supervisors, shift in-charges, quality supervisors, kitchen supervisors, and line leaders.
+                </p>
+                <ul class="program-benefits">
+                    <li>Identify issues early and guide workers properly</li>
+                    <li>Maintain discipline in food safety practices</li>
+                    <li>Improve team communication and accountability</li>
+                    <li>Handle non-compliance with confidence</li>
+                    <li>Bridge the gap between policy and practice</li>
+                </ul>
+            </div>
+
+            <!-- Program 6: Manager-Level Advanced Programs -->
+            <div class="program-card fade-up">
+                <div class="program-header">
+                    <div class="program-icon manager">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="program-title">Manager-Level Advanced Programs</h3>
+                        <span class="program-level">For Leadership & Decision Makers</span>
+                    </div>
+                </div>
+                <p class="program-desc">
+                    Food safety leadership starts with management. CQBS provides advanced training programs for managers, quality heads, production heads, food safety team leaders, and business owners who are responsible for system performance and compliance.
+                </p>
+                <p class="program-desc">
+                    These programs cover food safety culture, audit readiness, risk management, HACCP review, documentation control, customer requirements, legal compliance, and continuous improvement.
+                </p>
+                <ul class="program-benefits">
+                    <li>Make better, data-driven food safety decisions</li>
+                    <li>Strengthen compliance and reduce operational risks</li>
+                    <li>Build a more reliable and resilient food safety system</li>
+                    <li>Align food safety goals with business objectives</li>
+                    <li>Lead with confidence during audits and inspections</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Who We Train -->
-    <section class="audience-section section-padding">
-        <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Who We Train</div>
-                <h2 class="section-title">Programs for Every <span class="highlight">Industry & Role</span></h2>
-                <p class="section-desc centered">
-                    Whether you operate in manufacturing, services, technology, or healthcare, we have tailored training for your team.
-                </p>
-            </div>
-            <div class="audience-grid">
-                <div class="audience-item fade-up">
-                    <div class="audience-icon"><i class="fas fa-industry"></i></div>
-                    <h5>Manufacturing</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.05s;">
-                    <div class="audience-icon"><i class="fas fa-building"></i></div>
-                    <h5>Construction</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.1s;">
-                    <div class="audience-icon"><i class="fas fa-hospital"></i></div>
-                    <h5>Healthcare</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.15s;">
-                    <div class="audience-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h5>Technology</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.2s;">
-                    <div class="audience-icon"><i class="fas fa-truck"></i></div>
-                    <h5>Logistics</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.25s;">
-                    <div class="audience-icon"><i class="fas fa-store"></i></div>
-                    <h5>Retail</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.3s;">
-                    <div class="audience-icon"><i class="fas fa-utensils"></i></div>
-                    <h5>Hospitality</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.35s;">
-                    <div class="audience-icon"><i class="fas fa-handshake"></i></div>
-                    <h5>Professional Services</h5>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Approach -->
-    <section class="approach-section section-padding">
+    <!-- How CQBS Helps -->
+    <section class="section-padding">
         <div class="container">
             <div class="section-header text-center fade-up">
                 <div class="section-label justify-content-center">Our Approach</div>
-                <h2 class="section-title">Training That <span class="highlight">Works in Practice</span></h2>
-                <p class="section-desc centered">
-                    We don't treat training as a formality. We help you build practical knowledge that improves real operations.
-                </p>
+                <h2 class="section-title">How CQBS <span class="highlight">Helps Food Businesses</span></h2>
             </div>
-            <div class="approach-steps">
-                <div class="approach-step fade-up">
-                    <div class="approach-step-number">1</div>
-                    <h5>Understand Your Business</h5>
-                    <p>We learn your operations and challenges before designing training to ensure relevance and impact.</p>
+
+            <div class="how-we-help fade-up">
+                <p style="font-size:1.05rem; color:#444; margin-bottom:25px;">CQBS does not treat training as a formality. We help food businesses build practical knowledge that improves real operations. Our training approach is simple, clear, and connected with actual food industry challenges.</p>
+                
+                <div class="help-list">
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-search"></i></div>
+                        <p>Understanding your organization's food process before training</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-cog"></i></div>
+                        <p>Customizing examples according to manufacturing, catering, retail, or handling operations</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-language"></i></div>
+                        <p>Explaining technical food safety topics in simple, accessible language</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <p>Providing practical checklists, examples, and workplace-based guidance</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-file-alt"></i></div>
+                        <p>Helping teams prepare for audits and inspections</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-sync"></i></div>
+                        <p>Supporting improvement in hygiene, documentation, and process control</p>
+                    </div>
+                    <div class="help-item">
+                        <div class="help-item-icon"><i class="fas fa-smile"></i></div>
+                        <p>Building confidence among food handlers, supervisors, and managers</p>
+                    </div>
                 </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.1s;">
-                    <div class="approach-step-number">2</div>
-                    <h5>Customize Content</h5>
-                    <p>Examples and scenarios tailored to your industry: manufacturing, services, technology, or healthcare.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.2s;">
-                    <div class="approach-step-number">3</div>
-                    <h5>Simplify Complexity</h5>
-                    <p>Technical compliance topics explained in clear, accessible language for all learning levels.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.3s;">
-                    <div class="approach-step-number">4</div>
-                    <h5>Provide Practical Tools</h5>
-                    <p>Checklists, templates, and workplace guidance your team can use immediately after training.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.4s;">
-                    <div class="approach-step-number">5</div>
-                    <h5>Support Audit Readiness</h5>
-                    <p>Training aligned with certification requirements to build confidence for inspections and audits.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.5s;">
-                    <div class="approach-step-number">6</div>
-                    <h5>Build Lasting Confidence</h5>
-                    <p>Empower staff, supervisors, and managers to own quality and compliance in their daily roles.</p>
+            </div>
+
+            <!-- Target Audience -->
+            <div class="target-audience fade-up">
+                <h4>Who Can Benefit?</h4>
+                <p style="color:#555; margin-bottom:20px;">Our training programs are designed for teams across the food industry:</p>
+                <div class="audience-tags">
+                    <span class="audience-tag">Food Manufacturers</span>
+                    <span class="audience-tag">Catering Units</span>
+                    <span class="audience-tag">Restaurants</span>
+                    <span class="audience-tag">Cloud Kitchens</span>
+                    <span class="audience-tag">Warehouses</span>
+                    <span class="audience-tag">Storage & Distribution</span>
+                    <span class="audience-tag">Meat Counters</span>
+                    <span class="audience-tag">Retailers</span>
+                    <span class="audience-tag">Transportation</span>
+                    <span class="audience-tag">Quality Teams</span>
+                    <span class="audience-tag">Production Staff</span>
+                    <span class="audience-tag">Supervisors</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="training-cta" id="contact">
+    <section class="page-cta">
         <div class="container">
-            <div class="training-cta-content fade-up">
-                <h2 class="training-cta-title">Ready to Strengthen Your Quality Culture?</h2>
-                <p class="training-cta-text">
-                    Whether you're preparing for certification, responding to customer requirements, or building foundational competence, our training programs deliver practical results. Let's design the right solution for your team.
-                </p>
-                <a href="index.html#contact" class="btn-training-cta">
-                    Schedule a Training Consultation <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+            <h3 class="page-cta-title">Ready to Train Your Team?</h3>
+            <p class="page-cta-text">
+                With CQBS food safety training, your team does not just learn the rules. They learn how to apply them in daily operations to protect consumers, strengthen compliance, and build trust in your food business.
+            </p>
+            <a href="index.html#contact" class="btn-page-cta">
+                Schedule a Training Session <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="brand-icon"><img src="images/logo1.png" alt="CQBS Logo"></div>
+                    <div class="brand-icon"><img src="images/logo.png" alt="CQBS Logo"></div>
                     <p class="footer-desc">
                         Your trusted partner for compliance and quality consultancy, training, and digital solutions. Helping businesses achieve global quality standards.
                     </p>
+                    <div class="contact-socials" style="border: none; padding: 0; margin: 0; display:flex; gap:12px;">
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5>Training Programs</h5>
+                    <h5>Services</h5>
                     <ul class="footer-links">
-                        <li><a href="#programs">ISO 9001 Awareness</a></li>
-                        <li><a href="#programs">Internal Auditor Training</a></li>
-                        <li><a href="#programs">ISO 14001 Environmental</a></li>
-                        <li><a href="#programs">ISO 45001 Safety</a></li>
-                        <li><a href="#programs">Lead Auditor Certification</a></li>
+                        <li><a href="index.html#services">Consultancy</a></li>
+                        <li><a href="#training">Training</a></li>
+                        <li><a href="index.html#services">Digital Platforms</a></li>
+                        <li><a href="index.html#certifications">Certification Support</a></li>
+                        <li><a href="index.html#services">Internal Audits</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
@@ -928,49 +1257,74 @@
                         <li><a href="index.html#certifications">ISO 14001</a></li>
                         <li><a href="index.html#certifications">ISO 45001</a></li>
                         <li><a href="index.html#certifications">ISO 22000</a></li>
-                        <li><a href="index.html#certifications">IATF 16949</a></li>
+                        <li><a href="index.html#certifications">BRCGS</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <h5>Contact Training Team</h5>
+                    <h5>Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="tel:+971501234567"><i class="fas fa-phone"></i> +971 50 123 4567</a></li>
-                        <li><a href="mailto:training@cqbs.com"><i class="fas fa-envelope"></i> training@cqbs.com</a></li>
-                        <li><a href="index.html#contact"><i class="fas fa-calendar-check"></i> Book a Consultation</a></li>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2026 CQBS - Compliance & Quality Based Solutions. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
-                    <a href="index.html#contact">Contact Us</a>
+                    <a href="#">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 800);
-        });
-
         // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
+        const backToTopBtn = document.getElementById('backToTop');
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
+            const scrollY = window.scrollY;
+            if (scrollY > 80) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            if (scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
         });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -985,66 +1339,7 @@
                 // Close mobile nav if open
                 const navbarCollapse = document.querySelector('.navbar-collapse');
                 if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        // Counter animation for hero stats
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('[data-count]');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-count'));
-                        const duration = 2000;
-                        const step = target / (duration / 16);
-                        let current = 0;
-                        const updateCounter = () => {
-                            current += step;
-                            if (current < target) {
-                                counter.textContent = Math.floor(current) + '+';
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.textContent = target + '+';
-                            }
-                        };
-                        updateCounter();
-                    });
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const heroStats = document.querySelector('.training-hero-stats');
-        if (heroStats) counterObserver.observe(heroStats);
-
-        // Active nav link based on scroll position
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link:not(.btn-nav-cta)');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+                    bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
                 }
             });
         });

@@ -1,789 +1,1043 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Safety Consultancy Services | FoodSafe Pro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Consultancy Services | CQBS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #0a6e3d;
-            --primary-dark: #064d2b;
-            --primary-light: #0d8c4e;
-            --accent: #f0a500;
-            --accent-light: #ffc947;
-            --dark: #0b1a12;
-            --dark-green: #0e2a1a;
-            --light: #f0f7f3;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #059669;
+            --secondary-dark: #047857;
+            --secondary-light: #10b981;
+            --accent: #059669;
+            --accent-light: #10b981;
+            --dark: #0f172a;
+            --dark-blue: #1e293b;
+            --light: #f0f9ff;
             --white: #ffffff;
-            --gray: #6c757d;
-            --light-gray: #e8efe9;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
             overflow-x: hidden;
-            background: var(--white);
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.6;
         }
-
-        /* ==================== PRELOADER ==================== */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark); z-index: 99999;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-        .loader-icon {
-            width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent); border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .loader-text {
-            color: var(--white); margin-top: 20px; font-weight: 600;
-            font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ==================== NAVBAR ==================== */
         .navbar {
-            padding: 15px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1050; background: transparent;
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1050;
+            background: transparent;
         }
         .navbar.scrolled {
-            background: rgba(10, 26, 18, 0.97) !important;
-            backdrop-filter: blur(20px); padding: 8px 0;
+            background: rgba(15, 23, 42, 0.97) !important;
+            backdrop-filter: blur(20px);
+            padding: 8px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
         .navbar-brand {
-            font-family: 'Playfair Display', serif; font-weight: 900;
-            font-size: 1.8rem; color: var(--white) !important;
-            display: flex; align-items: center; gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--white) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .navbar-brand .brand-icon {
-            width: 45px; height: 45px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.2rem; color: var(--dark);
-        }
-        .navbar-brand span { color: var(--accent); }
+        .navbar-brand span { color: var(--secondary); }
         .navbar .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important; font-weight: 500;
-            font-size: 0.95rem; padding: 8px 18px !important;
-            position: relative; transition: all 0.3s ease; letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 18px !important;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
-        .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--accent) !important; }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active { color: var(--secondary) !important; }
         .navbar .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
-            height: 2px; background: var(--accent); transform: scaleX(0);
-            transition: transform 0.3s ease; border-radius: 2px;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
         }
-        .navbar .nav-link:hover::after, .navbar .nav-link.active::after { transform: scaleX(1); }
-        .navbar-toggler { border: none; padding: 8px; outline: none !important; box-shadow: none !important; }
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after { transform: scaleX(1); }
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            outline: none !important;
+            box-shadow: none !important;
+        }
         .navbar-toggler .toggler-icon {
-            width: 28px; height: 3px; background: var(--white);
-            display: block; margin: 5px 0; border-radius: 3px; transition: all 0.3s ease;
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            display: block;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
         .btn-nav-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--dark) !important; font-weight: 700; padding: 10px 28px !important;
-            border-radius: 50px; border: none; font-size: 0.9rem;
-            letter-spacing: 0.5px; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(240, 165, 0, 0.3);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white) !important;
+            font-weight: 700;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            margin-top: 10px;
         }
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(240, 165, 0, 0.5);
+            box-shadow: 0 6px 25px rgba(5, 150, 105, 0.5);
+        }
+        .btn-nav-cta::after { display: none !important; }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+               
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 15px;
+               
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .navbar-nav { align-items: flex-start !important; }
+            .navbar .nav-link {
+                padding: 12px 0 !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .navbar .nav-link:last-child { border-bottom: none; }
+            .nav-item.ms-lg-2 { margin-left: 0 !important; padding-top: 10px; }
         }
 
-        /* ==================== HERO SECTION ==================== */
-        .consultancy-hero {
-            position: relative; padding: 180px 0 100px;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-green) 100%);
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            position: relative;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
             overflow: hidden;
         }
-        .consultancy-hero::before {
-            content: ''; position: absolute; top: -100px; right: -100px;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.15), transparent 70%);
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.15), transparent 70%);
             border-radius: 50%;
         }
-        .consultancy-hero::after {
-            content: ''; position: absolute; bottom: -150px; left: -100px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(10, 110, 61, 0.2), transparent 70%);
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.1), transparent 70%);
             border-radius: 50%;
         }
-        .consultancy-hero-content { position: relative; z-index: 2; text-align: center; max-width: 850px; margin: 0 auto; }
-        .consultancy-hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(240, 165, 0, 0.15); border: 1px solid rgba(240, 165, 0, 0.3);
-            color: var(--accent-light); padding: 8px 24px; border-radius: 50px;
-            font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 25px; backdrop-filter: blur(10px);
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .consultancy-hero-title {
-            font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900;
-            color: var(--white); line-height: 1.2; margin-bottom: 20px;
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 150, 105, 0.15);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            color: var(--secondary-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
         }
-        .consultancy-hero-title .highlight {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .page-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .page-hero-title .highlight {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .consultancy-hero-subtitle {
-            font-size: 1.15rem; color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8; margin-bottom: 35px;
+        .page-hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
-        .consultancy-hero-stats {
-            display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 40px;
+        .breadcrumb-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
         }
-        .consultancy-hero-stat { text-align: center; }
-        .consultancy-hero-stat-number {
-            font-family: 'Playfair Display', serif; font-size: 2.2rem;
-            font-weight: 900; color: var(--accent); line-height: 1;
+        .breadcrumb-nav a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .consultancy-hero-stat-label {
-            font-size: 0.8rem; color: rgba(255, 255, 255, 0.65);
-            text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; margin-top: 5px;
-        }
+        .breadcrumb-nav a:hover { color: var(--white); }
 
         /* ==================== SECTION STYLES ==================== */
-        .section-padding { padding: 100px 0; }
-        .section-header { margin-bottom: 60px; }
+        .section-padding { padding: 80px 0; }
+        .section-header { margin-bottom: 50px; }
         .section-label {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 700; font-size: 0.85rem;
-            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
         .section-label::before {
-            content: ''; width: 30px; height: 3px; background: var(--accent);
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
             border-radius: 3px;
         }
         .section-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--dark); line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
-        .section-title .highlight { color: var(--primary); }
+        .section-title .highlight { color: var(--secondary); }
         .section-desc {
-            font-size: 1.1rem; color: var(--gray); max-width: 750px;
-            line-height: 1.8; margin-top: 15px;
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            line-height: 1.8;
         }
-        .section-desc.centered { margin-left: auto; margin-right: auto; }
+        .section-desc.centered { margin: 0 auto; }
 
-        /* ==================== WHY CONSULTANCY SECTION ==================== */
-        .why-consultancy-section { background: var(--light); }
-        .why-consultancy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .why-consultancy-card {
-            background: var(--white); border-radius: 20px; padding: 35px 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;
+        /* ==================== SERVICE CARDS ==================== */
+        .service-detail-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
             border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
         }
-        .why-consultancy-card:hover {
-            transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        .service-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
-        .why-consultancy-icon {
-            width: 60px; height: 60px; border-radius: 16px;
-            background: linear-gradient(135deg, rgba(10, 110, 61, 0.1), rgba(10, 110, 61, 0.05));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.5rem; margin-bottom: 20px;
+        .service-detail-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
         }
-        .why-consultancy-card h4 {
-            font-weight: 700; font-size: 1.15rem; color: var(--dark); margin-bottom: 12px;
+        .service-detail-icon {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
         }
-        .why-consultancy-card p { color: var(--gray); font-size: 0.95rem; line-height: 1.7; margin: 0; }
-
-        /* ==================== SERVICES SECTION ==================== */
-        .services-section { background: var(--white); }
-        .service-card {
-            background: var(--white); border-radius: 20px; padding: 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); transition: all 0.4s ease;
-            border: 1px solid rgba(0, 0, 0, 0.04); overflow: hidden; height: 100%;
-            display: flex; flex-direction: column;
+        .service-detail-icon.food { background: linear-gradient(135deg, var(--secondary), var(--secondary-light)); }
+        .service-detail-icon.qms { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .service-detail-icon.audit { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+        .service-detail-icon.cert { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+        .service-detail-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 5px;
         }
-        .service-card:hover {
-            transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        .service-detail-number {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
         }
-        .service-card-header {
-            padding: 35px 30px 20px; background: linear-gradient(135deg, var(--light), var(--white));
-            border-bottom: 1px solid var(--light-gray); position: relative;
+        .service-detail-desc {
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
-        .service-card-number {
-            position: absolute; top: 20px; right: 25px;
-            font-family: 'Playfair Display', serif; font-size: 3rem;
-            font-weight: 900; color: rgba(0, 0, 0, 0.04); line-height: 1;
+        .service-detail-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
         }
-        .service-card-icon {
-            width: 70px; height: 70px; border-radius: 18px;
-            background: linear-gradient(135deg, rgba(10, 110, 61, 0.15), rgba(10, 110, 61, 0.05));
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.8rem; margin-bottom: 20px;
+        .service-detail-benefits li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            color: #555;
+            font-size: 0.95rem;
         }
-        .service-card-title {
-            font-family: 'Playfair Display', serif; font-size: 1.4rem;
-            font-weight: 800; color: var(--dark); margin-bottom: 10px;
+        .service-detail-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.9rem;
         }
-        .service-card-subtitle {
-            color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0;
+        .service-how-we-help {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
         }
-        .service-card-body { padding: 25px 30px; flex: 1; display: flex; flex-direction: column; }
-        .service-description {
-            color: #555; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;
+        .service-how-we-help h6 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .service-benefits {
-            background: var(--light); border-radius: 12px; padding: 20px;
-            margin-top: auto;
+        .service-how-we-help p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
         }
-        .service-benefits-title {
-            font-weight: 700; color: var(--dark); font-size: 0.95rem; margin-bottom: 10px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .service-benefits-title i { color: var(--accent); }
-        .service-benefits ul {
-            list-style: none; padding: 0; margin: 0;
-        }
-        .service-benefits li {
-            font-size: 0.85rem; color: var(--gray); padding: 4px 0;
-            display: flex; align-items: flex-start; gap: 8px;
-        }
-        .service-benefits li::before {
-            content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0;
-        }
-        .btn-service {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 600; font-size: 0.9rem;
-            text-decoration: none; transition: all 0.3s ease; padding: 12px 0;
-            margin-top: 15px;
-        }
-        .btn-service:hover { gap: 15px; color: var(--primary-dark); }
 
         /* ==================== QMS SECTION ==================== */
         .qms-section {
-            background: linear-gradient(135deg, var(--dark), var(--dark-green));
-            position: relative; overflow: hidden;
+            background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+            position: relative;
         }
         .qms-section::before {
-            content: ''; position: absolute; top: -100px; left: -100px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
-            border-radius: 50%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
         }
-        .qms-section::after {
-            content: ''; position: absolute; bottom: -100px; right: -100px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
-            border-radius: 50%;
-        }
-        .qms-section .section-label { color: var(--accent); }
-        .qms-section .section-title { color: var(--white); }
-        .qms-section .section-desc { color: rgba(255, 255, 255, 0.7); }
-        
         .qms-intro {
-            background: rgba(255, 255, 255, 0.05); border-radius: 20px;
-            padding: 30px; margin-bottom: 40px; border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            margin-bottom: 40px;
         }
-        .qms-intro p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; line-height: 1.8; margin: 0; }
-        
-        .qms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .qms-card {
-            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px; padding: 25px; transition: all 0.3s ease;
+        .qms-intro p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
-        .qms-card:hover {
-            background: rgba(240, 165, 0, 0.1); border-color: rgba(240, 165, 0, 0.3);
-            transform: translateY(-4px);
+        .qms-intro .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(5, 150, 105, 0.08));
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--secondary);
         }
-        .qms-card h5 {
-            color: var(--white); font-weight: 700; font-size: 1.05rem;
-            margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+        .qms-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
-        .qms-card h5 i { color: var(--accent); }
-        .qms-card p {
-            color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.6; margin: 0;
-        }
-
-        /* ==================== APPROACH SECTION ==================== */
-        .approach-section { background: var(--white); }
-        .approach-steps { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 40px; }
-        .approach-step {
-            flex: 1; min-width: 250px; max-width: 300px;
-            background: var(--light); border-radius: 20px; padding: 30px;
-            text-align: center; transition: all 0.3s ease;
-        }
-        .approach-step:hover {
-            background: var(--white); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
-        }
-        .approach-step-number {
-            width: 50px; height: 50px; margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-family: 'Playfair Display', serif;
-            font-size: 1.3rem; font-weight: 900; color: var(--white);
-        }
-        .approach-step h5 {
-            font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 10px;
-        }
-        .approach-step p {
-            color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0;
-        }
-
-        /* ==================== AUDIENCE SECTION ==================== */
-        .audience-section { background: var(--light); }
-        .audience-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; margin-top: 30px;
-        }
-        .audience-item {
-            background: var(--white); border-radius: 16px; padding: 25px 20px;
-            text-align: center; transition: all 0.3s ease;
+        .qms-service-item {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
         }
-        .audience-item:hover {
-            transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-            border-color: rgba(10, 110, 61, 0.2);
+        .qms-service-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--secondary);
         }
-        .audience-icon {
-            width: 55px; height: 55px; margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 14px; display: flex; align-items: center;
-            justify-content: center; color: var(--white); font-size: 1.3rem;
+        .qms-service-item h5 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .audience-item h5 {
-            font-weight: 700; font-size: 0.95rem; color: var(--dark); margin: 0;
+        .qms-service-item h5 i {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        .qms-service-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ==================== WHY CHOOSE ==================== */
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        .why-item-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        .why-item h6 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        .why-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ==================== WHO BENEFITS ==================== */
+        .who-benefits {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        .who-benefits h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .benefit-tag {
+            background: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        .benefit-tag:hover {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
         }
 
         /* ==================== CTA SECTION ==================== */
-        .consultancy-cta {
-            background: linear-gradient(135deg, var(--dark), var(--dark-green));
-            position: relative; overflow: hidden; padding: 80px 0;
+        .page-cta {
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
+            padding: 60px 0;
+            text-align: center;
         }
-        .consultancy-cta::before {
-            content: ''; position: absolute; top: -80px; left: -80px;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
-            border-radius: 50%;
+        .page-cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
         }
-        .consultancy-cta::after {
-            content: ''; position: absolute; bottom: -80px; right: -80px;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(10, 110, 61, 0.15), transparent 70%);
-            border-radius: 50%;
+        .page-cta-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
-        .consultancy-cta-content { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; }
-        .consultancy-cta-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--white); line-height: 1.3; margin-bottom: 20px;
+        .btn-page-cta {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
         }
-        .consultancy-cta-text {
-            color: rgba(255, 255, 255, 0.75); font-size: 1.05rem;
-            line-height: 1.7; margin-bottom: 35px;
-        }
-        .btn-consultancy-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--dark); padding: 16px 40px; border-radius: 50px;
-            font-weight: 700; font-size: 1rem; border: none; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 10px;
-            transition: all 0.3s ease; box-shadow: 0 8px 30px rgba(240, 165, 0, 0.3);
-        }
-        .btn-consultancy-cta:hover {
-            transform: translateY(-3px); box-shadow: 0 12px 40px rgba(240, 165, 0, 0.5);
-            color: var(--dark);
+        .btn-page-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.5);
+            color: var(--white);
         }
 
         /* ==================== FOOTER ==================== */
         .footer {
-            background: var(--dark); padding: 60px 0 0;
+            background: var(--dark);
+            padding: 60px 0 0;
         }
         .footer-brand {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            font-weight: 900; color: var(--white); margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
         }
-        .footer-brand span { color: var(--accent); }
+        .footer-brand span { color: var(--secondary); }
         .footer-desc {
-            color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;
-            line-height: 1.7; margin-bottom: 25px; max-width: 350px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 350px;
         }
         .footer h5 {
-            color: var(--white); font-weight: 700; font-size: 1.1rem;
-            margin-bottom: 25px; position: relative;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
         }
         .footer h5::after {
-            content: ''; position: absolute; bottom: -8px; left: 0;
-            width: 30px; height: 3px; background: var(--accent); border-radius: 3px;
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
         }
         .footer-links { list-style: none; padding: 0; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5); text-decoration: none;
-            font-size: 0.9rem; transition: all 0.3s ease;
-            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
         .footer-bottom {
-            margin-top: 50px; padding: 25px 0;
+            margin-top: 50px;
+            padding: 25px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .footer-bottom p {
-            color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; margin: 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
         }
-        .footer-bottom-links { display: flex; gap: 25px; }
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
         .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.4); text-decoration: none;
-            font-size: 0.85rem; transition: color 0.3s ease;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
         }
-        .footer-bottom-links a:hover { color: var(--accent); }
+        .footer-bottom-links a:hover { color: var(--secondary); }
 
-        /* ==================== ANIMATIONS ==================== */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ==================== BACK TO TOP ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(5, 150, 105, 0.3);
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ==================== LOGO CONTAINER ==================== */
+        .navbar-brand .brand-icon {
+            width: 130px;
+            height: 90px;
+            max-width: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        .navbar-brand .brand-icon img,
+        .navbar-brand .brand-icon svg {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .footer .brand-icon {
+            width: 130px;
+            height: 100px;
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        .footer .brand-icon img,
+        .footer .brand-icon svg {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 991.98px) {
-            .consultancy-hero-title { font-size: 2.5rem; }
-            .consultancy-hero-subtitle { font-size: 1rem; }
+            .page-hero-title { font-size: 2.8rem; }
             .section-title { font-size: 2rem; }
-            .navbar-collapse {
-                background: rgba(10, 26, 18, 0.98);
-                backdrop-filter: blur(20px); border-radius: 15px;
-                padding: 20px; margin-top: 15px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
+            .service-detail-header { flex-direction: column; text-align: center; }
+            .service-detail-icon { margin: 0 auto; }
         }
         @media (max-width: 767.98px) {
-            .consultancy-hero { padding: 140px 0 70px; }
-            .consultancy-hero-title { font-size: 2rem; }
-            .consultancy-hero-stats { gap: 25px; }
-            .consultancy-hero-stat-number { font-size: 1.8rem; }
-            .section-padding { padding: 70px 0; }
-            .section-title { font-size: 1.7rem; }
-            .consultancy-cta-title { font-size: 1.9rem; }
+            .page-hero { padding: 120px 0 60px; }
+            .page-hero-title { font-size: 2.2rem; }
+            .page-hero-subtitle { font-size: 1rem; }
+            .section-padding { padding: 60px 0; }
+            .section-title { font-size: 1.8rem; }
+            .service-detail-card { padding: 25px 20px; }
+            .service-detail-title { font-size: 1.3rem; }
+            .qms-intro, .who-benefits { padding: 30px 20px; }
+            .page-cta-title { font-size: 1.8rem; }
             .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 575.98px) {
+            .page-hero-title { font-size: 1.9rem; }
+            .section-title { font-size: 1.6rem; }
+            .service-detail-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+            .benefits-list { justify-content: center; }
+            .btn-page-cta { width: 100%; max-width: 300px; justify-content: center; }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-icon"></div>
-        <div class="loader-text">FoodSafe Pro</div>
-    </div>
+<body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <div class="brand-icon"><i class="fas fa-shield-halved"></i></div>
-                Food<span>Safe</span>Pro
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-icon"><img src="images/logo1.png" alt="CQBS Logo"></div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="toggler-icon"></span><span class="toggler-icon"></span><span class="toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center gap-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                 <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="digital.html">Digital Platform</a></li>
                     <li class="nav-item"><a class="nav-link active" href="consult.html">Consultancy</a></li>
                     <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
-                    <li class="nav-item"><a class="nav-link" href="digital.html">Digital Platform</a></li>
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link btn-nav-cta" href="contact.html">Get Free Audit</a>
+                        <a class="nav-link btn-nav-cta" href="index.html#contact">Get Free Consultation</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="consultancy-hero">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <div class="consultancy-hero-content fade-up">
-                <div class="consultancy-hero-badge">
-                    <i class="fas fa-clipboard-check"></i> Expert Consultancy
+            <div class="page-hero-content fade-up">
+                <div class="page-hero-badge">
+                    <i class="fas fa-clipboard-check"></i>
+                    Consultancy Services
                 </div>
-                <h1 class="consultancy-hero-title">
-                    End-to-End <span class="highlight">Food Safety Consultancy</span><br>
-                    From Assessment to Certification
+                <h1 class="page-hero-title">
+                    Expert <span class="highlight">Food Safety & Quality</span> Consultancy
                 </h1>
-                <p class="consultancy-hero-subtitle">
-                    Practical, site-specific consultancy to help your food business achieve compliance, certification, and consumer trust. We bridge the gap between regulatory requirements and real-world operations.
+                <p class="page-hero-subtitle">
+                    Practical, site-specific support to help your organization achieve compliance, certification readiness, and operational excellence in food safety and quality management.
                 </p>
-                <a href="#services" class="btn-consultancy-cta">
-                    Explore Services <i class="fas fa-arrow-right"></i>
-                </a>
-                <div class="consultancy-hero-stats">
-                    <div class="consultancy-hero-stat">
-                        <div class="consultancy-hero-stat-number" data-count="500">0</div>
-                        <div class="consultancy-hero-stat-label">Clients Served</div>
-                    </div>
-                    <div class="consultancy-hero-stat">
-                        <div class="consultancy-hero-stat-number" data-count="1200">0</div>
-                        <div class="consultancy-hero-stat-label">Audits Completed</div>
-                    </div>
-                    <div class="consultancy-hero-stat">
-                        <div class="consultancy-hero-stat-number" data-count="98">0</div>
-                        <div class="consultancy-hero-stat-label">% Success Rate</div>
-                    </div>
-                </div>
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Consultancy</span>
+                </nav>
             </div>
         </div>
     </section>
 
-    <!-- Why Consultancy Matters -->
-    <section class="why-consultancy-section section-padding">
+    <!-- Food Safety Consultancy Services -->
+    <section class="section-padding" id="services">
         <div class="container">
             <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Why It Matters</div>
-                <h2 class="section-title">Why Expert <span class="highlight">Consultancy Matters</span></h2>
+                <div class="section-label justify-content-center">Food Safety Consultancy</div>
+                <h2 class="section-title">Comprehensive <span class="highlight">FSMS Support</span></h2>
                 <p class="section-desc centered">
-                    Food safety compliance is complex. The right consultancy partner helps you navigate standards, avoid costly mistakes, and build a system that works in practice—not just on paper.
-                </p>
-            </div>
-            <div class="why-consultancy-grid">
-                <div class="why-consultancy-card fade-up">
-                    <div class="why-consultancy-icon"><i class="fas fa-search"></i></div>
-                    <h4>Identify Gaps Early</h4>
-                    <p>Pinpoint weaknesses in your current system before they become audit findings or compliance risks.</p>
-                </div>
-                <div class="why-consultancy-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="why-consultancy-icon"><i class="fas fa-file-contract"></i></div>
-                    <h4>Achieve Certification</h4>
-                    <p>Get structured support to meet BRCGS, FSSC 22000, ISO 22000, HACCP, and other global standards.</p>
-                </div>
-                <div class="why-consultancy-card fade-up" style="transition-delay: 0.2s;">
-                    <div class="why-consultancy-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h4>Reduce Business Risk</h4>
-                    <p>Strengthen controls to prevent contamination, recalls, legal issues, and reputational damage.</p>
-                </div>
-                <div class="why-consultancy-card fade-up" style="transition-delay: 0.3s;">
-                    <div class="why-consultancy-icon"><i class="fas fa-cogs"></i></div>
-                    <h4>Improve Operations</h4>
-                    <p>Build practical systems that enhance efficiency, consistency, and product quality every day.</p>
-                </div>
-                <div class="why-consultancy-card fade-up" style="transition-delay: 0.4s;">
-                    <div class="why-consultancy-icon"><i class="fas fa-users"></i></div>
-                    <h4>Empower Your Team</h4>
-                    <p>Equip staff with clear procedures, training, and tools to own food safety in their roles.</p>
-                </div>
-                <div class="why-consultancy-card fade-up" style="transition-delay: 0.5s;">
-                    <div class="why-consultancy-icon"><i class="fas fa-globe"></i></div>
-                    <h4>Access Global Markets</h4>
-                    <p>Meet buyer expectations and export requirements with recognized certifications and documentation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Consultancy Services -->
-    <section class="services-section section-padding" id="services">
-        <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Our Services</div>
-                <h2 class="section-title">Comprehensive <span class="highlight">Consultancy Portfolio</span></h2>
-                <p class="section-desc centered">
-                    From initial assessment to certification support, our consultancy services cover every stage of your food safety journey.
+                    End-to-end consultancy services designed to strengthen your food safety system, prepare for audits, and ensure compliance with global standards.
                 </p>
             </div>
 
-            <div class="row g-4">
-                <!-- Gap Analysis -->
-                <div class="col-lg-6 fade-up">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">01</div>
-                            <div class="service-card-icon"><i class="fas fa-search-location"></i></div>
-                            <h3 class="service-card-title">Gap Analysis & Readiness Assessment</h3>
-                            <p class="service-card-subtitle">Detailed review against ISO 22000, FSSC 22000, BRCGS, HACCP, GMP/GHP</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                A comprehensive assessment of your existing food safety system covering documentation, process controls, hygiene practices, hazard analysis, traceability, supplier control, training records, and internal audits.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Conduct practical, site-specific gap assessment</li>
-                                    <li>Prepare clear gap report with observations and risk areas</li>
-                                    <li>Provide actionable roadmap for system improvement</li>
-                                    <li>Help prioritize actions to reduce audit risk</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 1: Gap Analysis -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon food">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div>
+                        <h3 class="service-detail-title">Gap Analysis & Readiness Assessment</h3>
+                        <span class="service-detail-number">Service 01</span>
                     </div>
                 </div>
+                <p class="service-detail-desc">
+                    A detailed review of your organization's existing food safety system against applicable standards such as ISO 22000, FSSC 22000, BRCGS, HACCP, and GMP/GHP requirements.
+                </p>
+                <p class="service-detail-desc">
+                    The assessment covers current documentation, process controls, hygiene practices, PRPs, hazard analysis, CCP/OPRP controls, traceability, supplier control, training records, internal audits, and management review practices. It helps identify missing requirements, weak controls, incomplete records, and areas that may create non-conformities during certification or customer audits.
+                </p>
+                <p class="service-detail-desc">
+                    This service gives your organization a clear understanding of its present compliance status. It helps management prioritize actions, reduce audit risk, avoid unnecessary rework, and prepare a practical roadmap for system improvement.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Identify gaps against target standards</li>
+                    <li>Assess documentation and process controls</li>
+                    <li>Evaluate hygiene practices and PRPs</li>
+                    <li>Review hazard analysis and CCP controls</li>
+                    <li>Check traceability and supplier management</li>
+                    <li>Prepare actionable improvement roadmap</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will conduct a practical, site-specific gap assessment and compare your existing system with the required standard. Our team will prepare a clear gap report with observations, risk areas, required corrections, and an action plan. This helps you understand exactly what needs to be improved before moving toward certification or customer audit readiness.</p>
+                </div>
+            </div>
 
-                <!-- Documentation & FSMS -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">02</div>
-                            <div class="service-card-icon"><i class="fas fa-file-alt"></i></div>
-                            <h3 class="service-card-title">Documentation & FSMS Implementation</h3>
-                            <p class="service-card-subtitle">Develop and apply a structured Food Safety Management System</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                Support in preparing or improving food safety policy, SOPs, process flow diagrams, hazard analysis, HACCP plan, PRP records, monitoring formats, corrective actions, recall procedures, and management review records.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Prepare FSMS documents based on your actual processes</li>
-                                    <li>Guide implementation on the shop floor, not just paperwork</li>
-                                    <li>Ensure employees follow consistent, compliant practices</li>
-                                    <li>Strengthen legal and customer compliance</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 2: Documentation & FSMS Implementation -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon food">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="service-detail-title">Documentation & FSMS Implementation</h3>
+                        <span class="service-detail-number">Service 02</span>
                     </div>
                 </div>
+                <p class="service-detail-desc">
+                    Support in developing and applying a structured Food Safety Management System suitable for your actual operations.
+                </p>
+                <p class="service-detail-desc">
+                    The service includes preparation or improvement of food safety policy, objectives, SOPs, process flow diagrams, hazard analysis, HACCP plan, PRP records, monitoring formats, corrective action formats, recall procedure, traceability records, supplier evaluation process, internal audit formats, and management review records.
+                </p>
+                <p class="service-detail-desc">
+                    The purpose is not only to create documents but to make sure the system works at site level. Proper implementation helps employees follow consistent practices, improves control over food safety hazards, strengthens legal and customer compliance, and creates reliable audit evidence.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Develop practical, audit-ready documentation</li>
+                    <li>Create process-specific SOPs and work instructions</li>
+                    <li>Build effective HACCP plans and hazard controls</li>
+                    <li>Establish monitoring and corrective action systems</li>
+                    <li>Implement traceability and recall procedures</li>
+                    <li>Train teams on system implementation</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will support your organization in preparing required FSMS documents based on your actual process, product category, facility layout, and operational risks. We will also guide your team in implementing these documents on the shop floor, so the system is not limited to paperwork but becomes part of daily food safety practice.</p>
+                </div>
+            </div>
 
-                <!-- Internal Audits -->
-                <div class="col-lg-6 fade-up">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">03</div>
-                            <div class="service-card-icon"><i class="fas fa-clipboard-list"></i></div>
-                            <h3 class="service-card-title">Internal Audits & Management Reviews</h3>
-                            <p class="service-card-subtitle">Verify FSMS effectiveness and drive continual improvement</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                Internal audits check departments, processes, records, hygiene conditions, and compliance. Management reviews evaluate FSMS performance including audit results, complaints, non-conformities, and improvement opportunities.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Conduct practical internal audits with auditor expertise</li>
-                                    <li>Identify areas needing correction before external audits</li>
-                                    <li>Assist with management review inputs and follow-up</li>
-                                    <li>Support informed decision-making based on system performance</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 3: Internal Audits & Management Reviews -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon audit">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div>
+                        <h3 class="service-detail-title">Internal Audits & Management Reviews</h3>
+                        <span class="service-detail-number">Service 03</span>
                     </div>
                 </div>
+                <p class="service-detail-desc">
+                    Help verify whether your Food Safety Management System is properly implemented, maintained, and improved.
+                </p>
+                <p class="service-detail-desc">
+                    The internal audit checks departments, processes, records, hygiene conditions, monitoring activities, operational controls, corrective actions, and compliance with the applicable standard. Management review evaluates overall FSMS performance, including audit results, customer complaints, non-conformities, food safety objectives, resource needs, changes affecting the system, and improvement opportunities.
+                </p>
+                <p class="service-detail-desc">
+                    This service helps organizations identify problems before the external audit. It also supports management in taking informed decisions based on actual system performance rather than assumptions.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Conduct thorough internal audits</li>
+                    <li>Identify non-conformities before external audits</li>
+                    <li>Evaluate system effectiveness and compliance</li>
+                    <li>Prepare management review inputs and agendas</li>
+                    <li>Track corrective actions and follow-ups</li>
+                    <li>Support data-driven decision making</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will conduct internal audits with a practical auditor's approach and identify areas that need correction before the certification or customer audit. We will also assist in preparing management review inputs, meeting agenda, review records, action points, and follow-up status so that top management can evaluate the food safety system effectively.</p>
+                </div>
+            </div>
 
-                <!-- Certification Readiness -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">04</div>
-                            <div class="service-card-icon"><i class="fas fa-certificate"></i></div>
-                            <h3 class="service-card-title">Certification Readiness Support</h3>
-                            <p class="service-card-subtitle">Prepare confidently for certification, surveillance, or customer audits</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                Final review of documents, records, hazard analysis, PRPs, CCP monitoring, corrective actions, legal compliance, training records, traceability exercises, and mock recall results before your audit.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Carry out final readiness check before audit</li>
-                                    <li>Help close pending gaps and pending actions</li>
-                                    <li>Guide team on audit evidence and record presentation</li>
-                                    <li>Reduce last-minute pressure and avoidable non-conformities</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 4: Certification Readiness Support -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon cert">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div>
+                        <h3 class="service-detail-title">Certification Readiness Support</h3>
+                        <span class="service-detail-number">Service 04</span>
                     </div>
                 </div>
+                <p class="service-detail-desc">
+                    Prepares your organization for certification, surveillance, renewal, or customer audits.
+                </p>
+                <p class="service-detail-desc">
+                    The service includes final review of documents, mandatory records, hazard analysis, PRPs, CCP/OPRP monitoring, corrective actions, legal compliance, calibration records, training records, supplier records, traceability exercises, mock recall results, internal audit closure, and management review outputs.
+                </p>
+                <p class="service-detail-desc">
+                    It helps your team understand what evidence may be required during the audit and how to present it properly. This reduces last-minute pressure, improves audit confidence, and lowers the possibility of avoidable non-conformities.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Final pre-audit documentation review</li>
+                    <li>Verify mandatory records and evidence</li>
+                    <li>Conduct mock audits and readiness checks</li>
+                    <li>Prepare staff for audit interviews</li>
+                    <li>Guide on evidence presentation techniques</li>
+                    <li>Support non-conformity response preparation</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will carry out a final readiness check before the audit and help your organization close pending gaps. We will guide your team on audit evidence, record presentation, employee preparedness, and common audit expectations. Our role is to make your organization technically ready, confident, and well-organized before the actual audit.</p>
+                </div>
+            </div>
 
-                <!-- Standards Support -->
-                <div class="col-lg-6 fade-up">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">05</div>
-                            <div class="service-card-icon"><i class="fas fa-globe-americas"></i></div>
-                            <h3 class="service-card-title">BRCGS, FSSC 22000 & ISO 22000 Support</h3>
-                            <p class="service-card-subtitle">Technical support for major food safety standards implementation</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                Support for implementation and audit readiness against BRCGS, FSSC 22000, and ISO 22000. Help select the right standard based on product category, customer expectations, and business goals.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Help select suitable standard for your business needs</li>
-                                    <li>Support standard-wise implementation and documentation</li>
-                                    <li>Guide process alignment, staff awareness, and audit preparation</li>
-                                    <li>Ensure system remains useful for operations, not just certification</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 5: BRCGS, FSSC 22000 & ISO 22000 Support -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon food">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h3 class="service-detail-title">BRCGS, FSSC 22000 & ISO 22000 Support</h3>
+                        <span class="service-detail-number">Service 05</span>
                     </div>
                 </div>
+                <p class="service-detail-desc">
+                    Technical support for implementation and audit readiness against major food safety standards.
+                </p>
+                <p class="service-detail-desc">
+                    ISO 22000 focuses on establishing a Food Safety Management System for controlling food safety hazards across the food chain. FSSC 22000 builds on ISO 22000 with sector-specific PRPs and additional scheme requirements. BRCGS focuses strongly on product safety, legality, quality, site standards, operational control, hygiene, food defence, food fraud, and customer requirements.
+                </p>
+                <p class="service-detail-desc">
+                    This support helps organizations select and implement the right standard based on their product category, customer expectations, market requirements, and business goals. Certification against these standards can improve buyer confidence, support market access, strengthen internal controls, and reduce risks related to product rejection, complaints, or recalls.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Standard selection guidance</li>
+                    <li>Standard-specific implementation support</li>
+                    <li>Documentation aligned to scheme requirements</li>
+                    <li>Process alignment and gap closure</li>
+                    <li>Staff awareness and training</li>
+                    <li>Audit preparation and NC closure support</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will help your organization understand which standard is suitable for its business needs, customer expectations, and product risk profile. We will support standard-wise implementation, documentation, process alignment, staff awareness, audit preparation, and non-conformity closure. Our approach is practical, so the system remains useful for operations and not only for certification.</p>
+                </div>
+            </div>
 
-                <!-- HACCP & GMP -->
-                <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">06</div>
-                            <div class="service-card-icon"><i class="fas fa-project-diagram"></i></div>
-                            <h3 class="service-card-title">HACCP & GMP Compliance</h3>
-                            <p class="service-card-subtitle">Build strong basic and process-level food safety controls</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                HACCP focuses on identifying and controlling biological, chemical, physical, and allergen hazards. GMP/GHP covers personnel hygiene, cleaning, pest control, storage, equipment maintenance, and facility hygiene.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Review process flow, raw materials, and handling practices</li>
-                                    <li>Help identify hazards and define practical control measures</li>
-                                    <li>Prepare monitoring records and train team on food safety discipline</li>
-                                    <li>Create strong foundation for ISO 22000, FSSC 22000, BRCGS audits</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 6: HACCP & GMP Compliance -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon food">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div>
+                        <h3 class="service-detail-title">HACCP & GMP Compliance</h3>
+                        <span class="service-detail-number">Service 06</span>
                     </div>
                 </div>
+                <p class="service-detail-desc">
+                    Helps organizations build strong basic and process-level food safety controls.
+                </p>
+                <p class="service-detail-desc">
+                    HACCP focuses on identifying and controlling biological, chemical, physical, and allergen-related hazards. It includes hazard analysis, identification of CCPs, setting critical limits, monitoring, corrective actions, verification, and record keeping.
+                </p>
+                <p class="service-detail-desc">
+                    GMP/GHP focuses on good operating practices such as personnel hygiene, cleaning and sanitation, pest control, waste handling, storage conditions, equipment maintenance, water quality, and facility hygiene.
+                </p>
+                <p class="service-detail-desc">
+                    This service helps reduce contamination risk, improve product safety, support legal compliance, and create a strong foundation for ISO 22000, FSSC 22000, BRCGS, and customer audits.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Conduct hazard analysis and risk assessment</li>
+                    <li>Identify and validate CCPs/OPRPs</li>
+                    <li>Develop monitoring and verification procedures</li>
+                    <li>Establish GMP/GHP prerequisites</li>
+                    <li>Train staff on food safety fundamentals</li>
+                    <li>Create practical, usable record formats</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will review your organization's process flow, raw materials, handling practices, hygiene conditions, and control measures to develop a practical HACCP and GMP compliance system. We will help identify hazards, define controls, prepare monitoring records, and train your team on basic food safety discipline required for safe and consistent operations.</p>
+                </div>
+            </div>
 
-                <!-- Third-Party Audit Coordination -->
-                <div class="col-lg-6 fade-up">
-                    <div class="service-card">
-                        <div class="service-card-header">
-                            <div class="service-card-number">07</div>
-                            <div class="service-card-icon"><i class="fas fa-handshake"></i></div>
-                            <h3 class="service-card-title">Third-Party Audit Coordination</h3>
-                            <p class="service-card-subtitle">Professional support for certification, customer, and regulatory audits</p>
-                        </div>
-                        <div class="service-card-body">
-                            <p class="service-description">
-                                Structured support for managing certification audits, customer audits, supplier audits, and surveillance audits including planning, document arrangement, evidence preparation, staff briefing, and post-audit closure.
-                            </p>
-                            <div class="service-benefits">
-                                <div class="service-benefits-title"><i class="fas fa-star"></i> How We Help</div>
-                                <ul>
-                                    <li>Coordinate with your team before and during the audit</li>
-                                    <li>Ensure documents, records, and responsible personnel are arranged</li>
-                                    <li>Support understanding of auditor observations</li>
-                                    <li>Help prepare suitable corrective action responses for closure</li>
-                                </ul>
-                            </div>
-                            <a href="#contact" class="btn-service">Learn More <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <!-- Service 7: Third-Party Audit Coordination -->
+            <div class="service-detail-card fade-up">
+                <div class="service-detail-header">
+                    <div class="service-detail-icon audit">
+                        <i class="fas fa-users"></i>
                     </div>
+                    <div>
+                        <h3 class="service-detail-title">Third-Party Audit Coordination</h3>
+                        <span class="service-detail-number">Service 07</span>
+                    </div>
+                </div>
+                <p class="service-detail-desc">
+                    Supports your organization in managing certification audits, customer audits, supplier audits, and surveillance audits in a structured and professional manner.
+                </p>
+                <p class="service-detail-desc">
+                    We support the organization in managing certification audits, customer audits, surveillance audits, and legal/regulatory audits by local council, department, or customer, in a structured and professional manner.
+                </p>
+                <p class="service-detail-desc">
+                    The service includes audit planning, agenda coordination, document arrangement, evidence preparation, staff briefing, communication support, audit-day coordination, and post-audit non-conformity closure support.
+                </p>
+                <p class="service-detail-desc">
+                    The aim is not to influence the auditor, but to ensure that your organization is prepared, records are available, responsibilities are clear, and audit responses are technically accurate. This helps reduce confusion during audits and improves the overall audit experience for both your organization and the audit team.
+                </p>
+                <ul class="service-detail-benefits">
+                    <li>Audit planning and agenda coordination</li>
+                    <li>Document and evidence preparation</li>
+                    <li>Staff briefing and role assignment</li>
+                    <li>Audit-day liaison and support</li>
+                    <li>Post-audit NC response guidance</li>
+                    <li>Corrective action closure support</li>
+                </ul>
+                <div class="service-how-we-help">
+                    <h6><i class="fas fa-lightbulb"></i> How CQBS Will Help</h6>
+                    <p>CQBS will coordinate with your organization's team before and during the audit to ensure required documents, records, responsible personnel, and process evidence are properly arranged. After the audit, CQBS will also support your organization in understanding auditor observations and preparing suitable corrective action responses for closure.</p>
                 </div>
             </div>
         </div>
@@ -793,233 +1047,245 @@
     <section class="qms-section section-padding">
         <div class="container">
             <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Quality Management</div>
-                <h2 class="section-title">Build a QMS That <span class="highlight" style="color: var(--accent);">Works Beyond Certification</span></h2>
-                <p class="section-desc centered">
-                    Practical Quality Management Systems that support real business performance—not just documentation for audit purposes.
-                </p>
+                <div class="section-label justify-content-center">QMS Services</div>
+                <h2 class="section-title">Build a Quality Management System That <span class="highlight">Works Beyond Certification</span></h2>
             </div>
 
             <div class="qms-intro fade-up">
-                <p>
-                    A strong QMS is more than a set of procedures. It is a structured way of working that helps your organization deliver consistent quality, reduce errors, improve customer satisfaction, control risks, and build confidence with clients, regulators, and certification bodies.
-                </p>
+                <p>At CQBS, we help organizations develop, implement, improve, and maintain practical Quality Management Systems that support real business performance — not just documentation for audit purposes.</p>
+                <p>A strong QMS is more than a set of procedures. It is a structured way of working that helps your organization deliver consistent quality, reduce errors, improve customer satisfaction, control risks, and build confidence with clients, regulators, and certification bodies.</p>
+                <div class="highlight-box">
+                    <strong>Whether you are planning for ISO 9001 certification, improving an existing system, preparing for audits, or strengthening internal processes, CQBS provides expert support tailored to your business operations.</strong>
+                </div>
             </div>
 
-            <div class="qms-grid">
-                <div class="qms-card fade-up">
+            <div class="qms-services-grid">
+                <div class="qms-service-item fade-up">
                     <h5><i class="fas fa-search"></i> QMS Gap Assessment</h5>
-                    <p>Review of current processes and documents against ISO 9001 and other applicable quality requirements to identify improvement areas.</p>
+                    <p>We review your current processes, documents, records, and working practices to identify gaps against ISO 9001 and other applicable quality requirements. This helps you clearly understand where your system stands and what needs to be improved.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.1s;">
-                    <h5><i class="fas fa-file-contract"></i> Documentation Support</h5>
-                    <p>Preparation of practical, audit-ready documents (manuals, policies, procedures, SOPs, formats) that your team can actually use.</p>
+                <div class="qms-service-item fade-up">
+                    <h5><i class="fas fa-file-contract"></i> QMS Documentation Support</h5>
+                    <p>We assist in preparing practical and audit-ready documents such as quality manuals, policies, procedures, SOPs, formats, work instructions, process flowcharts, and records. Our focus is to create documentation that your team can actually use.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.2s;">
-                    <h5><i class="fas fa-cogs"></i> ISO 9001 Implementation</h5>
-                    <p>Complete support from planning and process mapping to documentation, training, internal audit, management review, and certification readiness.</p>
+                <div class="qms-service-item fade-up">
+                    <h5><i class="fas fa-cogs"></i> ISO 9001 Implementation Support</h5>
+                    <p>CQBS supports organizations through the complete QMS implementation journey — from planning and process mapping to documentation, training, internal audit, management review, and certification readiness.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.3s;">
+                <div class="qms-service-item fade-up">
                     <h5><i class="fas fa-clipboard-check"></i> Internal Audit Support</h5>
-                    <p>Conducting or supporting internal audits focused on process performance, compliance, risk areas, and opportunities for improvement.</p>
+                    <p>We conduct or support internal audits to evaluate whether your QMS is effectively implemented and maintained. Our audits focus on process performance, compliance, risk areas, and opportunities for improvement.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.4s;">
-                    <h5><i class="fas fa-tools"></i> Corrective Action & RCA</h5>
-                    <p>Help identifying the real causes of nonconformities and ensuring corrective actions are practical, effective, and sustainable.</p>
+                <div class="qms-service-item fade-up">
+                    <h5><i class="fas fa-bug"></i> Corrective Action & Root Cause Analysis</h5>
+                    <p>We help your team identify the real causes behind nonconformities, customer complaints, process failures, and audit findings. Our approach ensures corrective actions are practical, effective, and sustainable.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.5s;">
-                    <h5><i class="fas fa-chart-line"></i> Management Review Prep</h5>
-                    <p>Support in preparing meaningful review inputs (performance data, audit results, risks) for informed leadership decision-making.</p>
+                <div class="qms-service-item fade-up">
+                    <h5><i class="fas fa-chart-line"></i> Management Review Preparation</h5>
+                    <p>We support organizations in preparing meaningful management review inputs, performance data, audit results, customer feedback, risks, objectives, and improvement actions so that leadership can make informed decisions.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.6s;">
-                    <h5><i class="fas fa-sync-alt"></i> Process Improvement</h5>
-                    <p>Streamlining processes, improving accountability, reducing delays, and building a culture of continual improvement.</p>
+                <div class="qms-service-item fade-up">
+                    <h5><i class="fas fa-sync-alt"></i> Process Improvement Consulting</h5>
+                    <p>A QMS should make your business stronger. We help streamline processes, remove duplication, improve accountability, reduce operational delays, and build a culture of continual improvement.</p>
                 </div>
-                <div class="qms-card fade-up" style="transition-delay: 0.7s;">
-                    <h5><i class="fas fa-award"></i> Certification Readiness</h5>
-                    <p>Pre-certification review to verify that all key requirements are properly addressed, including document, record, and staff awareness checks.</p>
+                <div class="qms-service-item fade-up">
+                    <h5><i class="fas fa-award"></i> Certification Audit Readiness</h5>
+                    <p>Before the final certification audit, we help your organization verify whether all key requirements are properly addressed. This includes document review, record verification, staff awareness checks, and readiness assessment.</p>
+                </div>
+            </div>
+
+            <div class="who-benefits fade-up">
+                <h4>Who Can Benefit?</h4>
+                <p style="color:#555; margin-bottom:20px;">Our QMS services are suitable for organizations planning ISO 9001 certification or seeking structured growth, including:</p>
+                <div class="benefits-list">
+                    <span class="benefit-tag">Manufacturing Companies</span>
+                    <span class="benefit-tag">Service Providers</span>
+                    <span class="benefit-tag">Healthcare & Medical Devices</span>
+                    <span class="benefit-tag">Engineering & Construction</span>
+                    <span class="benefit-tag">Trading & Supply Chain</span>
+                    <span class="benefit-tag">Educational Organizations</span>
+                    <span class="benefit-tag">Startups</span>
+                    <span class="benefit-tag">ISO 9001 Candidates</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Approach -->
-    <section class="approach-section section-padding">
+    <!-- Why Choose CQBS -->
+    <section class="section-padding">
         <div class="container">
             <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Our Approach</div>
-                <h2 class="section-title">Consultancy That <span class="highlight">Delivers Real Results</span></h2>
-                <p class="section-desc centered">
-                    We don't believe in copy-paste systems. Every organization has different processes, people, risks, and customer expectations.
-                </p>
+                <div class="section-label justify-content-center">Why Choose CQBS</div>
+                <h2 class="section-title">Practical Expertise, <span class="highlight">Real Results</span></h2>
             </div>
-            <div class="approach-steps">
-                <div class="approach-step fade-up">
-                    <div class="approach-step-number">1</div>
-                    <h5>Understand Your Business</h5>
-                    <p>We first learn how your organization works, your processes, products, and operational challenges.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.1s;">
-                    <div class="approach-step-number">2</div>
-                    <h5>Customize Solutions</h5>
-                    <p>We design systems and documents tailored to your actual business environment, not generic templates.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.2s;">
-                    <div class="approach-step-number">3</div>
-                    <h5>Simplify Complexity</h5>
-                    <p>We explain technical food safety and quality topics in clear, accessible language for all team levels.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.3s;">
-                    <div class="approach-step-number">4</div>
-                    <h5>Implement Practically</h5>
-                    <p>We guide on-ground implementation so systems become part of daily practice, not just paperwork.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.4s;">
-                    <div class="approach-step-number">5</div>
-                    <h5>Prepare for Audits</h5>
-                    <p>We help teams build confidence and readiness for certification, customer, and regulatory audits.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.5s;">
-                    <div class="approach-step-number">6</div>
-                    <h5>Support Continual Improvement</h5>
-                    <p>We stay engaged to help you maintain compliance and drive ongoing system enhancement.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Who Can Benefit -->
-    <section class="audience-section section-padding">
-        <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Who We Serve</div>
-                <h2 class="section-title">Consultancy for Every <span class="highlight">Food & Quality Business</span></h2>
-                <p class="section-desc centered">
-                    Whether you're in manufacturing, service, healthcare, or distribution, our consultancy adapts to your sector and scale.
-                </p>
+            <div class="why-choose-grid">
+                <div class="why-item fade-up">
+                    <div class="why-item-icon"><i class="fas fa-check"></i></div>
+                    <div>
+                        <h6>Practical Solutions</h6>
+                        <p>QMS and FSMS solutions focused on real business value, not unnecessary paperwork.</p>
+                    </div>
+                </div>
+                <div class="why-item fade-up">
+                    <div class="why-item-icon"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <h6>Experienced Professionals</h6>
+                        <p>Support from certified quality and compliance professionals with field experience.</p>
+                    </div>
+                </div>
+                <div class="why-item fade-up">
+                    <div class="why-item-icon"><i class="fas fa-route"></i></div>
+                    <div>
+                        <h6>Clear Guidance</h6>
+                        <p>Step-by-step support from initial planning through implementation and certification.</p>
+                    </div>
+                </div>
+                <div class="why-item fade-up">
+                    <div class="why-item-icon"><i class="fas fa-pen-fancy"></i></div>
+                    <div>
+                        <h6>Customized Documents</h6>
+                        <p>Documentation tailored to your actual business processes, not copy-paste templates.</p>
+                    </div>
+                </div>
+                <div class="why-item fade-up">
+                    <div class="why-item-icon"><i class="fas fa-bullseye"></i></div>
+                    <div>
+                        <h6>Audit Readiness Focus</h6>
+                        <p>Strong emphasis on preparing your team and system for successful audits.</p>
+                    </div>
+                </div>
+                <div class="why-item fade-up">
+                    <div class="why-item-icon"><i class="fas fa-language"></i></div>
+                    <div>
+                        <h6>Simple Communication</h6>
+                        <p>Clear explanations and training suitable for teams at all levels.</p>
+                    </div>
+                </div>
             </div>
-            <div class="audience-grid">
-                <div class="audience-item fade-up">
-                    <div class="audience-icon"><i class="fas fa-industry"></i></div>
-                    <h5>Food Manufacturers</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.05s;">
-                    <div class="audience-icon"><i class="fas fa-utensils"></i></div>
-                    <h5>Catering & Restaurants</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.1s;">
-                    <div class="audience-icon"><i class="fas fa-truck"></i></div>
-                    <h5>Distributors & Logistics</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.15s;">
-                    <div class="audience-icon"><i class="fas fa-hospital"></i></div>
-                    <h5>Healthcare & Medical</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.2s;">
-                    <div class="audience-icon"><i class="fas fa-building"></i></div>
-                    <h5>Service Providers</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.25s;">
-                    <div class="audience-icon"><i class="fas fa-hard-hat"></i></div>
-                    <h5>Engineering & Construction</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.3s;">
-                    <div class="audience-icon"><i class="fas fa-store"></i></div>
-                    <h5>Retail & Trading</h5>
-                </div>
-                <div class="audience-item fade-up" style="transition-delay: 0.35s;">
-                    <div class="audience-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h5>Educational Organizations</h5>
-                </div>
+
+            <div class="text-center mt-5 fade-up">
+                <p style="font-size:1.1rem; color:#444; max-width:700px; margin:0 auto;">
+                    <strong>Quality That Builds Trust:</strong> A well-designed management system gives your organization better control, better records, better decision-making, and better customer confidence. It helps you move from reactive problem-solving to a more disciplined and preventive way of working.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="consultancy-cta">
+    <section class="page-cta">
         <div class="container">
-            <div class="consultancy-cta-content fade-up">
-                <h2 class="consultancy-cta-title">Ready to Strengthen Your Food Safety System?</h2>
-                <p class="consultancy-cta-text">
-                    Whether you're preparing for certification, responding to customer requirements, improving hygiene practices, or training new employees, our consultancy team can help you create a safer, more compliant, and more reliable operation.
-                </p>
-                <a href="#contact" class="btn-consultancy-cta">
-                    Schedule a Free Consultation <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+            <h3 class="page-cta-title">Ready to Strengthen Your Quality System?</h3>
+            <p class="page-cta-text">
+                Whether you are starting from zero or improving an existing system, CQBS can help you create management systems that support compliance, performance, and long-term growth.
+            </p>
+            <a href="index.html#contact" class="btn-page-cta">
+                Contact CQBS Today <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="footer-brand">Food<span>Safe</span>Pro</div>
+                    <div class="brand-icon"><img src="images/logo.png" alt="CQBS Logo"></div>
                     <p class="footer-desc">
-                        Your trusted partner for food safety consultancy, training, and digital compliance solutions. Helping businesses achieve global food safety standards.
+                        Your trusted partner for compliance and quality consultancy, training, and digital solutions. Helping businesses achieve global quality standards.
                     </p>
+                    <div class="contact-socials" style="border: none; padding: 0; margin: 0; display:flex; gap:12px;">
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link" style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5>Consultancy Services</h5>
+                    <h5>Services</h5>
                     <ul class="footer-links">
-                        <li><a href="#services">Gap Analysis</a></li>
-                        <li><a href="#services">FSMS Implementation</a></li>
+                        <li><a href="#services">Consultancy</a></li>
+                        <li><a href="index.html#services">Training</a></li>
+                        <li><a href="index.html#services">Digital Platforms</a></li>
+                        <li><a href="index.html#certifications">Certification Support</a></li>
                         <li><a href="#services">Internal Audits</a></li>
-                        <li><a href="#services">Certification Support</a></li>
-                        <li><a href="#services">HACCP & GMP</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5>Standards We Support</h5>
+                    <h5>Certifications</h5>
                     <ul class="footer-links">
-                        <li><a href="#">BRCGS</a></li>
-                        <li><a href="#">FSSC 22000</a></li>
-                        <li><a href="#">ISO 22000</a></li>
-                        <li><a href="#">ISO 9001 QMS</a></li>
-                        <li><a href="#">HACCP</a></li>
+                        <li><a href="index.html#certifications">ISO 9001</a></li>
+                        <li><a href="index.html#certifications">ISO 14001</a></li>
+                        <li><a href="index.html#certifications">ISO 45001</a></li>
+                        <li><a href="index.html#certifications">ISO 22000</a></li>
+                        <li><a href="index.html#certifications">BRCGS</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <h5>Contact Consultancy Team</h5>
+                    <h5>Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="tel:+971501234567"><i class="fas fa-phone"></i> +971 50 123 4567</a></li>
-                        <li><a href="mailto:consultancy@foodsafepro.com"><i class="fas fa-envelope"></i> consultancy@foodsafepro.com</a></li>
-                        <li><a href="#contact"><i class="fas fa-calendar-check"></i> Book a Consultation</a></li>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 FoodSafe Pro. All rights reserved.</p>
+                <p>&copy; 2026 CQBS - Compliance & Quality Based Solutions. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
-                    <a href="/#contact">Contact Us</a>
+                    <a href="#">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 800);
-        });
-
         // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
+        const backToTopBtn = document.getElementById('backToTop');
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
+            const scrollY = window.scrollY;
+            if (scrollY > 80) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            if (scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
         });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1034,66 +1300,7 @@
                 // Close mobile nav if open
                 const navbarCollapse = document.querySelector('.navbar-collapse');
                 if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        // Counter animation for hero stats
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('[data-count]');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-count'));
-                        const duration = 2000;
-                        const step = target / (duration / 16);
-                        let current = 0;
-                        const updateCounter = () => {
-                            current += step;
-                            if (current < target) {
-                                counter.textContent = Math.floor(current) + '+';
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.textContent = target + '+';
-                            }
-                        };
-                        updateCounter();
-                    });
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const heroStats = document.querySelector('.consultancy-hero-stats');
-        if (heroStats) counterObserver.observe(heroStats);
-
-        // Active nav link based on scroll position
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link:not(.btn-nav-cta)');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+                    bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
                 }
             });
         });

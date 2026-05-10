@@ -1,665 +1,1150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | FoodSafe Pro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Contact Us | CQBS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #0a6e3d;
-            --primary-dark: #064d2b;
-            --primary-light: #0d8c4e;
-            --accent: #f0a500;
-            --accent-light: #ffc947;
-            --dark: #0b1a12;
-            --dark-green: #0e2a1a;
-            --light: #f0f7f3;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #059669;
+            --secondary-dark: #047857;
+            --secondary-light: #10b981;
+            --dark: #0f172a;
+            --dark-blue: #1e293b;
+            --light: #f0f9ff;
             --white: #ffffff;
-            --gray: #6c757d;
-            --light-gray: #e8efe9;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
             overflow-x: hidden;
-            background: var(--white);
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.6;
         }
-
-        /* ==================== PRELOADER ==================== */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark); z-index: 99999;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-        .loader-icon {
-            width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent); border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .loader-text {
-            color: var(--white); margin-top: 20px; font-weight: 600;
-            font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ==================== NAVBAR ==================== */
         .navbar {
-            padding: 15px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1050; background: transparent;
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1050;
+            background: transparent;
         }
+
         .navbar.scrolled {
-            background: rgba(10, 26, 18, 0.97) !important;
-            backdrop-filter: blur(20px); padding: 8px 0;
+            background: rgba(15, 23, 42, 0.97) !important;
+            backdrop-filter: blur(20px);
+            padding: 8px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
+
         .navbar-brand {
-            font-family: 'Playfair Display', serif; font-weight: 900;
-            font-size: 1.8rem; color: var(--white) !important;
-            display: flex; align-items: center; gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--white) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .navbar-brand .brand-icon {
-            width: 45px; height: 45px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.2rem; color: var(--dark);
-        }
-        .navbar-brand span { color: var(--accent); }
+
         .navbar .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important; font-weight: 500;
-            font-size: 0.95rem; padding: 8px 18px !important;
-            position: relative; transition: all 0.3s ease; letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 18px !important;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
-        .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--accent) !important; }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--secondary) !important;
+        }
+
         .navbar .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
-            height: 2px; background: var(--accent); transform: scaleX(0);
-            transition: transform 0.3s ease; border-radius: 2px;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
         }
-        .navbar .nav-link:hover::after, .navbar .nav-link.active::after { transform: scaleX(1); }
-        .navbar-toggler { border: none; padding: 8px; outline: none !important; box-shadow: none !important; }
+
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
         .navbar-toggler .toggler-icon {
-            width: 28px; height: 3px; background: var(--white);
-            display: block; margin: 5px 0; border-radius: 3px; transition: all 0.3s ease;
-        }
-        .btn-nav-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--dark) !important; font-weight: 700; padding: 10px 28px !important;
-            border-radius: 50px; border: none; font-size: 0.9rem;
-            letter-spacing: 0.5px; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(240, 165, 0, 0.3);
-        }
-        .btn-nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(240, 165, 0, 0.5);
-        }
-
-        /* ==================== HERO SECTION ==================== */
-        .contact-hero {
-            position: relative; padding: 180px 0 80px;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-green) 100%);
-            overflow: hidden;
-        }
-        .contact-hero::before {
-            content: ''; position: absolute; top: -100px; right: -100px;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.15), transparent 70%);
-            border-radius: 50%;
-        }
-        .contact-hero-content { position: relative; z-index: 2; text-align: center; max-width: 800px; margin: 0 auto; }
-        .contact-hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(240, 165, 0, 0.15); border: 1px solid rgba(240, 165, 0, 0.3);
-            color: var(--accent-light); padding: 8px 24px; border-radius: 50px;
-            font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 25px; backdrop-filter: blur(10px);
-        }
-        .contact-hero-title {
-            font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900;
-            color: var(--white); line-height: 1.2; margin-bottom: 20px;
-        }
-        .contact-hero-title .highlight {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .contact-hero-subtitle {
-            font-size: 1.15rem; color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8; margin-bottom: 10px;
-        }
-
-        /* ==================== SECTION STYLES ==================== */
-        .section-padding { padding: 100px 0; }
-        .section-header { margin-bottom: 60px; }
-        .section-label {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary); font-weight: 700; font-size: 0.85rem;
-            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;
-        }
-        .section-label::before {
-            content: ''; width: 30px; height: 3px; background: var(--accent);
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            display: block;
+            margin: 5px 0;
             border-radius: 3px;
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            font-weight: 900; color: var(--dark); line-height: 1.2;
-        }
-        .section-title .highlight { color: var(--primary); }
-        .section-desc {
-            font-size: 1.1rem; color: var(--gray); max-width: 750px;
-            line-height: 1.8; margin-top: 15px;
-        }
-        .section-desc.centered { margin-left: auto; margin-right: auto; }
-
-        /* ==================== CONTACT MAIN SECTION ==================== */
-        .contact-section { background: var(--light); }
-        .contact-info-card {
-            background: var(--dark); border-radius: 20px; padding: 50px 40px;
-            color: var(--white); height: 100%; position: relative; overflow: hidden;
-        }
-        .contact-info-card::before {
-            content: ''; position: absolute; bottom: -50px; right: -50px;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(240, 165, 0, 0.1), transparent 70%);
-            border-radius: 50%;
-        }
-        .contact-info-card h3 {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            font-weight: 900; margin-bottom: 10px;
-        }
-        .contact-info-card > p {
-            color: rgba(255, 255, 255, 0.6); margin-bottom: 35px; font-size: 0.95rem;
-        }
-        .contact-detail {
-            display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px;
-        }
-        .contact-detail-icon {
-            width: 45px; height: 45px; min-width: 45px;
-            background: rgba(255, 255, 255, 0.08); border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--accent);
-        }
-        .contact-detail h6 {
-            font-weight: 600; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
-        }
-        .contact-detail p { color: var(--white); margin: 0; font-size: 0.95rem; }
-        .contact-detail a { color: var(--white); text-decoration: none; transition: color 0.3s ease; }
-        .contact-detail a:hover { color: var(--accent); }
-        .contact-socials {
-            display: flex; gap: 12px; margin-top: 35px; padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .contact-social-link {
-            width: 42px; height: 42px; background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; color: var(--white); text-decoration: none;
             transition: all 0.3s ease;
         }
+
+        .btn-nav-cta {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white) !important;
+            font-weight: 700;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(5, 150, 105, 0.5);
+        }
+
+        .btn-nav-cta::after {
+            display: none !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+               
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 15px;
+             
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .navbar-nav {
+                align-items: flex-start !important;
+            }
+
+            .navbar .nav-link {
+                padding: 12px 0 !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-item.ms-lg-2 {
+                margin-left: 0 !important;
+                padding-top: 10px;
+            }
+        }
+
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            position: relative;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
+            overflow: hidden;
+        }
+
+        .page-hero::before,
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.15), transparent 70%);
+        }
+
+        .page-hero::before {
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+        }
+
+        .page-hero::after {
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.1), transparent 70%);
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 150, 105, 0.15);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            color: var(--secondary-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .page-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .page-hero-title .highlight {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--white);
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+        }
+
+        .contact-info-card {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 40px;
+            color: var(--white);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact-info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .contact-info-card>p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-detail-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+        }
+
+        .contact-detail h6 {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .contact-detail p {
+            color: var(--white);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-detail a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail a:hover {
+            color: var(--secondary);
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-social-link {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
         .contact-social-link:hover {
-            background: var(--accent); color: var(--dark); transform: translateY(-3px);
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-3px);
         }
 
         .contact-form-card {
-            background: var(--white); border-radius: 20px; padding: 50px 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); height: 100%;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            height: 100%;
         }
+
         .contact-form-card h3 {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            font-weight: 900; color: var(--dark); margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 25px;
         }
-        .form-floating { margin-bottom: 20px; }
-        .form-floating .form-control, .form-floating .form-select {
-            border: 2px solid var(--light-gray); border-radius: 12px;
-            padding: 16px; font-size: 0.95rem; transition: all 0.3s ease;
-            background-color: var(--light); height: auto;
+
+        .form-floating {
+            margin-bottom: 20px;
         }
-        .form-floating .form-control:focus, .form-floating .form-select:focus {
-            border-color: var(--primary); box-shadow: 0 0 0 4px rgba(10, 110, 61, 0.1);
+
+        .form-floating .form-control,
+        .form-floating .form-select {
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: var(--light);
+        }
+
+        .form-floating .form-control:focus,
+        .form-floating .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
             background-color: var(--white);
         }
-        .form-floating label { font-size: 0.9rem; color: var(--gray); padding: 16px; }
-        .form-floating textarea.form-control { min-height: 130px; padding-top: 26px; }
-        .form-floating textarea ~ label { padding-top: 26px; }
+
+        .form-floating label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
         .btn-submit {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white); padding: 16px 45px; border-radius: 50px;
-            font-weight: 700; font-size: 1rem; border: none; width: 100%;
-            transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(10, 110, 61, 0.3);
-            margin-top: 10px;
+            color: var(--white);
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
         }
+
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(10, 110, 61, 0.4);
+            box-shadow: 0 12px 35px rgba(30, 64, 175, 0.4);
         }
 
-        /* ==================== WHAT HAPPENS NEXT ==================== */
-        .process-section { background: var(--white); }
-        .process-steps { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 40px; }
-        .process-step {
-            flex: 1; min-width: 250px; max-width: 300px;
-            background: var(--light); border-radius: 20px; padding: 30px;
-            text-align: center; transition: all 0.3s ease;
+        .response-note {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.9rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .process-step:hover {
-            background: var(--white); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
-        }
-        .process-step-number {
-            width: 50px; height: 50px; margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-family: 'Playfair Display', serif;
-            font-size: 1.3rem; font-weight: 900; color: var(--white);
-        }
-        .process-step h5 {
-            font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 10px;
-        }
-        .process-step p { color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin: 0; }
 
-        /* ==================== MAP SECTION ==================== */
-        .map-section { background: var(--light); padding-bottom: 0; }
-        .map-wrapper {
-            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 4px solid var(--white);
+        /* ==================== LOCATION SECTION ==================== */
+        .location-section {
+            background: var(--light);
+            padding: 60px 0;
         }
-        .map-wrapper iframe { width: 100%; height: 450px; border: 0; display: block; }
+
+        .location-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .location-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .location-info p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .location-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .location-features li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .location-features li::before {
+            content: '📍';
+            position: absolute;
+            left: 0;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            min-height: 350px;
+            background: #ddd;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .page-cta {
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .page-cta-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-page-cta {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn-page-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.5);
+            color: var(--white);
+        }
 
         /* ==================== FOOTER ==================== */
-        .footer { background: var(--dark); padding: 60px 0 0; }
-        .footer-brand {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            font-weight: 900; color: var(--white); margin-bottom: 15px;
+        .footer {
+            background: var(--dark);
+            padding: 60px 0 0;
         }
-        .footer-brand span { color: var(--accent); }
-        .footer-desc {
-            color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;
-            line-height: 1.7; margin-bottom: 25px; max-width: 350px;
-        }
-        .footer h5 {
-            color: var(--white); font-weight: 700; font-size: 1.1rem;
-            margin-bottom: 25px; position: relative;
-        }
-        .footer h5::after {
-            content: ''; position: absolute; bottom: -8px; left: 0;
-            width: 30px; height: 3px; background: var(--accent); border-radius: 3px;
-        }
-        .footer-links { list-style: none; padding: 0; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.5); text-decoration: none;
-            font-size: 0.9rem; transition: all 0.3s ease;
-            display: inline-flex; align-items: center; gap: 8px;
-        }
-        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
-        .footer-bottom {
-            margin-top: 50px; padding: 25px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 15px;
-        }
-        .footer-bottom p { color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; margin: 0; }
-        .footer-bottom-links { display: flex; gap: 25px; }
-        .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.4); text-decoration: none;
-            font-size: 0.85rem; transition: color 0.3s ease;
-        }
-        .footer-bottom-links a:hover { color: var(--accent); }
 
-        /* ==================== ANIMATIONS ==================== */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .footer h5 {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            margin-top: 50px;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--secondary);
+        }
+
+        .navbar-brand .brand-icon {
+            width: 130px;
+            height: 90px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand .brand-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .footer .brand-icon {
+            width: 130px;
+            height: 100px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .footer .brand-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* ==================== BACK TO TOP ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(5, 150, 105, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 991.98px) {
-            .contact-hero-title { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-            .navbar-collapse {
-                background: rgba(10, 26, 18, 0.98);
-                backdrop-filter: blur(20px); border-radius: 15px;
-                padding: 20px; margin-top: 15px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
+            .page-hero-title {
+                font-size: 2.8rem;
             }
-            .contact-info-card, .contact-form-card { padding: 35px 25px; }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-wrapper {
+                grid-template-columns: 1fr;
+            }
         }
+
         @media (max-width: 767.98px) {
-            .contact-hero { padding: 140px 0 60px; }
-            .contact-hero-title { font-size: 2rem; }
-            .section-padding { padding: 70px 0; }
-            .section-title { font-size: 1.7rem; }
-            .map-wrapper iframe { height: 300px; }
-            .footer-bottom { flex-direction: column; text-align: center; }
+            .page-hero {
+                padding: 120px 0 60px;
+            }
+
+            .page-hero-title {
+                font-size: 2.2rem;
+            }
+
+            .page-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .contact-info-card,
+            .contact-form-card {
+                padding: 30px 25px;
+            }
+
+            .page-cta-title {
+                font-size: 1.8rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .page-hero-title {
+                font-size: 1.9rem;
+            }
+
+            .btn-page-cta {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .location-wrapper {
+                gap: 20px;
+            }
+
+            .map-container {
+                min-height: 250px;
+            }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-icon"></div>
-        <div class="loader-text">FoodSafe Pro</div>
-    </div>
+<body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <div class="brand-icon"><i class="fas fa-shield-halved"></i></div>
-                Food<span>Safe</span>Pro
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-icon"><img src="images/logo1.png" alt="CQBS Logo"></div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="toggler-icon"></span><span class="toggler-icon"></span><span class="toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center gap-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="consult.html">Consultancy</a></li>
                     <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
                     <li class="nav-item"><a class="nav-link" href="digital.html">Digital</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#contact">Contact</a></li>
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link btn-nav-cta" href="#contact">Book Consultation</a>
+                        <a class="nav-link btn-nav-cta" href="#contact">Get Free Consultation</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="contact-hero">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <div class="contact-hero-content fade-up">
-                <div class="contact-hero-badge">
-                    <i class="fas fa-envelope"></i> Get In Touch
+            <div class="page-hero-content fade-up">
+                <div class="page-hero-badge">
+                    <i class="fas fa-envelope"></i> Contact Us
                 </div>
-                <h1 class="contact-hero-title">
-                    Let's Start Your <span class="highlight">Food Safety</span> Journey
+                <h1 class="page-hero-title">
+                    Let’s Start Your <span class="highlight">Quality</span> Journey
                 </h1>
-                <p class="contact-hero-subtitle">
-                    Whether you need certification support, team training, digital compliance tools, or a complete quality management system, our experts are ready to help you build a safer, more compliant operation.
+                <p class="page-hero-subtitle">
+                    Reach out for a free consultation, training inquiry, or digital solution demo. Our compliance
+                    experts are ready to help you achieve operational excellence.
                 </p>
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Contact Us</span>
+                </nav>
             </div>
         </div>
     </section>
 
-    <!-- Contact Main Section -->
-    <section class="contact-section section-padding" id="contact">
+    <!-- Contact Section -->
+    <section class="section-padding" id="contact">
         <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Reach Out</div>
-                <h2 class="section-title">Contact Our <span class="highlight">Expert Team</span></h2>
-                <p class="section-desc centered">
-                    Fill out the form or reach us directly. We typically respond within 24 hours with a tailored consultation plan.
-                </p>
-            </div>
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info-card fade-up">
+                    <h3>Contact Information</h3>
+                    <p>Fill out the form and our team will get back to you within 24 hours.</p>
 
-            <div class="row g-4">
-                <div class="col-lg-5 fade-left">
-                    <div class="contact-info-card">
-                        <h3>Contact Information</h3>
-                        <p>Reach out via your preferred channel. Our team is available Monday to Friday, 9 AM to 6 PM.</p>
-
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
-                            <div>
-                                <h6>Phone & WhatsApp</h6>
-                                <p><a href="tel:+971501234567">+971 50 123 4567</a></p>
-                            </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h6>Phone</h6>
+                            <p><a href="tel:+918699168509">+91 8699168509</a></p>
                         </div>
+                    </div>
 
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h6>Email Address</h6>
-                                <p><a href="mailto:info@foodsafepro.com">info@foodsafepro.com</a></p>
-                            </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h6>Email</h6>
+                            <p><a href="mailto:info@cqbs.com">info@cqbs.com</a></p>
                         </div>
+                    </div>
 
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon"><i class="fas fa-location-dot"></i></div>
-                            <div>
-                                <h6>Head Office</h6>
-                                <p>Business Bay, Dubai, UAE</p>
-                            </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><i class="fas fa-location-dot"></i></div>
+                        <div>
+                            <h6>Office</h6>
+                            <p>Sector 20, Panchkula, India</p>
                         </div>
+                    </div>
 
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
-                            <div>
-                                <h6>Working Hours</h6>
-                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h6>Working Hours</h6>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
                         </div>
+                    </div>
 
-                        <div class="contact-socials">
-                            <a href="#" class="contact-social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="contact-social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="contact-social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="contact-social-link"><i class="fab fa-whatsapp"></i></a>
-                        </div>
+                    <div class="contact-socials">
+                        <a href="#" class="contact-social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/918699168509" class="contact-social-link" target="_blank"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
-                <div class="col-lg-7 fade-right">
-                    <div class="contact-form-card">
-                        <h3>Send Us a Message</h3>
-                        <form id="contactForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-                                        <label for="firstName">First Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                                        <label for="lastName">Last Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Email" required>
-                                        <label for="email">Email Address</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="tel" class="form-control" id="phone" placeholder="Phone">
-                                        <label for="phone">Phone Number</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="company" placeholder="Company Name">
-                                        <label for="company">Company Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="service" required>
-                                            <option value="" selected disabled>Select a service</option>
-                                            <option value="consultancy">Food Safety Consultancy</option>
-                                            <option value="training">Training & Certification</option>
-                                            <option value="digital">Digital Platforms</option>
-                                            <option value="qms">Quality Management System (QMS)</option>
-                                            <option value="audit">Internal / External Audit Support</option>
-                                            <option value="other">General Enquiry</option>
-                                        </select>
-                                        <label for="service">Service Interested In</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="message" placeholder="Tell us about your requirements" style="height: 130px" required></textarea>
-                                        <label for="message">How can we help you?</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn-submit">
-                                        <i class="fas fa-paper-plane me-2"></i> Send Message
-                                    </button>
+                <!-- Contact Form -->
+                <div class="contact-form-card fade-up">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                                        required>
+                                    <label for="firstName">First Name</label>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                                        required>
+                                    <label for="lastName">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phone" placeholder="Phone">
+                                    <label for="phone">Phone Number</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-select" id="service" required>
+                                        <option value="" selected disabled>Select a service</option>
+                                        <option value="consultancy">Food Safety Consultancy</option>
+                                        <option value="qms">QMS Support & ISO 9001</option>
+                                        <option value="training">Training Programs</option>
+                                        <option value="digital">Digital Platforms</option>
+                                        <option value="audit">Internal Audit Support</option>
+                                        <option value="other">Other Inquiry</option>
+                                    </select>
+                                    <label for="service">Service Interested In</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" placeholder="Message"
+                                        style="height: 120px" required></textarea>
+                                    <label for="message">Your Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-paper-plane me-2"></i> Send Message
+                                </button>
+                            </div>
+                        </div>
+                        <div class="response-note">
+                            <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+                            We typically respond within 1 business day. For urgent inquiries, please call us directly.
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What Happens Next -->
-    <section class="process-section section-padding">
+    <!-- Location Section -->
+    <section class="location-section">
         <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Next Steps</div>
-                <h2 class="section-title">What Happens <span class="highlight">After You Contact Us</span></h2>
-                <p class="section-desc centered">
-                    We keep the process simple, transparent, and focused on delivering real value to your food business.
-                </p>
-            </div>
-            <div class="process-steps">
-                <div class="approach-step fade-up">
-                    <div class="process-step-number">1</div>
-                    <h5>Initial Consultation</h5>
-                    <p>We schedule a free call or meeting to understand your operations, current compliance status, and goals.</p>
+            <div class="location-wrapper fade-up">
+                <div class="location-info">
+                    <h4>Visit Our Office</h4>
+                    <p>We welcome scheduled visits for detailed consultations, facility audits, or partnership
+                        discussions. Our team is located in Panchkula, serving food manufacturers, hospitality groups,
+                        and quality teams across India and the GCC region.</p>
+                    <ul class="location-features">
+                        <li>Easy access from major industrial zones</li>
+                        <li>Free parking available for visitors</li>
+                        <li>Meeting rooms equipped for presentations & training</li>
+                        <li>By appointment only for quality consultations</li>
+                    </ul>
                 </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.1s;">
-                    <div class="process-step-number">2</div>
-                    <h5>Custom Proposal</h5>
-                    <p>Based on your needs, we provide a clear scope, timeline, pricing, and expected outcomes tailored to your business.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.2s;">
-                    <div class="process-step-number">3</div>
-                    <h5>Project Kickoff</h5>
-                    <p>Once approved, our experts begin on-site assessment, system development, training, or platform deployment.</p>
-                </div>
-                <div class="approach-step fade-up" style="transition-delay: 0.3s;">
-                    <div class="process-step-number">4</div>
-                    <h5>Ongoing Support</h5>
-                    <p>We stay with you through certification, audits, and continuous improvement to ensure long-term success.</p>
+                <div class="map-container">
+                    <!-- Replace with your actual Google Maps embed URL -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.762629885836!2d76.8523503151078!3d30.69600098167776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feb5a1b7d5b7d%3A0x6a0d0f3c8a4b5c7!2sSector%2020%2C%20Panchkula%2C%20Haryana!5e0!3m2!1sen!2sin!4v1620000000000"
+                        allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section section-padding">
+    <!-- CTA Section -->
+    <section class="page-cta">
         <div class="container">
-            <div class="section-header text-center fade-up">
-                <div class="section-label justify-content-center">Visit Us</div>
-                <h2 class="section-title">Our <span class="highlight">Location</span></h2>
-                <p class="section-desc centered">
-                    Located in the heart of Dubai's business district, easily accessible for consultations and project meetings.
-                </p>
-            </div>
-            <div class="map-wrapper fade-up">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.768433208728!2d55.2613883764542!3d25.18721883266944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff245b74c78c1d25!2sBusiness%20Bay%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <h3 class="page-cta-title">Ready to Elevate Your Quality Standards?</h3>
+            <p class="page-cta-text">
+                Whether you need certification support, team training, or a digital compliance platform — we're here to
+                help you every step of the way.
+            </p>
+            <a href="mailto:info@cqbs.com" class="btn-page-cta">
+                Email Us Directly <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="footer-brand">Food<span>Safe</span>Pro</div>
-                    <p class="footer-desc">
-                        Your trusted partner for food safety consultancy, training, and digital compliance solutions. Helping businesses achieve global food safety standards.
+                    <div class="brand-icon"><img src="images/logo.png" alt="CQBS Logo"></div>
+                    <p class="footer-desc"
+                        style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; line-height: 1.7; margin-bottom: 25px; max-width: 350px;">
+                        Your trusted partner for compliance and quality consultancy, training, and digital solutions.
+                        Helping businesses achieve global quality standards.
                     </p>
+                    <div class="contact-socials" style="border: none; padding: 0; margin: 0; display:flex; gap:12px;">
+                        <a href="#" class="contact-social-link"
+                            style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-social-link"
+                            style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link"
+                            style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="contact-social-link"
+                            style="width:42px;height:42px;background:rgba(255,255,255,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;"><i
+                                class="fab fa-facebook-f"></i></a>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h5>Services</h5>
-                    <ul class="footer-links">
-                        <li><a href="/consultancy">Consultancy</a></li>
-                        <li><a href="/training">Training</a></li>
-                        <li><a href="/digital">Digital Platforms</a></li>
-                        <li><a href="#">QMS Solutions</a></li>
-                        <li><a href="#">Audit Support</a></li>
+                    <ul class="footer-links" style="list-style:none;padding:0;">
+                        <li style="margin-bottom:12px;"><a href="consult.html"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Consultancy</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="training.html"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Training</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="digital.html"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Digital
+                                Platforms</a></li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">QMS
+                                Support</a></li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Internal
+                                Audits</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h5>Certifications</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">BRCGS</a></li>
-                        <li><a href="#">FSSC 22000</a></li>
-                        <li><a href="#">ISO 22000</a></li>
-                        <li><a href="#">HACCP</a></li>
-                        <li><a href="#">ISO 9001</a></li>
+                    <ul class="footer-links" style="list-style:none;padding:0;">
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">ISO 9001</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">ISO 22000</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">BRCGS</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">HACCP</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">FSSC
+                                22000</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <h5>Contact Directly</h5>
-                    <ul class="footer-links">
-                        <li><a href="tel:+971501234567"><i class="fas fa-phone"></i> +971 50 123 4567</a></li>
-                        <li><a href="mailto:info@foodsafepro.com"><i class="fas fa-envelope"></i> info@foodsafepro.com</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Support</a></li>
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links" style="list-style:none;padding:0;">
+                        <li style="margin-bottom:12px;"><a href="index.html#about"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">About Us</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="index.html#process"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Our
+                                Process</a></li>
+                        <li style="margin-bottom:12px;"><a href="index.html#testimonials"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Testimonials</a>
+                        </li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Privacy
+                                Policy</a></li>
+                        <li style="margin-bottom:12px;"><a href="#"
+                                style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">Terms of
+                                Service</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 FoodSafe Pro. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Sitemap</a>
+                <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; margin: 0;">&copy; 2026 CQBS - Compliance
+                    & Quality Based Solutions. All rights reserved.</p>
+                <div class="footer-bottom-links" style="display: flex; gap: 25px;">
+                    <a href="#"
+                        style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 0.85rem;">Privacy
+                        Policy</a>
+                    <a href="#"
+                        style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 0.85rem;">Terms of
+                        Service</a>
+                    <a href="#"
+                        style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 0.85rem;">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 800);
-        });
-
         // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
+        const backToTopBtn = document.getElementById('backToTop');
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
+            const scrollY = window.scrollY;
+            if (scrollY > 80) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            if (scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
         });
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80;
-                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Scroll animations
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -669,42 +1154,48 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        // Form handling simulation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form handling placeholder
+        function handleFormSubmit(e) {
             e.preventDefault();
-            const btn = this.querySelector('.btn-submit');
+            const btn = e.target.querySelector('.btn-submit');
             const originalText = btn.innerHTML;
+
             btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
             btn.disabled = true;
 
+            // Simulate submission delay
             setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check-circle me-2"></i> Message Sent Successfully!';
-                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                    this.reset();
-                }, 3000);
-            }, 1500);
-        });
+                btn.innerHTML = '<i class="fas fa-check me-2"></i> Message Sent!';
+                btn.style.background = 'linear-gradient(135deg, var(--secondary), var(--secondary-light))';
 
-        // Active nav link
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link:not(.btn-nav-cta)');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+                setTimeout(() => {
+                    e.target.reset();
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.style.background = '';
+                }, 2000);
+            }, 1500);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
+                }
             });
         });
     </script>
 </body>
+
 </html>
