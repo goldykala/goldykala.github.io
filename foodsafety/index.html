@@ -209,7 +209,7 @@
 
         /* Mobile navbar */
         .navbar-collapse {
-background-color:1e293b ;
+            background-color: 1e293b;
             border-radius: 12px;
             padding: 12px;
             margin-top: 8px;
@@ -1970,13 +1970,13 @@ background-color:1e293b ;
                 </div>
                 <div class="cert-item">
                     <i class="fas fa-industry"></i>
-                    <h5>IATF 16949</h5>
-                    <p>Automotive</p>
+                    <h5>FSSC 22000</h5>
+                    <p>Food Safety</p>
                 </div>
                 <div class="cert-item">
                     <i class="fas fa-laptop-code"></i>
-                    <h5>ISO 27001</h5>
-                    <p>Info Security</p>
+                    <h5>BRCGS</h5>
+                    <p>Food Safety</p>
                 </div>
             </div>
         </div>
@@ -2418,19 +2418,31 @@ background-color:1e293b ;
         }
 
         // Counter animation (simplified)
+        // Counter animation with dynamic suffix (+ for Audits/Years, % for Success)
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.querySelectorAll('[data-count]').forEach(counter => {
+                        // Get the corresponding label text
+                        const parentStat = counter.closest('.hero-stat');
+                        const label = parentStat?.querySelector('.hero-stat-label')?.textContent.trim();
+                        const suffix = label === 'Success' ? '%' : '+';
+
+                        // Set initial value with correct suffix (optional but clean)
+                        counter.textContent = '0' + suffix;
+
                         const target = parseInt(counter.dataset.count);
                         let current = 0;
                         const step = target / 20;
+
                         const animate = () => {
                             current += step;
                             if (current < target) {
-                                counter.textContent = Math.floor(current) + '+';
+                                counter.textContent = Math.floor(current) + suffix;
                                 requestAnimationFrame(animate);
-                            } else counter.textContent = target + '+';
+                            } else {
+                                counter.textContent = target + suffix;
+                            }
                         };
                         animate();
                     });
@@ -2438,6 +2450,7 @@ background-color:1e293b ;
                 }
             });
         }, { threshold: 0.5 });
+
 
         const stats = document.querySelector('.hero-stats');
         if (stats) counterObserver.observe(stats);
