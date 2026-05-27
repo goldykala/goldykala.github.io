@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Projects | FoodSafe Pro - Case Studies & Success Stories</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #0a6e3d;
@@ -26,12 +29,25 @@
         }
 
         /* ==================== UTILITIES ==================== */
-        .section-padding { padding: 80px 0; }
-        
-        h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
-        
-        .text-primary-custom { color: var(--primary); }
-        .text-accent { color: var(--accent); }
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-primary-custom {
+            color: var(--primary);
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
 
         /* ==================== PAGE HEADER ==================== */
         .page-header {
@@ -82,7 +98,8 @@
             transition: all 0.3s ease;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--primary);
             color: var(--white);
             border-color: var(--primary);
@@ -94,16 +111,16 @@
             background: var(--white);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.4s ease;
             height: 100%;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
             position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .project-img-wrapper {
@@ -206,14 +223,14 @@
             color: var(--white);
             padding: 60px 0;
         }
-        
+
         .stat-item h3 {
             font-size: 2.5rem;
             font-weight: 900;
             color: var(--accent);
             margin-bottom: 5px;
         }
-        
+
         .stat-item p {
             font-size: 0.9rem;
             opacity: 0.9;
@@ -224,7 +241,7 @@
         /* ==================== FOOTER (Mini) ==================== */
         footer {
             background: var(--dark);
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             padding: 40px 0;
             text-align: center;
             font-size: 0.9rem;
@@ -236,23 +253,28 @@
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
+
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .hidden-project {
             display: none;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar (Same as Home) -->
-    <nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(11, 26, 18, 0.95); backdrop-filter: blur(10px); padding: 10px 0;">
+    <nav class="navbar navbar-expand-lg fixed-top"
+        style="background: rgba(11, 26, 18, 0.95); backdrop-filter: blur(10px); padding: 10px 0;">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" style="font-family: 'Playfair Display'; font-weight: 900; font-size: 1.5rem; color: white; text-decoration: none;">
-                <div style="width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--dark);">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html"
+                style="font-family: 'Playfair Display'; font-weight: 900; font-size: 1.5rem; color: white; text-decoration: none;">
+                <div
+                    style="width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--dark);">
                     <i class="fas fa-shield-halved"></i>
                 </div>
                 Food<span style="color: var(--accent);">Safe</span>Pro
@@ -268,7 +290,8 @@
         <div class="container">
             <h1 class="fade-up">Our Success Stories</h1>
             <p class="lead mb-4 fade-up" style="max-width: 700px; margin: 0 auto; opacity: 0.9;">
-                Explore how we've helped food manufacturers, restaurants, and exporters achieve certification, streamline operations, and train their teams.
+                Explore how we've helped food manufacturers, restaurants, and exporters achieve certification,
+                streamline operations, and train their teams.
             </p>
             <div class="breadcrumb-custom fade-up">
                 <a href="#">Home</a> <span>/</span> <span>Projects & Case Studies</span>
@@ -279,7 +302,7 @@
     <!-- Projects Section -->
     <section class="section-padding">
         <div class="container">
-            
+
             <!-- Filters -->
             <div class="filter-container fade-up">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -296,12 +319,14 @@
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <span class="project-category-badge">Consultancy</span>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                                alt="Dashboard">
 
                         </div>
                         <div class="project-body">
-                            
-                            <a href="foodsafety/index.html" class="btn-case-study" target="_blank">view sample <i class="fas fa-arrow-right"></i></a>
+
+                            <a href="foodsafety/index.html" class="btn-case-study" target="_blank">view sample <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -309,12 +334,14 @@
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <span class="project-category-badge">Consultancy</span>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                                alt="Dashboard">
 
                         </div>
                         <div class="project-body">
 
-                            <a href="foodsafety1.html" class="btn-case-study" target="_blank">view sample <i class="fas fa-arrow-right"></i></a>
+                            <a href="foodsafety1.html" class="btn-case-study" target="_blank">view sample <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -323,12 +350,15 @@
                 <div class="col-lg-4 col-md-6 project-item" data-category="digital">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <span class="project-category-badge" style="background: #3b82f6; color: white;">Digital</span>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                            <span class="project-category-badge"
+                                style="background: #3b82f6; color: white;">Digital</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                                alt="Dashboard">
                         </div>
                         <div class="project-body">
-                            
-                            <a href="foodsafety.html" class="btn-case-study" target="_blank">View sample<i class="fas fa-arrow-right"></i></a>
+
+                            <a href="foodsafety.html" class="btn-case-study" target="_blank">View sample<i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -337,13 +367,16 @@
                 <div class="col-lg-4 col-md-6 project-item" data-category="training">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <span class="project-category-badge" style="background: #e11d48; color: white;">Training</span>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                            <span class="project-category-badge"
+                                style="background: #e11d48; color: white;">Training</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                                alt="Dashboard">
 
                         </div>
                         <div class="project-body">
-                           
-                            <a href="foodsafety3.html" class="btn-case-study" target="_blank">View sample<i class="fas fa-arrow-right"></i></a>
+
+                            <a href="foodsafety3.html" class="btn-case-study" target="_blank">View sample<i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -353,30 +386,34 @@
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <span class="project-category-badge">Consultancy</span>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                                alt="Dashboard">
 
                         </div>
                         <div class="project-body">
-                            
-                            <a href="foodsafety4.html" class="btn-case-study" target="_blank">View sample<i class="fas fa-arrow-right"></i></a>
+
+                            <a href="foodsafety4.html" class="btn-case-study" target="_blank">View sample<i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-<div class="col-lg-4 col-md-6 project-item" data-category="consultancy">
+                <div class="col-lg-4 col-md-6 project-item" data-category="consultancy">
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <span class="project-category-badge">portal demo</span>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                                alt="Dashboard">
 
                         </div>
                         <div class="project-body">
-                            
-                            <a href="portal/admin.html" class="btn-case-study" target="_blank">View sample<i class="fas fa-arrow-right"></i></a>
+
+                            <a href="portal/index.html" class="btn-case-study" target="_blank">View sample<i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                
-        </div>
+
+            </div>
     </section>
 
     <!-- Impact Stats -->
@@ -407,8 +444,10 @@
     <section class="section-padding" style="background: white;">
         <div class="container text-center">
             <h2 class="mb-3" style="font-size: 2.5rem; font-weight: 900;">Ready to be our next success story?</h2>
-            <p class="text-muted mb-4" style="max-width: 600px; margin: 0 auto;">Whether you need a full certification roadmap or a digital compliance tool, we have the experience to deliver.</p>
-            <a href="index.html#contact" class="btn btn-lg rounded-pill px-5 py-3 fw-bold text-white" style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); box-shadow: 0 10px 20px rgba(10,110,61,0.3);">
+            <p class="text-muted mb-4" style="max-width: 600px; margin: 0 auto;">Whether you need a full certification
+                roadmap or a digital compliance tool, we have the experience to deliver.</p>
+            <a href="index.html#contact" class="btn btn-lg rounded-pill px-5 py-3 fw-bold text-white"
+                style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); box-shadow: 0 10px 20px rgba(10,110,61,0.3);">
                 Start Your Project <i class="fas fa-arrow-right ms-2"></i>
             </a>
         </div>
@@ -417,7 +456,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 FoodSafe Pro. All Rights Reserved.</p>
+            <p>&copy; 2026 FoodSafe Pro. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -467,4 +506,5 @@
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
