@@ -2,534 +2,447 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Balram - Web devloper</title>
-  <meta name="description" content="this is balram website for portfolio. balram github there. balram linkedin">
-  <meta name="keywords" content="balram web devloper. balram php devloper. balram fullstack devloper">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balram | PHP Developer Portfolio</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* General Setup */
+    :root {
+      --primary-color: #0d6efd;
+      --dark-bg: #111;
+    }
 
-  <!-- Favicons -->
-  <link href="assets/img/head.jpeg" rel="icon">
-  
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+    }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+    .section-padding {
+      padding: 80px 0;
+    }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    .text-primary {
+      color: var(--primary-color) !important;
+    }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    .bg-primary {
+      background-color: var(--primary-color) !important;
+    }
 
-  
+    /* Navbar */
+    .navbar {
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+      font-weight: 500;
+      margin-left: 15px;
+    }
+
+    .nav-link.active {
+      color: var(--primary-color) !important;
+    }
+
+    /* Hero Section */
+    #home {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      position: relative;
+      background-attachment: fixed;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .z-index-1 {
+      z-index: 1;
+    }
+
+    .ls-2 {
+      letter-spacing: 2px;
+    }
+
+    /* About Image */
+    .about-img {
+      transition: transform 0.3s ease;
+    }
+
+    .about-img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Skills */
+    .progress {
+      height: 10px;
+      border-radius: 5px;
+      background-color: #e9ecef;
+    }
+
+    .progress-bar {
+      border-radius: 5px;
+    }
+
+    /* Services */
+    .service-card {
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+      border-color: var(--primary-color) !important;
+    }
+
+    .icon-box i {
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover .icon-box i {
+      color: var(--primary-color);
+    }
+
+    /* Contact Form */
+    .form-control:focus {
+      box-shadow: none;
+      border-color: var(--primary-color);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .display-1 {
+        font-size: 3rem;
+      }
+
+      #home {
+        height: auto;
+        padding: 150px 0 100px;
+      }
+    }
+  </style>
 </head>
 
-<body class="index-page">
+<body data-bs-spy="scroll" data-bs-target="#navbar-example" data-bs-offset="100">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-       <img src="assets/img/balram.png" alt=""style="height:80px; width:170px;">
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="sweet-shop/index.html">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <div class="header-social-links">
-        <a href="https://github.com/goldykala/" class="twitter"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/balram-03b867281/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
-
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center content">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h2 >Transforming ideas into digital realities with dedication & heart</h2>
-            <p class="lead"> Where passion meets innovation, crafting experiencethat by inspire my development & design</p>
-            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-              <a href="portfolio-details.html" class="btn btn-primary">View My Work</a>
-              <a href="#contact" class="btn btn-outline">Let's Connect</a>
-            </div>
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
-              <div class="stat-item">
-                <span class="stat-number">1+</span>
-                <span class="stat-label">Years Experience</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">20+</span>
-                <span class="stat-label">Projects Completed</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">5+</span>
-                <span class="stat-label">Happy Clients</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="hero-image">
-              <img src="assets/img/profile/profile-1.webp" alt="Portfolio Hero Image" class="img-fluid" data-aos="zoom-out" data-aos-delay="300">
-              <div class="shape-1"></div>
-              <div class="shape-2"></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <div class="title-shape">
-          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-        </div>
-        <p>Hi i m Balram , a passionate web devloper with a knack for creating dyanmic and user-friendly website.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center">
-          <div class="col-lg-6 position-relative" data-aos="fade-right" data-aos-delay="200">
-            <div class="about-image">
-              <img src="assets/img/home.jpg" alt="Profile Image" class="img-fluid rounded-4">
-            </div>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="about-content">
-              <span class="subtitle">About Me</span>
-
-              <h2> Web Developer</h2>
-
-              <p class="lead mb-4">I am a full stack web-devloper. with 1+ year of industry, ihave honed my skills in various programming languages and frameworks.</p>
-
-              <p class="mb-4">let's Know about my myself ! </p>
-
-              <div class="personal-info">
-                <div class="row g-4">
-                  <div class="col-6">
-                    <div class="info-item">
-                      <span class="label">Name</span>
-                      <span class="value">Balram</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="info-item">
-                      <span class="label">Phone</span>
-                      <span class="value">+91 0000000000</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="info-item">
-                      <span class="label">Age</span>
-                      <span class="value">23 Years</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="info-item">
-                      <span class="label">Email</span>
-                      <span class="value">Goldykala20401@gmail.com</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="info-item">
-                      <span class="label">Occupation</span>
-                      <span class="value">Web Devloper</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="info-item">
-                      <span class="label">Nationality</span>
-                      <span class="value">India</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- <div class="signature mt-4">
-                <div class="signature-image">
-                  <img src="assets/img/misc/signature-1.webp" alt="" class="img-fluid">
-                </div>
-                <div class="signature-info">
-                  <h4>Eliot Johnson</h4>
-                  <p>Adipiscing Elit, Lorem Ipsum</p>
-                </div> -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4 skills-animation">
-
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="skill-box">
-              <h3>HTML</h3>
-              <p>Base  of website.Its is basically skelton of website.</p><br>
-              <span class="text-end d-block">90%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-box">
-              <h3>CSS</h3>
-              <p>for html styling html pages make them creative, responsive & design</p>
-              <span class="text-end d-block">90%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-box">
-              <h3>Bootstrap</h3>
-              <p>Css framework used to make website responsive &  attractive</p>
-              <span class="text-end d-block">90%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-            <div class="skill-box">
-              <h3>JavaScript</h3>
-              <p>Provide functionalties in frontend create extreme user experience. </p>
-              <span class="text-end d-block">80%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-box">
-              <h3>Php</h3>
-              <p>Most popular & widely used programming languages for website, webapps & web-portal backends</p>
-              <span class="text-end d-block">55%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-box">
-              <h3>Python</h3>
-              <p>Most used programming languages in now days in many fields likes ai , webdevlopment & datasciene. </p>
-              <span class="text-end d-block">85%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-box">
-              <h3>Ajax</h3>
-              <p>Make webpages smooth & data process without reloading.</p><br>
-              <span class="text-end d-block">75%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="skill-box">
-              <h3>Mysql</h3>
-              <p> Most popular & widely used database</p><br><br>
-              
-              <span class="text-end d-block">75%</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Skills Section -->
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <div class="title-shape">
-          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-        </div>
-        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur vel illum qui dolorem</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row">
-          <div class="col-12">
-            <div class="resume-wrapper">
-              <div class="resume-block" data-aos="fade-up">
-                <h2>Work Experience</h2>
-                <p class="lead">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum.</p>
-
-                <div class="timeline">
-                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-left">
-                      <h4 class="company">FSATO INSPECTION SERVICES</h4>
-                      <span class="period">OCT 2024 - Current</span>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-right">
-                      <h3 class="position">Php Devloper</h3>
-                      <p class="description"><li>Work on 20+ real life projects.</li>
-                        <li>Responsive & dyanmic websites</li>
-                        <li>Website Fetch Data without Reload</li>
-                        <li>More Expertise in Backend Devlopment in PHP & MYSQL </li>
-                        <li>Problem Solving.</li>
-                       </p>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="timeline-left">
-                      <h4 class="company">9i Technologies</h4>
-                      <span class="period">SEP 2023 - FEB 2024</span>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-right">
-                      <h3 class="position">PHP & WEB DESIGNING</h3>
-                      <p class="description">
-                        I am done here 6 month industrial training.
-                      </p>
-                      <ul>
-                        <li>I learn how to make websites & there backends.</li>
-                        <li>Know here Basic to advance PHP.</li>
-                        <li>how web devlopment works & learn about web designing</li>
-                        
-                      </ul>
-                      <p></p>
-                    </div>
-                  </div>
-
-                 
-                  </div>
-                </div>
-              </div>
-
-              <div class="resume-block" data-aos="fade-up" data-aos-delay="100">
-                <h2>My Education</h2>
-                <p class="lead">Following is Detail About My Education</p>
-
-                <div class="timeline">
-                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-left">
-                      <h4 class="company">S.A.S.S Govt. Polytechnic College Talwara (PBSTE)</h4>
-                      <span class="period">2017-2019</span>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-right">
-                      <h3 class="position">Diploma in Computer Science & Engineering</h3>
-                     
-                    </div>
-                  </div>
-                  <br>
-                  <br>
-
-                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="timeline-left">
-                      <h4 class="company">K.R.K D.A.V Garhdiwala</h4>
-                      <span class="period">2018 - 2019</span>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-right">
-                      <h3 class="position">12th ( Science , Maths)</h3>
-                      
-                    </div>
-                  </div>
-
-      
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Resume Section -->
-
-   
-
-    
-   
-    <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-5">
-          <div class="col-lg-6">
-            <div class="content" data-aos="fade-up" data-aos-delay="200">
-              <div class="section-category mb-3">Contact</div>
-              <h2 class="display-5 mb-4">You can contact us for services</h2>
-              <p class="lead mb-4"></p>
-
-              <div class="contact-info mt-5">
-                <div class="info-item d-flex mb-3">
-                  <i class="bi bi-envelope-at me-3"></i>
-                  <span>goldykala20401@gmail.com.com</span>
-                </div>
-
-                <div class="info-item d-flex mb-3">
-                  <i class="bi bi-telephone me-3"></i>
-                  <span>+91 0000000000</span>
-                </div>
-
-                <div class="info-item d-flex mb-4">
-                  <i class="bi bi-geo-alt me-3"></i>
-                  <span>Hoshiarpur, Punjab, India 144207</span>
-                </div>
-
-                <a href="#" class="map-link d-inline-flex align-items-center">
-                  Open Map
-                  <i class="bi bi-arrow-right ms-2"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
-              <div class="card-body p-4 p-lg-5">
-
-                <form action="forms/contact.php" method="post" class="php-email-form">
-                  <div class="row gy-4">
-
-                    <div class="col-12">
-                      <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                    </div>
-
-                    <div class="col-12 ">
-                      <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                    </div>
-
-                    <div class="col-12">
-                      <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                    </div>
-
-                    <div class="col-12">
-                      <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                    </div>
-
-                    <div class="col-12 text-center">
-                      <div class="loading">Loading</div>
-                      <div class="error-message"></div>
-                      <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                      <button type="submit" class="btn btn-submit w-100">Submit Message</button>
-                    </div>
-
-                  </div>
-                </form>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer">
-
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar-example">
     <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">goldykala</strong> <span>All Rights Reserved@2025</span></p>
-      </div>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://github.com/"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/balram-03b867281/"><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">Balram</a>
+      <a class="navbar-brand fw-bold" href="#">Balram<span class="text-primary">.Dev</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section id="home" class="d-flex align-items-center justify-content-center text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative z-index-1">
+      <h5 class="text-primary text-uppercase ls-2">Hello, I am</h5>
+      <h1 class="display-1 fw-bold mb-3">Balram</h1>
+      <h3 class="fw-light mb-4">I am a <span class="typewriter"></span></h3>
+      <p class="lead mb-5 mx-auto" style="max-width: 600px;">
+        Specializing in Portal Management, Database Architecture, and robust Backend Development using PHP & MySQL.
+      </p>
+      <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-5 me-2">Hire Me</a>
+      <a href="portfolio-details.html" class="btn btn-outline-light btn-lg rounded-pill px-5">View Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <!-- Placeholder for your image -->
+          <img src="https://via.placeholder.com/500x600?text=Balram+Photo" alt="Balram"
+            class="img-fluid rounded shadow-lg about-img">
+        </div>
+        <div class="col-lg-7 ps-lg-5">
+          <h6 class="text-primary text-uppercase">About Me</h6>
+          <h2 class="fw-bold mb-4">Professional PHP Developer with 2 Years of Experience</h2>
+          <p class="text-muted">
+            I am a dedicated developer focused on creating efficient, scalable, and secure web applications.
+            With a strong foundation in <strong>PHP</strong> and <strong>MySQL</strong>, I excel in building complex
+            portal management systems and optimizing database structures.
+          </p>
+          <p class="text-muted">
+            My approach combines strong problem-solving skills with modern front-end technologies like
+            <strong>Bootstrap, AJAX, and JavaScript</strong> to deliver seamless user experiences.
+          </p>
+
+          <div row mt-4>
+            <div class="col-md-6 mb-3">
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Portal Management</li>
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Database Management</li>
+              </ul>
+            </div>
+            <div class="col-md-6 mb-3">
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Front End Coding</li>
+                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Problem Solving</li>
+              </ul>
+            </div>
+          </div>
+          <a href="#" class="btn btn-dark mt-3">Download CV <i class="fas fa-download ms-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section-padding bg-light">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <h6 class="text-primary text-uppercase">My Expertise</h6>
+        <h2 class="fw-bold">Technical Skills</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="skill-item mb-4">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold">PHP</span>
+              <span>90%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item mb-4">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold">MySQL / Database Management</span>
+              <span>85%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item mb-4">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold">JavaScript & AJAX</span>
+              <span>80%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="skill-item mb-4">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold">HTML5 & CSS3</span>
+              <span>95%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
+            </div>
+          </div>
+          <div class="skill-item mb-4">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold">Bootstrap</span>
+              <span>90%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item mb-4">
+            <div class="d-flex justify-content-between">
+              <span class="fw-bold">Problem Solving & Logic</span>
+              <span>85%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-padding">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <h6 class="text-primary text-uppercase">What I Do</h6>
+        <h2 class="fw-bold">My Services</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="service-card p-4 border rounded text-center h-100 shadow-sm">
+            <div class="icon-box mb-3 text-primary">
+              <i class="fas fa-server fa-3x"></i>
+            </div>
+            <h4>Backend Development</h4>
+            <p class="text-muted">Building robust server-side logic using PHP and managing complex database interactions
+              with MySQL.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card p-4 border rounded text-center h-100 shadow-sm">
+            <div class="icon-box mb-3 text-primary">
+              <i class="fas fa-laptop-code fa-3x"></i>
+            </div>
+            <h4>Portal Management</h4>
+            <p class="text-muted">Creating and maintaining administrative portals, ensuring data integrity and
+              user-friendly interfaces.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card p-4 border rounded text-center h-100 shadow-sm">
+            <div class="icon-box mb-3 text-primary">
+              <i class="fas fa-mobile-alt fa-3x"></i>
+            </div>
+            <h4>Responsive Frontend</h4>
+            <p class="text-muted">Developing responsive, interactive UIs using HTML, CSS, Bootstrap, and AJAX for
+              seamless UX.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <h6 class="text-primary text-uppercase">Get In Touch</h6>
+          <h2 class="fw-bold mb-4">Let's Work Together</h2>
+          <p class="text-secondary mb-4">Have a project in mind? Looking for a skilled PHP developer to handle your
+            portal or database needs? Feel free to reach out.</p>
+
+          <div class="d-flex mb-3">
+            <div class="me-3 text-primary"><i class="fas fa-envelope fa-lg"></i></div>
+            <div>
+              <h5 class="mb-1">Email</h5>
+              <p class="text-secondary">balram@example.com</p>
+            </div>
+          </div>
+          <div class="d-flex mb-3">
+            <div class="me-3 text-primary"><i class="fas fa-phone fa-lg"></i></div>
+            <div>
+              <h5 class="mb-1">Phone</h5>
+              <p class="text-secondary">+123 456 7890</p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="me-3 text-primary"><i class="fab fa-linkedin fa-lg"></i></div>
+            <div>
+              <h5 class="mb-1">LinkedIn</h5>
+              <p class="text-secondary">linkedin.com/in/balram</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <form class="bg-white p-4 rounded text-dark">
+            <div class="mb-3">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-control" placeholder="John Doe">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Your Email</label>
+              <input type="email" class="form-control" placeholder="john@example.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="4" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white text-center py-3">
+    <div class="container">
+      <p class="mb-0">&copy; 2026 Balram. All Rights Reserved.</p>
+    </div>
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 </body>
 
 </html>
+<script>
+  // Typewriter Effect for Hero Section
+  const textElement = document.querySelector('.typewriter');
+  const texts = ["PHP Developer", "Database Specialist", "Problem Solver"];
+  let count = 0;
+  let index = 0;
+  let currentText = "";
+  let letter = "";
+
+  (function type() {
+    if (count === texts.length) {
+      count = 0;
+    }
+    currentText = texts[count];
+    letter = currentText.slice(0, ++index);
+
+    textElement.textContent = letter;
+
+    if (letter.length === currentText.length) {
+      setTimeout(() => {
+        index = 0;
+        count++;
+      }, 2000); // Wait 2 seconds before deleting/changing
+    }
+
+    setTimeout(type, 100);
+  })();
+
+  // Close mobile navbar on click
+  const navLinks = document.querySelectorAll('.nav-link');
+  const menuToggle = document.getElementById('navbarNav');
+  const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
+
+  navLinks.forEach((l) => {
+    l.addEventListener('click', () => {
+      if (menuToggle.classList.contains('show')) {
+        bsCollapse.toggle();
+      }
+    })
+  });
+
+  // Smooth Scrolling for anchor links (optional enhancement if CSS scroll-behavior isn't enough)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
